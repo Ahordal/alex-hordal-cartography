@@ -1,0 +1,203 @@
+/* Reset Block */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root {
+    /* Base layers */
+    --bg:#f1f1f1; /* Grey background */
+    --bg-alt:#f7f7f7; /* Off-white background */
+
+    /* Text */
+    --text-heading: #111111;
+    --text-body: #333333;
+    --text-muted: #6F6F6F;
+
+    /* Links */
+    
+    --link-red: #f05253;
+    --link-black:#000000;
+    
+    /* Spacing & Layout */
+    --space-xs: 0.5rem;  /* 8px */
+    --space-s: 1rem;    /* 16px */
+    --space-m: 2rem;    /* 32px */
+    --space-l: 4rem;    /* 64px */
+
+    /* Lines & Borders */
+    --light-border: #E0E0E0;
+    --dark-border: #333333;
+    --line-thin-light: 0.5px solid var(--light-border);
+    --line-thin-dark: 0.5px solid var(--dark-border);
+
+
+    /* Layout Boundaries */
+    --max-width: 1100px;
+
+    /* Typography */
+    --font-main: 'Roboto Flex Variable', system-ui, sans-serif;
+    --font-mono: 'Roboto Mono', monospace;
+
+    /* Font Weights */
+    --w-100: 100;
+    --w-300: 300;
+    --w-425: 425;
+    --w-600: 600;
+    --w-800: 800;
+    --w-1000: 1000;
+
+    /* Performance & Interaction */
+    --transition: 0.2s ease-in-out;
+
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--text-body);
+    font-family: var(--font-main);
+    font-weight: var(--w-425); /* Using that 425 'calibrated' weight */
+    line-height: 1.6;                /* Vertical spacing for legibility */
+    
+    /* Variable font optimization */
+    font-variation-settings: "opsz" 14; 
+    -webkit-font-smoothing: antialiased;
+}
+
+/* H1: The Title (Highest contrast, largest) */
+h1 {
+
+    /* 4rem is the min, 15vw lets it grow with the screen, 12rem is the cap */
+    font-size: clamp(4rem, 15vw, 12rem);      
+    line-height: 0.85;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+/* H2: The Section Headings */
+h2 {
+    font-size: 2rem;
+    font-variation-settings: "wght" 700;
+    margin-top: var(--space-l); /* Extra breathing room above sections */
+    margin-bottom: var(--space-s);
+    border-bottom: var(--line-thin); /* Adds a crisp architectural underline */
+    padding-bottom: var(--space-xs);
+}
+
+/* H3: The Component Titles */
+h3 {
+    font-size: 1.25rem;
+    font-variation-settings: "wght" 600;
+    margin-bottom: var(--space-xs);
+}
+
+/* H4: The Technical Labels */
+h4 {
+    font-family: var(--font-mono); /* Swaps to mono for a 'drafting' look */
+    font-size: 0.75rem;
+    font-weight: var(--weight-heading);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+}
+/* Paragraphs */
+p {
+    margin-bottom: var(--space-s); /* Consistent vertical spacing */
+    max-width: 65ch;              /* 65 characters per line of text */
+}
+
+/* Links */
+a {
+    color: var(--text-muted);     /* Links are lighter */        
+    text-underline-offset: 4px;   /* Precise spacing for the underline */    
+    transition: var(--transition); /* That 0.2s smooth fade */
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+a:hover {
+    color: var(--link-red);
+    text-decoration: underline;
+}
+
+/* WCAG Focus State: */
+a:focus-visible {
+    outline: 2px solid var(--text-heading);
+    outline-offset: 4px;
+    border-radius: 2px;
+}
+
+/* Site Navigation */
+.main-nav {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: 60px;
+    background-color: var(--bg);
+    border-bottom: var(--line-thin-light);
+    z-index: 9999; /* Ensures it stays on top of all images/maps */
+    display: flex;
+    align-items: center;
+}
+
+.nav-container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; 
+    gap: var(--space-m);
+}
+
+.nav-container a {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    font-weight: var(--weight-heading);
+    transition: var(--transition);
+    text-transform: uppercase;
+}
+.nav-container a:hover {
+    text-decoration: underline;
+    font-weight: var(--w-600);
+    
+}
+
+
+/* Adjust hero-wrapper to account for the nav height */
+.hero-wrapper {
+    min-height: calc(100vh - 120px); /* Subtracts nav and footer height so hero fits perfectly */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: var(--space-m);
+    
+    
+}
+
+.main-footer {
+    position: sticky;
+    bottom: 0; /* Pins it to the bottom of the viewport */
+    width: 100%;
+    height: 60px; /* Usually a bit shorter than the header for balance */
+    background-color: var(--bg);
+    border-top: var(--line-thin-light); /* Line is above the footer text */
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+}
+
+.footer-container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    justify-content: space-between; /* Pins info to the far left and right */
+    padding: 0 var(--space-m);
+    font-size: 0.7rem; /* Keep it small and technical */
+    letter-spacing: 0.05em;
+    border: 1px solid black;
+}
