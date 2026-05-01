@@ -2,12 +2,14 @@
 import "../styles/global.css";
 ---
 
+<!doctype html>
+
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width">
     <meta name="generator" content={Astro.generator} />
     <title>Alex Hordal | Cartographer & GIS Specialist</title>
   </head>
@@ -15,24 +17,64 @@ import "../styles/global.css";
     <header class="main-nav">
       <nav class="nav-container">
         <a href="/">Home</a>
-        <a href="/projects">About</a>
-        <a href="/about">Portfolio</a>
-        <a href="/contact">Skills</a>
-        <a href="/contact">Certifications</a>
+        <a href="/about">About</a>
+        <a href="/portfolio">Portfolio</a>
+        <a href="/skills">Skills</a>
+        <a href="/certifications">Certifications</a>
+        <a href="/contact">Contact</a>
       </nav>
     </header>
 
     <main class="hero-wrapper">
       <div>
-        <h1>Alex<br />Hordal</h1>
+        <h1>Alex<br /><span class="nudge">Hordal</span></h1>
+        <p class="hero-subtitle">Cartographer & GIS Specialist</p>
       </div>
     </main>
-<footer class="main-footer">
+    <footer class="main-footer">
       <div class="footer-container">
-        <span class="mono">LOCATION: NOVA SCOTIA, CA</span>
-        <span class="mono">STATUS: AVAILABLE_2026</span>
+        <div class="footer-group">
+          <span class="mono">LOC: DARTMOUTH, NS</span>
+          <span class="mono separator">//</span>
+          <span class="mono">44.66° N, 63.56° W</span>
+        </div>
+
+        <nav class="footer-group">
+          <a
+            href="https://www.ullrmaps.com"
+            target="_blank"
+            rel="noopener noreferrer">ULLR Maps</a
+          >
+
+          <span class="mono separator">|</span>
+
+          <a href="/colophon">Colophon</a>
+
+          <span class="mono separator">|</span>
+
+          <div>
+            <a
+              href="https://linkedin.com/in/yourprofile"
+              target="_blank"
+              rel="noopener noreferrer">LN</a
+            >
+            <a
+              href="https://github.com/yourusername"
+              target="_blank"
+              rel="noopener noreferrer">GH</a
+            >
+            <a
+              href="https://instagram.com/yourhandle"
+              target="_blank"
+              rel="noopener noreferrer">IG</a
+            >
+          </div>
+
+          <span class="mono separator">|</span>
+
+          <span class="mono">© ALEX HORDAL 2026</span>
+        </nav>
       </div>
     </footer>
-   
   </body>
 </html>

@@ -18,9 +18,10 @@
     
     --link-red: #f05253;
     --link-black:#000000;
+    --link-dark-grey:#202020;
     
     /* Spacing & Layout */
-    --space-xs: 0.5rem;  /* 8px */
+    --space-xs: 0.5rem; /* 8px */
     --space-s: 1rem;    /* 16px */
     --space-m: 2rem;    /* 32px */
     --space-l: 4rem;    /* 64px */
@@ -30,6 +31,11 @@
     --dark-border: #333333;
     --line-thin-light: 0.5px solid var(--light-border);
     --line-thin-dark: 0.5px solid var(--dark-border);
+   
+
+    /* Shadows */
+    --hero-shadow-bottom: 0 4px 3px rgba(0, 0, 0, 0.8);
+    --hero-shadow-top: 0 -4px 3px rgba(0, 0, 0, 0.8);
 
 
     /* Layout Boundaries */
@@ -48,7 +54,7 @@
     --w-1000: 1000;
 
     /* Performance & Interaction */
-    --transition: 0.2s ease-in-out;
+    --transition: 0.1s ease-in-out;
 
 }
 
@@ -72,6 +78,22 @@ h1 {
     line-height: 0.85;
     text-transform: uppercase;
     margin: 0;
+    color: #fff;
+
+}
+.hero-subtitle {
+  font-size: clamp(1.2rem, 2vw, 1.8rem);
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+  font-weight: 500;
+  margin-top: 0.5rem;
+  opacity: 0.85;
+  text-transform: uppercase;
+}
+.nudge {
+    display: inline-block;
+    /* This pulls the 'H' to the left, past the blue box edge */
+    margin-left: -0.08em; 
 }
 
 /* H2: The Section Headings */
@@ -110,13 +132,13 @@ p {
 a {
     color: var(--text-muted);     /* Links are lighter */        
     text-underline-offset: 4px;   /* Precise spacing for the underline */    
-    transition: var(--transition); /* That 0.2s smooth fade */
+    transition: var(--transition); /* That 0.1s smooth fade */
     cursor: pointer;
     text-decoration: underline;
 }
 
 a:hover {
-    color: var(--link-red);
+    color: var(--link-dark-grey);
     text-decoration: underline;
 }
 
@@ -134,7 +156,7 @@ a:focus-visible {
     width: 100%;
     height: 60px;
     background-color: var(--bg);
-    border-bottom: var(--line-thin-light);
+    box-shadow: var(--hero-shadow-bottom);
     z-index: 9999; /* Ensures it stays on top of all images/maps */
     display: flex;
     align-items: center;
@@ -150,54 +172,65 @@ a:focus-visible {
     gap: var(--space-m);
 }
 
-.nav-container a {
-    font-family: var(--font-mono);
-    font-size: 0.85rem;
+.nav-container a, .footer-group a {
+    font-family: var(--font-mono);   
     text-decoration: none;
     letter-spacing: 0.1em;
-    font-weight: var(--weight-heading);
-    transition: var(--transition);
+    font-weight: var(--weight-heading);    
     text-transform: uppercase;
 }
-.nav-container a:hover {
+.nav-container a:hover, .footer-group a:hover {
     text-decoration: underline;
     font-weight: var(--w-600);
     
 }
 
 
-/* Adjust hero-wrapper to account for the nav height */
+/* Adjust hero-wrapper */
 .hero-wrapper {
-    min-height: calc(100vh - 120px); /* Subtracts nav and footer height so hero fits perfectly */
+    min-height: calc(100vh - 120px);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
     padding: var(--space-m);
-    
-    
+    /* Simplified path */
+    background-image: url('/hero_background2.jpg'); 
+    background-size: cover;
+    background-position: center;       
 }
 
-.main-footer {
-    position: sticky;
-    bottom: 0; /* Pins it to the bottom of the viewport */
-    width: 100%;
-    height: 60px; /* Usually a bit shorter than the header for balance */
-    background-color: var(--bg);
-    border-top: var(--line-thin-light); /* Line is above the footer text */
-    z-index: 9999;
-    display: flex;
-    align-items: center;
-}
-
+/* Footer Container */
 .footer-container {
     max-width: var(--max-width);
     margin: 0 auto;
     width: 100%;
+    height: 60px; /* Moved height here */
     display: flex;
-    justify-content: space-between; /* Pins info to the far left and right */
+    justify-content: space-between;
+    align-items: center; /* Centering items vertically */
     padding: 0 var(--space-m);
-    font-size: 0.7rem; /* Keep it small and technical */
+    font-size: 0.85rem; /* Slightly reduced for technical look */
     letter-spacing: 0.05em;
-    border: 1px solid black;
+}
+
+.main-footer {
+    position: sticky;
+    bottom: 0;
+    width: 100%;
+    background-color: var(--bg);
+    box-shadow: var(--hero-shadow-top);
+    z-index: 9999;
+}
+
+.footer-group {
+    display: flex;
+    align-items: center;
+    gap: var(--space-s);
+}
+
+.separator {
+    opacity: 0.6;
+    font-weight: var(--w-100);
+    /* Ensures slashes don't inherit thick weights */
 }
