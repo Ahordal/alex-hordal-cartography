@@ -8,6 +8,7 @@
     /* Base layers */
     --bg:#f1f1f1; /* Grey background */
     --bg-alt:#f7f7f7; /* Off-white background */
+    
 
     /* Text */
     --text-heading: #111111;
@@ -72,13 +73,23 @@ body {
 
 /* H1: The Title (Highest contrast, largest) */
 h1 {
-
-    /* 4rem is the min, 15vw lets it grow with the screen, 12rem is the cap */
+  font-family: var(--font-main); /* Using your Roboto Flex Variable */
+ 
+  font-size: clamp(4rem, 15vw, 12rem);
+  line-height: 0.85;
+  text-transform: uppercase;
+  margin: 0;
+  color: var(--text-muted); /* Defaults to #111111 */
+  transition: var(--transition);
+}
+.home-content h1 {
+ /* 4rem is the min, 15vw lets it grow with the screen, 12rem is the cap */
     font-size: clamp(4rem, 15vw, 12rem);      
     line-height: 0.85;
     text-transform: uppercase;
     margin: 0;
-    color: #fff;
+    color: var(--bg);
+
 
 }
 .hero-subtitle {
@@ -187,18 +198,24 @@ a:focus-visible {
 
 
 /* Adjust hero-wrapper */
-.hero-wrapper {
+.page-slot {
     min-height: calc(100vh - 120px);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    padding: var(--space-m);
-    /* Simplified path */
+    padding: var(--space-m);  
+}
+/* Specific background logic for the home page */
+.home-bg {
     background-image: url('/hero_background2.jpg'); 
     background-size: cover;
-    background-position: center;       
+    background-position: center;   
 }
+.content-bg {
+    background-color: var(--bg-alt) ;
+}
+
 
 /* Footer Container */
 .footer-container {
@@ -233,4 +250,90 @@ a:focus-visible {
     opacity: 0.6;
     font-weight: var(--w-100);
     /* Ensures slashes don't inherit thick weights */
+}
+
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column; /* Stacks the coordinates on top of the links */
+        height: auto;
+        padding: var(--space-m);
+        text-align: center;
+        gap: var(--space-s);
+    }
+
+    .footer-group {
+        justify-content: center; /* Centers the ULLR/Colophon links */
+        flex-wrap: wrap;
+    }
+    
+}.menu-toggle {
+    display: none; /* Hidden on Desktop */
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.bar {
+    height: 1.5px;
+    background-color: var(--text-heading);
+    transition: var(--transition);
+    width: 22px; /* Set a standard width */
+}
+
+.nav-links {
+    display: flex;
+    gap: var(--space-m);
+    align-items: center;
+}
+
+/* --- Add/Update your Media Query at the bottom --- */
+
+@media (max-width: 768px) {
+    /* Header/Nav Adjustments */
+    .menu-toggle {
+        display: flex;
+    }
+
+    .nav-links {
+        display: none; /* Hide drawer */
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        flex-direction: column;
+        background-color: var(--bg);
+        padding: var(--space-m) 0;
+        box-shadow: var(--hero-shadow-bottom);
+        gap: 0; /* Remove gap for stacked links */
+    }
+
+    .nav-links.is-active {
+        display: flex; /* Show drawer when clicked */
+    }
+
+    .nav-links a {
+        padding: var(--space-s);
+        width: 100%;
+        text-align: center;
+        border-bottom: 0.5px solid var(--light-border);
+    }
+
+    /* Footer Adjustments */
+    .footer-container {
+        flex-direction: column;
+        height: auto;
+        padding: var(--space-m);
+        text-align: center;
+        gap: var(--space-s);
+    }
+
+    .footer-group {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+ 
 }

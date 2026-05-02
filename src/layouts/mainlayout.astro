@@ -1,0 +1,75 @@
+---
+import "../styles/global.css";
+const { title = "Alex Hordal | Cartographer & GIS Specialist", isHome = false } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body class="site-root">
+    <header class="main-nav">
+      <nav class="nav-container">
+        <!-- The Menu Button (Mobile Only) -->
+        <button class="menu-toggle" aria-label="Open Menu">
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+        </button>
+
+        <!-- The Links (Desktop: Row / Mobile: Hidden Drawer) -->
+        <div class="nav-links">
+          <a href="/">Home</a>
+          <a href="/about">About</a>
+          <a href="/portfolio">Portfolio</a>
+          <a href="/skills">Skills</a>
+          <a href="/certifications">Certifications</a>
+          <a href="/contact">Contact</a>
+        </div>
+      </nav>
+    </header>
+
+    <main class={`page-slot ${isHome ? "home-bg" : "content-bg"}`}>
+      <slot />
+    </main>
+
+    <footer class="main-footer">
+      <div class="footer-container">
+        <div class="footer-group">
+          <span class="mono">LOC: DARTMOUTH, NS</span>
+          <span class="mono separator">//</span>
+          <span class="mono">44.66° N, 63.56° W</span>
+        </div>
+
+        <nav class="footer-group">
+          <a href="https://www.ullrmaps.com" target="_blank" rel="noopener noreferrer">ULLR Maps</a>
+          <span class="mono separator">|</span>
+          <a href="/colophon">Colophon</a>
+          <span class="mono separator">|</span>
+          <div class="social-links">
+            <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer">LN</a>
+            <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">GH</a>
+            <a href="https://instagram.com/yourhandle" target="_blank" rel="noopener noreferrer">IG</a>
+          </div>
+          <span class="mono separator">|</span>
+          <span class="mono">© ALEX HORDAL 2026</span>
+        </nav>
+      </div>
+    </footer>
+
+    <script>
+      // Simple toggle logic
+      const menuBtn = document.querySelector('.menu-toggle');
+      const navLinks = document.querySelector('.nav-links');
+
+      menuBtn?.addEventListener('click', () => {
+        navLinks?.classList.toggle('is-active');
+      });
+    </script>
+  </body>
+</html>
