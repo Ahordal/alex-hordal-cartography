@@ -1,6 +1,9 @@
 ---
 import "../styles/global.css";
 const { title = "Alex Hordal | Cartographer & GIS Specialist", isHome = false } = Astro.props;
+const { pathname } = Astro.url;
+const isActive = (path: string) => 
+  pathname === path || pathname === path + "/";
 ---
 
 <!doctype html>
@@ -13,23 +16,20 @@ const { title = "Alex Hordal | Cartographer & GIS Specialist", isHome = false } 
     <title>{title}</title>
   </head>
   <body class="site-root">
-    <header class="main-nav">
+ <header class="main-nav">
       <nav class="nav-container">
-        <!-- The Menu Button (Mobile Only) -->
         <button class="menu-toggle" aria-label="Open Menu">
           <div class="bar"></div>
           <div class="bar"></div>
           <div class="bar"></div>
         </button>
 
-        <!-- The Links (Desktop: Row / Mobile: Hidden Drawer) -->
         <div class="nav-links">
-          <a href="/">Home</a>
-          <a href="/about">About</a>
-          <a href="/portfolio">Portfolio</a>
-          <a href="/skills">Skills</a>
-          <a href="/certifications">Certifications</a>
-          <a href="/contact">Contact</a>
+          <!-- Apply the conditional class 'active' -->
+          <a href="/" class={isActive("/") ? "active" : ""}>Home</a>
+          <a href="/about" class={isActive("/about") ? "active" : ""}>About</a>
+          <a href="/portfolio" class={isActive("/portfolio") ? "active" : ""}>Portfolio</a>
+          <a href="/contact" class={isActive("/contact") ? "active" : ""}>Contact</a>
         </div>
       </nav>
     </header>

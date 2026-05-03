@@ -12,6 +12,7 @@
 
     /* Text */
     --text-heading: #111111;
+    --text-subtitle: #9fa1a4;
     --text-body: #333333;
     --text-muted: #6F6F6F;
 
@@ -71,16 +72,15 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
-/* H1: The Title (Highest contrast, largest) */
+/* Text */
 h1 {
   font-family: var(--font-main); /* Using your Roboto Flex Variable */
- 
   font-size: clamp(4rem, 15vw, 12rem);
   line-height: 0.85;
   text-transform: uppercase;
-  margin: 0;
+  margin: 0;  
   color: var(--text-muted); /* Defaults to #111111 */
-  transition: var(--transition);
+ 
 }
 .home-content h1 {
  /* 4rem is the min, 15vw lets it grow with the screen, 12rem is the cap */
@@ -89,35 +89,27 @@ h1 {
     text-transform: uppercase;
     margin: 0;
     color: var(--bg);
-
-
 }
-.hero-subtitle {
-  font-size: clamp(1.2rem, 2vw, 1.8rem);
-  color: var(--text-muted);
-  letter-spacing: 0.08em;
-  font-weight: 500;
-  margin-top: 0.5rem;
-  opacity: 0.85;
-  text-transform: uppercase;
-}
+
 .nudge {
     display: inline-block;
     /* This pulls the 'H' to the left, past the blue box edge */
     margin-left: -0.08em; 
 }
 
-/* H2: The Section Headings */
+
 h2 {
-    font-size: 2rem;
-    font-variation-settings: "wght" 700;
-    margin-top: var(--space-l); /* Extra breathing room above sections */
-    margin-bottom: var(--space-s);
+    color: var(--text-heading);
+    font-variation-settings: "wght" 700;     
+    margin-bottom: var(--space-m);
     border-bottom: var(--line-thin); /* Adds a crisp architectural underline */
     padding-bottom: var(--space-xs);
+     padding-top: var(--space-xs);
+    text-transform: uppercase;
+    border-bottom: 0.5px solid var(--light-border);
+    margin-top: 0; 
+    letter-spacing: 0.2em;    
 }
-
-/* H3: The Component Titles */
 h3 {
     font-size: 1.25rem;
     font-variation-settings: "wght" 600;
@@ -133,19 +125,46 @@ h4 {
     letter-spacing: 0.1em;
     color: var(--text-muted);
 }
+
+
 /* Paragraphs */
 p {
     margin-bottom: var(--space-s); /* Consistent vertical spacing */
     max-width: 65ch;              /* 65 characters per line of text */
+    text-align: justify;
 }
+.subtitle {
+    color: var(--text-subtitle);  
+    margin-top: var(--space-s);
+    text-align: left;         
+    border-top: 0.5px solid var(--light-border);
+    font-size: clamp(1.3rem, 2vw, 1.3rem);
+    
+    
+    
+}
+.hero-subtitle { /*Subtitle under name on home page */
+  font-size: clamp(1.6rem, 2vw, 1.6rem);
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+
+  margin-top: 0.5rem;
+  opacity: 0.85;
+  text-transform: uppercase;
+ 
+}
+    
 
 /* Links */
 a {
     color: var(--text-muted);     /* Links are lighter */        
     text-underline-offset: 4px;   /* Precise spacing for the underline */    
-    transition: var(--transition); /* That 0.1s smooth fade */
     cursor: pointer;
     text-decoration: underline;
+    letter-spacing: 0.1em;
+    
+
+   
 }
 
 a:hover {
@@ -159,6 +178,7 @@ a:focus-visible {
     outline-offset: 4px;
     border-radius: 2px;
 }
+
 
 /* Site Navigation */
 .main-nav {
@@ -182,22 +202,27 @@ a:focus-visible {
     justify-content: center; 
     gap: var(--space-m);
 }
+.nav-links a {
+    font-family: var(--font-mono);
+    text-decoration: none;          
+    text-transform: uppercase;
 
-.nav-container a, .footer-group a {
-    font-family: var(--font-mono);   
-    text-decoration: none;
-    letter-spacing: 0.1em;
-    font-weight: var(--weight-heading);    
+}
+
+.nav-links a:hover, .nav-links a.active{
+    text-decoration: underline; 
+}
+
+.footer-group a {
+    font-family: var(--font-mono);
+    text-decoration: none;          
     text-transform: uppercase;
 }
-.nav-container a:hover, .footer-group a:hover {
-    text-decoration: underline;
-    font-weight: var(--w-600);
-    
+.footer-group a:hover {
+    text-decoration: underline;    
 }
+/* Home */
 
-
-/* Adjust hero-wrapper */
 .page-slot {
     min-height: calc(100vh - 120px);
     display: flex;
@@ -216,6 +241,33 @@ a:focus-visible {
     background-color: var(--bg-alt) ;
 }
 
+/* About */
+.title-column {
+    text-align: right;
+  
+}
+
+.title-column h1 {
+    /* Large scale title */
+    font-size: clamp(4rem, 12vw, 10rem);
+    line-height: 0.8;
+    color: var(--text-muted);    
+}
+
+
+
+.content-column {
+    width: 100%;
+      border-left: 0.5px solid var(--light-border); 
+    padding-left: calc(var(--space-l) / 2); /* Half of your gap */
+    margin-left: calc(var(--space-l) / -2); /* Pulls the border into the gap center */
+}
+
+
+.mono-list {
+    list-style-position: outside; /* This is default, but good for clarity */
+    padding-left: 1.2rem; /* Adjust this until the bullets clear the gutter */
+}
 
 /* Footer Container */
 .footer-container {
@@ -232,7 +284,7 @@ a:focus-visible {
 }
 
 .main-footer {
-    position: sticky;
+    position: static;
     bottom: 0;
     width: 100%;
     background-color: var(--bg);
@@ -251,6 +303,22 @@ a:focus-visible {
     font-weight: var(--w-100);
     /* Ensures slashes don't inherit thick weights */
 }
+/* About */
+
+.about-grid {
+    display: grid;
+    /* Two equal-width columns */
+    grid-template-columns: 1fr 1fr; 
+    gap: var(--space-l);
+    width: 100%;
+    max-width: var(--max-width); /* 1100px to match nav */
+    margin: 0 auto;
+    /* Aligns the tops of both columns perfectly */
+    align-items: start; 
+}
+
+
+/* Mobile */
 
 @media (max-width: 768px) {
     .footer-container {
@@ -289,7 +357,7 @@ a:focus-visible {
     align-items: center;
 }
 
-/* --- Add/Update your Media Query at the bottom --- */
+
 
 @media (max-width: 768px) {
     /* Header/Nav Adjustments */
@@ -333,7 +401,23 @@ a:focus-visible {
     .footer-group {
         justify-content: center;
         flex-wrap: wrap;
-    }
-
- 
+    } 
 }
+/* Mobile: Collapse and shift up */
+@media (max-width: 1024px) {
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-m);
+    }
+    
+    .title-column {
+        text-align: left;
+    }
+    
+    .hero-subtitle {
+        text-align: left;
+        margin-left: 0;
+        max-width: 100%;
+    }
+}
+ 

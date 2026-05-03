@@ -2,10 +2,82 @@
 import MainLayout from "../layouts/mainlayout.astro";
 ---
 
-<MainLayout title="About | Alex Hordal">
-  <div class="about-content">
-    <!-- Everything in here pours into the .page-slot -->
-    <h1>About</h1>
-    <p>Content goes here.</p>
-  </div>
-</MainLayout>
+<MainLayout title="About | Alex Hordal" isHome={false}>
+  <div class="about-grid">
+    <!-- Left Column: Title & Subtitle -->
+    <aside class="title-column">
+      <h1>About</h1>
+      <p class="subtitle">
+        Bringing over a decade of experience in emergency response and mountain
+        operations to cartography and GIS.
+      </p>
+    </aside>
+
+    <!-- Right Column: The Data (Now Equal Width) -->
+    <section class="content-column">
+      <div class="bio-section">
+        <h2>Background</h2>
+        <p>
+          My interest in GIS and cartography grew out of years working as a
+          first responder in complex operational environments where spatial
+          awareness and accurate geographic information can have real
+          consequences. Through my experience as an Infantry Officer in the
+          Canadian Armed Forces, as a Professional Ski Patroller at Whistler
+          Blackcomb, and as a Paid-On-Call Firefighter with the Whistler Fire
+          Rescue Service, I developed a strong appreciation for terrain,
+          navigation, and the importance of reliable geographic information.
+          These roles required teamwork, attention to detail, clear
+          communication, and rapid decision-making in dynamic environments where
+          terrain, navigation, and situational awareness were critical.
+        </p>
+
+        <p>
+          During this time, I also began developing ULLR Maps, a terrain-focused
+          mapping project originally created as a personal reference tool to
+          better understand the complexity of Whistler Blackcomb's terrain. The
+          project eventually grew into a public mapping platform and played an
+          important role in my decision to pursue cartography and geographic
+          information systems professionally.
+        </p>
+
+        <p>
+          I am currently studying in the Cartography and Geovisualization
+          program at the Centre of Geographic Sciences (COGS) at the Nova Scotia
+          Community College (NSCC). Alongside my studies, I work as a Station
+          Attendant with Air Canada, where I operate as part of a ground
+          operations team responsible for aircraft servicing and safe, on-time
+          departures while regularly assisting passengers during boarding and
+          aircraft turnaround operations.
+        </p>
+
+        <p>
+          As I enter the geospatial field, I look forward to applying my
+          experience in operational environments to developing maps and
+          geospatial tools that help people better understand complex terrain
+          and make informed decisions in real-world situations.
+        </p>
+      </div>
+
+      <div class="specs-section">
+        <h2 class="section-label">Education</h2>
+
+        <div class="specs-block">
+          <h4>Education</h4>
+          <ul class="mono-list">
+            <li>GIS Cartography & Geovisualization, NSCC (COGS)</li>
+            <li>BA Geography, Queen's University</li>
+          </ul>
+        </div>
+
+        <div class="specs-block">
+          <h4>Competencies</h4>
+          <ul class="mono-list">
+            <li>3D Terrain & Bathymetric Modeling</li>
+            <li>Astro, GitHub, & Vercel Web Development</li>
+            <li>Aviation Accident Data Analysis</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </div></MainLayout
+>
