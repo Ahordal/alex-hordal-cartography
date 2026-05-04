@@ -11,7 +11,9 @@
     
 
     /* Text */
-    --text-heading: #111111;
+    --text-heading: #383838;
+    --text-section-heading:#424242;
+    --text-subsection-heading:#4e4e4e;
     --text-subtitle: #9fa1a4;
     --text-body: #333333;
     --text-muted: #6F6F6F;
@@ -79,9 +81,9 @@ h1 {
   line-height: 0.85;
   text-transform: uppercase;
   margin: 0;  
-  color: var(--text-muted); /* Defaults to #111111 */
- 
+  color: var(--text-muted); 
 }
+
 .home-content h1 {
  /* 4rem is the min, 15vw lets it grow with the screen, 12rem is the cap */
     font-size: clamp(4rem, 15vw, 12rem);      
@@ -99,9 +101,9 @@ h1 {
 
 
 h2 {
-    color: var(--text-heading);
+    
     font-variation-settings: "wght" 700;     
-    margin-bottom: var(--space-m);
+    margin-bottom: var(--space-s);
     border-bottom: var(--line-thin); /* Adds a crisp architectural underline */
     padding-bottom: var(--space-xs);
      padding-top: var(--space-xs);
@@ -110,10 +112,16 @@ h2 {
     margin-top: 0; 
     letter-spacing: 0.2em;    
 }
+.about-section , .bio-section h2 {
+    color: var(--text-section-heading);
+}
 h3 {
-    font-size: 1.25rem;
+    font-size: 1.15rem;
     font-variation-settings: "wght" 600;
     margin-bottom: var(--space-xs);
+    text-transform: uppercase;
+    color: var(--text-subsection-heading);
+    letter-spacing: 0.2em; 
 }
 
 /* H4: The Technical Labels */
@@ -132,6 +140,7 @@ p {
     margin-bottom: var(--space-s); /* Consistent vertical spacing */
     max-width: 65ch;              /* 65 characters per line of text */
     text-align: justify;
+   
 }
 .subtitle {
     color: var(--text-subtitle);  
@@ -242,8 +251,9 @@ a:focus-visible {
 }
 
 /* About */
+
 .title-column {
-    text-align: right;
+    text-align: left;
   
 }
 
@@ -251,7 +261,7 @@ a:focus-visible {
     /* Large scale title */
     font-size: clamp(4rem, 12vw, 10rem);
     line-height: 0.8;
-    color: var(--text-muted);    
+    color: var(--text-heading);    
 }
 
 
@@ -267,6 +277,8 @@ a:focus-visible {
 .mono-list {
     list-style-position: outside; /* This is default, but good for clarity */
     padding-left: 1.2rem; /* Adjust this until the bullets clear the gutter */
+     margin-bottom: var(--space-s);
+     text-align: justify;
 }
 
 /* Footer Container */
@@ -315,6 +327,12 @@ a:focus-visible {
     margin: 0 auto;
     /* Aligns the tops of both columns perfectly */
     align-items: start; 
+}
+.about-section {
+    margin-bottom:1rem;
+}
+.about-subsection {
+    margin-left:1rem;
 }
 
 

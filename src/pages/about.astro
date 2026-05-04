@@ -4,18 +4,14 @@ import MainLayout from "../layouts/mainlayout.astro";
 
 <MainLayout title="About | Alex Hordal" isHome={false}>
   <div class="about-grid">
-    <!-- Left Column: Title & Subtitle -->
+    <!-- Left Column: Title & Subtitle, Background -->
     <aside class="title-column">
       <h1>About</h1>
       <p class="subtitle">
         Bringing over a decade of experience in emergency response and mountain
         operations to cartography and GIS.
       </p>
-    </aside>
-
-    <!-- Right Column: The Data (Now Equal Width) -->
-    <section class="content-column">
-      <div class="bio-section">
+       <div class="about-section">
         <h2>Background</h2>
         <p>
           My interest in GIS and cartography grew out of years working as a
@@ -38,17 +34,7 @@ import MainLayout from "../layouts/mainlayout.astro";
           project eventually grew into a public mapping platform and played an
           important role in my decision to pursue cartography and geographic
           information systems professionally.
-        </p>
-
-        <p>
-          I am currently studying in the Cartography and Geovisualization
-          program at the Centre of Geographic Sciences (COGS) at the Nova Scotia
-          Community College (NSCC). Alongside my studies, I work as a Station
-          Attendant with Air Canada, where I operate as part of a ground
-          operations team responsible for aircraft servicing and safe, on-time
-          departures while regularly assisting passengers during boarding and
-          aircraft turnaround operations.
-        </p>
+        </p>     
 
         <p>
           As I enter the geospatial field, I look forward to applying my
@@ -57,24 +43,99 @@ import MainLayout from "../layouts/mainlayout.astro";
           and make informed decisions in real-world situations.
         </p>
       </div>
+    </aside>
 
-      <div class="specs-section">
-        <h2 class="section-label">Education</h2>
+    <!-- Right Column: The Data -->
+    <section class="content-column">
+     
 
-        <div class="specs-block">
-          <h4>Education</h4>
+      <div class="about-section">
+        <h2>Education</h2>
+        <div>
           <ul class="mono-list">
-            <li>GIS Cartography & Geovisualization, NSCC (COGS)</li>
-            <li>BA Geography, Queen's University</li>
+            <li>
+              <span class="title"
+                >Diploma, GIS — Cartography &amp; Geovisualization<br /></span
+              >
+              <span class="institution"
+                >Centre of Geographic Sciences (COGS), NSCC</span
+              >
+            </li>
+            <li>BA, Geography — Queen's University</li>
           </ul>
         </div>
-
-        <div class="specs-block">
-          <h4>Competencies</h4>
+      </div>
+      <div class="about-section">
+        <h2>Technical Profile</h2>
+        <div class="about-subsection">
+          <h3>GIS Platforms</h3>
           <ul class="mono-list">
-            <li>3D Terrain & Bathymetric Modeling</li>
-            <li>Astro, GitHub, & Vercel Web Development</li>
-            <li>Aviation Accident Data Analysis</li>
+            <li>ArcGIS Pro</li>
+            <li>ArcGIS Online</li>
+            <li>QGIS</li>            
+          </ul>
+        </div>
+         <div class="about-subsection">
+          <h3>Web Mapping & Development</h3>
+          <ul class="mono-list">
+            <li>ArcGIS Maps SDK for JavaScript (foundational)</li>
+            <li>Mapbox GL JS (foundational)</li>
+            <li>HTML</li>     
+            <li>CSS</li>  
+            <li>JavaScript (foundational)</li>  
+            <li>Mapbox Studio</li>         
+          </ul>
+        </div>
+          <div class="about-subsection">
+          <h3>Programming & GIS Automation</h3>
+          <ul class="mono-list">
+            <li>Python (foundational)</li>
+            <li>ArcGIS Pro ModelBuilder (foundational)</li>                 
+          </ul>
+        </div>
+        <div class="about-subsection">
+          <h3>Cartography & Geovisualization</h3>
+          <ul class="mono-list">
+            <li>Terrain visualization including DEM and topo-bathymetric elevation processing, shaded relief design, and elevation modelling.</li>
+            <li>Thematic cartography and spatial data representation</li>    
+            <li>Cartographic hierarchy, typography, color and layout composition</li>  
+            <li>Colour theory and multivariate symbology design</li>  
+            <li>Narrative cartography and data-driven map design</li>               
+          </ul>
+        </div>
+        <div class="about-subsection">
+          <h3>Design & Visualization Tools</h3>
+          <ul class="mono-list">
+            <li>Adobe Illustrator</li>
+            <li>Adobe Photoshop</li>    
+            <li>Adobe InDesign</li>  
+            <li>Avenza MAPublisher</li>  
+            <li>Blender (foundational)</li>               
+          </ul>
+        </div>
+        <div class="about-subsection">
+          <h3>Databases & Data Management</h3>
+          <ul class="mono-list">
+            <li>PostgreSQL (foundational)</li>
+            <li>pgAdmin (foundational)</li>    
+            <li>Relational database design (foundational)</li>  
+                    
+          </ul>
+        </div>
+      </div>
+      <div class="about-section">
+        <h2>Certifications</h2>
+        <div>
+          <ul class="mono-list">
+            <li>
+              <span class="title"
+                >Diploma, GIS — Cartography &amp; Geovisualization<br /></span
+              >
+              <span class="institution"
+                >Centre of Geographic Sciences (COGS), NSCC</span
+              >
+            </li>
+            <li>BA, Geography — Queen's University</li>
           </ul>
         </div>
       </div>
