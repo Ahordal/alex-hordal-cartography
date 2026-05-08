@@ -41,7 +41,7 @@
     --hero-shadow-top: 0 -4px 3px rgba(0, 0, 0, 0.8);
 
     /* Layout Boundaries */
-    --max-width: 1500px;
+    --max-width: 1200px;
 
     /* Typography */
     --font-main: 'Roboto Flex Variable', system-ui, sans-serif;
@@ -297,6 +297,9 @@ a:focus-visible {
     border-left: 0.5px solid var(--light-border);
     
     
+}
+.credential-title {
+    font-weight: 500;
 }
 /* Sections */
 
