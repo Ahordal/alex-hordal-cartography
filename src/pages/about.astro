@@ -3,16 +3,25 @@ import MainLayout from "../layouts/mainlayout.astro";
 ---
 
 <MainLayout title="About | Alex Hordal" isHome={false}>
-  <div class="about-grid">
-    <!-- Left Column: Title & Subtitle, Background -->
-    <aside class="title-column">
+  <div class="page-grid">
+    <!-- Left Column -->
+    <aside class="page-title-column">
       <h1>About</h1>
-      <p class="subtitle">
+
+      <p class="page-subtitle">
         Bringing over a decade of experience in emergency response and mountain
         operations to cartography and GIS.
       </p>
-       <div class="about-section">
+
+      <div class="page-section">
         <h2>Background</h2>
+
+        <img
+          src="/images/about/biopic.png"
+          alt="Alex Hordal and Ukee"
+          class="page-image"
+        />
+
         <p>
           My interest in GIS and cartography grew out of years working as a
           first responder in complex operational environments where spatial
@@ -28,13 +37,18 @@ import MainLayout from "../layouts/mainlayout.astro";
         </p>
 
         <p>
-          During this time, I also began developing ULLR Maps, a terrain-focused
-          mapping project originally created as a personal reference tool to
-          better understand the complexity of Whistler Blackcomb's terrain. The
-          project eventually grew into a public mapping platform and played an
-          important role in my decision to pursue cartography and geographic
-          information systems professionally.
-        </p>     
+          During this time, I also began developing
+          <a
+            href="https://arcg.is/0zL0ie"
+            target="_blank"
+            rel="noopener noreferrer">
+            ULLR Maps
+          </a>, a terrain-focused mapping project originally created as a
+          personal reference tool to better understand the complexity of
+          Whistler Blackcomb's terrain. The project eventually grew into a
+          public mapping platform and played an important role in my decision to
+          pursue cartography and geographic information systems professionally.
+        </p>
 
         <p>
           As I enter the geospatial field, I look forward to applying my
@@ -42,103 +56,111 @@ import MainLayout from "../layouts/mainlayout.astro";
           geospatial tools that help people better understand complex terrain
           and make informed decisions in real-world situations.
         </p>
+
+        <p>
+          Download my resume |
+          <a
+            href="https://arcg.is/0zL0ie"
+            target="_blank"
+            rel="noopener noreferrer">
+            Explore my story
+          </a>
+        </p>
       </div>
     </aside>
 
-    <!-- Right Column: The Data -->
-    <section class="content-column">
-     
-
-      <div class="about-section">
+    <!-- Right Column -->
+    <section class="page-content-column">
+      <div class="page-section">
         <h2>Education</h2>
+
         <div>
           <ul class="mono-list">
             <li>
-              <span class="title"
-                >Diploma, GIS — Cartography &amp; Geovisualization<br /></span
-              >
-              <span class="institution"
-                >Centre of Geographic Sciences (COGS), NSCC</span
-              >
+              <span class="title">
+                Diploma, GIS — Cartography &amp; Geovisualization<br />
+              </span>
+
+              <span class="institution">
+                Centre of Geographic Sciences (COGS), NSCC
+              </span>
             </li>
+
             <li>BA, Geography — Queen's University</li>
           </ul>
         </div>
       </div>
-      <div class="about-section">
+
+      <div class="page-section">
         <h2>Technical Profile</h2>
-        <div class="about-subsection">
+
+        <div class="page-subsection">
           <h3>GIS Platforms</h3>
+
           <ul class="mono-list">
             <li>ArcGIS Pro</li>
             <li>ArcGIS Online</li>
-            <li>QGIS</li>            
+            <li>QGIS</li>
           </ul>
         </div>
-         <div class="about-subsection">
+
+        <div class="page-subsection">
           <h3>Web Mapping & Development</h3>
+
           <ul class="mono-list">
             <li>ArcGIS Maps SDK for JavaScript (foundational)</li>
+            <li>ArcGIS StoryMaps</li>
             <li>Mapbox GL JS (foundational)</li>
-            <li>HTML</li>     
-            <li>CSS</li>  
-            <li>JavaScript (foundational)</li>  
-            <li>Mapbox Studio</li>         
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>JavaScript (foundational)</li>
+            <li>Mapbox Studio</li>
           </ul>
         </div>
-          <div class="about-subsection">
+        <div class="page-subsection">
           <h3>Programming & GIS Automation</h3>
+
           <ul class="mono-list">
             <li>Python (foundational)</li>
-            <li>ArcGIS Pro ModelBuilder (foundational)</li>                 
+            <li>ArcGIS Pro ModelBuilder (foundational)</li>
+           
           </ul>
         </div>
-        <div class="about-subsection">
+        <div class="page-subsection">
           <h3>Cartography & Geovisualization</h3>
+
           <ul class="mono-list">
             <li>Terrain visualization including DEM and topo-bathymetric elevation processing, shaded relief design, and elevation modelling.</li>
-            <li>Thematic cartography and spatial data representation</li>    
-            <li>Cartographic hierarchy, typography, color and layout composition</li>  
-            <li>Colour theory and multivariate symbology design</li>  
-            <li>Narrative cartography and data-driven map design</li>               
-          </ul>
-        </div>
-        <div class="about-subsection">
-          <h3>Design & Visualization Tools</h3>
-          <ul class="mono-list">
-            <li>Adobe Illustrator</li>
-            <li>Adobe Photoshop</li>    
-            <li>Adobe InDesign</li>  
-            <li>Avenza MAPublisher</li>  
-            <li>Blender (foundational)</li>               
-          </ul>
-        </div>
-        <div class="about-subsection">
-          <h3>Databases & Data Management</h3>
-          <ul class="mono-list">
-            <li>PostgreSQL (foundational)</li>
-            <li>pgAdmin (foundational)</li>    
-            <li>Relational database design (foundational)</li>  
-                    
+            <li>Thematic cartography and spatial data representation</li>
+            <li>Cartographic hierarchy, typography, and layout composition</li>
+            <li>Colour theory and multivariate symbology design</li>
+            <li>Thematic cartography and spatial data representation</li>
+            <li>Narrative cartography and data-driven map design</li>
+           
           </ul>
         </div>
       </div>
-      <div class="about-section">
-        <h2>Certifications</h2>
-        <div>
+
+      <div class="page-section">
+        <h2>Professional Credentials</h2>
+
+        <div class="page-subsection">
+          <h3>Emergency Response & Operations</h3>
+
           <ul class="mono-list">
+            <li>Fire Fighter I & II — Justice Institute of British Columbia</li>
+
             <li>
-              <span class="title"
-                >Diploma, GIS — Cartography &amp; Geovisualization<br /></span
-              >
-              <span class="institution"
-                >Centre of Geographic Sciences (COGS), NSCC</span
-              >
+              Full Service Fire Fighter Operations Program — Justice Institute
+              of British Columbia
             </li>
-            <li>BA, Geography — Queen's University</li>
+
+            <li>
+              Volunteer Recruit Training — Halifax Regional Fire & Emergency
+            </li>
           </ul>
         </div>
       </div>
     </section>
-  </div></MainLayout
->
+  </div>
+</MainLayout>

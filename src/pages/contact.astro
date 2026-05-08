@@ -2,10 +2,69 @@
 import MainLayout from "../layouts/mainlayout.astro";
 ---
 
-<MainLayout title="Colophon | Alex Hordal">
-  <div class="about-content">
-    <!-- Everything in here pours into the .page-slot -->
-    <h1>Contact me</h1>
-    <p>Content goes here.</p>
+<MainLayout title="About | Alex Hordal" isHome={false}>
+  <div class="page-grid">
+    <!-- Left Column -->
+    <aside class="page-title-column">
+      <h1>Contact Me</h1>
+
+      <p class="page-subtitle">
+        Interested in getting in touch? Drop me a line.
+      </p>
+
+      
+    </aside>
+
+    <!-- Right Column -->
+    <section class="page-content-column">
+      <div class="page-section">
+        
+
+      
+<!-- Form -->
+ <form class="contact-form" method="POST" action="/api/contact">
+
+  <div class="form-group">
+    <label for="name">NAME</label>
+    <input
+      type="text"
+      id="name"
+      name="name"
+      placeholder="Your Name"
+      required
+    />
+  </div>
+
+  <div class="form-group">
+    <label for="email">EMAIL</label>
+    <input
+      type="email"
+      id="email"
+      name="email"
+      placeholder="you@example.com"
+      required
+    />
+  </div>
+
+  <div class="form-group">
+    <label for="message">MESSAGE</label>
+    <textarea
+      id="message"
+      name="message"
+      rows="8"
+      placeholder="Your message"
+      required
+    ></textarea>
+  </div>
+
+  <button type="submit" class="submit-button">
+    SEND MESSAGE
+  </button>
+
+</form>
+       
+
+    
+    </section>
   </div>
 </MainLayout>

@@ -1,0 +1,66 @@
+---
+import MainLayout from "../src/layouts/mainlayout.astro";
+---
+
+<MainLayout title="Page Title | Alex Hordal" isHome={false}>
+  <div class="page-grid">
+
+    <!-- Left Column -->
+    <aside class="page-title-column">
+
+      <h1>Page Title</h1>
+
+      <p class="page-subtitle">
+        Subtitle or introductory statement.
+      </p>
+
+      <div class="page-section">
+
+        <!-- Optional Section Heading -->
+        <h2>Section Heading</h2>
+
+        <!-- Optional Image -->
+        <!--
+        <img
+          src="/images/example.png"
+          alt="Description"
+          class="page-image"
+        />
+        -->
+
+        <!-- Left column content here -->
+        <p>
+          Content goes here.
+        </p>
+
+      </div>
+
+    </aside>
+
+    <!-- Right Column -->
+    <section class="page-content-column">
+
+      <!-- Right column content here -->
+
+      <div class="page-section">
+
+        <h2>Section Heading</h2>
+
+        <div class="page-subsection">
+
+          <h3>Subsection Heading</h3>
+
+          <ul class="mono-list">
+            <li>Content</li>
+            <li>Content</li>
+            <li>Content</li>
+          </ul>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </div>
+</MainLayout>
