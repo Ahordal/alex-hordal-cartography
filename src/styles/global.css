@@ -18,6 +18,7 @@
     --text-subtitle: #9fa1a4;
     --text-body: #333333;
     --text-muted: #6F6F6F;
+    --text-blue: #284d64;
 
     /* Links */
     --link-red: #f05253;
@@ -42,6 +43,7 @@
 
     /* Layout Boundaries */
     --max-width: 1200px;
+    --max-width-colophon: 1300px;
 
     /* Typography */
     --font-main: 'Roboto Flex Variable', system-ui, sans-serif;
@@ -80,7 +82,10 @@ h1 {
     margin: 0;
     color: var(--text-muted);
 }
-
+/* Portfolio titles */
+.page-title-column .hawaii-title {
+    color: var(--text-blue);
+}
 .home-content h1 {
     font-size: clamp(3rem, 15vw, 12rem);
     line-height: 0.85;
@@ -213,7 +218,7 @@ a:focus-visible {
     gap: var(--space-m);
 }
 
-.nav-links a {
+.nav-links a, .footer-group a  {
     font-family: var(--font-mono);
     text-decoration: none;
     text-transform: uppercase;
@@ -224,11 +229,6 @@ a:focus-visible {
     text-decoration: underline;
 }
 
-.footer-group a {
-    font-family: var(--font-mono);
-    text-decoration: none;
-    text-transform: uppercase;
-}
 
 .footer-group a:hover {
     text-decoration: underline;
@@ -259,14 +259,16 @@ a:focus-visible {
 
 .page-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1.3fr 1fr;
     
     width: 100%;
     max-width: var(--max-width);
     margin: 0 auto;
     align-items: start;
 }
-
+.page-grid-colophon {
+    max-width: var(--max-width-colophon);
+}
 .page-title-column,
 .page-content-column {
     min-width: 0;
@@ -285,7 +287,7 @@ a:focus-visible {
     
     line-height: 0.8;
     color: var(--text-heading);
-       font-size: clamp(4rem, 20cqw, 10rem);
+       font-size: clamp(4rem, 10vw, 8rem);
 
 }
 
@@ -436,6 +438,8 @@ a:focus-visible {
 .submit-button:active {
     transform: translateY(1px);
 }
+
+
 
 /* Mobile */
 

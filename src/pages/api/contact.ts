@@ -6,52 +6,54 @@ const resend = new Resend(import.meta.env.RESEND_API_KEY);
 export const POST: APIRoute = async ({ request }) => {
   try {
     const formData = await request.formData();
+    
+    // Ensure we capture values as strings and handle potential nulls
+    const name = formData.get("name")?.toString().trim();
+    const email = formData.get("email")?.toString().trim();
+    const message = formData.get("message")?.toString().trim();
 
-    const name = formData.get("name");
-    const email = formData.get("email");
-    const message = formData.get("message");
+    // 1. Server-side validation check
+    if (!name || !email || !message) {
+      return new Response(
+        JSON.stringify({ message: "Please fill out all fields." }),
+        { status: 400 }
+      );
+    }
 
-    await resend.emails.send({
-      from: "onboarding@resend.dev",
+    // 2. Send the email
+    const { error } = await resend.emails.send({
+      from: "onboarding@resend.dev", // Once your domain is verified, use e.g., "contact@yourdomain.com"
       to: "alex.hordal@gmail.com",
+      replyTo: email, // This allows you to click 'Reply' in Gmail to reach the sender
       subject: `Portfolio Contact from ${name}`,
       html: `
-        <h2>New Portfolio Contact</h2>
-
-        <p>
-          <strong>Name:</strong> ${name}
-        </p>
-
-        <p>
-          <strong>Email:</strong> ${email}
-        </p>
-
-        <p>
-          <strong>Message:</strong>
-        </p>
-
-        <p>${message}</p>
+        <div>
+          <h2 style="border-bottom: 1px solid #eee; padding-bottom: 10px;">New Portfolio Inquiry</h2>
+          <p><strong>Name:</strong> ${name}</p>
+          <p><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p>
+          <div style="margin-top: 20px; padding: 15px; background-color: #f9f9f9; border-left: 4px solid #ccc;">
+            <p style="margin-top: 0;"><strong>Message:</strong></p>
+            <p style="white-space: pre-wrap;">${message}</p>
+          </div>
+        </div>
       `,
     });
 
-    return new Response(
-      JSON.stringify({
-        message: "Email sent successfully. Thanks for getting in touch!",
-      }),
-      {
-        status: 200,
-      }
-    );
-  } catch (error) {
-    console.error(error);
+    if (error) {
+      console.error("Resend Error:", error);
+      throw new Error("Failed to send email via Resend.");
+    }
 
     return new Response(
-      JSON.stringify({
-        message: "There was an error processing your mail. Please try again.",
-      }),
-      {
-        status: 500,
-      }
+      JSON.stringify({ message: "Success! Your message has been sent." }),
+      { status: 200 }
+    );
+
+  } catch (error) {
+    console.error("Submission Error:", error);
+    return new Response(
+      JSON.stringify({ message: "Server error. Please try again later." }),
+      { status: 500 }
     );
   }
 };
