@@ -1,4 +1,7 @@
+
 ---
+
+
 title: "Hawaiʻi: Seafloor to Summit"
 
 description: "A topobathymetric cartographic visualization exploring the full vertical extent of the Hawaiian Islands from seafloor to summit."
@@ -9,7 +12,6 @@ category: "Cartography & Geovisualization"
 
 technologies:
   - ArcGIS Pro
-  - ArcGIS Online
   - Adobe Illustrator
 
 tags:
@@ -24,35 +26,56 @@ titleClass: "hawaii-title"
 
 
 featured: true
+
+appliedSkills:
+  - Applied raster processing techniques to resample and merge multiple DEM datasets into a continuous topobathymetric surface.
+  - Designed and implemented a custom diverging colour ramp to effectively communicate elevation change across terrestrial and bathymetric environments.
+  - Applied cartographic design principles to develop a clear and visually balanced map layout supporting the seafloor-to-summit narrative.
+  - Produced a topobathymetric map that communicates complex elevation relationships through effective visualization and supporting contextual elements.
+  - Extracted elevation data from DEMs and designed a vertically exaggerated elevation profile of Mauna Kea to effectively communicate its full seafloor-to-summit extent.
+
 ---
+import { Image } from "astro:assets";
+import elevationProfile from
+"../../assets/images/portfolio/hawaii-seafloor-to-summit/hawaii-detail-elevation_provile.webp";
+import bathymetry from
+"../../assets/images/portfolio/hawaii-seafloor-to-summit/hawaii-detail-bathymetry.webp";
+
+The primary objective of Hawaiʻi: Seafloor to Summit was to design a 48” × 36” large-format topo-bathymetric map that accurately conveys the true vertical scale of the eight main Hawaiian Islands, from the abyssal seafloor to the summit of Mauna Kea, emphasizing that when measured from its submarine base, Mauna Kea is considered the tallest mountain in the world.
+
+Typically, map elevations are measured as the vertical distance above or below a
+reference datum, most commonly mean sea level. However, conventional topographic
+maps often visually understate submarine topography and, much like an iceberg,
+fail to communicate the full relief of geologic formations that extend below the
+ocean surface. As a result, they do not adequately convey the full vertical
+scale of the Hawaiian Islands.
+
+The topobathymetric surface used in this map was derived from a mosaic of multiple DEM sources, including the NOAA NCEI Coastal Relief Model (CRM) (~30 m) and ETOPO2022 (~450 m), as well as multibeam bathymetry from SOEST’s Hawaiʻi Mapping Research Group (~50 m). The CRM provides nearshore coverage, ETOPO2022 provides global bathymetry, and the multibeam data contribute higher-resolution detail where available. Due to differences in spatial resolution and coverage, all datasets were resampled to a common 90 m grid to balance detail, continuity, and visual consistency across the surface. Source datasets reference differing vertical datums, resulting in minor elevation offsets; however, these differences are negligible at the 90 m resolution used in this map and do not affect overall terrain representation.
+<figure class="project-figure">
+<Image
+    src={bathymetry}
+    alt="Example of closeup Bathymetry"
+    width={1000}
+    
+/>
+<figcaption>
+    Bathymetry Closeup
+  </figcaption>
+</figure>
+A key design consideration was the symbolization of the merged DEM using a custom, continuous, diverging colour ramp that seamlessly blended topography and bathymetry at mean sea level. This involved extensive experimentation with colour stops, positioning, transparencies, and manual classification intervals. Hillshading and slope highlights were applied to accentuate geomorphology and improve terrain interpretation, particularly below the ocean surface.
+
+Bathymetric and terrestrial features were identified and labelled, including points of interest, population centres, summits, volcanoes, seamounts, and underwater landslides. Subtle typographic hierarchy and placement were also used as visual depth cues to accentuate the pseudo-3D terrain effect.
+
+The map also includes several small contextual snippets highlighting major features and important historical events, an 8.5× vertically exaggerated elevation profile of Mauna Kea to reinforce the seafloor-to-summit narrative, and an inset map of the Hawaiian Archipelago for location context.
+<figure class="project-figure">
+<Image
+    src={elevationProfile}
+    alt="Mauna Kea Elevation Profile"
+    width={1000}
+/>
+<figcaption>
+    Mauna Kea Elevation Profile
+  </figcaption>
+</figure>
 
 
-
-This project involved conceptualizing, designing, and developing a topobathymetric map of the Hawaiian Islands that emphasizes overall vertical structure, titled *Hawaiʻi: Seafloor to Summit*.
-
-The process began with a design sketch that identified the major components of the proposed map and established a rough layout. From there, the focus shifted to planning and collecting the necessary data. The datasets included three topobathymetric sources:
-- NOAA ETOPO 2022
-- Coastal Relief Model
-- SOEST Hawaiʻi Mapping Research Group multibeam data
-
-The DEMs were resampled to a consistent 90 m resolution and merged into a single continuous topobathymetric DEM, along with supporting vector datasets from the Hawaiʻi Statewide GIS Program. 
-
-A key design consideration was the symbolization of the merged DEM using a custom continuous, diverging colour ramp that seamlessly blended topography and bathymetry at mean sea level. An 8.5× vertically exaggerated elevation profile of Mauna Kea was also included to reinforce the seafloor-to-summit narrative.
-
-Bathymetric and terrestrial features were identified and labelled, including:
-- points of interest
-- population centres
-- summits
-- volcanoes
-- seamounts
-- underwater landslides
-
-Small contextual snippets were also incorporated to highlight major geographic features throughout the composition.
-
-## Applied Skills
-
-- Applied raster processing techniques to resample and merge multiple DEM datasets into a continuous topobathymetric surface.
-- Designed and implemented a custom diverging colour ramp to effectively communicate elevation change across terrestrial and bathymetric environments.
-- Applied cartographic design principles to develop a clear and visually balanced map layout supporting the seafloor-to-summit narrative.
-- Produced a topobathymetric map that communicates complex elevation relationships through effective visualization and supporting contextual elements.
-- Extracted elevation data from DEMs and designed a vertically exaggerated elevation profile of Mauna Kea to effectively communicate its full seafloor-to-summit extent. 

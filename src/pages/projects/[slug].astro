@@ -7,7 +7,6 @@ export async function getStaticPaths() {
   const projects = await getCollection("projects");
 
   return projects.map((project: CollectionEntry<"projects">) => ({
-  
     params: { slug: project.id },
 
     props: { project },
@@ -23,36 +22,25 @@ const { project } = Astro.props as Props;
 // New Astro content API uses render(project)
 const { Content } = await render(project);
 ---
-<MainLayout title={`${project.data.title} | Alex Hordal`}  isHome={false}>
+
+<MainLayout title={`${project.data.title} | Alex Hordal`} isHome={false}>
   <div class="page-grid">
     <!-- Left Column -->
     <aside class="page-title-column">
       <h1 class={project.data.titleClass}>{project.data.title}</h1>
 
       <p class="page-subtitle">
-       {project.data.description}
+        {project.data.description}
       </p>
 
       <div class="page-section">
-    
-       
-<Image
-  src={project.data.featuredImage}
-  alt={`Hero image for ${project.data.title}`}
+        <Image
+          src={project.data.featuredImage}
+          alt={`Hero image for ${project.data.title}`}
+          format="webp"
+        />
 
-  format="webp"
-/>
-
-
-        <p>
-          Download the full PDF |
-          <a
-            href="https://arcg.is/0zL0ie"
-            target="_blank"
-            rel="noopener noreferrer">
-            Explore my story
-          </a>
-        </p>
+        <p>Download the full PDF |</p>
       </div>
     </aside>
 
@@ -62,165 +50,22 @@ const { Content } = await render(project);
         <h2>About the Project</h2>
 
         <div>
-          <Content/>
+          <Content />
         </div>
       </div>
-
       <div class="page-section">
-        <h2>Technical Profile</h2>
-
-        <div class="page-subsection">
-          <h3>GIS Platforms</h3>
-
-          <ul class="mono-list">
-            <li>ArcGIS Pro</li>
-            <li>ArcGIS Online</li>
-            <li>ArcGIS Field Maps</li>
-            <li>QGIS</li>
-          </ul>
-        </div>
-        <!-- Web Mapping & Development -->
-        <div class="page-subsection">
-          <h3>Web Mapping & Development</h3>
-
-          <ul class="mono-list">
-            <li>ArcGIS Maps SDK for JavaScript (foundational)</li>
-            <li>ArcGIS StoryMaps</li>
-            <li>Mapbox GL JS (foundational)</li>
-            <li>HTML</li>
-            <li>CSS</li>
-            <li>JavaScript (foundational)</li>
-            <li>Mapbox Studio</li>
-          </ul>
-        </div>
-        <!-- Programming & GIS Automation -->
-        <div class="page-subsection">
-          <h3>Programming & GIS Automation</h3>
-
-          <ul class="mono-list">
-            <li>Python (foundational)</li>
-            <li>ArcGIS Pro ModelBuilder (foundational)</li>
-          </ul>
-        </div>
-        <!-- Databases & Data Management -->
-        <div class="page-subsection">
-          <h3>Databases & Data Management</h3>
-
-          <ul class="mono-list">
-            <li>PostgreSQL (foundational)</li>
-            <li>pgAdmin (foundational)</li>
-            <li>Relational database design (foundational)</li>
-          </ul>
-        </div>
-        <div class="page-subsection">
-          <h3>Cartography & Geovisualization</h3>
-
-          <ul class="mono-list">
-            <li>
-              Terrain visualization including DEM and topo-bathymetric elevation
-              processing, shaded relief design, and elevation modelling.
-            </li>
-            <li>Thematic cartography and spatial data representation</li>
-            <li>Cartographic hierarchy, typography, and layout composition</li>
-            <li>Colour theory and multivariate symbology design</li>
-            <li>Thematic cartography and spatial data representation</li>
-            <li>Narrative cartography and data-driven map design</li>
-          </ul>
-        </div>
-        <!-- Design & Visualization Tools -->
-        <div class="page-subsection">
-          <h3>Design & Visualization Tools</h3>
-
-          <ul class="mono-list">
-            <li>Adobe Illustrator</li>
-            <li>Adobe Photoshop</li>
-            <li>Adobe InDesign</li>
-            <li>Avenza MAPublisher</li>
-            <li>Blender (foundational)</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="page-section">
-        <h2>Professional Credentials</h2>
-
-        <div class="page-subsection">
-          <h3>Emergency Response & Operations</h3>
-
-          <ul class="mono-list">
-            <li>
-              <span class="credential-title"
-                >Fire Fighter I & II (NFPA 1001)</span
-              > — Justice Institute of British Columbia
-            </li>
-
-            <li>
-              <span class="credential-title"
-                >Full Service Fire Fighter Operations Program</span
-              > — Justice Institute of British Columbia
-            </li>
-
-            <li>
-              <span class="credential-title">Volunteer Recruit Training</span> — Halifax
-              Regional Fire & Emergency
-            </li>
-          </ul>
-        </div>
-        <!-- Avalanche & Mountain Operations -->
-        <div class="page-subsection">
-          <h3>Avalanche & Mountain Operations</h3>
-
-          <ul class="mono-list">
-            <li>
-              <span class="credential-title">Avalanche Operations Level 1</span> —
-              Canadian Avalanche Association
-            </li>
-            <li>
-              <span class="credential-title"
-                >Avalanche Skills Training Level 1</span
-              > - Avalanche Canada
-            </li>
-            <li>
-              <span class="credential-title">Introduction to Weather</span> - Canadian
-              Avalanche Association
-            </li>
-          </ul>
-        </div>
-
-        <!-- Military Training & Service -->
-        <div class="page-subsection">
-          <h3>Military Training & Service</h3>
-
-          <ul class="mono-list">
-            <li>
-              <span class="credential-title">Basic Military Qualification</span> —
-              Canadian Armed Forces
-            </li>
-            <li>
-              <span class="credential-title"
-                >Basic Military Officer Qualification</span
-              > — Canadian Armed Forces
-            </li>
-          </ul>
-        </div>
-      </div>
-      <!-- Additional Experience & Training -->
-      <div class="page-subsection">
-        <h3>Additional Experience & Training</h3>
-
+        <h2>Technology Stack</h2>
         <ul class="mono-list">
-          <li>
-            <span class="credential-title">Class 3 License</span> — Valley Driving
-            School
-          </li>
-          <li>
-            <span class="credential-title">IRATA Level 1</span> — Pacific Ropes (former)
-          </li>
-          <li>
-            <span class="credential-title">OFA3</span> — St. John Ambulance (former)
-          </li>
+          {project.data.technologies.map((tech) => <li>{tech}</li>)}
+        </ul>
+      </div>
+      <div class="page-section">
+        <h2>Applied Skills</h2>
+        <ul class="mono-list">
+          {project.data.appliedSkills?.map((skill) => <li>{skill}</li>)}
         </ul>
       </div>
     </section>
+    <!-- Additional Experience & Training -->
   </div>
 </MainLayout>
