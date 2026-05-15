@@ -1,0 +1,21 @@
+---
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<div class="page-section">
+  <h2>{title}</h2>
+  <slot />
+</div>
+
+<!-- USAGE
+<ProjectFigure
+  src={dashboardOverview}
+  alt="Dashboard overview"
+  caption="Interactive dashboard overview."
+/>
+</PageSection>
+-->

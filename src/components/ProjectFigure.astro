@@ -1,0 +1,43 @@
+---
+import { Image } from "astro:assets";
+
+interface Props {
+  src: any;
+  alt: string;
+  caption?: string;
+}
+
+const {
+  src,
+  alt,
+  caption,
+} = Astro.props;
+---
+
+<figure class="project-figure">
+  <a href={src.src}>
+    <Image
+      src={src}
+      alt={alt}
+      width={1000}
+      format="webp"
+    />
+  </a>
+  {caption && (
+    <figcaption>
+      {caption}
+    </figcaption>
+  )}
+
+</figure>
+
+<!-- USAGE
+ 
+<ProjectFigure
+  src={bathymetry}
+  alt="Example of closeup Bathymetry"
+  caption="Bathymetry Closeup"
+/>
+
+
+-->

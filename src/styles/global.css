@@ -43,7 +43,8 @@
 
     /* Layout Boundaries */
     --max-width: 1200px;
-    --max-width-colophon: 1300px;
+    --max-width-1300:1300px;
+    --max-width-1400:1400px;
 
     /* Typography */
     --font-main: 'Roboto Flex Variable', system-ui, sans-serif;
@@ -81,10 +82,13 @@ h1 {
     margin: 0;
     color: var(--text-muted);
 }
-/* Portfolio titles */
-.page-title-column .hawaii-title {
-    color: var(--text-blue);
+
+.nyc-title {
+  font-size: clamp(4rem, 8vw, 7.5rem);
+  line-height: 0.88;
+  letter-spacing: -0.05em;
 }
+
 .home-content h1 {
     font-size: clamp(3rem, 15vw, 12rem);
     line-height: 0.85;
@@ -96,6 +100,13 @@ h1 {
 .nudge {
     display: inline-block;
     margin-left: -0.08em;
+}
+/* Second line in the project title */
+.project-subtitle { 
+  display: block;
+  font-size: 0.45em;
+  
+  line-height: 1.1;
 }
 
 h2 {
@@ -134,7 +145,10 @@ h4 {
     letter-spacing: 0.1em;
     color: var(--text-muted);
 }
-
+/* Portfolio titles */
+.page-title-column .hawaii-title {
+    color: var(--text-blue);
+}
 /* Images */
 
 img {
@@ -152,12 +166,18 @@ img {
   border-top: 0.5px solid var(--light-border);
   border-bottom: 0.5px solid var(--light-border);
 }
+.page-section .project-figure:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+
 
 .project-figure figcaption {
 
   margin-top: 0.75rem;
   font-size: 0.9rem;
   opacity: 0.7;
+  text-align: center;
 
 }
 /* Paragraphs */
@@ -170,7 +190,7 @@ p {
 .project-figure figcaption p {
     text-align: center;
 }
-.page-subtitle {
+.page-description {
     color: var(--text-subtitle);
     margin-top: var(--space-s);
     text-align: left;
@@ -273,15 +293,18 @@ a:focus-visible {
 
 .page-grid {
     display: grid;
-        grid-template-columns: 1.3fr 1fr;
-    
+    grid-template-columns: 1.3fr 1fr;    
     width: 100%;
     max-width: var(--max-width);
     margin: 0 auto;
     align-items: start;
 }
-.page-grid-colophon {
-    max-width: var(--max-width-colophon);
+
+.page-grid-1300 {
+  max-width: var(--max-width-1300);
+}
+.page-grid-1400 {
+  max-width: var(--max-width-1400);
 }
 .page-title-column,
 .page-content-column {
@@ -346,6 +369,7 @@ a:focus-visible {
     padding: 0 var(--space-m);
     font-size: 0.85rem;
     letter-spacing: 0.05em;
+  
 }
 
 .main-footer {

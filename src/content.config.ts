@@ -12,9 +12,8 @@ const projects = defineCollection({
   schema: ({ image }) => z.object({
     title: z.string(),
     description: z.string(),
-    titleClass: z.string().optional(),    
-    featuredImage: image(), 
-
+    titleClass: z.string().optional(),        
+    plainTitle: z.string(),
     category: z.enum([
       "GIS Platforms",
       "Web Mapping & Development",
@@ -26,7 +25,11 @@ const projects = defineCollection({
     technologies: z.array(z.string()),
     tags: z.array(z.string()),
     featured: z.boolean().default(false),
-    appliedSkills: z.array(z.string()).optional()
+    appliedSkills: z.array(z.string()).optional(),
+    layoutClass: z.string().optional(),
+    downloadFile: z.string().optional(),
+    downloadLabel: z.string().optional()
+
   }),
 });
 

@@ -1,0 +1,66 @@
+---
+title: 'NYC:<br>Dining<br> Under the<br> Microscope<span class="project-subtitle">Inspection Trends and Insights (2007–2026)</span>'
+plainTitle: "NYC: Dining Under the Microscope"
+
+description: "An ArcGIS Online web mapping, dashboard, and StoryMap project visualizing restaurant inspection patterns across New York City."
+
+category: "GIS Platforms"
+
+technologies:
+  - ArcGIS Online
+  - ArcGIS Dashboards
+  - ArcGIS StoryMaps
+
+tags:
+  - Web GIS
+  - Dashboard Design
+  - Spatial Analysis
+  - Data Visualization
+  - ArcGIS Online
+  - Restaurant Inspections
+  - New York City
+
+titleClass: "nyc-title"
+layoutClass: "page-grid-1400"
+featured: true
+
+# Optional download link
+# downloadFile: "./example.pdf"
+# downloadLabel: "Download the project files"
+
+appliedSkills:
+  - Cleaned and prepared a multi-year inspection dataset for spatial visualization and analysis.
+  - Developed an interactive dashboard integrating map, chart, filtering, and table elements to enable dynamic exploration of spatial and temporal patterns.
+  - Conducted spatial and temporal analysis of restaurant inspection patterns to identify trends and areas of concern across New York City.
+  - Designed and symbolized a web map in ArcGIS Online to clearly represent restaurant inspection results and support accurate interpretation.
+  - Interpreted and communicated key spatial trends through a structured ArcGIS StoryMap narrative, translating complex data into clear insights.
+---
+
+import nyc from
+"./nyc-times-square.webp";
+import ProjectFigure from "../../../components/ProjectFigure.astro";
+import PageSection from "../../../components/PageSection.astro";
+
+
+<ProjectFigure
+  src={nyc}
+  alt="A picture of Times Square in NYC, taken by Andreas Niendorf "
+  caption="Times Square, NYC - Andreas Niendorf, Unsplash"
+/>
+New York City (NYC) is a global hub for diverse cuisine, offering an extensive range of dining experiences that reflect cultures from around the world. With more than 13,000 restaurants currently operating across the five boroughs, a robust food establishment inspection program is essential to maintaining consistent food safety standards and protecting public health.
+
+This project explores restaurant inspection outcomes across New York City through an interactive dashboard that highlights recent inspection results, spatial patterns, and long-term trends, using historical inspection data spanning 2007 through March 2026.
+
+The project focused on building an interactive ArcGIS Dashboard and StoryMap while applying key geospatial concepts and developing skills in data analysis, visual design, and communicating spatial information.
+
+The interactive map allows users to explore restaurant locations and inspection grades, while dynamic dashboard elements update as the map extent changes, supporting analysis at multiple spatial scales. Additional visualizations, including grade distributions, tabular data, and time series charts, provide both aggregate and restaurant-level insights. Users can filter the dataset by grade and borough or select individual restaurants to examine inspection score trends over time.
+
+The workflow involved filtering and organizing the dataset to isolate the most recent inspection results for display on the web map while preserving historical records for temporal analysis. Restaurant locations were displayed as individual points rather than aggregated, preserving important spatial patterns in density and distribution across New York City.
+
+Integrating the web map into the dashboard enabled dynamic, view- and selection-based interactions via linked charts, tables, and filters, allowing users to explore relationships within the dataset in a more exploratory, interactive manner.
+
+The dashboard was subsequently embedded within an ArcGIS StoryMap, providing additional context for the dataset and communicating key findings through written interpretation of the spatial and temporal patterns identified throughout the analysis.
+
+
+
+

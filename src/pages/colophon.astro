@@ -1,14 +1,15 @@
 ---
 import MainLayout from "../layouts/mainlayout.astro";
+import PageSection from "../components/PageSection.astro";
 ---
 
 <MainLayout title="Colophon | Alex Hordal" isHome={false}>
-  <div class="page-grid page-grid-colophon">
+  <div class="page-grid page-grid-1300">
     <!-- Left Column -->
     <aside class="page-title-column">
       <h1>Colophon</h1>
 
-      <p class="page-subtitle">
+      <p class="page-description">
         Learn about how this site was made.
       </p>
 
@@ -17,14 +18,23 @@ import MainLayout from "../layouts/mainlayout.astro";
 
     <!-- Right Column -->
     <section class="page-content-column">
-      <div class="page-section">
-      <h2>On the front cover</h2>
-<p>The image on the front page of this website is a grayscale representation of a map I created titled <a href="" target="_blank" rel="noopener noreferrer">Hawaiʻi:Seafloor to Summit</a>. The image shows the full vertical extent—from seafloor to summit—of a portion of the eight main Hawaiian Islands represented using a topobathymetric DEM and hillshading.</p>
-      </div>
-  <div class="page-section">
-      <h2>Tech Stack</h2>
-<p>The image on the front page of this website is a black-and-white representation of a map I created titled <a href="" target="_blank" rel="noopener noreferrer">Hawaiʻi:Seafloor to Summit</a>. The image shows the full vertical extent—from seafloor to summit—of a portion of the eight main Hawaiian Islands represented using a topobathymetric DEM and hillshading.</p>
-      </div>
+      <PageSection title="On the Front Cover">
+      
+<p>The image on the front page of this website is a grayscale representation of a map I created titled <a href="/projects/hawaii-seafloor-to-summit">Hawaiʻi:Seafloor to Summit</a>. The image shows the full vertical extent—from seafloor to summit—of a portion of the eight main Hawaiian Islands represented using a topobathymetric DEM and hillshading.</p>
+      </PageSection>
+  <PageSection title="Tech Stack">
+      
+<p>The website itself is built using Astro, MDX, Vercel, and GitHub, with a strong emphasis on validated HTML/CSS, performant image delivery, structured long-form project documentation, and scalable content management for cartographic and GIS-focused work.
+</p>
+      </PageSection>
+      <PageSection title="AI-Assisted Development">
+      
+<p>This website was developed through a combination of traditional frontend experimentation and iterative AI-assisted development. Generative AI was used throughout the project as a conversational tool for troubleshooting, refining layouts, exploring component architecture, and improving development workflows.</p>
+
+<p>Rather than functioning as a simple code generator, the process involved ongoing back-and-forth iteration focused on maintainability, scalability, and editorial presentation. Many aspects of the site, including the content architecture, image handling pipeline, reusable Astro components, and project organization system, were developed incrementally through this collaborative workflow.</p>
+
+
+      </PageSection>
        
 
     
