@@ -1,0 +1,28 @@
+---
+interface Props {
+  title: string;
+  class?: string;
+}
+
+const {
+  title,
+  class: className,
+} = Astro.props;
+---
+
+<div class={`page-subsection ${className || ""}`}>
+  <h3>{title}</h3>
+
+  <slot />
+</div>
+<!-- USAGE
+ 
+<PageSubsection
+  title="Dashboard Components"
+  class="subsection-wide"
+>
+Content here
+</PageSubsection>
+
+
+-->

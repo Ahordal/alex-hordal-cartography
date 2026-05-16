@@ -9,7 +9,7 @@ const projects = defineCollection({
   }),
 
   
-  schema: ({ image }) => z.object({
+  schema: () => z.object({
     title: z.string(),
     description: z.string(),
     titleClass: z.string().optional(),        
@@ -28,7 +28,14 @@ const projects = defineCollection({
     appliedSkills: z.array(z.string()).optional(),
     layoutClass: z.string().optional(),
     downloadFile: z.string().optional(),
-    downloadLabel: z.string().optional()
+    downloadLabel: z.string().optional(),
+    listClass: z.string().optional(),
+    references: z.array(
+  z.object({
+    citation: z.string(),
+    url: z.string().optional(),
+  })
+).optional(),
 
   }),
 });

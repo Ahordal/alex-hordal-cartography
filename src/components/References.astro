@@ -1,0 +1,37 @@
+---
+interface Reference {
+  citation: string;
+  url?: string;
+}
+
+interface Props {
+  references: Reference[];
+}
+
+const { references } = Astro.props;
+---
+
+<div class="page-section" id="references">
+  <h2>References</h2>
+
+  <div class="references-list">
+    {references.map((reference) => (
+      <p class="reference-entry">
+        <span set:html={reference.citation} />
+
+        {reference.url && (
+          <>
+            {" "}
+            <a
+              href={reference.url}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {reference.url}
+            </a>
+          </>
+        )}
+      </p>
+    ))}
+  </div>
+</div>

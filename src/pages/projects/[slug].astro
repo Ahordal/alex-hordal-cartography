@@ -3,6 +3,7 @@ import { getCollection, render, type CollectionEntry } from "astro:content";
 import MainLayout from "../../layouts/mainlayout.astro";
 import PageSection from "../../components/PageSection.astro";
 import { Image } from "astro:assets";
+import References from "../../components/References.astro";
 
 export async function getStaticPaths() {
   const projects = await getCollection("projects");
@@ -30,11 +31,14 @@ const featuredImage = await import(
 );
 ---
 
-<MainLayout title={`${project.data.plainTitle} | Alex Hordal`} isHome={false}>
+<MainLayout
+  id="top"
+  title={`${project.data.plainTitle} | Alex Hordal`}
+  isHome={false}>
   <div class={`page-grid ${project.data.layoutClass || ""}`}>
     <!-- Left Column -->
     <aside class="page-title-column">
-      <h1 class={project.data.titleClass} set:html={project.data.title} />
+      <h1 set:html={project.data.title} />
 
       <p class="page-description">
         {project.data.description}
@@ -49,37 +53,44 @@ const featuredImage = await import(
             format="webp"
           />
         </a>
-        <p>{
-  project.data.downloadFile && (
-    <p>
-      <a href={project.data.downloadFile}>
-        {project.data.downloadLabel || "Download Project File"}
-      </a>
-    </p>
-  )
-}</p>
+        {
+          project.data.downloadFile && (
+            <p>
+              <a href={project.data.downloadFile}>
+                {project.data.downloadLabel || "Download Project File"}
+              </a>
+            </p>
+          )
+        }
       </div>
     </aside>
 
     <!-- Right Column -->
     <section class="page-content-column">
-      <PageSection title="About the Project">
-       
+      <PageSection title="About the Project" id="about">
         <div>
+        
           <Content />
         </div>
       </PageSection>
-      <PageSection title="Technology Stack">
-        <ul class="mono-list">
+      {
+        project.data.references && (
+          <References references={project.data.references} />
+        )
+      }
+      <PageSection title="Technology Stack" id="stack">
+        <ul class={`list ${project.data.listClass || ""}`}>
           {project.data.technologies.map((tech) => <li>{tech}</li>)}
         </ul>
       </PageSection>
-      <div class="page-section">
+      <div class="page-section" id="applied-skills">
         <h2>Applied Skills</h2>
-        <ul class="mono-list">
+        <ul class="list-justified">
           {project.data.appliedSkills?.map((skill) => <li>{skill}</li>)}
         </ul>
       </div>
+
+      <a href="#top" class="back-to-top"> ↑ Back to top </a>
     </section>
     <!-- Additional Experience & Training -->
   </div>

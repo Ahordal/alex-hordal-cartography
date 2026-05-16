@@ -1,21 +1,17 @@
 ---
 interface Props {
   title: string;
+  id?: string;
 }
 
-const { title } = Astro.props;
+const {
+  title,
+  id,
+} = Astro.props;
 ---
 
 <div class="page-section">
-  <h2>{title}</h2>
+  <h2 id={id}>{title}</h2>
+
   <slot />
 </div>
-
-<!-- USAGE
-<ProjectFigure
-  src={dashboardOverview}
-  alt="Dashboard overview"
-  caption="Interactive dashboard overview."
-/>
-</PageSection>
--->
