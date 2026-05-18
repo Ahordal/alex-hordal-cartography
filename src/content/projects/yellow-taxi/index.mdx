@@ -61,29 +61,10 @@ were then symbolized using graduated colours with a nine-class colour ramp (to
 accentuate change), with NYC borough polygons included to provide locational
 context.
 
-Three datasets from <a
-href="https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page"
-target="_blank" rel="noopener noreferrer">NYC Open Data</a> were integrated to
-build the visualization, including yellow taxi trip records, taxi zone
-boundaries, and borough boundaries. Because the trip records did not contain
-coordinate information for privacy reasons, the data were spatially represented
-by joining trip statistics to taxi zone polygons.
-
-The workflow generated hourly summary statistics representing total trip counts for each taxi zone. These statistics were then symbolized using graduated colours to emphasize changing pickup intensity throughout the city from 11 PM, Dec 31st, 2025, to 12 AM, January 2nd, 2026.
-
-Time-enabled properties were subsequently configured within ArcGIS Pro, allowing the taxi activity data to be animated dynamically using evenly distributed hourly intervals. Keyframes for each hourly time step were exported from ArcGIS Pro and assembled into a final 16-second animation in Microsoft Clipchamp.
-
-Particular emphasis was placed on maintaining readability and visual balance throughout the animation sequence. Graduated colour symbology was carefully selected to communicate intensity without overwhelming the basemap, while pacing and timing adjustments helped maintain viewer engagement and interpretability during playback.
-
-The project also provided experience with spatial–temporal data structures and time-enabled GIS workflows, highlighting the challenges of visualizing large temporal datasets in a clear and meaningful way.
-
 <PageSection
   title={`<i class="fa-solid fa-lightbulb"></i> Findings & Insights`}
   id="findings"
 >
-
-
-
 Once the visualization was completed, several trends became immediately clear.
   Between 11:00 PM and 12:00 AM on December 31, a taxi zone in Manhattan is not
   rendered at all and is therefore not selectable, despite being surrounded by
