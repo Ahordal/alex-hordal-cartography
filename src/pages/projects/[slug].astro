@@ -67,28 +67,33 @@ const featuredImage = await import(
 
     <!-- Right Column -->
     <section class="page-content-column">
-      <PageSection title="About the Project" id="about">
+      <PageSection
+       title={`<i class="fa-solid fa-circle-info"></i> About the Project`} id="about">
         <div>
         
           <Content />
         </div>
       </PageSection>
+      
       {
         project.data.references && (
           <References references={project.data.references} />
         )
       }
-      <PageSection title="Technology Stack" id="stack">
-        <ul class={`list ${project.data.listClass || ""}`}>
-          {project.data.technologies.map((tech) => <li>{tech}</li>)}
-        </ul>
-      </PageSection>
-      <div class="page-section" id="applied-skills">
-        <h2>Applied Skills</h2>
+    <PageSection
+  title={`<i class="fa-solid fa-microchip section-icon"></i> Technology Stack`}
+  id="stack"
+>
+  <ul class={`list ${project.data.listClass || ""}`}>
+    {project.data.technologies.map((tech) => <li>{tech}</li>)}
+  </ul>
+</PageSection>
+      <PageSection title={`<i class="fa-solid fa-screwdriver"></i> Applied Skills`} id="applied-skills">
+        
         <ul class="list-justified">
           {project.data.appliedSkills?.map((skill) => <li>{skill}</li>)}
         </ul>
-      </div>
+      </PageSection>
 
       <a href="#top" class="back-to-top"> ↑ Back to top </a>
     </section>

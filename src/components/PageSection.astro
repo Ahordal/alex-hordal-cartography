@@ -11,7 +11,7 @@ const {
 ---
 
 <div class="page-section">
-  <h2 id={id}>{title}</h2>
+  <h2 id={id} set:html={title} />
 
   <slot />
 </div>

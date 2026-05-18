@@ -11,8 +11,7 @@ const projects = defineCollection({
   
   schema: () => z.object({
     title: z.string(),
-    description: z.string(),
-    titleClass: z.string().optional(),        
+    description: z.string(),        
     plainTitle: z.string(),
     category: z.enum([
       "GIS Platforms",
@@ -34,6 +33,7 @@ const projects = defineCollection({
   z.object({
     citation: z.string(),
     url: z.string().optional(),
+    
   })
 ).optional(),
 

@@ -9,10 +9,11 @@ interface Props {
 }
 
 const { references } = Astro.props;
+import PageSection from "./PageSection.astro";
 ---
 
-<div class="page-section" id="references">
-  <h2>References</h2>
+<PageSection title={`<i class="fa-solid fa-book"></i>References`} id="references">
+
 
   <div class="references-list">
     {references.map((reference) => (
@@ -34,4 +35,4 @@ const { references } = Astro.props;
       </p>
     ))}
   </div>
-</div>
+</PageSection>

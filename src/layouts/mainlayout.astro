@@ -1,9 +1,11 @@
 ---
 import "../styles/global.css";
-const { title = "Alex Hordal | Cartographer & GIS Specialist", isHome = false } = Astro.props;
+const {
+  title = "Alex Hordal | Cartographer & GIS Specialist",
+  isHome = false,
+} = Astro.props;
 const { pathname } = Astro.url;
-const isActive = (path: string) => 
-  pathname === path || pathname === path + "/";
+const isActive = (path: string) => pathname === path || pathname === path + "/";
 ---
 
 <!doctype html>
@@ -13,23 +15,30 @@ const isActive = (path: string) =>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
+    <script
+      src="https://kit.fontawesome.com/8b0dc5e073.js"
+      crossorigin="anonymous"></script>
     <title>{title}</title>
   </head>
   <body class="site-root">
- <header class="main-nav">
+    <header class="main-nav">
       <nav class="nav-container">
-      <button class="menu-toggle" aria-label="Open Menu">
-  <span class="bar"></span>
-  <span class="bar"></span>
-  <span class="bar"></span>
-</button>
+        <button class="menu-toggle" aria-label="Open Menu">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
 
         <div class="nav-links">
           <!-- Apply the conditional class 'active' -->
           <a href="/" class={isActive("/") ? "active" : ""}>Home</a>
           <a href="/about" class={isActive("/about") ? "active" : ""}>About</a>
-          <a href="/portfolio" class={isActive("/portfolio") ? "active" : ""}>Portfolio</a>
-          <a href="/contact" class={isActive("/contact") ? "active" : ""}>Contact</a>
+          <a href="/portfolio" class={isActive("/portfolio") ? "active" : ""}
+            >Portfolio</a
+          >
+          <a href="/contact" class={isActive("/contact") ? "active" : ""}
+            >Contact</a
+          >
         </div>
       </nav>
     </header>
@@ -47,14 +56,32 @@ const isActive = (path: string) =>
         </div>
 
         <nav class="footer-group">
-          <a href="https://www.ullrmaps.com" target="_blank" rel="noopener noreferrer">ULLR Maps</a>
+          <a
+            href="https://www.ullrmaps.com"
+            target="_blank"
+            rel="noopener noreferrer">ULLR Maps</a
+          >
           <span class="mono separator">|</span>
-          <a href="/colophon" class={isActive("/colophon") ? "active" : ""}>Colophon</a>
+          <a href="/colophon" class={isActive("/colophon") ? "active" : ""}
+            >Colophon</a
+          >
           <span class="mono separator">|</span>
           <div class="social-links">
-            <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer">LN</a>
-            <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">GH</a>
-            <a href="https://instagram.com/yourhandle" target="_blank" rel="noopener noreferrer">IG</a>
+            <a
+              href="https://linkedin.com/in/yourprofile"
+              target="_blank"
+              rel="noopener noreferrer">LN</a
+            >
+            <a
+              href="https://github.com/yourusername"
+              target="_blank"
+              rel="noopener noreferrer">GH</a
+            >
+            <a
+              href="https://instagram.com/yourhandle"
+              target="_blank"
+              rel="noopener noreferrer">IG</a
+            >
           </div>
           <span class="mono separator">|</span>
           <span class="mono">© ALEX HORDAL 2026</span>
@@ -64,11 +91,11 @@ const isActive = (path: string) =>
 
     <script>
       // Simple toggle logic
-      const menuBtn = document.querySelector('.menu-toggle');
-      const navLinks = document.querySelector('.nav-links');
+      const menuBtn = document.querySelector(".menu-toggle");
+      const navLinks = document.querySelector(".nav-links");
 
-      menuBtn?.addEventListener('click', () => {
-        navLinks?.classList.toggle('is-active');
+      menuBtn?.addEventListener("click", () => {
+        navLinks?.classList.toggle("is-active");
       });
     </script>
   </body>
