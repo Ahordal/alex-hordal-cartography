@@ -2,8 +2,8 @@
 import { getCollection, render, type CollectionEntry } from "astro:content";
 import MainLayout from "../../layouts/mainlayout.astro";
 import PageSection from "../../components/PageSection.astro";
-import { Image } from "astro:assets";
 import References from "../../components/References.astro";
+import ProjectFigure from "../../components/ProjectFigure.astro";
 
 export async function getStaticPaths() {
   const projects = await getCollection("projects");
@@ -34,10 +34,13 @@ const featuredImage = await import(
 <MainLayout
   id="top"
   title={`${project.data.plainTitle} | Alex Hordal`}
-  isHome={false}>
+  isHome={false}
+>
   <div class={`page-grid ${project.data.layoutClass || ""}`}>
+    
     <!-- Left Column -->
     <aside class="page-title-column">
+
       <h1 set:html={project.data.title} />
 
       <p class="page-description">
@@ -45,14 +48,14 @@ const featuredImage = await import(
       </p>
 
       <div class="page-section">
-        <a href={featuredImage.default.src}>
-          <Image
-            src={featuredImage.default}
-            alt={`Hero image for ${project.data.title}`}
-            width={1000}
-            format="webp"
-          />
-        </a>
+
+        <ProjectFigure
+          src={featuredImage.default}
+          alt={project.data.heroCaption || project.data.plainTitle}
+          caption={project.data.heroCaption}
+          width={1000}
+        />
+
         {
           project.data.downloadFile && (
             <p>
@@ -62,41 +65,51 @@ const featuredImage = await import(
             </p>
           )
         }
+
       </div>
+
     </aside>
 
     <!-- Right Column -->
     <section class="page-content-column">
+
       <PageSection
-       title={`<i class="fa-solid fa-circle-info"></i> About the Project`} id="about">
+        title={`<i class="fa-solid fa-circle-info section-icon"></i> About the Project`}
+        id="about"
+      >
         <div>
-        
           <Content />
         </div>
       </PageSection>
-      
-      {
-        project.data.references && (
-          <References references={project.data.references} />
-        )
-      }
-    <PageSection
-  title={`<i class="fa-solid fa-microchip section-icon"></i> Technology Stack`}
-  id="stack"
->
-  <ul class={`list ${project.data.listClass || ""}`}>
-    {project.data.technologies.map((tech) => <li>{tech}</li>)}
-  </ul>
-</PageSection>
-      <PageSection title={`<i class="fa-solid fa-screwdriver"></i> Applied Skills`} id="applied-skills">
-        
-        <ul class="list-justified">
-          {project.data.appliedSkills?.map((skill) => <li>{skill}</li>)}
+
+      <PageSection
+        title={`<i class="fa-solid fa-microchip section-icon"></i> Technology Stack`}
+        id="stack"
+      >
+        <ul class={`list ${project.data.listClass || ""}`}>
+          {project.data.technologies.map((tech) => (
+            <li>{tech}</li>
+          ))}
         </ul>
       </PageSection>
 
-      <a href="#top" class="back-to-top"> ↑ Back to top </a>
+      <PageSection
+        title={`<i class="fa-solid fa-screwdriver section-icon" ></i> Applied Skills`}
+        id="applied-skills"
+      >
+        <ul class="list-justified">
+          {project.data.appliedSkills?.map((skill) => (
+            <li>{skill}</li>
+          ))}
+        </ul>
+      </PageSection>
+
+      <a href="#top" class="back-to-top">
+        ↑ Back to top
+      </a>
+
     </section>
+
     <!-- Additional Experience & Training -->
   </div>
 </MainLayout>

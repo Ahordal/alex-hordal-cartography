@@ -29,13 +29,8 @@ const projects = defineCollection({
     downloadFile: z.string().optional(),
     downloadLabel: z.string().optional(),
     listClass: z.string().optional(),
-    references: z.array(
-  z.object({
-    citation: z.string(),
-    url: z.string().optional(),
-    
-  })
-).optional(),
+    heroCaption: z.string().optional()
+
 
   }),
 });

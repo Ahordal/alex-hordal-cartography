@@ -6,6 +6,7 @@ interface Props {
   alt: string;
   caption?: string;
   class?: string;
+   width?: number;
 }
 
 const {
@@ -13,16 +14,18 @@ const {
   alt,
   caption,
   class: className,
+  width,
 } = Astro.props;
 ---
 
 <figure class={`project-figure ${className || ""}`}>
   <a href={src.src}>
-    <Image
-      src={src}
-      alt={alt}
-      format="webp"
-    />
+  <Image
+  src={src}
+  alt={alt}
+  width={width}
+  format="webp"
+/>
   </a>
 
   {caption && (

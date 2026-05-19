@@ -130,6 +130,7 @@ h1 {
      display: block;
   font-size: 0.45em;
   line-height: 1.1;
+  margin-top:0.2rem;
 }
 .project-subtitle-blue {
    color:var(--text-blue);
@@ -393,7 +394,13 @@ a:focus-visible {
   padding-left: var(--space-s);
   border-left: 0.5px solid var(--light-border);
 }
-
+/* Icons */
+.section-icon {
+  display: inline-flex;
+  width: 1.25em;
+  justify-content: center;
+  margin-right: 0.5rem;
+}
 /* Sections */
 
 .page-section {

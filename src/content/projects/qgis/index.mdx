@@ -1,0 +1,64 @@
+---
+title: 'QGIS<span class="project-subtitle">Heatmaps, Hotspots and Hexbins</span>'
+plainTitle: "QGIS Spatial Visualization Series"
+description: "A series of spatial visualizations developed in QGIS exploring earthquake occurrence patterns across the contiguous United States using heatmaps, hotspot analysis, and hexbin aggregation."
+
+category: "Cartography & Geovisualization"
+
+technologies:
+  - QGIS
+  - GIS
+  - Spatial Analysis
+  - Cartographic Design
+
+tags:
+  - Heatmaps
+  - Hotspot Analysis
+  - Hexbins
+  - Earthquakes
+  - Spatial Visualization
+  - QGIS
+
+layoutClass: "page-grid-1400"
+featured: true
+listClass: "list-justified"
+
+appliedSkills:
+  - Applied spatial visualization techniques in QGIS to communicate spatial patterns and trends.
+  - Performed geospatial data cleaning and reduction workflows.
+  - Designed and produced a cohesive series of analytical maps.
+  - Interpreted spatial clustering and density relationships within point datasets.
+  - Applied cartographic hierarchy and visual balance to support data storytelling.
+
+heroCaption: "Earthquake Counts by Hexagonal Grid in the Contiguous United States (2020–2021)."
+
+---
+
+import heatMap from "./heatmap.webp";
+import hotSpot from "./hotspot.webp";
+
+
+import ProjectFigure from "../../../components/ProjectFigure.astro";
+
+This project was focused on building familiarity with QGIS through the creation of three spatial visualization methods: a heatmap, a hotspot map, and a hexbin map. Using earthquake occurrence data across the contiguous United States, the project explored how different visualization techniques can reveal spatial trends, clustering behaviour, and density relationships within large point datasets.
+
+
+<ProjectFigure
+  src={heatMap}
+  alt="Heatmap visualization illustrating generalized earthquake density across the contiguous United States."
+  caption="Heatmap visualization illustrating generalized earthquake density across the contiguous United States."
+/>
+The heatmap visualization was designed to communicate generalized earthquake density patterns, highlighting broad areas of increased activity without emphasizing individual events. The hotspot map focused on identifying statistically significant clusters of earthquake occurrences, revealing areas with higher-than-average concentrations of activity. The hexbin map aggregated earthquake points into hexagonal bins, improving readability and allowing for clearer quantitative comparison across regions.
+
+
+The workflow involved cleaning and reducing the original geospatial dataset to improve performance and ensure the data was suitable for spatial visualization. QGIS tools and symbology techniques were used to generate each visualization method, while cartographic styling decisions emphasized hierarchy, legibility, and consistency across the map series. Careful consideration was given to colour ramps, symbol density, and visual contrast to ensure each map effectively communicated different aspects of the dataset.
+<ProjectFigure
+  src={hotSpot}
+  alt="Hotspot visualization illustrating statistically significant clusters of earthquake occurrences across the contiguous United States."
+  caption="Hotspot visualization illustrating statistically significant clusters of earthquake occurrences across the contiguous United States."
+/>
+
+
+A major objective of the project was understanding how different spatial visualization methods influence the interpretation of geographic data. While the heatmap emphasized continuous density surfaces and broad spatial trends, the hotspot analysis highlighted statistically significant concentrations of earthquake activity. The hexbin visualization introduced an additional level of abstraction by aggregating large volumes of point data into discrete spatial units, improving readability while still preserving meaningful regional variation.
+
+The project also reinforced broader cartographic principles related to visual hierarchy, balance, and effective thematic mapping. Each map was designed to function independently while maintaining visual cohesion as part of a unified series. Consistent basemap styling, typography, and layout structure were used throughout the project to support readability and strengthen the overall presentation.
