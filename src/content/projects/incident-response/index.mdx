@@ -1,0 +1,65 @@
+---
+title: 'Incident Response<span class="project-subtitle">A fictional disaster in the HRM</span>'
+plainTitle: Incident Response
+
+description: "A four-map emergency response series designed in ArcGIS Pro to support a fictional train derailment scenario in the Halifax Regional Municipality."
+
+category: "Spatial Analysis"
+
+technologies:
+  - ArcGIS Pro
+
+
+tags:
+  - Emergency Mapping
+  - Network Analysis
+  - Hazard Mapping
+  - Spatial Analysis
+  - Cartography
+
+listClass: "list-justified"
+
+appliedSkills:
+  - Applied buffer analysis and spatial selection workflows to delineate evacuation and support zones.
+  - Used structured attribute queries and spatial filtering to isolate viable evacuation centres.
+  - Applied ArcGIS Pro Network Analyst (Closest Facility) to calculate emergency response distances and travel times.
+  - Applied feature simplification and symbol refinement techniques in high-density impact areas.
+  - Designed symbol hierarchy to distinguish hazard zones, support buffers, and emergency infrastructure.
+
+heroCaption: Mandatory evacuation and support buffer zones surrounding a fictional train derailment incident in Windsor Junction, HRM.
+
+featuredImage: ./featured.webp
+
+
+---
+
+import fireStations from "./fire-stations.webp";
+import hospitals from "./hospitals.webp";
+import evacuationCentres from "./evacuation-centres.webp";
+import ProjectFigure from "../../../components/ProjectFigure.astro";
+
+This project involved designing a four-map emergency response series in ArcGIS Pro to support a fictional train derailment scenario in the Windsor Junction area of the Halifax Regional Municipality (HRM). The project focused on emergency planning, evacuation analysis, and response accessibility using a combination of spatial analysis and cartographic visualization techniques.
+
+The first map established a 1,524 metre mandatory evacuation zone and a 1 kilometre outer support buffer surrounding the incident location. Buildings intersecting these hazard zones were identified using spatial selection workflows and symbolized according to land-use classification to support rapid interpretation of affected infrastructure and population exposure.
+
+The second map isolated viable evacuation centres located outside the primary hazard area using attribute queries and location-based filtering. This workflow emphasized the practical application of spatial querying and emergency suitability analysis within ArcGIS Pro.
+<ProjectFigure
+  src={fireStations}
+  alt="Network-based routing analysis showing the three closest fire stations relative to the incident location."
+  caption="Network-based routing analysis showing the three closest fire stations relative to the incident location."
+/>
+
+The third and fourth maps incorporated ArcGIS Pro’s Network Analyst – Closest Facility tool to identify the three nearest fire stations and hospitals relative to the incident location. Network-based travel distances and estimated response times were calculated and visualized to assess emergency accessibility and medical response capacity.
+<ProjectFigure
+  src={hospitals}
+  alt="Network-based routing analysis showing the three closest fire hospitals relative to the incident location."
+  caption="Network-based routing analysis showing the three closest fire hospitals relative to the incident location."
+/>
+
+Cartographic design decisions focused heavily on visual hierarchy and clarity under emergency mapping conditions. Hazard zones, support buffers, evacuation infrastructure, and response routes were symbolized using distinct colour and line-weight hierarchies to ensure rapid visual interpretation. Feature simplification and symbol refinement techniques were also applied to preserve legibility in dense urbanized areas surrounding the incident site. 
+
+<ProjectFigure
+  src={evacuationCentres}
+  alt="Network-based routing analysis showing the three closest evacuation centres relative to the incident location, and within a 1km buffer of the danger area."
+  caption="Network-based routing analysis showing the three closest evacuation centres relative to the incident location, and within a 1km buffer of the danger area."
+/>

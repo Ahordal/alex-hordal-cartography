@@ -1,0 +1,44 @@
+---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+
+import PageSubsection from "./PageSubsection.astro";
+
+interface Props {
+  plainTitle: string;
+  description: string;
+  image: ImageMetadata;
+  href: string;
+  tags?: string[];
+  objectPosition?: string;
+  
+}
+
+const {
+  plainTitle,
+  description,
+  image,
+  href,
+  tags = [],
+  objectPosition = "center",
+} = Astro.props;
+---
+
+<a
+  href={href}
+  class="portfolio-plate"
+  style={`--object-position: ${objectPosition};`}>
+  <div class="plate-image">
+    <Image src={image} alt={plainTitle} loading="lazy" />
+  </div>
+
+  <div class="plate-content">
+    <PageSubsection title={plainTitle}>
+      <p class="plate-description">
+        {description}
+      </p>
+
+      
+    </PageSubsection>
+  </div>
+</a>

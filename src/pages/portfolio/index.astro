@@ -1,0 +1,119 @@
+---
+import { getCollection } from "astro:content";
+
+import MainLayout from "../../layouts/mainlayout.astro";
+import PageSection from "../../components/PageSection.astro";
+import PortfolioPlate from "../../components/PortfolioPlate.astro";
+
+const projects = await getCollection("projects");
+const desiredOrder = [
+"nyc-restaurants",
+"yellow-taxi",
+"hawaii-seafloor-to-summit",
+"qgis",
+"incident-response",
+"ntsb",
+"terrain-atlas",
+"multi-scale"
+];
+projects.sort((a, b) => {
+  return (
+    desiredOrder.indexOf(a.id) -
+    desiredOrder.indexOf(b.id)
+  );
+});
+const categories = [
+  {
+    title: `<i class="fa-solid fa-layer-group section-icon"></i> Interactive GIS`,
+
+    filter: (project: any) =>
+      project.data.category === "Interactive GIS",
+  },
+
+  {
+    title: `<i class="fa-solid fa-chart-area"></i> Data Visualization`,
+
+    filter: (project: any) =>
+      project.data.category === "Data Visualization",
+  },
+
+  {
+    title: `<i class="fa-solid fa-compass-drafting"></i> Cartographic Design`,
+
+    filter: (project: any) =>
+      project.data.category === "Cartographic Design",
+  },
+
+  {
+    title: `<i class="fa-solid fa-draw-polygon"></i> Spatial Analysis`,
+
+    filter: (project: any) =>
+      project.data.category === "Spatial Analysis",
+  },
+
+  {
+    title: `<i class="fa-solid fa-mountain"></i> Terrain & Relief Visualization`,
+
+    filter: (project: any) =>
+      project.data.category === "Terrain & Relief Visualization",
+  },
+
+  {
+    title: `<i class="fa-solid fa-database section-icon"></i> Databases & Data Management`,
+
+    filter: (project: any) =>
+      project.data.category === "Databases & Data Management",
+  },
+];
+---
+
+<MainLayout title="Portfolio | Alex Hordal" isHome={false}>
+
+  <section class="portfolio-page">
+
+   <header class="portfolio-header">
+
+  <h1>Portfolio</h1>
+
+  <p class="page-description">
+    A collection of cartography, GIS, and data visualization projects focused on terrain, spatial analysis, and visual communication.
+  </p>
+
+</header>
+
+    {
+      categories.map((category) => {
+        const categoryProjects = projects.filter(category.filter);
+
+        if (categoryProjects.length === 0) {
+          return null;
+        }
+
+        return (
+          <PageSection title={category.title}>
+
+            <div class="portfolio-grid">
+
+              {categoryProjects.map((project) => (
+
+                <PortfolioPlate
+                  plainTitle={project.data.plainTitle}
+                  description={project.data.description}
+                  image={project.data.featuredImage}
+                  href={`/portfolio/${project.id}`}
+                  tags={project.data.technologies}
+                  objectPosition={project.data.objectPosition || "center"}
+                />
+
+              ))}
+
+            </div>
+
+          </PageSection>
+        );
+      })
+    }
+
+  </section>
+
+</MainLayout>

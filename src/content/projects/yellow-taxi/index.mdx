@@ -1,18 +1,11 @@
 ---
 title: 'NYC<span class="project-subtitle">Yellow Taxi Trip Records</span>'
-plainTitle: "NYC Taxi Activity"
+plainTitle: "NYC Yellow Taxi Trip Records"
 
 description: "A spatial–temporal visualization project using ArcGIS Pro to animate 24 hours of New York City yellow taxi trip activity."
 
-category: "GIS Platforms"
+category: "Data Visualization"
 
-# Valid categories:
-# - GIS Platforms
-# - Web Mapping & Development
-# - Programming & GIS Automation
-# - Cartography & Geovisualization
-# - Design & Visualization Tools
-# - Databases & Data Management
 
 technologies:
   - ArcGIS Pro
@@ -26,10 +19,6 @@ tags:
   - Time Enabled Mapping
   - Data Visualization
 
-titleClass: "project-title"
-
-featured: false
-
 appliedSkills:
   - Integrated multiple geospatial datasets by joining non-spatial taxi trip records to polygon features for spatial analysis.
   - Structured and aggregated temporal data to generate hourly summary statistics for time-enabled visualization.
@@ -37,15 +26,20 @@ appliedSkills:
   - Implemented time-enabled layers and keyframe animation workflows in ArcGIS Pro.
   - Designed and exported a well-paced spatial–temporal animation while maintaining visual clarity and viewer engagement.
 
-heroCaption: "One frame from a 24-hour spatial–temporal animation of NYC yellow taxi pickups spanning New Year’s Eve and New Year’s Day."
-  
-
+heroCaption: "Spatial–temporal animation of NYC yellow taxi pickup activity over a 24-hour period spanning New Year’s Eve and New Year’s Day."
+featuredImage: ./featured.webp
+video: "https://assets.alexhordal.ca/nyc_yellow_taxi.mp4"
 
 ---
 
 
 import ProjectFigure from "../../../components/ProjectFigure.astro";
 import PageSection from "../../../components/PageSection.astro";
+
+import timesSquare from
+"./times-square.webp";
+import jfkLaguardia from
+"./jfk-laguardia.webp";
 
 The purpose of this assignment was to develop an engaging cartographic animation
 in ArcGIS Pro that effectively visualizes spatial–temporal change within a
@@ -76,6 +70,12 @@ Once the visualization was completed, several trends became immediately clear.
   selectable—with recorded pickup activity, suggesting that restrictions have
   eased and normal taxi service has resumed as crowds disperse.
 
+<ProjectFigure
+  src={timesSquare}
+  alt="Single frame showing a lack of taxi pickup activity near Times Square in Manhattan during New Year’s Eve celebrations in NYC."
+  caption="Single frame showing a lack of taxi pickup activity near Times Square in Manhattan during New Year’s Eve celebrations in NYC."
+/>
+
   Two taxi zones with consistently high pickup densities are visible at the
   northern and southern ends of Queens. These correspond to New York City’s two
   major airports: LaGuardia Airport (LGA) to the north, which primarily serves
@@ -93,6 +93,11 @@ Once the visualization was completed, several trends became immediately clear.
   PM. The higher pickup volumes observed at JFK relative to LaGuardia likely
   reflect differences in airport size, capacity, and the range of destinations
   served.
+<ProjectFigure
+  src={jfkLaguardia}
+  alt="Single frame showing dense taxi pickup volume at John F. Kennedy International Airport (JFK) and LaGuardia Airport (LGA)."
+  caption="Single frame showing dense taxi pickup volume at John F. Kennedy International Airport (JFK) and LaGuardia Airport (LGA)."
+/>
 
   Generally, pickup densities in Staten Island remain consistently low or
   negligible throughout the period. In contrast, taxi zones in Brooklyn, Queens,

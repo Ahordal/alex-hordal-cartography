@@ -23,24 +23,15 @@ const { project } = Astro.props as Props;
 
 // New Astro content API uses render(project)
 const { Content } = await render(project);
-
-const slug = project.id;
-
-const featuredImage = await import(
-  `../../content/projects/${slug}/featured.webp`
-);
 ---
 
 <MainLayout
   id="top"
   title={`${project.data.plainTitle} | Alex Hordal`}
-  isHome={false}
->
-  <div class={`page-grid ${project.data.layoutClass || ""}`}>
-    
+  isHome={false}>
+  <div class="page-grid">
     <!-- Left Column -->
     <aside class="page-title-column">
-
       <h1 set:html={project.data.title} />
 
       <p class="page-description">
@@ -48,13 +39,35 @@ const featuredImage = await import(
       </p>
 
       <div class="page-section">
+        {
+          project.data.video ? (
+            <figure class="project-figure">
+              <video
+                controls
+                autoplay
+                muted
+                loop
+                playsinline
+                class="project-video"
+                aria-label={
+                  project.data.heroCaption || project.data.plainTitle
+                }>
+                <source src={project.data.video} type="video/mp4" />
+              </video>
 
-        <ProjectFigure
-          src={featuredImage.default}
-          alt={project.data.heroCaption || project.data.plainTitle}
-          caption={project.data.heroCaption}
-          width={1000}
-        />
+              {project.data.heroCaption && (
+                <figcaption>{project.data.heroCaption}</figcaption>
+              )}
+            </figure>
+          ) : (
+            <ProjectFigure
+              src={project.data.featuredImage}
+              alt={project.data.heroCaption || project.data.plainTitle}
+              caption={project.data.heroCaption}
+              width={1000}
+            />
+          )
+        }
 
         {
           project.data.downloadFile && (
@@ -65,18 +78,14 @@ const featuredImage = await import(
             </p>
           )
         }
-
       </div>
-
     </aside>
 
     <!-- Right Column -->
     <section class="page-content-column">
-
       <PageSection
         title={`<i class="fa-solid fa-circle-info section-icon"></i> About the Project`}
-        id="about"
-      >
+        id="about">
         <div>
           <Content />
         </div>
@@ -84,30 +93,21 @@ const featuredImage = await import(
 
       <PageSection
         title={`<i class="fa-solid fa-microchip section-icon"></i> Technology Stack`}
-        id="stack"
-      >
+        id="stack">
         <ul class={`list ${project.data.listClass || ""}`}>
-          {project.data.technologies.map((tech) => (
-            <li>{tech}</li>
-          ))}
+          {project.data.technologies.map((tech) => <li>{tech}</li>)}
         </ul>
       </PageSection>
 
       <PageSection
         title={`<i class="fa-solid fa-screwdriver section-icon" ></i> Applied Skills`}
-        id="applied-skills"
-      >
+        id="applied-skills">
         <ul class="list-justified">
-          {project.data.appliedSkills?.map((skill) => (
-            <li>{skill}</li>
-          ))}
+          {project.data.appliedSkills?.map((skill) => <li>{skill}</li>)}
         </ul>
       </PageSection>
 
-      <a href="#top" class="back-to-top">
-        ↑ Back to top
-      </a>
-
+      <a href="#top" class="back-to-top"> ↑ Back to top </a>
     </section>
 
     <!-- Additional Experience & Training -->
