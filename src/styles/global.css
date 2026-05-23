@@ -26,8 +26,9 @@
   --text-h2: #494949;
   --text-h3:#5b5b5b;
   --text-h4:#6e6e6e;
-  --text-captions:#9fa1a4;
-  --text-description:#9fa1a4;
+  --text-captions:#757679;
+  --text-description:#757679;
+  --text-supporting:#757679;
 
 
   /*///// LINK COLOURS /////*/
@@ -35,7 +36,7 @@
   --link-red: #f05253;
   --link-black: #000000;
   --link-dark-grey: #333333;
-  --link-light-grey: #9fa1a4;
+  --link-light-grey: #757679;
 
   /*///// SPACING & LAYOUT /////*/
 
@@ -631,7 +632,7 @@ padding:0.75rem;
 
 .resource-content p {
   margin-bottom: 0;
-  color: var(--text-muted);
+  color: var(--text-supporting);
   text-align: left;
 }
 
