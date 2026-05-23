@@ -1,0 +1,96 @@
+---
+title: 'World Ports<span class="project-subtitle">Interactive Shipping & Port Visualization</span>'
+plainTitle: "World Ports"
+
+description: "An interactive web mapping application developed with Mapbox GL JS and Mapbox Studio, showcasing major ports worldwide through custom vector tiles, responsive popup interactions, and scale-dependent cartographic design."
+
+category: "Interactive GIS"
+
+technologies:
+  - HTML
+  - CSS
+  - JavaScript
+  - Mapbox GL JS
+  - Mapbox Studio
+  - Mapbox CLI
+  - Mapbox Tiling Service (MTS)
+
+tags:
+  - Interactive Web Mapping
+  - Mapbox
+  - Cartography
+  - Vector Tiles
+  - JavaScript
+
+listClass: "list-justified"
+
+appliedSkills:
+  - Designed and implemented multi-state popup interactions using hover and click event logic.
+  - Processed and deployed custom vector tiles with the Mapbox Tiling Service and Mapbox CLI.
+  - Developed responsive interactive web mapping workflows using Mapbox GL JS.
+  - Applied historically informed cartographic styling principles to establish visual hierarchy.
+  - Managed scale-dependent feature behaviour to maintain clarity across zoom levels.
+
+heroCaption: "An interactive Mapbox GL JS application visualizing major ports worldwide."
+featuredImage: ./featured.webp
+
+resources:
+  - label: "Launch Application"
+    url: "https://world-ports.alexhordal.ca"
+    icon: "fa-solid fa-up-right-from-square"
+    description: "Open the interactive web mapping application."
+
+  - label: "View GitHub Repository"
+    url: "https://github.com/Ahordal/world-ports"
+    icon: "fa-brands fa-github"
+    description: "Browse the project source code and implementation details."
+---
+
+import featuredImage from "./featured.webp";
+import ProjectFigure from "../../../components/ProjectFigure.astro";
+import view1 from "./view1.webp";
+import view2 from "./view2.webp";
+import inspiration from "./inspiration.webp";
+
+This project began with selecting an inspirational image, a historic flow map by
+<a href="https://en.wikipedia.org/wiki/Charles_Joseph_Minard" target="_blank"
+rel="noopener noreferrer">Charles Joseph Minard</a>, to guide the colour palette and
+establish the visual tone of the basemap. The result is an interactive web map
+built with Mapbox GL JS and Mapbox Studio that showcases major ports worldwide while providing key
+contextual information through an intuitive design.
+
+<ProjectFigure
+  src={inspiration}
+  alt="Inspiration image: Charles Joseph Minard’s 1869 flow map illustrating European raw cotton imports before, during, and after the American Civil War."
+  caption="Inspirational Image: Charles Joseph Minard’s 1869 flow map illustrating European raw cotton imports before, during, and after the American Civil War."
+/>
+A key component of the project was popup design.
+Hovering over a port name displays a condensed
+popup with quick contextual information, while
+clicking opens an expanded popup with more
+detailed information, along with interactive
+controls to zoom directly to the selected port
+and return to the previous zoom extent.
+
+<ProjectFigure
+  src={view1}
+  alt="Interactive Mapbox GL JS application visualizing worldwide ports and global shipping routes."
+  caption="Interactive worldwide ports application developed using Mapbox GL JS, custom vector tiles, and responsive popup interactions."
+/>
+
+Dashed lines connecting the ports, 
+representing global shipping lanes, were 
+added to the map as a custom vector layer 
+created with the Mapbox Tiling Service 
+(MTS) via the Mapbox Command Line 
+Interface (CLI). Unlike with the default 
+Mapbox Studio interface, this approach 
+provided complete control over zoom
+based generalization.
+
+<ProjectFigure
+  src={view2}
+  alt="Interactive Mapbox GL JS application visualizing worldwide ports and global shipping routes."
+  caption="Zoomed in view of the Port of Kawasaki, showing minimal pop-up."
+/>
+

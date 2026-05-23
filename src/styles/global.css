@@ -197,7 +197,7 @@ img {
 }
 .project-figure {
   margin: 2rem 0;
-  padding-top: 1rem;
+  
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -257,6 +257,8 @@ a:focus-visible {
   outline-offset: 4px;
   border-radius: 2px;
 }
+
+
 .nav-links a,
 .footer-group a {
   letter-spacing: 0.1em;
