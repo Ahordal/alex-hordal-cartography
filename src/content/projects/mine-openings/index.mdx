@@ -1,0 +1,120 @@
+---
+title: 'Nova Scotia <span class="project-subtitle">Mine Openings</span>'
+plainTitle: "Nova Scotia Mine Openings"
+
+description: "An interactive web mapping application built using the ArcGIS Maps SDK for JavaScript, visualizing 8,565 abandoned mine openings across Nova Scotia through clustering, GeoJSON integration, and interactive feature exploration."
+
+category: "Interactive GIS"
+
+technologies:
+  - HTML
+  - CSS
+  - JavaScript
+  - ArcGIS Pro
+  - ArcGIS Maps SDK for JavaScript
+  - Calcite Design System
+
+tags:
+  - Web Mapping
+  - ArcGIS SDK
+  - Interactive GIS
+  - GeoJSON
+  - JavaScript
+  - Cartographic Generalization
+
+listClass: "list-justified"
+
+appliedSkills:
+  - Implemented marker clustering workflows to maintain readability and performance across large geospatial datasets.
+  - Applied cartographic generalization principles across multiple zoom levels.
+  - Built a responsive user interface using Calcite Design System components.
+  - Developed event-driven JavaScript interactions for clusters and individual mine features.
+  - Loaded and managed GeoJSON datasets within a web mapping environment.
+
+heroCaption: "Main user interface of the Nova Scotia Abandoned Mine Openings web mapping application"
+featuredImage: ./featured.webp
+
+resources:
+  - label: "Launch Application"
+    url: "https://mine-openings.alexhordal.ca"
+    icon: "fa-solid fa-up-right-from-square"
+    description: "Open the live interactive web mapping application"
+
+  - label: "View GitHub Repository"
+    url: "https://github.com/Ahordal/NS_Mine_Openings"
+    icon: "fa-brands fa-github"
+    description: "Browse source code and version history"
+
+  - label: "Project README"
+    url: "https://mine-openings.alexhordal.ca/README.txt"
+    icon: "fa-solid fa-file-lines"
+    description: "Technical overview and implementation notes"
+---
+
+import clusterBehaviour from "./cluster-behaviour.webp";
+import clusterSummary from "./cluster-summary.webp";
+import clusterSummaryExpanded from "./cluster-summary-expanded.webp";
+import locationPinpoint from "./location-pinpoint.webp";
+import mineModal from "./mine-modal.webp";
+import searchAndLegend from "./search-and-legend.webp";
+import ProjectFigure from "../../../components/ProjectFigure.astro";
+
+
+This project involved designing a JavaScript-based interactive web map
+visualizing the locations and primary commodities of 8,565 abandoned mine
+openings across Nova Scotia. Built using the ArcGIS Maps SDK for JavaScript and
+the Calcite Design System, the application uses GeoJSON datasets to deliver a
+fully responsive web mapping experience that allows users to browse mine
+openings spatially or search by mine name and primary commodity.
+
+<ProjectFigure
+  src={clusterBehaviour}
+  alt="Marker clustering generalizes thousands of abandoned mine openings into proportionally sized symbols based on dominant commodity type"
+  caption="Marker clustering generalizes thousands of abandoned mine openings into proportionally sized symbols based on dominant commodity type"
+/>
+<ProjectFigure
+  src={clusterSummary}
+  alt="Cluster popup interface summarizing grouped mine openings and dominant commodity distribution"
+  caption="Cluster popup interface summarizing grouped mine openings and dominant commodity distribution"
+/>
+
+
+The application was developed using HTML, CSS, JavaScript, and ArcGIS web
+components, with ArcGIS Pro used for initial dataset preparation and GeoJSON
+generation. Marker clustering workflows generalize thousands of mine openings
+into proportionally sized circles symbolized by the dominant commodity, allowing
+the map to remain readable and performant across multiple scales. As users zoom
+in, clusters expand to reveal individually symbolized mining nodes. 
+
+
+The project emphasized responsive interface design and event-driven JavaScript workflows. Contextual menus provide mine details at both the cluster and individual feature level, while a dynamic legend references commodity types symbolized throughout the application. Additional interface components—including search, popup, legend, scale bar, and locate tools—were implemented using the ArcGIS Maps SDK and Calcite Design System.
+
+<ProjectFigure
+  src={clusterSummaryExpanded}
+  alt="Expanded cluster interaction showing additional contextual information for grouped mining features"
+  caption="Expanded cluster interaction showing additional contextual information for grouped mining features"
+/>
+<ProjectFigure
+  src={locationPinpoint}
+  alt="Locate functionality allows users to identify their position relative to abandoned mine openings across Nova Scotia"
+  caption="Locate functionality allows users to identify their position relative to abandoned mine openings across Nova Scotia"
+/>
+
+This project strengthened my understanding of client-side web GIS development,
+interactive cartographic generalization, GeoJSON data management, and responsive
+web application design within a modern JavaScript mapping environment. It also
+reinforced workflows involving clustering logic, user interaction handling, and
+scalable symbolization techniques for large geospatial point datasets.
+
+<ProjectFigure
+  src={mineModal}
+  alt="Feature popup displaying detailed mine opening attributes, hazard classifications, and commodity information"
+  caption="Feature popup displaying detailed mine opening attributes, hazard classifications, and commodity information"
+/>
+
+<ProjectFigure
+  src={searchAndLegend}
+  alt="Search and legend components support feature discovery and commodity interpretation throughout the application"
+  caption="Search and legend components support feature discovery and commodity interpretation throughout the application"
+/>
+

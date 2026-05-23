@@ -1,0 +1,43 @@
+---
+interface Resource {
+  label: string;
+  url: string;
+  icon: string;
+  description?: string;
+}
+
+interface Props {
+  resources?: Resource[];
+}
+
+const { resources } = Astro.props;
+---
+
+<div class="project-resources">
+  {
+    resources?.map((resource) => (
+      <a
+        href={resource.url}
+        class="resource-link"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <div class="resource-icon">
+          <i class={resource.icon}></i>
+        </div>
+
+        <div class="resource-content">
+          <h4>{resource.label}</h4>
+
+          {resource.description && (
+            <p>{resource.description}</p>
+          )}
+        </div>
+
+        <div class="resource-arrow">
+          <i class="fa-solid fa-arrow-up-right-from-square"></i>
+        </div>
+      </a>
+    ))
+  }
+</div>

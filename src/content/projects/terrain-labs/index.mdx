@@ -1,6 +1,6 @@
 ---
 title: 'Terrain<span class="project-subtitle">Labs</span>'
-plainTitle: Terrain Labs
+plainTitle: "Terrain Labs"
 
 description: "A series of 7 terrain visualization labs exploring advanced relief representation techniques using DEMs, LiDAR, hillshading, and 3D terrain modelling workflows."
 
@@ -47,26 +47,13 @@ relief."
 featuredImage: ./featured.webp
 ---
 
-import artistic from
-"./artistic.webp";
-
-import craterLake from
-"./crater-lake.webp";
-
-import panama from
-"./panama.webp";
-
-import lidar from
-"./lidar.webp";
-
-import rainierArtistic from
-"./rainier-artistic.webp";
-
-import mckinley from
-"./mckinley.webp";
-
-import rainier from
-"./rainier.webp";
+import artistic from "./artistic.webp";
+import craterLake from "./crater-lake.webp";
+import panama from "./panama.webp";
+import lidar from "./lidar.webp";
+import rainierArtistic from "./rainier-artistic.webp";
+import mckinley from "./mckinley.webp";
+import rainier from "./rainier.webp";
 
 import ProjectFigure from "../../../components/ProjectFigure.astro";
 
@@ -80,7 +67,7 @@ Visualization.
 All terrain labs initially began in ArcGIS Pro, where elevation datasets such as
 DEM and LiDAR surfaces were processed and prepared for visualization. From
 there, the workflow varied depending on the cartographic objective, with outputs
-completed across ArcGIS Pro, Blender, Adobe Photoshop, and Adobe Illustrator. 
+completed across ArcGIS Pro, Blender, Adobe Photoshop, and Adobe Illustrator.
 
 The project focused on exploring different approaches to terrain representation
 while reinforcing workflows involving hillshading, contour generation, colour
@@ -106,56 +93,50 @@ These terrain studies were later incorporated into the <a href="/portfolio/terra
   src={mckinley}
   alt="Imhof-style shaded relief map of Denali using blended hillshades, aerial perspective, and terrain generalization techniques"
   caption="Imhof-style shaded relief map of Denali using blended hillshades, aerial perspective, and terrain generalization techniques"
-/> 
-This relief depicts Denali (formerly Mount McKinley) in 
-the Alaska Range, the tallest mountain in North America 
-at 20,310 ft, and is inspired by the relief representation 
-techniques of Swiss cartographer Eduard Imhof. 
-Created in ArcGIS Pro, the process began by generating 
-a hillshade from a USGS DEM using a standard azimuth 
-of 315° and an altitude of 45°, representing oblique 
-lighting from the northwest. Additional hillshades were 
-generated using raster calculations to simulate an aerial 
-perspective, with higher elevations appearing lighter 
-and lower elevations appearing darker. To further refine 
-the relief, focal statistics were applied to a third and 
-final hillshade to generalize and soften terrain features. 
-Then, values from the three hillshades (aerial, focal, 
-and original) were reassigned using the Slice Tool and 
-recombined using the Raster Calculator into a final 
-composite relief. Colours and layer transparency were 
-adjusted to produce the characteristic blue-yellow 
-tones characteristic of Imhof-style relief (International 
-Cartographic Association, n.d.). The final relief is an aerial, 
-birds-eye view of Denali that enhances 3D perception 
-while maintaining clarity.
+/>
+This relief depicts Denali (formerly Mount McKinley) in the Alaska Range, the
+tallest mountain in North America at 20,310 ft, and is inspired by the relief
+representation techniques of Swiss cartographer Eduard Imhof. Created in ArcGIS
+Pro, the process began by generating a hillshade from a USGS DEM using a
+standard azimuth of 315° and an altitude of 45°, representing oblique lighting
+from the northwest. Additional hillshades were generated using raster
+calculations to simulate an aerial perspective, with higher elevations appearing
+lighter and lower elevations appearing darker. To further refine the relief,
+focal statistics were applied to a third and final hillshade to generalize and
+soften terrain features. Then, values from the three hillshades (aerial, focal,
+and original) were reassigned using the Slice Tool and recombined using the
+Raster Calculator into a final composite relief. Colours and layer transparency
+were adjusted to produce the characteristic blue-yellow tones characteristic of
+Imhof-style relief (International Cartographic Association, n.d.). The final
+relief is an aerial, birds-eye view of Denali that enhances 3D perception while
+maintaining clarity.
 
 <ProjectFigure
   src={panama}
   alt="False-colour enhancement of Thomas Jefferys’ historical chart of the Isthmus of Panama created using selective colouring and blending techniques in Adobe Photoshop"
   caption="False-colour enhancement of Thomas Jefferys’ historical chart of the Isthmus of Panama created using selective colouring and blending techniques in Adobe Photoshop"
-/> 
+/>
 
-This relief depicts a false-colour representation of 
-cartographer Thomas Jefferys’ nautical chart The Isthmus 
-of Panama with the coast from Great River [current-day Río 
-Chagres or Chagres River] on the Mosquito Shore (Nicaragua 
-and Honduras) to Cartagena, Colombia (David Rumsey Map 
+This relief depicts a false-colour representation of
+cartographer Thomas Jefferys’ nautical chart The Isthmus
+of Panama with the coast from Great River [current-day Río
+Chagres or Chagres River] on the Mosquito Shore (Nicaragua
+and Honduras) to Cartagena, Colombia (David Rumsey Map
 Collection, n.d.).
-The chart was imported into Adobe Photoshop, where it 
-was appropriately trimmed to size, and various colouring 
-techniques were applied using different brush sizes, opacity 
-settings, and blending modes. Selections were used to 
-control the colouring of more precise features, including 
-the compass rose and the map’s neatline, and were saved 
-within the document so they could be adjusted quickly as 
+The chart was imported into Adobe Photoshop, where it
+was appropriately trimmed to size, and various colouring
+techniques were applied using different brush sizes, opacity
+settings, and blending modes. Selections were used to
+control the colouring of more precise features, including
+the compass rose and the map’s neatline, and were saved
+within the document so they could be adjusted quickly as
 needed.
-Colour was applied selectively to provide contextual 
-information. Light blue with low opacity was used to 
-indicate reefs and shallow water, dark green to emphasize 
-mountainous terrain, darker blue for rivers, and light 
-brown to represent the coastline. This approach preserved 
-the character of the historical chart while enhancing 
+Colour was applied selectively to provide contextual
+information. Light blue with low opacity was used to
+indicate reefs and shallow water, dark green to emphasize
+mountainous terrain, darker blue for rivers, and light
+brown to represent the coastline. This approach preserved
+the character of the historical chart while enhancing
 geographic features.
 
 <ProjectFigure
@@ -164,45 +145,45 @@ geographic features.
   caption="Stylized relief map of the Puna de Atacama plateau inspired by John Nelson’s contour-based terrain visualization workflow"
 />
 
-This relief depicts an artistic representation of part of the 
+This relief depicts an artistic representation of part of the
 Puna de Atacama plateau in northwestern Argentina, a high
-elevation volcanic plateau within the Central Andes. This 
+elevation volcanic plateau within the Central Andes. This
 workflow is adapted from John Nelson’s YouTube tutorial, Re
-creating Trippy AI-Generated Terrain Contours (Nelson, 2023). 
-The first step was to acquire an SRTM DEM of the study 
-area. The Focal Statistics tool in ArcGIS Pro was then used 
-to blur and smooth the DEM, followed by an additional 
-iteration to remove any artifacts introduced by the process. 
-Once the DEM was smoothed, contours were generated at 
-100m intervals, using the contour shell up option, producing 
-a set of stacked elevation polygons. The polygons were 
-vertically offset to create an isometric effect, and a colour 
-ramp was applied to symbolize elevation. Additional 
-techniques were then used to add highlights and shadows 
-to the polygons, and a poster paper texture was applied as 
-an overlay. The final step involved adjusting layer blending 
+creating Trippy AI-Generated Terrain Contours (Nelson, 2023).
+The first step was to acquire an SRTM DEM of the study
+area. The Focal Statistics tool in ArcGIS Pro was then used
+to blur and smooth the DEM, followed by an additional
+iteration to remove any artifacts introduced by the process.
+Once the DEM was smoothed, contours were generated at
+100m intervals, using the contour shell up option, producing
+a set of stacked elevation polygons. The polygons were
+vertically offset to create an isometric effect, and a colour
+ramp was applied to symbolize elevation. Additional
+techniques were then used to add highlights and shadows
+to the polygons, and a poster paper texture was applied as
+an overlay. The final step involved adjusting layer blending
 and opacities to achieve the desired visual effect.
 
 <ProjectFigure
   src={craterLake}
   alt="Hypsometric relief map of Crater Lake, Oregon combining terrestrial and bathymetric elevation data with contours, spot heights, and elevation tinting"
   caption="Hypsometric relief map of Crater Lake, Oregon combining terrestrial and bathymetric elevation data with contours, spot heights, and elevation tinting"
-/> 
+/>
 
-This relief depicts the topography and bathymetry of 
-Crater Lake, Oregon—the deepest lake in the United 
-States—which formed approximately 7,700 years ago 
-when Mount Mazama erupted and the magma chamber 
-subsequently collapsed (National Park Service, n.d.). 
-This map was created in ArcGIS Pro using terrestrial and 
-bathymetric digital elevation models (DEMs) obtained from 
+This relief depicts the topography and bathymetry of
+Crater Lake, Oregon—the deepest lake in the United
+States—which formed approximately 7,700 years ago
+when Mount Mazama erupted and the magma chamber
+subsequently collapsed (National Park Service, n.d.).
+This map was created in ArcGIS Pro using terrestrial and
+bathymetric digital elevation models (DEMs) obtained from
 the United States Geological Survey (USGS). Elevation
-band polygons were derived from the terrestrial DEM 
-using the Contour Polygon tool at 250 m and 50 m intervals 
-for index and intermediate contours, respectively, and 
-coloured using hypsometric tinting to represent elevation 
-bands. The bathymetric DEM was symbolized directly 
-using hypsometric tinting. Spot heights were added to 
+band polygons were derived from the terrestrial DEM
+using the Contour Polygon tool at 250 m and 50 m intervals
+for index and intermediate contours, respectively, and
+coloured using hypsometric tinting to represent elevation
+bands. The bathymetric DEM was symbolized directly
+using hypsometric tinting. Spot heights were added to
 provide additional elevation reference.
 
 <ProjectFigure
@@ -211,46 +192,46 @@ provide additional elevation reference.
   blended hillshades, shaded relief, and hypsometric tinting techniques"
   caption="Enhanced hillshade relief of Mount Rainier and Mount Adams created using
   blended hillshades, shaded relief, and hypsometric tinting techniques"
-/> 
+/>
 
-This relief depicts an enhanced hillshade of Mount 
-Rainier, a 14,410-ft stratovolcano and the most glaciated 
-peak in the contiguous United States, with 28 named 
-glaciers (National Park Service, n.d.), and Mount 
-Adams, a secondary volcano located to the southeast. 
-This relief was created in ArcGIS Pro by generating 
-several terrain representations from a digital elevation 
-model (DEM), including three hillshades, a shaded relief 
-image, and a hypsometric tint. The hillshades were 
-produced using different altitude and vertical exaggeration 
-values to represent terrain under multiple illumination 
-conditions. When combined, these variations allowed both 
-subtle and exaggerated landforms to be emphasized. 
-Once exported as raster images, these layers were 
-combined in Adobe Photoshop to create a composite 
-relief image. By stacking the hillshades, shaded relief, and 
-hypsometric tint layers, and using selection techniques 
-to highlight ridgelines, it was possible to produce a more 
+This relief depicts an enhanced hillshade of Mount
+Rainier, a 14,410-ft stratovolcano and the most glaciated
+peak in the contiguous United States, with 28 named
+glaciers (National Park Service, n.d.), and Mount
+Adams, a secondary volcano located to the southeast.
+This relief was created in ArcGIS Pro by generating
+several terrain representations from a digital elevation
+model (DEM), including three hillshades, a shaded relief
+image, and a hypsometric tint. The hillshades were
+produced using different altitude and vertical exaggeration
+values to represent terrain under multiple illumination
+conditions. When combined, these variations allowed both
+subtle and exaggerated landforms to be emphasized.
+Once exported as raster images, these layers were
+combined in Adobe Photoshop to create a composite
+relief image. By stacking the hillshades, shaded relief, and
+hypsometric tint layers, and using selection techniques
+to highlight ridgelines, it was possible to produce a more
 visually detailed and natural representation of the terrain.
 
 <ProjectFigure
   src={rainierArtistic}
   alt="Stylized terrain relief of Mount Rainier created using composite hillshading workflows and oil painting effects in Adobe Photoshop"
   caption="Stylized terrain relief of Mount Rainier created using composite hillshading workflows and oil painting effects in Adobe Photoshop"
-/> 
+/>
 
-This relief builds upon the enhanced hillshade of Mount 
-Rainier by following the same workflow in ArcGIS Pro and 
-Adobe Photoshop, using the same DEM and composite 
-hillshading techniques. The hillshades, shaded relief, and 
-highlighting layers were combined into a single composite 
-image before additional stylistic processing was applied. 
-Once the hillshades, shaded relief, and various highlighting 
-layers were combined into a single image, the image 
-was stylized with the Oil Paint filter to transform its visual 
-character. By adjusting the brush stylization, cleanliness, 
-scale, bristle detail, and lighting options, I created the 
-desired effect of a hand-painted oil painting by smoothing 
-textures and replacing fine detail with brush-like strokes. 
-The resulting brush strokes naturally follow and emphasize 
+This relief builds upon the enhanced hillshade of Mount
+Rainier by following the same workflow in ArcGIS Pro and
+Adobe Photoshop, using the same DEM and composite
+hillshading techniques. The hillshades, shaded relief, and
+highlighting layers were combined into a single composite
+image before additional stylistic processing was applied.
+Once the hillshades, shaded relief, and various highlighting
+layers were combined into a single image, the image
+was stylized with the Oil Paint filter to transform its visual
+character. By adjusting the brush stylization, cleanliness,
+scale, bristle detail, and lighting options, I created the
+desired effect of a hand-painted oil painting by smoothing
+textures and replacing fine detail with brush-like strokes.
+The resulting brush strokes naturally follow and emphasize
 terrain features while maintaining terrain interpretability.

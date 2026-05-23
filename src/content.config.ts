@@ -20,9 +20,8 @@ const projects = defineCollection({
       "Spatial Analysis",
       "Terrain & Relief Visualization",
     ]),
-    
+
     technologies: z.array(z.string()),
-   
     appliedSkills: z.array(z.string()).optional(),
     downloadFile: z.string().optional(),
     downloadLabel: z.string().optional(),
@@ -30,7 +29,15 @@ const projects = defineCollection({
     objectPosition: z.string().optional(),
     heroCaption: z.string().optional(),
     video: z.string().optional(),
-    featuredImage: image()
+    featuredImage: image(),
+    resources: z.array(
+      z.object({
+        label: z.string(),
+        url: z.string(),
+        icon: z.string(),
+        description: z.string().optional(),
+      })
+    ).optional(),
   }),
 });
 

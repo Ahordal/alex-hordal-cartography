@@ -4,6 +4,7 @@ import MainLayout from "../../layouts/mainlayout.astro";
 import PageSection from "../../components/PageSection.astro";
 import References from "../../components/References.astro";
 import ProjectFigure from "../../components/ProjectFigure.astro";
+import ProjectResources from "../../components/ProjectResources.astro";
 
 export async function getStaticPaths() {
   const projects = await getCollection("projects");
@@ -32,6 +33,12 @@ const { Content } = await render(project);
   <div class="page-grid">
     <!-- Left Column -->
     <aside class="page-title-column">
+      <nav class="project-path">
+        <span>/ </span><a href="/portfolio">portfolio</a>
+        <span>/</span>
+        <a href="/portfolio"></a><span class="project-slug">{project.id}</span></nav>
+      </nav>
+
       <h1 set:html={project.data.title} />
 
       <p class="page-description">
@@ -83,6 +90,12 @@ const { Content } = await render(project);
 
     <!-- Right Column -->
     <section class="page-content-column">
+      <PageSection
+        title={`<i class="fa-solid fa-folder-tree section-icon"></i> Project Files & Links`}
+        id="resources">
+        <ProjectResources resources={project.data.resources} />
+      </PageSection>
+
       <PageSection
         title={`<i class="fa-solid fa-circle-info section-icon"></i> About the Project`}
         id="about">
