@@ -1,0 +1,87 @@
+---
+title: 'Zion<br>National<br> Park<span class="project-subtitle">Natural Landform and Terrain Atlas</span>'
+plainTitle: "Zion Terrain Atlas"
+description: "A Zion National Park Landform and Terrain Atlas, designed in ArcGIS Pro."
+
+category: "Cartographic Design"
+
+# Valid categories:
+  #Interactive GIS,
+  #Data Visualization,
+  #Cartographic Design,
+  #Spatial Analysis,
+  #Terrain & Relief Visualization,
+
+technologies:
+  - ArcGIS Pro
+  
+
+tags:
+  - Atlas
+  - Zion National Park
+  - ArcGIS Pro
+  - Map Series
+  - PDF
+
+
+listClass: "list-justified"
+
+appliedSkills:
+  - Generated and refined a custom hillshade from a mosaicked digital elevation model (DEM) to enhance terrain readability and emphasize landform structure.
+  - Created a custom map series by subdividing a large geospatial image into indexed map plates with consistent layout, overlap, and spatial continuity.
+  - Applied varying generalization techniques to road networks and rivercourses to improve cartographic clarity and project performance.
+  - Designed and produced a small-format atlas according to defined cartographic production specifications, including page dimensions, usable map area, margins, bleed, and layout consistency.
+  
+
+heroType: "image"
+heroCaption: "The Zion National Park Natural Landform and Terrain Atlas Front Cover"
+
+resources:
+  - label: "Full Atlas PDF"
+    url: "https://assets.alexhordal.ca/Zion_Final_ACH.pdf"
+    icon: "fa-solid fa-file-pdf"
+    description: "Download the full atlas PDF (210 MB)"
+
+  - label: "Workflow Diagram PDF"
+    url: "https://assets.alexhordal.ca/Zion_Workflow_ACH.pdf"
+    icon: "fa-solid fa-chart-diagram"
+    description: "Download the project workflow diagram PDF (3 MB)"
+
+---
+
+import backCover from "./back-cover.webp";
+import howToUse from "./how-to-use.webp";
+import plateSample from "./plate-sample.webp";
+import ProjectFigure from "../../../components/ProjectFigure.astro";
+
+This atlas is a topographical reference of Zion National Park and uses digital
+elevation models, hill shading, and contour mapping to illustrate the park's
+terrain. Its purpose is to provide readers with a detailed visual understanding
+of Zion's major landforms, elevation patterns, and spatial relationships.
+
+<ProjectFigure
+  src={howToUse}
+  alt="The Zion National Park Natural Landform and Terrain Atlas How to Use
+  Instructional Page"
+  caption="The Zion National Park Natural Landform and Terrain Atlas How to Use
+  Instructional Page"
+/>
+
+The atlas is divided into 14 map plates, each representing a unique portion of
+the park. Every plate is identified by a grid designator (see How to Use This
+Atlas) and titled according to the most prominent features within its extent.
+Together, the plates present a complete, continuous picture of Zion's landscape.
+
+<ProjectFigure
+  src={plateSample}
+  alt="The Zion National Park Natural Landform and Terrain Atlas - Zion Canyon Section"
+  caption="The Zion National Park Natural Landform and Terrain Atlas - Zion Canyon Section"
+/>
+
+While it is not possible to display all of the park's geographic features, this atlas includes a selection of major and well-known features, ensuring that the most significant elements of Zion's natural environment are represented.
+
+<ProjectFigure
+  src={backCover}
+  alt="The Zion National Park Natural Landform and Terrain Atlas back Cover"
+  caption="The Zion National Park Natural Landform and Terrain Atlas back Cover"
+/>

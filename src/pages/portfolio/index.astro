@@ -1,6 +1,6 @@
 ---
 import { getCollection } from "astro:content";
-
+import { getFeaturedImage } from "../../utils/getFeaturedImage";
 import MainLayout from "../../layouts/mainlayout.astro";
 import PageSection from "../../components/PageSection.astro";
 import PortfolioPlate from "../../components/PortfolioPlate.astro";
@@ -10,11 +10,15 @@ const desiredOrder = [
 "nyc-restaurants",
 "yellow-taxi",
 "hawaii-seafloor-to-summit",
+"zion-atlas",
 "qgis",
 "incident-response",
 "ntsb",
 "terrain-atlas",
-"multi-scale"
+"multi-scale",
+"world-ports",
+"mine-openings",
+"colours-of-sweden"
 ];
 projects.sort((a, b) => {
   return (
@@ -99,7 +103,7 @@ const categories = [
                 <PortfolioPlate
                   plainTitle={project.data.plainTitle}
                   description={project.data.description}
-                  image={project.data.featuredImage}
+                  image={getFeaturedImage(project.id)}
                   href={`/portfolio/${project.id}`}
                   tags={project.data.technologies}
                   objectPosition={project.data.objectPosition || "center"}

@@ -261,9 +261,10 @@ a:focus-visible {
 
 .nav-links a,
 .footer-group a {
-  letter-spacing: 0.1em;
+  
   text-decoration: none;
   text-transform: uppercase; 
+  
   
   
 }

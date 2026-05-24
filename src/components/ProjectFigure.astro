@@ -2,11 +2,11 @@
 import { Image } from "astro:assets";
 
 interface Props {
-  src: any;
-  alt: string;
+  src?: any;
+  alt?: string;
   caption?: string;
   class?: string;
-   width?: number;
+  width?: number;
 }
 
 const {
@@ -19,29 +19,32 @@ const {
 ---
 
 <figure class={`project-figure ${className || ""}`}>
-  <a href={src.src}>
-  <Image
-  src={src}
-  alt={alt}
-  width={width}
-  format="webp"
-/>
-  </a>
+
+  {
+    src && typeof src === "object" ? (
+
+      <a href={src.src}>
+
+        <Image
+          src={src}
+          alt={alt || ""}
+          width={width}
+          format="webp"
+        />
+
+      </a>
+
+    ) : (
+
+      <slot />
+
+    )
+  }
 
   {caption && (
     <figcaption>
-      {caption}
+      <Fragment set:html={caption} />
     </figcaption>
   )}
+
 </figure>
-
-<!-- USAGE
- 
-<ProjectFigure
-  src={nycLogo}
-  class="figure-under-heading"
-  alt="NYC Logo"
-  caption="NYC Logo - Wolff Olins"
-/>
-
--->

@@ -1,0 +1,80 @@
+---
+import { Image } from "astro:assets";
+
+import ProjectFigure from "./ProjectFigure.astro";
+import SwedenMap from "./swedenMap.astro";
+
+import { getFeaturedImage } from "../utils/getFeaturedImage";
+
+interface Props {
+  project: any;
+}
+
+const { project } = Astro.props;
+
+const featuredImage = getFeaturedImage(project.id);
+---
+
+{
+  project.data.heroType === "interactive-svg" ? (
+
+    <ProjectFigure
+      caption={project.data.heroCaption}
+    >
+
+      <SwedenMap />
+
+    </ProjectFigure>
+
+  ) : project.data.heroType === "video" ? (
+
+    <ProjectFigure
+      caption={project.data.heroCaption}
+    >
+
+      <video
+        controls
+        autoplay
+        muted
+        loop
+        playsinline
+        class="project-video"
+        aria-label={
+          project.data.heroCaption ||
+          project.data.plainTitle
+        }
+      >
+
+        <source
+          src={project.data.video}
+          type="video/mp4"
+        />
+
+      </video>
+
+    </ProjectFigure>
+
+  ) : project.data.heroType === "image" ? (
+
+    <ProjectFigure
+      caption={project.data.heroCaption}
+    >
+
+      <a href={featuredImage.src}>
+
+        <Image
+          src={featuredImage}
+          alt={
+            project.data.heroCaption ||
+            project.data.plainTitle
+          }
+          width={1000}
+          format="webp"
+        />
+
+      </a>
+
+    </ProjectFigure>
+
+  ) : null
+}

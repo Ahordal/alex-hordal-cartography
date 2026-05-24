@@ -1,0 +1,66 @@
+---
+title: 'The Colours of Sweden<span class="project-subtitle">Interactive SVG-Based Web Cartography</span>'
+plainTitle: "The Colours of Sweden"
+
+description: "A responsive SVG-based thematic web map exploring Swedish provincial heraldry through interactive vector graphics, semantic HTML/CSS structure, and custom DOM-based interaction."
+
+category: "Interactive GIS"
+
+technologies:
+  - HTML
+  - CSS
+  - JavaScript
+  - SVG
+  - Adobe Illustrator
+  - ai2html
+
+tags:
+  - Interactive Web Mapping
+  - SVG Cartography
+  - ai2html
+  - Responsive Design
+  - Thematic Mapping
+  - Web Cartography
+
+
+listClass: "list-justified"
+
+appliedSkills:
+  - Designed and implemented an interactive SVG-based thematic web map using semantic HTML, CSS, and JavaScript.
+  - Converted Illustrator artwork into responsive web-ready markup using the ai2html export workflow.
+  - Implemented province-level hover interactions and contextual tooltips through inline SVG targeting and DOM manipulation.
+  - Structured and organized vector artwork in Adobe Illustrator to support clean web export and scalable SVG rendering.
+  - Applied thematic cartographic design principles to explore shared heraldic colour systems across Sweden's historical provinces.
+
+heroCaption: "An <strong>interactive</strong> thematic web map exploring the dominant heraldic colour systems of Sweden’s historical provinces."
+heroType: "interactive-svg"
+
+---
+
+
+import ProjectFigure from "../../../components/ProjectFigure.astro";
+import swedishFlag from "./swedish-flag.webp";
+
+<ProjectFigure
+  src={swedishFlag}
+  alt="An image of the Swedish Flag"
+  caption="The Flag of Sweden"
+/>
+
+
+
+The visual design process began in Adobe Illustrator, where the provincial map
+artwork, labels, and heraldic symbols were organized and stylized specifically
+for web export. The <Link href="http://ai2html.org/">ai2html Illustrator plugin</Link> was then used to convert
+the composition into responsive HTML, CSS, and SVG markup. This workflow
+preserved vector scalability while allowing text and interface elements to
+remain independently addressable within the Document Object Model (DOM).
+
+To improve interactivity beyond the default ai2html export, the SVG was converted from an external image reference into inline SVG markup embedded directly within the webpage structure. This allowed individual provincial polygons to be targeted using custom CSS hover states and JavaScript interactions. Hovering over a province dynamically changes its fill colour to reflect subordinate colours within the provincial flag, while clickable regions link users to additional external reference material.
+
+A significant portion of the implementation process involved inspecting and identifying non-semantic polygon IDs generated during SVG export. Browser developer tools were used extensively to isolate individual provincial geometries and assign custom hover behaviours and styling rules. This workflow strengthened familiarity with inline SVG manipulation, DOM targeting, and the relationship between HTML structure, CSS presentation, and JavaScript behaviour in a cartographic web environment. 
+
+The final application demonstrates a lightweight alternative to traditional slippy web maps by leveraging scalable vector graphics as the primary interaction layer. The project emphasizes responsive layout behaviour, browser-native vector rendering, thematic abstraction through colour, and custom interaction design without reliance on external GIS web mapping frameworks.
+
+
+

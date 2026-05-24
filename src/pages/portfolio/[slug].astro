@@ -2,16 +2,16 @@
 import { getCollection, render, type CollectionEntry } from "astro:content";
 import MainLayout from "../../layouts/mainlayout.astro";
 import PageSection from "../../components/PageSection.astro";
-import References from "../../components/References.astro";
-import ProjectFigure from "../../components/ProjectFigure.astro";
+import ProjectHero from "../../components/ProjectHero.astro";
 import ProjectResources from "../../components/ProjectResources.astro";
+
+import Link from "../../components/Link.astro";
 
 export async function getStaticPaths() {
   const projects = await getCollection("projects");
 
   return projects.map((project: CollectionEntry<"projects">) => ({
     params: { slug: project.id },
-
     props: { project },
   }));
 }
@@ -22,21 +22,35 @@ interface Props {
 
 const { project } = Astro.props as Props;
 
-// New Astro content API uses render(project)
+// Render MDX content
 const { Content } = await render(project);
 ---
 
 <MainLayout
   id="top"
   title={`${project.data.plainTitle} | Alex Hordal`}
-  isHome={false}>
+  isHome={false}
+>
+
   <div class="page-grid">
+
     <!-- Left Column -->
     <aside class="page-title-column">
+
       <nav class="project-path">
-        <span>/ </span><a href="/portfolio">portfolio</a>
+
+        <span>/ </span>
+
+        <a href="/portfolio">
+          portfolio
+        </a>
+
         <span>/</span>
-        <a href="/portfolio"></a><span class="project-slug">{project.id}</span></nav>
+
+        <span class="project-slug">
+          {project.id}
+        </span>
+
       </nav>
 
       <h1 set:html={project.data.title} />
@@ -46,83 +60,99 @@ const { Content } = await render(project);
       </p>
 
       <div class="page-section">
-        {
-          project.data.video ? (
-            <figure class="project-figure">
-              <video
-                controls
-                autoplay
-                muted
-                loop
-                playsinline
-                class="project-video"
-                aria-label={
-                  project.data.heroCaption || project.data.plainTitle
-                }>
-                <source src={project.data.video} type="video/mp4" />
-              </video>
 
-              {project.data.heroCaption && (
-                <figcaption>{project.data.heroCaption}</figcaption>
-              )}
-            </figure>
-          ) : (
-            <ProjectFigure
-              src={project.data.featuredImage}
-              alt={project.data.heroCaption || project.data.plainTitle}
-              caption={project.data.heroCaption}
-              width={1000}
-            />
-          )
-        }
+        <ProjectHero project={project} />
 
         {
           project.data.downloadFile && (
             <p>
+
               <a href={project.data.downloadFile}>
-                {project.data.downloadLabel || "Download Project File"}
+                {
+                  project.data.downloadLabel ||
+                  "Download Project File"
+                }
               </a>
+
             </p>
           )
         }
+
       </div>
+
     </aside>
 
     <!-- Right Column -->
     <section class="page-content-column">
-      <PageSection
-        title={`<i class="fa-solid fa-folder-tree section-icon"></i> Project Files & Links`}
-        id="resources">
-        <ProjectResources resources={project.data.resources} />
-      </PageSection>
+
+      {
+        project.data.resources?.length && (
+          <PageSection
+            title={`<i class="fa-solid fa-folder-tree section-icon"></i> Project Files & Links`}
+            id="resources"
+          >
+
+            <ProjectResources
+              resources={project.data.resources}
+            />
+
+          </PageSection>
+        )
+      }
 
       <PageSection
         title={`<i class="fa-solid fa-circle-info section-icon"></i> About the Project`}
-        id="about">
+        id="about"
+      >
+
         <div>
-          <Content />
+
+          <Content components={{ Link }} />
+
         </div>
+
       </PageSection>
 
       <PageSection
         title={`<i class="fa-solid fa-microchip section-icon"></i> Technology Stack`}
-        id="stack">
+        id="stack"
+      >
+
         <ul class={`list ${project.data.listClass || ""}`}>
-          {project.data.technologies.map((tech) => <li>{tech}</li>)}
+
+          {project.data.technologies.map((tech) => (
+            <li>{tech}</li>
+          ))}
+
         </ul>
+
       </PageSection>
 
       <PageSection
-        title={`<i class="fa-solid fa-screwdriver section-icon" ></i> Applied Skills`}
-        id="applied-skills">
+        title={`<i class="fa-solid fa-screwdriver section-icon"></i> Applied Skills`}
+        id="applied-skills"
+      >
+
         <ul class="list-justified">
-          {project.data.appliedSkills?.map((skill) => <li>{skill}</li>)}
+
+          {project.data.appliedSkills?.map((skill) => (
+            <li>{skill}</li>
+          ))}
+
         </ul>
+
       </PageSection>
 
-      <a href="#top" class="back-to-top"> ↑ Back to top </a>
+      <a
+        href="#top"
+        class="back-to-top"
+      >
+        ↑ Back to top
+      </a>
+
     </section>
 
     <!-- Additional Experience & Training -->
   </div>
+
 </MainLayout>

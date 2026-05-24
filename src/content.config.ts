@@ -27,9 +27,9 @@ const projects = defineCollection({
     downloadLabel: z.string().optional(),
     listClass: z.string().optional(),
     objectPosition: z.string().optional(),
+    heroType: z.string().optional(),
     heroCaption: z.string().optional(),
     video: z.string().optional(),
-    featuredImage: image(),
     resources: z.array(
       z.object({
         label: z.string(),
