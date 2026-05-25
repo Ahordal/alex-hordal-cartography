@@ -1,6 +1,6 @@
 import type { APIRoute } from "astro";
 import { Resend } from "resend";
-
+export const prerender = false;
 const resend = new Resend(import.meta.env.RESEND_API_KEY);
 
 export const POST: APIRoute = async ({ request }) => {
@@ -22,7 +22,7 @@ export const POST: APIRoute = async ({ request }) => {
 
     // 2. Send the email
     const { error } = await resend.emails.send({
-      from: "onboarding@resend.dev", // Once your domain is verified, use e.g., "contact@yourdomain.com"
+      from: "contact@alexhordal.ca", // Once your domain is verified, use e.g., "contact@yourdomain.com"
       to: "alex.hordal@gmail.com",
       replyTo: email, // This allows you to click 'Reply' in Gmail to reach the sender
       subject: `Portfolio Contact from ${name}`,

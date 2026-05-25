@@ -22,7 +22,7 @@ import MainLayout from "../layouts/mainlayout.astro";
 
       
 <!-- Form -->
- <form class="contact-form" method="POST" action="/api/contact">
+ <form id="contact-form" class="contact-form" method="POST" action="/api/contact">
 
   <div class="form-group">
     <label for="name">NAME</label>
@@ -61,6 +61,8 @@ import MainLayout from "../layouts/mainlayout.astro";
     SEND MESSAGE
   </button>
 
+  <div id="form-status" aria-live="polite" class="form-status-message" hidden></div>
+
 </form>
        
 
@@ -68,3 +70,95 @@ import MainLayout from "../layouts/mainlayout.astro";
     </section>
   </div>
 </MainLayout>
+
+<!-- This script moves the success message to the bottom of the form -->
+
+<script>
+  const form = document.getElementById('contact-form');
+  const statusEl = document.getElementById('form-status');
+
+  // Guard clause: ensure required elements exist
+  if (!(form instanceof HTMLFormElement) || !statusEl) {
+    console.error('Contact form elements not found.');
+  } else {
+
+    // Helper function to clear status messages
+    const clearStatus = () => {
+      statusEl.textContent = '';
+      statusEl.className = 'form-status-message';
+      statusEl.setAttribute('hidden', '');
+    };
+
+    // Clear status whenever user edits the form
+    form.addEventListener('input', clearStatus);
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      // Optional: disable submit button during processing
+      const submitButton = form.querySelector(
+        'button[type="submit"]'
+      );
+
+      if (submitButton instanceof HTMLButtonElement) {
+        submitButton.disabled = true;
+      }
+
+      // Initial UI feedback
+      statusEl.textContent = 'Sending message...';
+      statusEl.className = 'form-status-message processing';
+      statusEl.removeAttribute('hidden');
+
+      const formData = new FormData(form);
+
+      try {
+        const response = await fetch(form.action, {
+          method: form.method,
+          body: formData,
+        });
+
+        // Defensive JSON parsing fallback
+        let data: { message?: string } = {};
+
+        try {
+          data = await response.json();
+        } catch {
+          // If server returns invalid JSON or crashes
+          data = {};
+        }
+
+        if (response.ok) {
+          statusEl.textContent =
+            data.message || 'Message sent successfully!';
+
+          statusEl.className =
+            'form-status-message success';
+
+          form.reset();
+        } else {
+          statusEl.textContent =
+            data.message ||
+            'An error occurred. Please try again.';
+
+          statusEl.className =
+            'form-status-message error';
+        }
+
+      } catch (error) {
+        console.error('Network Error:', error);
+
+        statusEl.textContent =
+          'Connection error. Please check your network and try again.';
+
+        statusEl.className =
+          'form-status-message error';
+
+      } finally {
+        // Re-enable button after request completes
+        if (submitButton instanceof HTMLButtonElement) {
+          submitButton.disabled = false;
+        }
+      }
+    });
+  }
+</script>

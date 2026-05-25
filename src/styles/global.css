@@ -556,6 +556,27 @@ padding:0.75rem;
   transform: translateY(1px);
 }
 
+.form-status-message {
+  margin-top: 1rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: color 0.2s ease;
+}
+
+.form-status-message.processing {
+  color: #6b7280;
+}
+
+.form-status-message.success {
+  color: #008001;
+}
+
+.form-status-message.error {
+  color: #ff2b2b;
+}
+
+
+
 /*///// PORTFOLIO /////*/
 
 .portfolio-page {
@@ -671,6 +692,10 @@ padding:0.75rem;
   text-decoration: underline;
   text-underline-offset: 0.15em;
 }
+
+
+
+
 /*///////////////////////////////////////////// MEDIA QUERIES //////////////////////////////////////////////*/
 
 @media (max-width: 900px) {
