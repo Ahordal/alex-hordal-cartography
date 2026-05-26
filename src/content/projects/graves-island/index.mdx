@@ -1,0 +1,78 @@
+---
+title: 'The<br>Colour<br>of Maps<span class="project-subtitle">Graves Island, Nova Scotia</span>'
+plainTitle: "The Colour of Maps"
+description: "A cartographic poster comparing three themed versions of the same park map to show how colour, typography, and visual style can change the look and feel of a map."
+
+category: "Cartographic Design"
+
+# Valid categories:
+  #Interactive GIS,
+  #Data Visualization,
+  #Cartographic Design,
+  #Spatial Analysis,
+  #Terrain & Relief Visualization,
+
+technologies:
+  - ArcGis Pro
+  - Adobe Illustrator
+  - Adobe InDesign
+
+tags:
+  - Cartographic Design
+  - Typography
+  - Colour Theory
+  - Visual Hierarchy
+  - ArcGIS Pro
+  - Adobe Illustrator
+  - Adobe InDesign
+
+
+listClass: "list-justified"
+
+appliedSkills:
+  - Georeferenced and digitized a pre-existing campground map to create an accurate spatial foundation for cartographic redesign.
+  - Developed three distinct cartographic themes exploring the influence of colour palettes, typography, and visual hierarchy on map interpretation.
+  - Refined and standardized recreational symbology, labelling, and layout composition across multiple stylistic map variations.
+  - Applied cartographic design principles to balance readability, aesthetics, and thematic consistency within each map version.
+  - Integrated ArcGIS Pro, Adobe Illustrator, and Adobe InDesign workflows to support GIS processing, vector refinement, and final poster production.
+
+heroType: "image"
+heroCaption: "Three themed versions of the same park map, exploring how colour, typography, and visual style affect map readability, hierarchy, tone, and user perception."
+
+
+
+resources:
+  - label: "High Resolution PDF"
+    url: "https://assets.alexhordal.ca/Graves_Island_ACH.pdf"
+    icon: "fa-solid fa-file-pdf"
+    description: "Download the print-ready PDF (CMYK, 3 MB)"
+
+  - label: "High Resolution .WEBP"
+    url: "https://assets.alexhordal.ca/Graves_Island.webp"
+    icon: "fa-solid fa-image"
+    description: "Download the full resolution poster (RGB, 560 KB)"
+
+---
+
+import gravesCampgroundMap from "./graves-campground-map.webp";
+import domains from "./domains.webp";
+
+import ProjectFigure from "../../../components/ProjectFigure.astro";
+
+This project began with georeferencing an existing campground map of Graves Island Provincial Park and transforming it into a fully digitized geospatial dataset within ArcGIS Pro. Shorelines, contours, campsites, roads, trails, and recreational infrastructure were manually digitized into structured geodatabase feature classes, while custom coded-value domains were developed to classify campground infrastructure and improve attribute consistency throughout the project.
+
+<ProjectFigure
+  src={gravesCampgroundMap}
+  alt="Original campground reference map used for georeferencing and manual feature digitization, forming the spatial foundation for the project’s basemap, infrastructure layers, and geodatabase feature classes."
+  caption="Original campground reference map used for georeferencing and manual feature digitization, forming the spatial foundation for the project’s basemap, infrastructure layers, and geodatabase feature classes."
+/>
+
+Once the spatial database and basemap were completed, the layout was exported from ArcGIS Pro into Adobe Illustrator using the AIX workflow. Three distinct thematic versions of the same map were then developed through variations in colour palette, typography, and overall cartographic styling, including a modern four-process design, an achromatic-plus-one historical style, and a complementary-colour rustic theme.
+
+The finalized maps were then imported into Adobe InDesign for poster composition, layout refinement, and final presentation design.
+
+<ProjectFigure
+  src={domains}
+  alt="Custom coded-value domains created within an ArcGIS geodatabase to classify campground infrastructure, standardize attribute data entry, and support consistent feature digitization throughout the project."
+  caption="Custom coded-value domains created within an ArcGIS geodatabase to classify campground infrastructure, standardize attribute data entry, and support consistent feature digitization throughout the project."
+/>

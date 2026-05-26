@@ -1,0 +1,145 @@
+---
+title: 'ULLR Maps'
+plainTitle: "ULLR Maps"
+description: "A terrain-focused georeferenced ski map of Whistler Blackcomb designed to improve spatial awareness, terrain readability, and mountain navigation across the largest ski resort in North America."
+
+category: "Cartographic Design" #category from below
+
+# Valid categories:
+  #Interactive GIS,
+  #Data Visualization,
+  #Cartographic Design,
+  #Spatial Analysis,
+  #Terrain & Relief Visualization,
+
+listClass: "list-justified" #Refers to whether you want the unordered lists justified or not. Usually refers to paragaphs.
+
+heroType: "image" #One of image, video, or interactive-svg
+heroCaption: "A georeferenced orthophoto ski map of Whistler Blackcomb designed to improve terrain readability, spatial awareness, and mountain navigation across one of North America’s largest ski resorts."
+
+
+
+resources:
+  - label: "Launch Application"
+    url: "https://www.ullrmaps.com"
+    icon: "fa-solid fa-up-right-from-square"
+    description: "Open the interactive web mapping application."
+
+  
+
+---
+import secretBasinUllr from "./secret-basin-ullr.webp";
+import patrollers from "./patrollers.webp";
+import dataToMap from "./data-to-map.webp";
+import ullrLogo from "./ullr-logo.webp";
+import secretBasin from "./secret-basin.webp";
+import whistlerPeak from "./whistler-peak.webp";
+import resortMap from "./resort-map.webp";
+import PageSection from "../../../components/PageSection.astro";
+import ProjectFigure from "../../../components/ProjectFigure.astro";
+
+<ProjectFigure
+  src={ullrLogo}
+  alt="ULLR Maps Logo"
+  caption="ULLR Maps Logo"
+/>
+
+While working as a Professional Ski Patroller at Whistler Blackcomb since 2014—the largest ski resort in North America—I began developing ULLR Maps (www.ullrmaps.com) as a personal terrain reference tool. Operating daily within nearly 2,000 hectares of complex alpine terrain, I wanted a clearer, more structured way to visualize runs, lift infrastructure, and operational zones. The number one rule of being a ski patroller: know your mountain. What began as a self-reference system evolved into a publicly available, free-to-use terrain map designed to improve spatial understanding and navigation for the broader mountain community. The process of building ULLR Maps sparked my deeper interest in cartography, spatial systems, and ultimately formal GIS education.
+
+<PageSection
+  title={`<i class="fa-solid fa-mountain"></i> Always Know Your Mountain`}>
+
+ULLR Maps began as a personal project while working as a Professional Ski Patroller at Whistler Blackcomb in Whistler, BC, the largest ski resort in North America. One of the first lessons taught to new patrollers is simple: always know your mountain.  In a landscape as large and complex as Whistler Blackcomb, that knowledge goes far beyond memorizing trail names—it means understanding terrain, routes, hazards, and the mountain's structure. I began building my own map as a way to better understand that landscape, exploring how detailed cartography could reveal the terrain's complexity in ways traditional resort maps often did not.
+
+
+<ProjectFigure
+  src={whistlerPeak}
+  alt="The Peak of Whistler Mountain"
+  caption="The Peak of Whistler Mountain"
+/>
+</PageSection>
+<PageSection
+  title={`<i class="fa-solid fa-triangle-exclamation"></i> The Problem With Resort Maps`}  
+>
+Most ski resorts use illustrated trail maps. While visually striking and useful for general orientation, these maps often simplify or distort terrain, making them ambiguous for navigation. Distances, slope relationships, and terrain features are frequently adjusted for clarity and aesthetics, making it difficult to accurately pinpoint geographic locations on the mountain.
+
+
+<ProjectFigure
+  src={resortMap}
+  alt="Whistler Blackcomb Resort Trail Map 2025-2026"
+  caption="Whistler Blackcomb Resort Trail Map 2025-2026 (Source: Whistler Blackcomb)"
+/>
+</PageSection>
+
+<PageSection
+  title={`<i class="fa-solid fa-person-skiing"></i> Representing the Mountain as Terrain`}  
+>
+This project began with a simple goal: to create a map of Whistler Blackcomb terrain that accurately represented it. The intention was to reduce the ambiguity often present in illustrated resort maps and provide a clearer understanding of how the terrain is actually structured. While the mountain itself is always changing through snowfall, grooming, and seasonal conditions, the goal of this map is to represent that landscape as faithfully as possible within the limits of cartography.
+
+<ProjectFigure
+  src={secretBasin}
+  alt="Secret Basin, on the Whistler Blackcomb Trail Map 2025-2026 (Source: Whistler Blackcomb)"
+  caption="Secret Basin, on the Whistler Blackcomb Trail Map 2025-2026 (Source: Whistler Blackcomb)"
+/>
+<ProjectFigure
+  src={secretBasinUllr}
+  alt="Secret Basin, on the ULLR Maps Whistler Blackcomb Map"
+  caption="Secret Basin, on the ULLR Maps Whistler Blackcomb Map"
+/>
+Comparison of the Secret Basin area on the resort trail map (above) and ULLR
+Maps (below). The two maps reflect different priorities: the resort map
+simplifies terrain for general navigation, while ULLR Maps gives greater
+cartographic attention to the underlying terrain structure.
+
+</PageSection>
+
+<PageSection
+  title={`<i class="fa-solid fa-diagram-project"></i> From Data to Map`}  
+>
+
+ULLR Maps was developed using a combination of high-resolution imagery, elevation data, and operational knowledge of the mountain.
+
+The base imagery consists of 10 cm resolution orthophotography originally captured for the 2010 Winter Olympics. Because infrastructure on the mountain has changed since that time, portions of the imagery were manually edited to reflect updated lift alignments, buildings, and other features.
+
+The imagery was then georeferenced to establish a spatial framework for the map. Contours extracted from a digital elevation model (DEM) were used to represent the underlying terrain and provide topographic structure.
+
+Finally, contextual information—including ski runs, lift infrastructure, points of interest, and terrain labels—was added. Much of this information is informed by more than a decade of professional ski patrol experience on the mountain, as well as insights from other mountain professionals in patrol, mountain management, and grooming.
+
+<ProjectFigure
+  src={dataToMap}
+  alt="From The process from left to right: Final ULLR map, extracted contour
+  layer, and the base orthophotography used to build the basemap."
+  caption="The Process From left to right: Final ULLR map, extracted contour
+  layer, and the base orthophotography used to build the basemap."
+/>
+
+</PageSection>
+
+<PageSection
+  title={`<i class="fa-solid fa-people-group"></i> From Personal Project to Community Platform`}  
+>
+What began as a personal mapping project has grown into a collaborative platform supported by a community of mountain professionals and volunteers.
+
+ULLR Maps continues to evolve through feedback and review from individuals working directly in mountain operations, including ski patrol, search and rescue, grooming, and mountain management. Their insights help ensure that terrain features, routes, and place names reflect how the landscape is actually experienced and navigated in the field.
+
+Today, ULLR Maps is maintained by a small team of volunteers and supported by an active community of mountain users who contribute feedback and local knowledge to help improve the map. In recognition of its approach to mountain mapping, ULLR Maps received the 2018 Innovative Business of the Year Award as part of the  Whistler Excellence Awards , hosted by the Whistler Chamber of Commerce. The project continues to grow through  www.ullrmaps.com , where new tools and terrain resources are being developed.
+
+The platform now reaches more than 16,000 active users, providing a terrain-focused mapping resource designed to promote terrain literacy across more than 8,000 acres of complex mountain terrain.
+
+<strong>The ULLR Maps team:</strong> Alex Hordal, John Newberry, Michael Paterson, Jonathan Gormick
+
+<strong>Athlete Program:</strong> Rowan Gormick <i class="fa-brands fa-square-instagram"></i> (<Link
+href="https://www.instagram.com/rowangski/">@rowangski</Link>), Sierra Heggs  <i class="fa-brands fa-square-instagram"></i> (
+<Link href="https://www.instagram.com/sierras.mountainlife"> @sierras.mountainlife</Link> ) and Will Bird ( @willbird.1)  
+
+<strong>Social:</strong> <i class="fa-brands fa-facebook"></i> Facebook: <Link
+href="https://www.facebook.com/ullrmaps/">/ullrmaps</Link>  <i class="fa-brands
+fa-instagram"></i> Instagram: <Link
+href="https://www.instagram.com/ullrmaps/">@ullrmaps</Link>
+<ProjectFigure
+  src={patrollers}
+  alt="An image of Whistler Mountain ski patrollers assessing post-avalanche control results."
+  caption="Whistler Mountain ski patrollers assessing post-avalanche control results."
+/>
+
+</PageSection>

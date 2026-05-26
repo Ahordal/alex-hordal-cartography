@@ -6,159 +6,210 @@ import MainLayout from "../layouts/mainlayout.astro";
   <div class="page-grid">
     <!-- Left Column -->
     <aside class="page-title-column">
+      <nav class="project-path">
+        <span>/ </span>
+
+        <a href="/"> home </a>
+
+        <span>/</span>
+
+        <span class="project-slug"> contact </span>
+      </nav>
+
       <h1>Contact</h1>
 
       <p class="page-description">
         Interested in getting in touch? Drop me a line.
       </p>
-
-      
     </aside>
 
     <!-- Right Column -->
     <section class="page-content-column">
       <div class="page-section">
-        
+        <!-- Form -->
+        <form
+          id="contact-form"
+          class="contact-form"
+          method="POST"
+          action="/api/contact">
+          <div class="form-group">
+            <label for="name" class="contact-header">NAME</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              placeholder="Your Name"
+              required
+            />
+          </div>
 
-      
-<!-- Form -->
- <form id="contact-form" class="contact-form" method="POST" action="/api/contact">
+          <div class="form-group">
+            <label for="email" class="contact-header">EMAIL</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="you@example.com"
+              required
+            />
+          </div>
 
-  <div class="form-group">
-    <label for="name">NAME</label>
-    <input
-      type="text"
-      id="name"
-      name="name"
-      placeholder="Your Name"
-      required
-    />
-  </div>
+          <div class="form-group">
+            <label for="message" class="contact-header">MESSAGE</label>
+            <textarea
+              id="message"
+              name="message"
+              rows="8"
+              placeholder="Your message"
+              required></textarea>
+          </div>
+          <div class="hidden-honeypot" aria-hidden="true">
+            <label for="website">Website</label>
+            <input
+              type="text"
+              id="website"
+              name="website"
+              tabindex="-1"
+              autocomplete="off"
+            />
+          </div>
+          <button type="submit" class="submit-button"> SEND MESSAGE </button>
 
-  <div class="form-group">
-    <label for="email">EMAIL</label>
-    <input
-      type="email"
-      id="email"
-      name="email"
-      placeholder="you@example.com"
-      required
-    />
-  </div>
-
-  <div class="form-group">
-    <label for="message">MESSAGE</label>
-    <textarea
-      id="message"
-      name="message"
-      rows="8"
-      placeholder="Your message"
-      required
-    ></textarea>
-  </div>
-
-  <button type="submit" class="submit-button">
-    SEND MESSAGE
-  </button>
-
-  <div id="form-status" aria-live="polite" class="form-status-message" hidden></div>
-
-</form>
-       
-
-    
+          <div
+            id="form-status"
+            aria-live="polite"
+            class="form-status-message"
+            hidden>
+          </div>
+        </form>
+      </div>
     </section>
   </div>
-</MainLayout>
 
-<!-- This script moves the success message to the bottom of the form -->
+  <!-- This script moves the success message to the bottom of the form -->
 
-<script is:inline>
-  const form = document.getElementById('contact-form');
-  const statusEl = document.getElementById('form-status');
+  <script is:inline>
+    // Record when the page was loaded
+    const pageLoadTime = Date.now();
 
-  // Guard clause: ensure required elements exist
-  if (!(form instanceof HTMLFormElement) || !statusEl) {
-    console.error('Contact form elements not found.');
-  } else {
+    const form = document.getElementById("contact-form");
+    const statusEl = document.getElementById("form-status");
 
-    // Helper function to clear status messages
-    const clearStatus = () => {
-      statusEl.textContent = '';
-      statusEl.className = 'form-status-message';
-      statusEl.setAttribute('hidden', '');
-    };
+    // Guard clause: ensure required elements exist
+    if (!(form instanceof HTMLFormElement) || !statusEl) {
+      console.error("Contact form elements not found.");
+    } else {
+      // Clear status messages
+      const clearStatus = () => {
+        statusEl.textContent = "";
+        statusEl.className = "form-status-message";
+        statusEl.setAttribute("hidden", "");
+      };
 
-    // Clear status whenever user edits the form
-    form.addEventListener('input', clearStatus);
+      // Clear status whenever user edits the form
+      form.addEventListener("input", clearStatus);
 
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
 
-      // Optional: disable submit button during processing
-      const submitButton = form.querySelector(
-        'button[type="submit"]'
-      );
+        // Honeypot security check
+        const honeypot = form.querySelector('input[name="website"]');
 
-      if (submitButton instanceof HTMLButtonElement) {
-        submitButton.disabled = true;
-      }
+        if (
+          honeypot instanceof HTMLInputElement &&
+          honeypot.value.trim() !== ""
+        ) {
+          // Quietly fake success for bots
+          statusEl.textContent = "Message sent successfully!";
 
-      // Initial UI feedback
-      statusEl.textContent = 'Sending message...';
-      statusEl.className = 'form-status-message processing';
-      statusEl.removeAttribute('hidden');
+          statusEl.className = "form-status-message success";
 
-      const formData = new FormData(form);
-
-      try {
-        const response = await fetch(form.action, {
-          method: form.method,
-          body: formData,
-        });
-
-        // Defensive JSON parsing fallback
-        let data = {};
-
-        try {
-          data = await response.json();
-        } catch {
-          // If server returns invalid JSON or crashes
-          data = {};
-        }
-
-        if (response.ok) {
-          statusEl.textContent =
-            data.message || 'Message sent successfully!';
-
-          statusEl.className =
-            'form-status-message success';
+          statusEl.removeAttribute("hidden");
 
           form.reset();
-        } else {
-          statusEl.textContent =
-            data.message ||
-            'An error occurred. Please try again.';
 
-          statusEl.className =
-            'form-status-message error';
+          return;
         }
 
-      } catch (error) {
-        console.error('Network Error:', error);
+        // Time-to-submit security check
+        const timeElapsed = (Date.now() - pageLoadTime) / 1000;
 
-        statusEl.textContent =
-          'Connection error. Please check your network and try again.';
+        if (timeElapsed < 4) {
+          statusEl.textContent = "Message sent successfully!";
 
-        statusEl.className =
-          'form-status-message error';
+          statusEl.className = "form-status-message success";
 
-      } finally {
-        // Re-enable button after request completes
+          statusEl.removeAttribute("hidden");
+
+          form.reset();
+
+          return;
+        }
+
+        // Disable submit button
+        const submitButton = form.querySelector('button[type="submit"]');
+
         if (submitButton instanceof HTMLButtonElement) {
-          submitButton.disabled = false;
+          submitButton.disabled = true;
         }
-      }
-    });
-  }
-</script>
+
+        // Initial UI feedback
+        statusEl.textContent = "Sending message...";
+
+        statusEl.className = "form-status-message processing";
+
+        statusEl.removeAttribute("hidden");
+
+        // Build form payload
+        const formData = new FormData(form);
+
+        try {
+          const response = await fetch(form.action, {
+            method: form.method,
+            body: formData,
+          });
+
+          // Defensive JSON parsing
+          let data = {};
+
+          try {
+            data = await response.json();
+          } catch {
+            data = {};
+          }
+
+          // Success response
+          if (response.ok) {
+            statusEl.textContent = data.message || "Message sent successfully!";
+
+            statusEl.className = "form-status-message success";
+
+            form.reset();
+
+            // Server error response
+          } else {
+            statusEl.textContent =
+              data.message || "An error occurred. Please try again.";
+
+            statusEl.className = "form-status-message error";
+          }
+
+          // Network failure
+        } catch (error) {
+          console.error("Network Error:", error);
+
+          statusEl.textContent =
+            "Connection error. Please check your network and try again.";
+
+          statusEl.className = "form-status-message error";
+
+          // Re-enable button
+        } finally {
+          if (submitButton instanceof HTMLButtonElement) {
+            submitButton.disabled = false;
+          }
+        }
+      });
+    }
+  </script></MainLayout
+>

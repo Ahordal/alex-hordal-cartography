@@ -1,0 +1,77 @@
+---
+title: 'Map<br>Projections<span class="project-subtitle">A Comparative Look</span>'
+plainTitle: "A Comparative Look at Map Projections"
+
+description: "A large-format cartographic poster exploring projection distortion, spatial properties, and regional mapping applications across six coordinate reference systems."
+
+category: "Cartographic Design"
+
+# Valid categories:
+  #Interactive GIS,
+  #Data Visualization,
+  #Cartographic Design,
+  #Spatial Analysis,
+  #Terrain & Relief Visualization,
+
+technologies:
+  - ArcGIS Pro
+ 
+
+tags:
+  - Map Projections
+  - Cartographic Design
+  - Reference Systems
+  - Projection Distortion
+  - Geographic Visualization
+
+
+listClass: "list-justified"
+
+appliedSkills:
+  - Designed and produced a comparative cartographic poster examining projection distortion and regional suitability.
+  - Applied projection theory and spatial reference system knowledge to evaluate regional and global mapping applications.
+  - Developed custom layouts integrating projection metadata, cartographic hierarchy, and explanatory annotation.
+  - Configured and visualized multiple coordinate reference systems and projection properties within ArcGIS Pro.
+  - Refined typography, layout composition, and visual hierarchy in Adobe Illustrator for large-format print presentation.
+
+heroType: "image"
+
+heroCaption: "A comparative cartographic poster examining the spatial properties, distortion characteristics, and regional suitability of six map projections."
+
+resources:
+  - label: "High Resolution PDF"
+    url: "https://assets.alexhordal.ca/P1_Poster_ACH.pdf"
+    icon: "fa-solid fa-file-pdf"
+    description: "Download the print-ready PDF (CMYK, 85 MB)"
+
+  - label: "High Resolution .WEBP"
+    url: "https://assets.alexhordal.ca/P1_Poster_ACH.webp"
+    icon: "fa-solid fa-image"
+    description: "Download the full resolution poster (RGB, 1.3MB)"
+
+---
+import equalArea from "./equal-area.webp";
+import ProjectFigure from "../../../components/ProjectFigure.astro";
+
+This project explored the visual and functional differences between several commonly used map projections through the design of a comparative cartographic poster. The poster examines how projection choice affects distortion, spatial properties, and geographic representation across a variety of regional and global mapping contexts. Each projection was selected to demonstrate different cartographic priorities, including area preservation, conformality, compromise projection design, and polar mapping applications.
+
+<ProjectFigure
+  src={equalArea}
+  alt="US National Atlas Equal Area (EPSG: 2163), a Lambert Azimuthal Equal Area projection centered at 45°N, 100°W and designed to preserve area relationships across the continental United States."
+  caption="US National Atlas Equal Area (EPSG: 2163), a Lambert Azimuthal Equal Area projection centered at 45°N, 100°W and designed to preserve area relationships across the continental United States."
+/>
+
+
+The project focused on six projections associated with different geographic
+regions and mapping purposes, including Brazil Polyconic, US National Atlas
+Equal Area, modified UTM mapping for Indonesia, Winkel Tripel, Asia Lambert
+Conformal Conic, and South Pole Lambert Azimuthal Equal Area projections. Each
+section of the poster includes projection metadata, developable surface type,
+preserved and distorted properties, and a short written analysis discussing
+regional suitability and cartographic tradeoffs.
+
+The workflow was completed primarily in ArcGIS Pro, where projection systems were configured, geographic extents were developed, and projection behavior was evaluated visually across different world regions. The final poster layout, typography, annotation, and visual refinement were completed in Adobe Illustrator.
+
+A major design consideration throughout the project involved maintaining consistency between projection panels while still allowing each map to visually communicate the unique characteristics of its associated coordinate reference system. Projection extent, graticule presentation, typography, and regional highlighting were carefully standardized to create a cohesive comparative layout while emphasizing the differing geometric effects produced by each projection.
+
+The final result was a large-format educational cartographic poster intended to communicate foundational concepts related to map projection theory, distortion, and spatial representation through a visually structured comparative format.

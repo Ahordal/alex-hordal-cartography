@@ -1,0 +1,128 @@
+---
+title: 'Severe<br>Convective<br>Storm<br>Activity<span class="project-subtitle">In The United States (2014-2023)</span>'
+plainTitle: "Convective Storms"
+description: "A statistical cartographic poster visualizing the spatial distribution and impacts of severe convective storm activity across the contiguous United States between 2014 and 2023 using NOAA Storm Events Database records."
+
+category: "Data Visualization"
+
+# Valid categories:
+  #Interactive GIS,
+  #Data Visualization,
+  #Cartographic Design,
+  #Spatial Analysis,
+  #Terrain & Relief Visualization,
+
+technologies:
+  - ArcGIS Pro
+  - Adobe Illustrator
+
+tags:
+  - Severe Weather
+  - Convective Storms
+  - NOAA
+  - Thematic Mapping
+  - Statistical Cartography
+  - Dot Density Mapping
+  - Choropleth Mapping
+  - Proportional Symbols
+  - ArcGIS Pro
+
+listClass: "list-justified"
+
+appliedSkills:
+  - Processed and symbolized large NOAA Storm Events datasets using thematic cartographic techniques.
+  - Applied dot density, choropleth, and proportional symbol mapping methods to visualize spatial patterns and impacts.
+  - Normalized county-level storm damage data to improve regional comparability.
+  - Designed a multi-panel statistical poster with emphasis on visual hierarchy and cartographic clarity.
+  - Refined symbology, labeling, and layout composition to manage dense spatial information effectively.
+
+heroType: "image"
+heroCaption: "Statistical cartographic poster visualizing severe convective storm frequency, injuries, and economic impacts across the contiguous United States."
+
+video: Remove if not used
+
+resources:
+  - label: "High Resolution PDF"
+    url: "https://assets.alexhordal.ca/Statistical_Poster_Project_ACH.pdf"
+    icon: "fa-solid fa-file-pdf"
+    description: "Download the print-ready PDF (CMYK, 27 MB)"
+
+  - label: "High Resolution .WEBP"
+    url: "https://assets.alexhordal.ca/Statistical_Poster_Project_ACH.webp"
+    icon: "fa-solid fa-image"
+    description: "Download the full resolution map (RGB, 8MB)"
+  
+  - label: "Project Overview Video"
+    url: "https://assets.alexhordal.ca/Statistical_Poster_Project_ACH.mp4"
+    icon: "fa-solid fa-video"
+    description: "Watch the full project walkthrough and methodology overview (14 min, MP4, 40 MB)"
+
+---
+
+import choropleth from "./choropleth.webp";
+import dotDensity from "./dot-density.webp";
+import graduatedSymbols from "./graduated-symbols.webp";
+import proportionalSymbols from "./proportional-symbols.webp";
+import ProjectFigure from "../../../components/ProjectFigure.astro";
+
+
+
+This project explores the spatial distribution and impacts of severe convective
+storm activity across the contiguous United States between 2014 and 2023 through
+a series of thematic cartographic visualizations. Developed as a large-format
+statistical poster, the project examines storm frequency, storm-related
+injuries, and normalized property damage patterns using multiple complementary
+mapping techniques.
+
+<ProjectFigure
+  src={dotDensity}
+  alt="Dot density map showing the spatial distribution of severe convective storm events across the contiguous United States between 2014 and 2023."
+  caption="Dot density map visualizing the spatial distribution of severe convective storm events recorded between 2014 and 2023. Each dot represents 15 storm events and was randomly distributed within county polygons to emphasize broad regional storm activity patterns."
+/>
+
+The project was designed to communicate large and spatially uneven environmental
+datasets in a visually accessible and analytically meaningful way. Particular
+emphasis was placed on balancing statistical clarity with cartographic
+readability while exploring how different thematic mapping methods influence the
+interpretation of geographic patterns and risk.
+
+The project workflow began with acquiring county and state boundary datasets
+from the <Link
+href="https://www.census.gov/geographies/mapping-files/time-series/geo/tiger-line-file.html">U.S.
+Census Bureau TIGER/Line database</Link> alongside severe convective storm
+records from the <Link href="https://www.ncei.noaa.gov/stormevents/">NOAA Storm
+Events Database</Link> covering the years 2014–2023. Additional demographic
+information was obtained from the 2020 Census through the <Link href="https://www.ipums.org/projects/ipums-nhgis">IPUMS NHGIS</Link>
+dataset to support normalization and comparative analysis.
+
+<ProjectFigure
+  src={choropleth}
+  alt="Choropleth map showing severe convective storm events per 1,000 square kilometres across the contiguous United States."
+  caption="Choropleth map displaying normalized severe convective storm frequency per 1,000 km² at the county level. Natural Breaks (Jenks) classification was used to highlight regional variations in storm density while maintaining visual readability across the contiguous United States."
+/>
+
+A custom Python workflow developed with AI-assisted scripting support was used to clean, process, and restructure the raw datasets into analysis-ready tables, including County_Population_2020, Storm_Events_Summary, and Convective_Storm_Events. This process involved removing unnecessary attributes, standardizing field structures, converting shorthand NOAA damage values (e.g., 1M, 1B) into full numeric USD values, and preparing records for geospatial joins and statistical aggregation.
+
+<ProjectFigure
+  src={proportionalSymbols}
+  alt="Proportional symbol map showing injury-causing severe convective storm events across the contiguous United States."
+  caption="Proportional symbol map illustrating the number of injury-causing severe convective storm events recorded within each county between 2014 and 2023. Symbol size scales according to the frequency of injury-causing events to emphasize regions with elevated human impact."
+/>
+
+All spatial datasets were projected to EPSG:5070 — NAD 1983 Contiguous USA
+Albers to ensure consistent area representation and improve visualization across
+the contiguous United States. TIGER/Line shapefiles were imported into ArcGIS
+Pro, validated for extent and geometry, and exported into simplified state and
+county feature classes within the project geodatabase. Attribute joins were
+performed using GEOID identifiers to associate cleaned population data with
+county polygons, and SQL queries were used to isolate only the contiguous United
+States for analysis (Alaska, Hawaiʻi and US territories were not included).
+
+Several custom attribute fields were created to support statistical mapping and aggregation workflows. These included a combined FIPS5 county identifier, total injury calculations, injury-event flags, normalized property and crop damage fields converted into full USD values, and total storm damage metrics. Additional event-count fields and summary statistics tables were generated to support thematic mapping and comparative visualization throughout the poster series.
+
+<ProjectFigure
+  src={graduatedSymbols}
+  alt="Graduated symbol map showing per-capita severe convective storm damage across the contiguous United States."
+  caption="Graduated symbol map visualizing normalized severe convective storm damage per capita at the county level. Larger symbols indicate counties experiencing disproportionately high economic impacts relative to population size."
+/>
+

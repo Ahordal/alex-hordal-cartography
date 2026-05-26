@@ -21,7 +21,7 @@ const projects = defineCollection({
       "Terrain & Relief Visualization",
     ]),
 
-    technologies: z.array(z.string()),
+    technologies: z.array(z.string()).optional(),
     appliedSkills: z.array(z.string()).optional(),
     downloadFile: z.string().optional(),
     downloadLabel: z.string().optional(),

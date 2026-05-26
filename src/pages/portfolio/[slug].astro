@@ -29,6 +29,7 @@ const { Content } = await render(project);
 <MainLayout
   id="top"
   title={`${project.data.plainTitle} | Alex Hordal`}
+  description={project.data.description}
   isHome={false}
 >
 
@@ -113,35 +114,43 @@ const { Content } = await render(project);
 
       </PageSection>
 
-      <PageSection
-        title={`<i class="fa-solid fa-microchip section-icon"></i> Technology Stack`}
-        id="stack"
-      >
+      {
+        project.data.technologies?.length && (
+          <PageSection
+            title={`<i class="fa-solid fa-microchip section-icon"></i> Technology Stack`}
+            id="stack"
+          >
 
-        <ul class={`list ${project.data.listClass || ""}`}>
+            <ul class={`list ${project.data.listClass || ""}`}>
 
-          {project.data.technologies.map((tech) => (
-            <li>{tech}</li>
-          ))}
+              {project.data.technologies.map((tech) => (
+                <li>{tech}</li>
+              ))}
 
-        </ul>
+            </ul>
 
-      </PageSection>
+          </PageSection>
+        )
+      }
 
-      <PageSection
-        title={`<i class="fa-solid fa-screwdriver section-icon"></i> Applied Skills`}
-        id="applied-skills"
-      >
+      {
+        project.data.appliedSkills?.length && (
+          <PageSection
+            title={`<i class="fa-solid fa-screwdriver section-icon"></i> Applied Skills`}
+            id="applied-skills"
+          >
 
-        <ul class="list-justified">
+            <ul class="list-justified">
 
-          {project.data.appliedSkills?.map((skill) => (
-            <li>{skill}</li>
-          ))}
+              {project.data.appliedSkills.map((skill) => (
+                <li>{skill}</li>
+              ))}
 
-        </ul>
+            </ul>
 
-      </PageSection>
+          </PageSection>
+        )
+      }
 
       <a
         href="#top"

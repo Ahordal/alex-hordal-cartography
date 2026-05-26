@@ -1,25 +1,42 @@
 ---
 import "../styles/global.css";
+
 const {
   title = "Alex Hordal | Cartographer & GIS Specialist",
+
+  description = "Portfolio of Alex Hordal, a cartographer and GIS specialist focused on terrain visualization, cartographic design, spatial analysis, and geospatial storytelling.",
+
+  socialImage = "/social-preview.webp",
+
   isHome = false,
 } = Astro.props;
+
 const { pathname } = Astro.url;
+
 const isActive = (path: string) => pathname === path || pathname === path + "/";
 ---
 
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <script
-      src="https://kit.fontawesome.com/8b0dc5e073.js"
-      crossorigin="anonymous"></script>
-    <title>{title}</title>
-  </head>
+<head>
+  <meta charset="utf-8" />
+  <link rel="canonical" href={Astro.url} />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width" />
+  <meta name="description" content={description} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={Astro.url} />
+  <meta property="og:image" content={socialImage} />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="generator" content={Astro.generator} />
+
+  <script src="https://kit.fontawesome.com/8b0dc5e073.js" crossorigin="anonymous"></script>
+
+  <title>{title}</title>
+</head>
+
   <body class="site-root">
     <header class="main-nav">
       <nav class="nav-container">
@@ -31,14 +48,20 @@ const isActive = (path: string) => pathname === path || pathname === path + "/";
 
         <div class="nav-links">
           <!-- Apply the conditional class 'active' -->
-          <a href="/" class={isActive("/") ? "active" : ""}>Home</a>
-          <a href="/about" class={isActive("/about") ? "active" : ""}>About</a>
-          <a href="/portfolio" class={isActive("/portfolio") ? "active" : ""}
-            >Portfolio</a
-          >
-          <a href="/contact" class={isActive("/contact") ? "active" : ""}
-            >Contact</a
-          >
+
+          <a href="/" class={isActive("/") ? "active" : ""}> Home </a>
+
+          <a href="/about" class={isActive("/about") ? "active" : ""}>
+            About
+          </a>
+
+          <a href="/portfolio" class={isActive("/portfolio") ? "active" : ""}>
+            Portfolio
+          </a>
+
+          <a href="/contact" class={isActive("/contact") ? "active" : ""}>
+            Contact
+          </a>
         </div>
       </nav>
     </header>
@@ -50,53 +73,60 @@ const isActive = (path: string) => pathname === path || pathname === path + "/";
     <footer class="main-footer">
       <div class="footer-container">
         <div class="footer-group">
-          <span class="mono">LOC: DARTMOUTH, NS</span> <i class="fa-brands fa-canadian-maple-leaf"></i>
-          <span class="mono separator">//</span>
-          <span class="mono">44.66° N, 63.56° W</span>
+          LOC: DARTMOUTH, NS
+          <i class="fa-brands fa-canadian-maple-leaf"></i>
+          // 44.66° N, 63.56° W
         </div>
 
         <nav class="footer-group">
           <a
             href="https://www.ullrmaps.com"
             target="_blank"
-            rel="noopener noreferrer">ULLR Maps</a
-          >
-          <span class="mono separator">|</span>
-          <a href="/colophon" class={isActive("/colophon") ? "active" : ""}
-            >Colophon</a
-          >
-          <span class="mono separator">|</span>
+            rel="noopener noreferrer">
+            ULLR Maps
+          </a>
+
+          |
+
+          <a href="/colophon" class={isActive("/colophon") ? "active" : ""}>
+            Colophon
+          </a>
+
+          |
+
           <div class="social-links">
             <a
-              href="https://linkedin.com/in/yourprofile"
+              href="https://www.linkedin.com/in/alex-hordal/"
               target="_blank"
-              rel="noopener noreferrer"><i class="fa-brands fa-linkedin"></i></a
-            >
+              rel="noopener noreferrer">
+              <i class="fa-brands fa-linkedin"></i>
+            </a>
+
             <a
               href="https://github.com/Ahordal"
               target="_blank"
-              rel="noopener noreferrer"><i class="fa-brands fa-github"></i></a
-            >
-            <a
-              href="https://instagram.com/yourhandle"
-              target="_blank"
-              rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i></i></a
-            >
+              rel="noopener noreferrer">
+              <i class="fa-brands fa-github"></i>
+            </a>
           </div>
-          <span class="mono separator">|</span>
-          <span class="mono">© ALEX HORDAL 2026</span>
+
+          |
         </nav>
+
+        © ALEX HORDAL 2026
       </div>
     </footer>
-
-    <script>
-      // Simple toggle logic
-      const menuBtn = document.querySelector(".menu-toggle");
-      const navLinks = document.querySelector(".nav-links");
-
-      menuBtn?.addEventListener("click", () => {
-        navLinks?.classList.toggle("is-active");
-      });
-    </script>
   </body>
+
+  <script>
+    // Simple toggle logic
+
+    const menuBtn = document.querySelector(".menu-toggle");
+
+    const navLinks = document.querySelector(".nav-links");
+
+    menuBtn?.addEventListener("click", () => {
+      navLinks?.classList.toggle("is-active");
+    });
+  </script>
 </html>

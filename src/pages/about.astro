@@ -1,13 +1,44 @@
 ---
 import MainLayout from "../layouts/mainlayout.astro";
+import PageSection from "../components/PageSection.astro";
+import ProjectFigure from "../components/ProjectFigure.astro";
+import ProjectResources from "../components/ProjectResources.astro";
+
 import { Image } from "astro:assets";
+
 import bioPic from "../assets/images/about/biopic.webp";
+
+const resources = [
+  {
+    label: "Download My Resume",
+    url: "https://assets.alexhordal.ca/Alex_Hordal_GIS_Resume.docx",
+    icon: "fa-solid fa-file-pdf",
+    description: "Professional resume and experience overview",
+  },
+  {
+    label: "Explore My Story Map",
+    url: "https://arcg.is/0zL0ie",
+    icon: "fa-solid fa-book-open",
+    description:
+      "Background, field experience, and transition into GIS and cartography",
+  },
+];
 ---
 
-<MainLayout title="About | Alex Hordal" isHome={false}>
+<MainLayout id="top" title="About | Alex Hordal" isHome={false}>
   <div class="page-grid">
     <!-- Left Column -->
     <aside class="page-title-column">
+      <nav class="project-path">
+        <span>/ </span>
+
+        <a href="/"> home </a>
+
+        <span>/</span>
+
+        <span class="project-slug"> about </span>
+      </nav>
+
       <h1>About</h1>
 
       <p class="page-description">
@@ -17,11 +48,11 @@ import bioPic from "../assets/images/about/biopic.webp";
 
       <div class="page-section">
         <h2>Background</h2>
-        <Image
+
+        <ProjectFigure
           src={bioPic}
-          alt="Biography photo"
           alt="Alex and Ukee"
-          class="page-image"
+          caption="Alex and Ukee in Nova Scotia"
         />
 
         <p>
@@ -41,14 +72,14 @@ import bioPic from "../assets/images/about/biopic.webp";
         <p>
           During this time, I also began developing
           <a
-            href="https:www.ullrmaps.com"
+            href="https://www.ullrmaps.com"
             target="_blank"
-            rel="noopener noreferrer">ULLR Maps</a
-          >, a terrain-focused mapping project originally created as a personal
-          reference tool to better understand the complexity of Whistler
-          Blackcomb's terrain. The project eventually grew into a public mapping
-          platform and played an important role in my decision to pursue
-          cartography and geographic information systems professionally.
+            rel="noopener noreferrer"
+          >ULLR Maps</a>, a terrain-focused mapping project originally created as a
+          personal reference tool to better understand the complexity of
+          Whistler Blackcomb's terrain. The project eventually grew into a
+          public mapping platform and played an important role in my decision to
+          pursue cartography and geographic information systems professionally.
         </p>
 
         <p>
@@ -58,43 +89,33 @@ import bioPic from "../assets/images/about/biopic.webp";
           and make informed decisions in real-world situations.
         </p>
 
-        <p>
-          Download my resume |
-          <a
-            href="https://arcg.is/0zL0ie"
-            target="_blank"
-            rel="noopener noreferrer">
-            Explore my story
-          </a>
-        </p>
+        <ProjectResources resources={resources} />
       </div>
     </aside>
 
     <!-- Right Column -->
     <section class="page-content-column">
-      <div class="page-section">
-        <h2>Education</h2>
+      <PageSection
+        title={`<i class="fa-solid fa-graduation-cap section-icon"></i> Education`}
+        id="education">
+        <ul class="list">
+          <li>
+            <span class="title">
+              Diploma, GIS — Cartography &amp; Geovisualization<br />
+            </span>
 
-        <div>
-          <ul class="list">
-            <li>
-              <span class="title">
-                Diploma, GIS — Cartography &amp; Geovisualization<br />
-              </span>
+            <span class="institution">
+              Centre of Geographic Sciences (COGS), NSCC — 2026
+            </span>
+          </li>
 
-              <span class="institution">
-                Centre of Geographic Sciences (COGS), NSCC — 2026
-              </span>
-            </li>
+          <li>BA, Geography — Queen's University — 2003</li>
+        </ul>
+      </PageSection>
 
-            <li>BA, Geography — Queen's University  — 2003</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="page-section">
-        <h2>Technical Profile</h2>
-
+      <PageSection
+        title={`<i class="fa-solid fa-microchip section-icon"></i> Technical Profile`}
+        id="technical-profile">
         <div class="page-subsection">
           <h3>GIS Platforms</h3>
 
@@ -105,7 +126,7 @@ import bioPic from "../assets/images/about/biopic.webp";
             <li>QGIS</li>
           </ul>
         </div>
-        <!-- Web Mapping & Development -->
+
         <div class="page-subsection">
           <h3>Web Mapping & Development</h3>
 
@@ -119,7 +140,7 @@ import bioPic from "../assets/images/about/biopic.webp";
             <li>Mapbox Studio</li>
           </ul>
         </div>
-        <!-- Programming & GIS Automation -->
+
         <div class="page-subsection">
           <h3>Programming & GIS Automation</h3>
 
@@ -128,7 +149,7 @@ import bioPic from "../assets/images/about/biopic.webp";
             <li>ArcGIS Pro ModelBuilder (foundational)</li>
           </ul>
         </div>
-        <!-- Databases & Data Management -->
+
         <div class="page-subsection">
           <h3>Databases & Data Management</h3>
 
@@ -138,6 +159,7 @@ import bioPic from "../assets/images/about/biopic.webp";
             <li>Relational database design (foundational)</li>
           </ul>
         </div>
+
         <div class="page-subsection">
           <h3>Cartography & Geovisualization</h3>
 
@@ -146,14 +168,17 @@ import bioPic from "../assets/images/about/biopic.webp";
               Terrain visualization including DEM and topo-bathymetric elevation
               processing, shaded relief design, and elevation modelling.
             </li>
+
             <li>Thematic cartography and spatial data representation</li>
+
             <li>Cartographic hierarchy, typography, and layout composition</li>
+
             <li>Colour theory and multivariate symbology design</li>
-            <li>Thematic cartography and spatial data representation</li>
+
             <li>Narrative cartography and data-driven map design</li>
           </ul>
         </div>
-        <!-- Design & Visualization Tools -->
+
         <div class="page-subsection">
           <h3>Design & Visualization Tools</h3>
 
@@ -165,88 +190,94 @@ import bioPic from "../assets/images/about/biopic.webp";
             <li>Blender (foundational)</li>
           </ul>
         </div>
-      </div>
+      </PageSection>
 
-      <div class="page-section">
-        <h2>Professional Credentials</h2>
-
+      <PageSection
+        title={`<i class="fa-solid fa-id-card section-icon"></i> Professional Credentials`}
+        id="credentials">
         <div class="page-subsection">
           <h3>Emergency Response & Operations</h3>
 
           <ul class="list">
             <li>
-              <span class="bold"
-                >Fire Fighter I & II (NFPA 1001)</span
-              > — Justice Institute of British Columbia
+              <span class="bold"> Fire Fighter I & II (NFPA 1001) </span>
+              — Justice Institute of British Columbia
             </li>
 
             <li>
-              <span class="bold"
-                >Full Service Fire Fighter Operations Program</span
-              > — Justice Institute of British Columbia
+              <span class="bold">
+                Full Service Fire Fighter Operations Program
+              </span>
+              — Justice Institute of British Columbia
             </li>
 
             <li>
-              <span class="bold">Volunteer Recruit Training</span> — Halifax
-              Regional Fire & Emergency
+              <span class="bold"> Volunteer Recruit Training </span>
+              — Halifax Regional Fire & Emergency
             </li>
           </ul>
         </div>
-        <!-- Avalanche & Mountain Operations -->
+
         <div class="page-subsection">
           <h3>Avalanche & Mountain Operations</h3>
 
           <ul class="list">
             <li>
-              <span class="bold">Avalanche Operations Level 1</span> —
-              Canadian Avalanche Association
+              <span class="bold"> Avalanche Operations Level 1 </span>
+              — Canadian Avalanche Association
             </li>
+
             <li>
-              <span class="bold"
-                >Avalanche Skills Training Level 1</span
-              > - Avalanche Canada
+              <span class="bold"> Avalanche Skills Training Level 1 </span>
+              — Avalanche Canada
             </li>
+
             <li>
-              <span class="bold">Introduction to Weather</span> - Canadian
-              Avalanche Association
+              <span class="bold"> Introduction to Weather </span>
+              — Canadian Avalanche Association
             </li>
           </ul>
         </div>
 
-        <!-- Military Training & Service -->
         <div class="page-subsection">
           <h3>Military Training & Service</h3>
 
           <ul class="list">
             <li>
-              <span class="bold">Basic Military Qualification</span> —
-              Canadian Armed Forces
+              <span class="bold"> Basic Military Qualification </span>
+              — Canadian Armed Forces
             </li>
+
             <li>
-              <span class="bold"
-                >Basic Military Officer Qualification</span
-              > — Canadian Armed Forces
+              <span class="bold"> Basic Military Officer Qualification </span>
+              — Canadian Armed Forces
             </li>
           </ul>
         </div>
-      </div>
-      <!-- Additional Experience & Training -->
-      <div class="page-subsection">
-        <h3>Additional Experience & Training</h3>
 
-        <ul class="list">
-          <li>
-            <span class="bold">Class 3 License</span> — Valley Driving
-            School
-          </li>
-          <li>
-            <span class="bold">IRATA Level 1</span> — Pacific Ropes (former)
-          </li>
-          <li>
-            <span class="bold">OFA3</span> — St. John Ambulance (former)
-          </li>
-        </ul>
-      </div>
+        <div class="page-subsection">
+          <h3>Additional Experience & Training</h3>
+
+          <ul class="list">
+            <li>
+              <span class="bold"> Class 3 License </span>
+              — Valley Driving School
+            </li>
+
+            <li>
+              <span class="bold"> IRATA Level 1 </span>
+              — Pacific Ropes (former)
+            </li>
+
+            <li>
+              <span class="bold"> OFA3 </span>
+              — St. John Ambulance (former)
+            </li>
+          </ul>
+        </div>
+      </PageSection>
+
+      <a href="#top" class="back-to-top"> ↑ Back to top </a>
     </section>
   </div>
 </MainLayout>
