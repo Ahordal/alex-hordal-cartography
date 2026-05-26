@@ -6,7 +6,7 @@
 }
 
 :root {
- /*///// BACKGROUND COLOURS /////*/
+  /*///// BACKGROUND COLOURS /////*/
   --bg: #f1f1f1;
   --bg-alt: #f7f7f7;
   --bg-card: 0, 0, 0;
@@ -18,14 +18,13 @@
   --text-black: #000;
   --text-red: #d22828;
   --text-orange: #eb9b1f;
-  --text-h1:#383838;
+  --text-h1: #383838;
   --text-h2: #494949;
-  --text-h3:#5b5b5b;
-  --text-h4:#6e6e6e;
-  --text-captions:#757679;
-  --text-description:#757679;
-  --text-supporting:#757679;
-
+  --text-h3: #5b5b5b;
+  --text-h4: #6e6e6e;
+  --text-captions: #757679;
+  --text-description: #757679;
+  --text-supporting: #757679;
 
   /*///// LINK COLOURS /////*/
 
@@ -57,7 +56,6 @@
   /*///// LAYOUT BOUNDARIES /////*/
 
   --max-width: 1600px;
-
 
   /*///// TYPOGRAPHY /////*/
 
@@ -106,7 +104,8 @@ body {
   margin-bottom: 2rem;
   text-align: center;
 }
-.nyc-mark span { /* Heart colour in I Love NY*/
+.nyc-mark span {
+  /* Heart colour in I Love NY*/
   color: #d62828;
 }
 /*///////////////////////////////////////////// HEADERS //////////////////////////////////////////////*/
@@ -117,7 +116,7 @@ h1 {
   line-height: 0.85;
   text-transform: uppercase;
   margin: 0;
-   color: var(--text-h4);
+  color: var(--text-h4);
 }
 .home-content h1 {
   font-size: clamp(3rem, 15vw, 12rem);
@@ -126,7 +125,8 @@ h1 {
   margin: 0;
   color: var(--bg);
 }
-.hero-subtitle { /* Front page subtitle */
+.hero-subtitle {
+  /* Front page subtitle */
   font-size: clamp(1.6rem, 2vw, 1.6rem);
   color: var(--text-h4);
   font-weight: var(--w-600);
@@ -135,12 +135,13 @@ h1 {
   opacity: 0.85;
   text-transform: uppercase;
 }
-.nudge { /*Nudges H1 titles */
+.nudge {
+  /*Nudges H1 titles */
   display: inline-block;
   margin-left: -0.08em;
 }
 h2 {
-color: var(--text-h2);
+  color: var(--text-h2);
   margin-bottom: var(--space-s);
   border-bottom: var(--line-thin);
   padding-bottom: var(--space-xs);
@@ -168,19 +169,19 @@ label {
   text-transform: uppercase;
   color: var(--text-h3);
   letter-spacing: 0.2em;
-  
-  font-family: var(--font-open-sans);
 
+  font-family: var(--font-open-sans);
 }
-h4 {  
+h4 {
   font-size: 1rem;
   font-variation-settings: "wght" 600;
-  text-transform: uppercase;  
+  text-transform: uppercase;
   color: var(--text-h4);
   letter-spacing: 0.1rem;
 }
 
-.project-subtitle { /* Second line in the project title */
+.project-subtitle {
+  /* Second line in the project title */
   color: var(--text-h1);
   display: block;
   font-size: 0.35em;
@@ -207,21 +208,20 @@ img {
 }
 .project-figure {
   margin: 2rem 0;
-  
+
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
 }
-.project-
-
-.figure-under-heading {
+.project- .figure-under-heading {
   /* Images directly under a heading - avoids double horizontal rules */
   border-top: none;
   padding-top: 0;
 }
 
-.project-figure figcaption { /*Image captions */
+.project-figure figcaption {
+  /*Image captions */
   margin-top: 0.75rem;
   font-size: 0.95rem;
   color: var(--text-captions);
@@ -247,22 +247,17 @@ p {
   font-size: clamp(1.3rem, 2vw, 1.3rem);
 }
 
-
-
 /*///////////////////////////////////////////// LINKS //////////////////////////////////////////////*/
 
 a {
-  color: var(--link-light-grey);  
+  color: var(--link-light-grey);
   cursor: pointer;
   text-decoration: underline;
-  
-  
 }
 a:hover {
   color: var(--link-dark-grey);
   text-decoration: underline;
-   text-underline-offset: 0.15em;
-   
+  text-underline-offset: 0.15em;
 }
 a:focus-visible {
   outline: 2px solid var(--link-dark-grey);
@@ -272,27 +267,23 @@ a:focus-visible {
   font-family: var(--font-open-sans);
 }
 
-
 .nav-links a,
 .footer-group a {
-  
   text-decoration: none;
-  text-transform: uppercase; 
-   letter-spacing: 0.1em;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
   font-family: var(--font-open-sans);
-  
-  
 }
 .project-path a {
   text-decoration: none;
   letter-spacing: 0.1em;
-   font-family: var(--font-open-sans);
+  font-family: var(--font-open-sans);
 }
 .project-figure a {
   display: block;
-padding:0.75rem;
+  padding: 0.75rem;
   border: 0.5px solid transparent;
-    letter-spacing: 0.1em;
+  letter-spacing: 0.1em;
   font-family: var(--font-open-sans);
 }
 
@@ -319,25 +310,22 @@ padding:0.75rem;
   display: block;
   margin: 4rem auto 0 auto;
   width: fit-content;
-  color: var(--link-light-grey);  
+  color: var(--link-light-grey);
   font-size: 0.9rem;
   text-decoration: none;
   letter-spacing: 0.1em;
-   font-family: var(--font-open-sans);
+  font-family: var(--font-open-sans);
 }
 .project-path a,
 .project-path span {
   color: var(--link-light-grey);
- 
 }
 
 .project-path a:hover {
   color: var(--link-dark-grey);
   text-decoration: underline;
   text-underline-offset: 0.15em;
-  
 }
-
 
 /*///////////////////////////////////////////// SITE NAVIGATION //////////////////////////////////////////////*/
 
@@ -362,10 +350,6 @@ padding:0.75rem;
   justify-content: center;
   gap: var(--space-m);
 }
-
-
-
-
 
 /*///////////////////////////////////////////// SITE HOMEPAGE //////////////////////////////////////////////*/
 
@@ -398,7 +382,6 @@ padding:0.75rem;
   margin: 0 auto;
   align-items: start;
 }
-
 
 .page-title-column,
 .page-content-column {
@@ -445,7 +428,7 @@ padding:0.75rem;
 }
 .portfolio-plate .page-subsection {
   margin-left: 0;
-  margin-top:1rem;
+  margin-top: 1rem;
 }
 
 /*///// LISTS /////*/
@@ -499,7 +482,6 @@ padding:0.75rem;
   font-weight: var(--w-100);
 }
 
-
 /*///// CONTACT FORM /////*/
 
 .contact-form {
@@ -516,11 +498,12 @@ padding:0.75rem;
 }
 
 .form-group label {
- 
   font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 0.2em;
   color: var(--text-subsection-heading);
+  font-family: var(--font-open-sans);
+  font-weight: var(--w-600);
 }
 
 .contact-form input,
@@ -554,14 +537,16 @@ padding:0.75rem;
   align-self: flex-start;
   padding: 0.9rem 1.6rem;
   border: none;
-  
+
   color: var(--link-dark-grey);
-  
+
   font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 0.2em;
   cursor: pointer;
- 
+  letter-spacing: 0.1em;
+  font-family: var(--font-open-sans);
+  font-weight: var(--w-600);
 }
 
 .submit-button:hover {
@@ -591,11 +576,11 @@ padding:0.75rem;
 .form-status-message.error {
   color: #ff2b2b;
 }
-.hidden-honeypot { /*Move the honeypot field out of view*/
+.hidden-honeypot {
+  /*Move the honeypot field out of view*/
   position: absolute;
   left: -9999px;
 }
-
 
 /*///// PORTFOLIO /////*/
 
@@ -603,9 +588,9 @@ padding:0.75rem;
   width: 100%;
   max-width: 1400px;
   margin: 0 auto;
-  
 }
-.portfolio-header { /*Portfolio title */
+.portfolio-header {
+  /*Portfolio title */
   margin-bottom: 3rem;
 }
 .portfolio-header h1 {
@@ -616,13 +601,11 @@ padding:0.75rem;
   grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
   gap: 3rem 2rem;
   align-items: start;
-  
 }
 .portfolio-plate {
-    border: 0.5px solid transparent; 
-    padding:1rem;
-    text-decoration: none;
-    
+  border: 0.5px solid transparent;
+  padding: 1rem;
+  text-decoration: none;
 }
 .portfolio-plate:hover,
 .portfolio-plate:visited {
@@ -632,7 +615,7 @@ padding:0.75rem;
 .portfolio-plate:hover {
   border-color: var(--border-card);
   background-color: rgba(var(--bg-card), 0.015);
-  box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.05);  
+  box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.05);
 }
 
 .plate-description {
@@ -650,8 +633,7 @@ padding:0.75rem;
 .project-resources {
   display: flex;
   flex-direction: column;
-  margin-bottom:2rem;
-
+  margin-bottom: 2rem;
 }
 .resource-icon {
   width: 2.5rem;
@@ -692,7 +674,7 @@ padding:0.75rem;
   padding: 1.25rem 0;
   border-bottom: 0.5px solid var(--border-light);
   text-decoration: none;
-  color: inherit; 
+  color: inherit;
 }
 
 .resource-link:hover {
@@ -705,7 +687,7 @@ padding:0.75rem;
   margin-bottom: 2rem;
   font-size: 0.9rem;
   letter-spacing: 0.04em;
-  text-transform: uppercase; 
+  text-transform: uppercase;
   color: var(--link-light-grey);
 }
 .project-slug {
@@ -714,9 +696,6 @@ padding:0.75rem;
   letter-spacing: 0.1em;
   font-family: var(--font-open-sans);
 }
-
-
-
 
 /*///////////////////////////////////////////// MEDIA QUERIES //////////////////////////////////////////////*/
 
@@ -734,7 +713,7 @@ padding:0.75rem;
 /* Video */
 
 .project-video-wrapper {
-  width:100%;
+  width: 100%;
 }
 
 .project-video {
