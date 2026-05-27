@@ -803,6 +803,13 @@ a:focus-visible {
     justify-content: center;
     flex-wrap: wrap;
   }
+
+  .home-content h1, .hero-subtitle {
+    transform: translateY(10rem);
+  }
+
+
+
 }
 
 @media (max-width: 1450px) {
