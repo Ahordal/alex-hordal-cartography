@@ -13,11 +13,7 @@
 
   /*///// TEXT COLOURS /////*/
 
-  --text-body: #333333;
-  --text-blue: #284d64;
-  --text-black: #000;
-  --text-red: #d22828;
-  --text-orange: #eb9b1f;
+  --text-body: #333333;   
   --text-h1: #383838;
   --text-h2: #494949;
   --text-h3: #5b5b5b;
@@ -45,8 +41,6 @@
   --border-light: #e0e0e0;
   --border-dark: #333333;
   --border-card: #e0e0e0;
-  --line-thin-light: 0.5px solid var(--border-light);
-  --line-thin-dark: 0.5px solid var(--border-dark);
 
   /*///// SHADOWS /////*/
 
@@ -59,22 +53,15 @@
 
   /*///// TYPOGRAPHY /////*/
 
-  --font-roboto: "Roboto Flex Variable", system-ui, sans-serif;
-  --font-mono: "Roboto Mono", monospace;
+  --font-roboto: "Roboto Flex Variable", system-ui, sans-serif; 
   --font-open-sans: "Open Sans", system-ui, sans-serif;
 
   /*///// FONT WEIGHTS /////*/
 
   --w-100: 100;
-  --w-300: 300;
   --w-425: 425;
-  --w-600: 600;
-  --w-800: 800;
-  --w-1000: 1000;
+  --w-600: 600; 
 
-  /*///// PERFORMANCE & INTERACTION /////*/
-
-  --transition: 0.1s ease-in-out;
 }
 /*///////////////////////////////////////////// DOCUMENT FOUNDATION //////////////////////////////////////////////*/
 
@@ -162,16 +149,7 @@ h3 {
   border-bottom: 0.5px solid var(--border-light);
   font-family: var(--font-open-sans);
 }
-label {
-  font-size: 1.15rem;
-  font-weight: var(--w-600);
-  margin-bottom: var(--space-xs);
-  text-transform: uppercase;
-  color: var(--text-h3);
-  letter-spacing: 0.2em;
 
-  font-family: var(--font-open-sans);
-}
 h4 {
   font-size: 1rem;
   font-variation-settings: "wght" 600;
@@ -213,11 +191,6 @@ img {
   flex-direction: column;
   align-items: center;
   text-align: center;
-}
-.project- .figure-under-heading {
-  /* Images directly under a heading - avoids double horizontal rules */
-  border-top: none;
-  padding-top: 0;
 }
 
 .project-figure figcaption {
@@ -273,6 +246,7 @@ a:focus-visible {
   text-transform: uppercase;
   letter-spacing: 0.1em;
   font-family: var(--font-open-sans);
+  font-size: 0.95rem;
 }
 .project-path a {
   text-decoration: none;
@@ -330,7 +304,7 @@ a:focus-visible {
 /*///////////////////////////////////////////// SITE NAVIGATION //////////////////////////////////////////////*/
 
 .main-nav {
-  position: sticky;
+  position: sticky; /*Keeps the nav bar at the top */
   top: 0;
   width: 100%;
   height: 60px;
@@ -398,7 +372,7 @@ a:focus-visible {
 
 .page-title-column h1 {
   line-height: 0.8;
-  color: var(--text-heading);
+  color: var(--text-h1);
   font-size: clamp(4rem, 10vw, 8rem);
   margin-left: -0.04em;
 }
@@ -498,13 +472,14 @@ a:focus-visible {
 }
 
 .form-group label {
-  font-size: 0.8rem;
+  font-size: 1rem;
   text-transform: uppercase;
-  letter-spacing: 0.2em;
-  color: var(--text-subsection-heading);
+  letter-spacing: 0.1em;
+  color: var(--text-h4);
   font-family: var(--font-open-sans);
   font-weight: var(--w-600);
 }
+
 
 .contact-form input,
 .contact-form textarea {
@@ -516,20 +491,18 @@ a:focus-visible {
   font-family: var(--font-roboto);
   font-size: 1rem;
   resize: vertical;
-  transition:
-    border-color var(--transition),
-    background-color var(--transition);
+
 }
 
 .contact-form input::placeholder,
 .contact-form textarea::placeholder {
-  color: var(--text-muted);
+  color: var(--text-supporting);
 }
 
 .contact-form input:focus,
 .contact-form textarea:focus {
   outline: none;
-  border-color: var(--text-heading);
+  border-color: var(--text-h1);
   background-color: rgba(255, 255, 255, 0.35);
 }
 
@@ -562,7 +535,7 @@ a:focus-visible {
   margin-top: 1rem;
   font-weight: 600;
   font-size: 0.95rem;
-  transition: color 0.2s ease;
+
 }
 
 .form-status-message.processing {
@@ -594,7 +567,7 @@ a:focus-visible {
   margin-bottom: 3rem;
 }
 .portfolio-header h1 {
-  color: var(--text-heading);
+  color: var(--text-h1);
 }
 .portfolio-grid {
   display: grid;
@@ -642,7 +615,7 @@ a:focus-visible {
   align-items: center;
   padding-top: 0.1rem;
   font-size: 1.5rem;
-  color: var(--text-primary);
+  color: var(--text-body);
   flex-shrink: 0;
 }
 
@@ -751,8 +724,7 @@ a:focus-visible {
 
 .bar {
   height: 1.5px;
-  background-color: var(--link-dark-grey);
-  transition: var(--transition);
+  background-color: var(--link-dark-grey); 
   width: 22px;
 }
 
@@ -807,9 +779,6 @@ a:focus-visible {
   .home-content h1, .hero-subtitle {
     transform: translateY(10rem);
   }
-
-
-
 }
 
 @media (max-width: 1450px) {
