@@ -70,7 +70,7 @@ import PageSubsection from "../../../components/PageSubsection.astro";
   src={nyc}
   class="figure-under-heading"
   alt="A picture of Times Square in NYC, taken by Andreas Niendorf "
-  caption="Figure 1 – Times Square, NYC - Andreas Niendorf, Unsplash"
+  caption="Times Square, NYC - Andreas Niendorf, Unsplash"
 />
 New York City (NYC) is a global hub for diverse cuisine, offering an extensive range of dining experiences that reflect cultures from around the world. With more than 13,000 restaurants currently operating across the five boroughs, a robust food establishment inspection program is essential to maintaining consistent food safety standards and protecting public health.
 
@@ -91,7 +91,7 @@ The dashboard was subsequently embedded within an ArcGIS StoryMap, providing add
   src={nycLogo}
   class="figure-under-heading"
   alt="NYC Logo"
-  caption="Figure 2 – NYC Logo – Wolff Olin"
+  caption="NYC Logo – Wolff Olin"
 />
 The dataset used in this project is derived from restaurant inspection records provided by New York City's Department of Health and Mental Hygiene (DOHMH) and is publicly available on the  <a href="https://data.cityofnewyork.us/Health/DOHMH-New-York-City-Restaurant-Inspection-Results/43nn-pn8j/about_data" target="_blank" rel="noopener noreferrer">NYC Open Data portal</a>.
 
@@ -117,7 +117,7 @@ Two cleaned datasets were created for this project. The first dataset (NYC_Resta
   src={mapView}
   class="figure-under-heading"
   alt="NYC Restaurant Inspection Dashboard Map View"
-  caption="Figure 3 – Dashboard Map View"
+  caption="Dashboard Map View"
 />
 The map view serves as the spatial foundation of the dashboard, displaying
 plotted points for each restaurant in the most recent inspection dataset
@@ -145,7 +145,7 @@ The map view also includes various toggleable functions, including search (geoco
   src={bookmarks}
   class="figure-under-heading"
   alt="NYC Restaurant Inspection Dashboard, Map View Bookmarks"
-  caption="Figure 3C – Bookmarks in the map view toggleable controls"
+  caption="Bookmarks in the map view toggleable controls"
 />
 
 Spatial selection tools are available within the map view, including rectangle and lasso selection methods. The lasso tool is particularly effective for isolating irregular geographic areas, such as borough boundaries, enabling more precise and flexible spatial filtering than standard selection methods.
@@ -154,7 +154,7 @@ Spatial selection tools are available within the map view, including rectangle a
   src={tools}
   class="figure-under-heading"
   alt="NYC Restaurant Inspection, Map View Spatial Tools"
-  caption="Figure 3D – Map Vew Spatial Selection Tools"
+  caption="Map Vew Spatial Selection Tools"
 />
 
 </PageSubsection>
@@ -167,7 +167,7 @@ Spatial selection tools are available within the map view, including rectangle a
   src={numericalGradeBreakdown}
   class="figure-under-heading"
   alt="NYC Restaurant Inspection Dashboard, Restaurant Grade Breakdown (Current Map View)"
-  caption="Figure 4 – Restaurant Grade Breakdown (Current Map View)"
+  caption="Restaurant Grade Breakdown (Current Map View)"
 />
 The Restaurant Grade Breakdown (Current Map View) provides a summary of total restaurant counts, identified by CAMIS, within the current map extent. This element dynamically updates based on the visible map area, displaying both the total number of restaurants and the distribution of grades (A, B, and C). It also includes restaurants with Not Graded or Pending status, as well as those with No Grade Data.
 </PageSubsection>
@@ -180,7 +180,7 @@ The Restaurant Grade Breakdown (Current Map View) provides a summary of total re
   src={instructions}
   class="figure-under-heading"
   alt="NYC Restaurant Inspection Dashboard, Instructions Panel"
-  caption="Figure 5 – Instructions Panel"
+  caption="Instructions Panel"
 />
 The instructions panel serves as a reminder of how to interact with the dashboard, helping users navigate key UI behaviours such as filtering restaurants by grade, selecting restaurants by point or multi-select (rectangle), and selecting entries within the Restaurants In View & Selected panel to access detailed inspection information. It also provides guidance on interpreting and using the pie chart to filter results in the current map view, reviewing the Restaurant Score Over Time serial chart, and deselecting restaurants and resetting the dashboard to its default state.
 
@@ -194,7 +194,7 @@ The instructions panel serves as a reminder of how to interact with the dashboar
   src={gradeBreakdown}
   class="figure-under-heading"
   alt="NYC Restaurant Inspection Dashboard, Grade Breakdown Pie Chart"
-  caption="Figure 6 – Grade Breakdown (Current View & Selected)"
+  caption="Grade Breakdown (Current View & Selected)"
 />
 The Grade Breakdown panel includes a pie chart that dynamically updates to
 display the proportion of restaurants by grade within the current map view. In a
@@ -216,7 +216,7 @@ if relevant records exist elsewhere in the dataset.
   src={pieChartFilter}
   class="figure-under-heading"
   alt="NYC Restaurant Inspection Dashboard, Pie Chart Map View and Selection Filtering"
-  caption="Figure 6B – Pie Chart Map View and Selection Filtering"
+  caption="Pie Chart Map View and Selection Filtering"
 />
 
 
@@ -229,7 +229,7 @@ if relevant records exist elsewhere in the dataset.
 <ProjectFigure
   src={restaurantListing}
   alt="NYC Restaurant Inspection Dashboard, Restaurants (Current View & Selected)"
-  caption="Figure 7 – Restaurants (Current View & Selected)"
+  caption="Restaurants (Current View & Selected)"
 />
 The Restaurants (Current View & Selected) panel is an alphabetical, dynamically generated, and clickable list that appears under two conditions. First, it displays restaurants currently visible within the map view. Second, it reflects restaurants selected either individually or using the rectangular selection tool. The panel includes key attributes such as restaurant name, grade, score, and most recent inspection date. Selecting a restaurant entry displays the Restaurant & Inspection Details panel and the Restaurant Score Over Time serial chart.
 </PageSubsection>
@@ -241,7 +241,7 @@ The Restaurants (Current View & Selected) panel is an alphabetical, dynamically 
 <ProjectFigure
   src={inspectionDetails}  
   alt="NYC Restaurant Inspection Dashboard, Restaurant & Inspection Details"
-  caption="Figure 8 – Restaurant & Inspection Details"
+  caption="Restaurant & Inspection Details"
 />
 The Restaurant & Inspection Details panel is a dynamically generated, comprehensive overview of each restaurant’s key attributes that appears when a specific restaurant is selected in the Restaurants (Current View & Selected) panel. These attributes are organized into three main components: Restaurant Information, Inspection Report, and Geographical Information. The full list of fields can be seen in the screenshot above or referenced in the  Data  section.
 </PageSubsection>
@@ -253,7 +253,7 @@ The Restaurant & Inspection Details panel is a dynamically generated, comprehens
 <ProjectFigure
   src={filterSelection}  
   alt="NYC Restaurant Inspection Dashboard, Filter Restaurants by Grade or Borough"
-  caption="Figure 9 – Filter Restaurants by Grade or Borough"
+  caption="Filter Restaurants by Grade or Borough"
 />
 Two toggleable filtering options are available in the top-right corner of the
 dashboard and can be used independently, in combination, or alongside the Grade
@@ -280,7 +280,7 @@ Filter Restaurants by Borough: Allows users to filter restaurants in the map vie
 <ProjectFigure
   src={restaurantScore}  
   alt="NYC Restaurant Inspection Dashboard, Restaurant Score Over Time"
-  caption="Figure 10 – Restaurant Score Over Time"
+  caption="Restaurant Score Over Time"
 />
 The Restaurant Score Over Time is a serial chart (displayed as a line chart)
 that visualizes a restaurant’s score performance over time, referencing the
@@ -314,7 +314,7 @@ without indicating a decline in sanitary conditions.
 <ProjectFigure
   src={table1}  
   alt="Distribution of Restaurant Inspection Grades across the Five Boroughs of New York City"
-  caption="Table 1 – Distribution of Restaurant Inspection Grades across the Five Boroughs of New York City"
+  caption="Distribution of Restaurant Inspection Grades across the Five Boroughs of New York City"
 />
 </PageSubsection>
 <PageSubsection
@@ -339,13 +339,13 @@ inspection periods.
 <ProjectFigure
   src={increasingScore}  
   alt="NYC Restaurant Inspection Dashboard, Restaurant Score Increase Over Time"
-  caption="Figure 11 – Restaurant Score Increase Over Time"
+  caption="Restaurant Score Increase Over Time"
 />
 
 <ProjectFigure
   src={decreasingScore}  
   alt="NYC Restaurant Inspection Dashboard, High Variability in Restaurant Score Over Time"
-  caption="Figure 11 – High Variability in Restaurant Score Over Time"
+  caption="High Variability in Restaurant Score Over Time"
 />
 </PageSubsection>
 
