@@ -115,7 +115,7 @@ h1 {
 .hero-subtitle {
   /* Front page subtitle */
   font-size: clamp(1.6rem, 2vw, 1.6rem);
-  color: var(--text-h4);
+  color: var(--bg);
   font-weight: var(--w-600);
   letter-spacing: 0.08em;
   margin-top: 0.5rem;
@@ -223,7 +223,7 @@ p {
 /*///////////////////////////////////////////// LINKS //////////////////////////////////////////////*/
 
 a {
-  color: var(--link-light-grey);
+  color: var(--link-dark-grey);
   cursor: pointer;
   text-decoration: underline;
 }
@@ -247,6 +247,7 @@ a:focus-visible {
   letter-spacing: 0.1em;
   font-family: var(--font-open-sans);
   font-size: 0.95rem;
+  font-weight: var(--w-600);
 }
 .project-path a {
   text-decoration: none;
@@ -292,7 +293,7 @@ a:focus-visible {
 }
 .project-path a,
 .project-path span {
-  color: var(--link-light-grey);
+  color: var(--link-dark-grey);
 }
 
 .project-path a:hover {
@@ -441,6 +442,8 @@ a:focus-visible {
   background-color: var(--bg);
   box-shadow: var(--hero-shadow-top);
   z-index: 9999;
+  font-weight: var(--w-600);
+  font-family: var(--font-open-sans);
 }
 
 .footer-group {
@@ -448,7 +451,8 @@ a:focus-visible {
   align-items: center;
   gap: var(--space-s);
   letter-spacing: 0.1em;
-  font-family: var(--font-open-sans);
+  
+  
 }
 
 .separator {

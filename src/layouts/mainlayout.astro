@@ -18,24 +18,26 @@ const isActive = (path: string) => pathname === path || pathname === path + "/";
 
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <link rel="canonical" href={Astro.url} />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <meta name="viewport" content="width=device-width" />
-  <meta name="description" content={description} />
-  <meta property="og:title" content={title} />
-  <meta property="og:description" content={description} />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content={Astro.url} />
-  <meta property="og:image" content={socialImage} />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="generator" content={Astro.generator} />
+  <head>
+    <meta charset="utf-8" />
+    <link rel="canonical" href={Astro.url} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={Astro.url} />
+    <meta property="og:image" content={socialImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="generator" content={Astro.generator} />
 
-  <script src="https://kit.fontawesome.com/8b0dc5e073.js" crossorigin="anonymous"></script>
+    <script
+      src="https://kit.fontawesome.com/8b0dc5e073.js"
+      crossorigin="anonymous"></script>
 
-  <title>{title}</title>
-</head>
+    <title>{title}</title>
+  </head>
 
   <body class="site-root">
     <header class="main-nav">
@@ -98,15 +100,17 @@ const isActive = (path: string) => pathname === path || pathname === path + "/";
             <a
               href="https://www.linkedin.com/in/alex-hordal/"
               target="_blank"
-              rel="noopener noreferrer">
-              <i class="fa-brands fa-linkedin"></i>
+              rel="noopener noreferrer"
+              aria-label="Visit Alex Hordal's LinkedIn profile">
+              <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
             </a>
 
-            <a
+             <a
               href="https://github.com/Ahordal"
               target="_blank"
-              rel="noopener noreferrer">
-              <i class="fa-brands fa-github"></i>
+              rel="noopener noreferrer"
+              aria-label="Visit Alex Hordal's GitHub profile">
+              <i class="fa-brands fa-github" aria-hidden="true"></i>
             </a>
           </div>
 
