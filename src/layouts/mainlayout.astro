@@ -20,6 +20,18 @@ const isActive = (path: string) => pathname === path || pathname === path + "/";
 <!doctype html>
 <html lang="en">
 <head>
+
+<!-- Google Analytics -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TLE82M0RH4"></script>
+<script is:inline>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-TLE82M0RH4');
+</script>
+
   <meta charset="utf-8" />
   <link rel="canonical" href={Astro.url} />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
