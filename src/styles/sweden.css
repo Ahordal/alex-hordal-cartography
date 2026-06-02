@@ -300,3 +300,291 @@
   white-space: nowrap;
   z-index: 1000;
 }
+.sweden-map {
+  width: 100%;
+  display: block;
+}
+
+.main-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  background-color: #efdbbb;
+  padding: 0.75rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+  width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+#map-container {
+  flex: 1;
+  overflow: hidden;
+}
+
+#g-Sweden_ACH-box {
+  max-width: 1200px;
+}
+
+#g-Sweden_ACH-box,
+#g-Sweden_ACH-box .g-artboard {
+  margin: 0 auto;
+}
+
+#g-Sweden_ACH-box p {
+  margin: 0;
+}
+
+#g-Sweden_ACH-box .g-aiAbs {
+  position: absolute;
+}
+
+#g-Sweden_ACH-box .g-aiImg {
+  position: absolute;
+  top: 0;
+  display: block;
+  width: 100% !important;
+}
+
+#g-Sweden_ACH-box .g-aiSymbol {
+  position: absolute;
+  box-sizing: border-box;
+}
+
+#g-Sweden_ACH-box .g-aiPointText p {
+  white-space: nowrap;
+}
+
+#g-Sweden_ACH-Sweden {
+  position: relative;
+  overflow: hidden;
+}
+
+#g-Sweden_ACH-Sweden p {
+  font-size: 0.875em;
+  font-weight: 600;
+  line-height: 17px;
+  height: auto;
+  opacity: 1;
+  letter-spacing: 0.2em;
+  text-align: left;
+  color: rgb(0, 0, 0);
+  text-transform: none;
+  padding-bottom: 0;
+  padding-top: 0;
+  mix-blend-mode: normal;
+  font-style: normal;
+  position: static;
+}
+
+#g-Sweden_ACH-Sweden .g-pstyle2,
+#g-Sweden_ACH-Sweden a {
+  height: 17px;
+  text-decoration: none;
+}
+
+#g-Sweden_ACH-Sweden .g-pstyle3 {
+  height: 17px;
+  text-align: center;
+}
+
+#g-Sweden_ACH-Sweden .g-pstyle4 {
+  height: 17px;
+  letter-spacing: 0.08em;
+  text-align: center;
+}
+
+#g-Sweden_ACH-Sweden .g-pstyle5 {
+  height: 17px;
+  letter-spacing: 0.15em;
+  text-align: center;
+}
+
+#_x32_510:hover {
+  fill: #d40000 !important;
+  stroke: #000;
+  stroke-width: 1.5px;
+}
+
+#_x31_782:hover {
+  fill: #003d8f !important;
+  stroke: #000;
+  stroke-width: 1.5px;
+}
+
+#_x31_980:hover {
+  fill: #003d8f !important;
+  stroke: #000;
+  stroke-width: 1.5px;
+}
+
+#_x31_492:hover {
+  fill: #d40000 !important;
+  stroke: #000;
+  stroke-width: 1.5px;
+}
+
+#_x31_430:hover {
+  fill: #d40000 !important;
+  stroke: #000;
+  stroke-width: 1.5px;
+}
+
+#_x32_101:hover {
+  fill: #d40000 !important;
+  stroke: #000;
+  stroke-width: 1.5px;
+}
+
+#_x32_361:hover {
+  fill: #000 !important;
+  stroke: #000;
+  stroke-width: 1.5px;
+}
+
+#_x32_521 polygon:hover {
+  fill: #003d8f !important;
+  stroke: #8e6406;
+  stroke-width: 1.5px;
+}
+
+#_x32_482 polygon:hover {
+  fill: #fff !important;
+  stroke: #00316b;
+  stroke-width: 1.5px;
+}
+
+#path8590 polygon:hover {
+  fill: #fff !important;
+  stroke: #00316b;
+  stroke-width: 1.5px;
+}
+
+#_x32_303 path:hover {
+  fill: #fff !important;
+  stroke: #00316b;
+  stroke-width: 1.5px;
+}
+
+#_x32_262:hover {
+  fill: #fff !important;
+  stroke: #00316b;
+  stroke-width: 1.5px;
+}
+
+#_x32_182:hover {
+  fill: #ffcd50 !important;
+  stroke: #000;
+  stroke-width: 1.5px;
+}
+
+#_x32_031 path:hover {
+  fill: #ffcd50 !important;
+  stroke: #00316b;
+  stroke-width: 1.5px;
+}
+
+#_x30_115 path:hover {
+  fill: #ffcd50 !important;
+  stroke-width: 1.5px;
+}
+
+#polygon83 path:hover {
+  fill: #000 !important;
+  stroke: #ffcd50;
+  stroke-width: 1.5px;
+}
+
+#_x31_861 polygon:hover {
+  fill: #fff !important;
+  stroke: #d40000;
+  stroke-width: 1.5px;
+}
+
+#_x30_563 polygon:hover {
+  fill: #ffcd50 !important;
+  stroke: #d40000;
+  stroke-width: 1.5px;
+}
+
+#_x31_447:hover {
+  fill: #ffcd50 !important;
+  stroke: #000;
+  stroke-width: 1.5px;
+}
+
+#_x31_315 polygon:hover {
+  fill: #fff !important;
+  stroke: #00316b;
+  stroke-width: 1.5px;
+}
+
+#_x30_861 polygon:hover {
+  fill: #d40000 !important;
+  stroke: #8e6406;
+  stroke-width: 1.5px;
+  color: #ffcd50;
+}
+
+#_x31_256 polygon:hover {
+  fill: #d40000 !important;
+  stroke: #8e6406;
+  stroke-width: 1.5px;
+}
+
+#_x31_081:hover {
+  fill: #ffcd50 !important;
+  stroke: #00316b;
+  stroke-width: 1.5px;
+}
+
+#_x30_885:hover {
+  fill: #ffcd50 !important;
+  stroke: #00316b;
+  stroke-width: 1.5px;
+}
+
+#_x30_980:hover {
+  fill: #fff !important;
+  stroke: #00316b;
+  stroke-width: 1.5px;
+}
+
+#tooltip {
+  position: absolute;
+  display: none;
+  padding: 4px 8px;
+  background: rgba(0, 0, 0, 0.85);
+  color: #fff;
+  font-size: 12px;
+  border-radius: 4px;
+  pointer-events: none;
+  white-space: nowrap;
+  z-index: 1000;
+}
+
+@media (max-width: 768px) {
+  #g-Sweden_ACH-Sweden p {
+    font-size: 10px !important;
+    line-height: 12px !important;
+    letter-spacing: 0.05em !important;
+    transform: translateY(0.5em);
+  }
+  .main-section {
+    padding: 0.5rem;
+    display: block;
+  }
+  #map-container {
+    width: 100%;
+    overflow: visible;
+  }
+}
+
+@media (max-width: 480px) {
+  #g-Sweden_ACH-Sweden p {
+    font-size: 8px !important;
+    line-height: 10px !important;
+  }
+}
