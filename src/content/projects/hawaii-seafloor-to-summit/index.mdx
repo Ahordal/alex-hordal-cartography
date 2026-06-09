@@ -47,11 +47,11 @@ featuredImage: ./featured.webp
 
 ---
 
-import elevationProfile from
-"./hawaii-detail-elevation-profile.webp";
-import bathymetry from
-"./hawaii-detail-bathymetry.webp";
+import elevationProfile from "./hawaii-detail-elevation-profile.webp";
+import bathymetry from "./hawaii-detail-bathymetry.webp";
+import sketch from "./sketch.webp";
 import ProjectFigure from "../../../components/ProjectFigure.astro";
+
 
 The primary objective of Hawaiʻi: Seafloor to Summit was to design a 48” × 36” large-format topo-bathymetric map that accurately conveys the true vertical scale of the eight main Hawaiian Islands, from the abyssal seafloor to the summit of Mauna Kea, emphasizing that when measured from its submarine base, Mauna Kea is considered the tallest mountain in the world.
 
@@ -61,6 +61,12 @@ maps often visually understate submarine topography and, much like an iceberg,
 fail to communicate the full relief of geologic formations that extend below the
 ocean surface. As a result, they do not adequately convey the full vertical
 scale of the Hawaiian Islands.
+
+<ProjectFigure
+  src={sketch}
+  alt="Hawaiʻi: Seafloor to Summit Concept Sketch"
+  caption="Hawaiʻi: Seafloor to Summit Concept Sketch"
+/>
 
 The topobathymetric surface used in this map was derived from a mosaic of multiple DEM sources, including the NOAA NCEI Coastal Relief Model (CRM) (~30 m) and ETOPO2022 (~450 m), as well as multibeam bathymetry from SOEST’s Hawaiʻi Mapping Research Group (~50 m). The CRM provides nearshore coverage, ETOPO2022 provides global bathymetry, and the multibeam data contribute higher-resolution detail where available. Due to differences in spatial resolution and coverage, all datasets were resampled to a common 90 m grid to balance detail, continuity, and visual consistency across the surface. Source datasets reference differing vertical datums, resulting in minor elevation offsets; however, these differences are negligible at the 90 m resolution used in this map and do not affect overall terrain representation.
 <ProjectFigure
