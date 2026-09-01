@@ -74,6 +74,11 @@ body {
   font-variation-settings: "opsz" 14;
   -webkit-font-smoothing: antialiased;
 }
+.site-root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+}
 /*///////////////////////////////////////////// TEXT FORMATTING //////////////////////////////////////////////*/
 
 .nyc-title {
@@ -314,7 +319,9 @@ a:focus-visible {
   z-index: 9999;
   display: flex;
   align-items: center;
+  flex-shrink: 0;
 }
+
 
 .nav-container {
   max-width: var(--max-width);
@@ -329,7 +336,7 @@ a:focus-visible {
 /*///////////////////////////////////////////// SITE HOMEPAGE //////////////////////////////////////////////*/
 
 .page-slot {
-  min-height: calc(100dvh - 120px);
+  flex: 1 0 auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -444,6 +451,7 @@ a:focus-visible {
   z-index: 9999;
   font-weight: var(--w-600);
   font-family: var(--font-open-sans);
+  flex-shrink: 0;
 }
 
 .footer-group {
