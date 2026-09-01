@@ -329,7 +329,7 @@ a:focus-visible {
 /*///////////////////////////////////////////// SITE HOMEPAGE //////////////////////////////////////////////*/
 
 .page-slot {
-  min-height: calc(100vh - 120px);
+  min-height: calc(100dvh - 120px);
   display: flex;
   flex-direction: column;
   justify-content: center;
