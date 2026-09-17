@@ -124,7 +124,7 @@ h1 {
   color: var(--bg);
   font-weight: var(--w-600);
   letter-spacing: 0.08em;
-  margin-top: 0.5rem;
+  margin-top: 1.25rem;
   opacity: 0.85;
   text-transform: uppercase;
   text-shadow: 0 3px 4px rgba(0, 0, 0, 1), 0 10px 20px rgba(0, 0, 0, 0.9);
