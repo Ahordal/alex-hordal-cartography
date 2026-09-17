@@ -120,6 +120,7 @@ h1 {
 .hero-subtitle {
   /* Front page subtitle */
   font-size: clamp(1.6rem, 2vw, 1.6rem);
+  line-height: 1.15;
   color: var(--bg);
   font-weight: var(--w-600);
   letter-spacing: 0.08em;
