@@ -111,7 +111,7 @@ h1 {
   color: var(--text-h4);
 }
 .home-content h1 {
-  font-size: clamp(3rem, 15vw, 12rem);
+  font-size: clamp(4rem, 10vw, 8rem);
   line-height: 0.85;
   text-transform: uppercase;
   margin: 0;
