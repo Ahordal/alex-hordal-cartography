@@ -132,6 +132,11 @@ h1 {
 .subtitle-break {
   display: none;
 }
+@media (min-width: 769px) {
+  .hero-subtitle {
+    font-size: clamp(1.9rem, 1rem + 1.2vw, 2.5rem);
+  }
+}
 .nudge {
   /*Nudges H1 titles */
   display: inline-block;
