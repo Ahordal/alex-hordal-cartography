@@ -126,6 +126,7 @@ h1 {
   margin-top: 0.5rem;
   opacity: 0.85;
   text-transform: uppercase;
+  text-shadow: 0 3px 4px rgba(0, 0, 0, 1), 0 10px 20px rgba(0, 0, 0, 0.9);
 }
 .nudge {
   /*Nudges H1 titles */
@@ -713,7 +714,7 @@ a:focus-visible {
   .footer-container {
     flex-direction: column;
     height: auto;
-    padding: var(--space-m);
+    padding: var(--space-xs) var(--space-m);
     text-align: center;
     gap: var(--space-s);
   }
@@ -778,7 +779,7 @@ a:focus-visible {
   .footer-container {
     flex-direction: column;
     height: auto;
-    padding: var(--space-m);
+    padding: var(--space-xs) var(--space-m);
     text-align: center;
     gap: var(--space-s);
   }
@@ -790,6 +791,10 @@ a:focus-visible {
 
   .home-content h1, .hero-subtitle {
     transform: translateY(10rem);
+  }
+
+  .home-content h1 {
+    font-size: clamp(2.5rem, 12vw, 5rem);
   }
 }
 
