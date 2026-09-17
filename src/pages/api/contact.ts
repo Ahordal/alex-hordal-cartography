@@ -3,6 +3,15 @@ import { Resend } from "resend";
 export const prerender = false;
 const resend = new Resend(import.meta.env.RESEND_API_KEY);
 
+function escapeHtml(value: string): string {
+  return value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
 export const POST: APIRoute = async ({ request }) => {
   try {
     const formData = await request.formData();
@@ -21,6 +30,10 @@ export const POST: APIRoute = async ({ request }) => {
     }
 
     // 2. Send the email
+    const safeName = escapeHtml(name);
+    const safeEmail = escapeHtml(email);
+    const safeMessage = escapeHtml(message);
+
     const { error } = await resend.emails.send({
       from: "contact@alexhordal.ca", // Once your domain is verified, use e.g., "contact@yourdomain.com"
       to: "alex.hordal@gmail.com",
@@ -29,11 +42,11 @@ export const POST: APIRoute = async ({ request }) => {
       html: `
         <div>
           <h2 style="border-bottom: 1px solid #eee; padding-bottom: 10px;">New Portfolio Inquiry</h2>
-          <p><strong>Name:</strong> ${name}</p>
-          <p><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p>
+          <p><strong>Name:</strong> ${safeName}</p>
+          <p><strong>Email:</strong> <a href="mailto:${safeEmail}">${safeEmail}</a></p>
           <div style="margin-top: 20px; padding: 15px; background-color: #f9f9f9; border-left: 4px solid #ccc;">
             <p style="margin-top: 0;"><strong>Message:</strong></p>
-            <p style="white-space: pre-wrap;">${message}</p>
+            <p style="white-space: pre-wrap;">${safeMessage}</p>
           </div>
         </div>
       `,

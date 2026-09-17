@@ -711,21 +711,6 @@ a:focus-visible {
 }
 /* Mobile */
 
-@media (max-width: 768px) {
-  .footer-container {
-    flex-direction: column;
-    height: auto;
-    padding: var(--space-xs) var(--space-m);
-    text-align: center;
-    gap: var(--space-s);
-  }
-
-  .footer-group {
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-}
-
 .menu-toggle {
   display: none;
   flex-direction: column;
