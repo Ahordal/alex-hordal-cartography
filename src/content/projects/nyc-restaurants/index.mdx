@@ -554,13 +554,66 @@ patterns.
 
 <figure class="project-figure">
 
-| Borough | Restaurants | Share |
-|---|---|---|
-| Manhattan | 12,191 | 39.9% |
-| Brooklyn | 7,929 | 25.9% |
-| Queens | 6,732 | 22.0% |
-| Bronx | 2,595 | 8.5% |
-| Staten Island | 1,100 | 3.6% |
+<table class="borough-count-table">
+<thead>
+<tr><th>Borough</th><th>Restaurants</th><th>Share</th></tr>
+</thead>
+<tbody>
+<tr><td data-label="Borough">Manhattan</td><td data-label="Restaurants">12,191</td><td data-label="Share">39.9%</td></tr>
+<tr><td data-label="Borough">Brooklyn</td><td data-label="Restaurants">7,929</td><td data-label="Share">25.9%</td></tr>
+<tr><td data-label="Borough">Queens</td><td data-label="Restaurants">6,732</td><td data-label="Share">22.0%</td></tr>
+<tr><td data-label="Borough">Bronx</td><td data-label="Restaurants">2,595</td><td data-label="Share">8.5%</td></tr>
+<tr><td data-label="Borough">Staten Island</td><td data-label="Restaurants">1,100</td><td data-label="Share">3.6%</td></tr>
+</tbody>
+</table>
+
+<div class="borough-summary" aria-hidden="true">
+  <div class="borough-summary-row">
+    <div class="borough-summary-header">
+      <span class="borough-summary-name">Manhattan</span>
+      <span class="borough-summary-value">12,191 <span class="borough-summary-share">(39.9%)</span></span>
+    </div>
+    <div class="borough-summary-track">
+      <span class="borough-summary-fill" style="width: 100%;" title="Manhattan: 12,191 restaurants (39.9%)"></span>
+    </div>
+  </div>
+  <div class="borough-summary-row">
+    <div class="borough-summary-header">
+      <span class="borough-summary-name">Brooklyn</span>
+      <span class="borough-summary-value">7,929 <span class="borough-summary-share">(25.9%)</span></span>
+    </div>
+    <div class="borough-summary-track">
+      <span class="borough-summary-fill" style="width: 65%;" title="Brooklyn: 7,929 restaurants (25.9%)"></span>
+    </div>
+  </div>
+  <div class="borough-summary-row">
+    <div class="borough-summary-header">
+      <span class="borough-summary-name">Queens</span>
+      <span class="borough-summary-value">6,732 <span class="borough-summary-share">(22.0%)</span></span>
+    </div>
+    <div class="borough-summary-track">
+      <span class="borough-summary-fill" style="width: 55.2%;" title="Queens: 6,732 restaurants (22.0%)"></span>
+    </div>
+  </div>
+  <div class="borough-summary-row">
+    <div class="borough-summary-header">
+      <span class="borough-summary-name">Bronx</span>
+      <span class="borough-summary-value">2,595 <span class="borough-summary-share">(8.5%)</span></span>
+    </div>
+    <div class="borough-summary-track">
+      <span class="borough-summary-fill" style="width: 21.3%;" title="Bronx: 2,595 restaurants (8.5%)"></span>
+    </div>
+  </div>
+  <div class="borough-summary-row">
+    <div class="borough-summary-header">
+      <span class="borough-summary-name">Staten Island</span>
+      <span class="borough-summary-value">1,100 <span class="borough-summary-share">(3.6%)</span></span>
+    </div>
+    <div class="borough-summary-track">
+      <span class="borough-summary-fill" style="width: 9.0%;" title="Staten Island: 1,100 restaurants (3.6%)"></span>
+    </div>
+  </div>
+</div>
 
 <figcaption>Restaurant Count and Share by Borough</figcaption>
 </figure>
@@ -575,13 +628,92 @@ inspection counts without indicating a decline in sanitary conditions.
 
 <figure class="project-figure">
 
-| Borough | <span style="color: #2E7BE4; font-weight: 600;">A</span> | <span style="color: #3CB44B; font-weight: 600;">B</span> | <span style="color: #F58231; font-weight: 600;">C</span> | <span style="color: #E6007E; font-weight: 600;">Pending</span> | <span style="color: #959595; font-weight: 600;">Uninspected</span> | <span style="color: #B81D13; font-weight: 600;">Closed</span> |
-|---|---|---|---|---|---|---|
-| Manhattan | 7,793 | 1,094 | 523 | 1,160 | 1,585 | 36 |
-| Brooklyn | 5,086 | 759 | 360 | 786 | 890 | 48 |
-| Queens | 4,118 | 808 | 376 | 690 | 699 | 41 |
-| Bronx | 1,753 | 276 | 108 | 232 | 214 | 12 |
-| Staten Island | 663 | 156 | 37 | 125 | 114 | 5 |
+<table class="grade-breakdown-table">
+<thead>
+<tr>
+<th>Borough</th>
+<th><span style="color: #2E7BE4; font-weight: 600;">A</span></th>
+<th><span style="color: #3CB44B; font-weight: 600;">B</span></th>
+<th><span style="color: #F58231; font-weight: 600;">C</span></th>
+<th><span style="color: #E6007E; font-weight: 600;">Pending</span></th>
+<th><span style="color: #959595; font-weight: 600;">Uninspected</span></th>
+<th><span style="color: #B81D13; font-weight: 600;">Closed</span></th>
+</tr>
+</thead>
+<tbody>
+<tr><td data-label="Borough">Manhattan</td><td data-label="A">7,793</td><td data-label="B">1,094</td><td data-label="C">523</td><td data-label="Pending">1,160</td><td data-label="Uninspected">1,585</td><td data-label="Closed">36</td></tr>
+<tr><td data-label="Borough">Brooklyn</td><td data-label="A">5,086</td><td data-label="B">759</td><td data-label="C">360</td><td data-label="Pending">786</td><td data-label="Uninspected">890</td><td data-label="Closed">48</td></tr>
+<tr><td data-label="Borough">Queens</td><td data-label="A">4,118</td><td data-label="B">808</td><td data-label="C">376</td><td data-label="Pending">690</td><td data-label="Uninspected">699</td><td data-label="Closed">41</td></tr>
+<tr><td data-label="Borough">Bronx</td><td data-label="A">1,753</td><td data-label="B">276</td><td data-label="C">108</td><td data-label="Pending">232</td><td data-label="Uninspected">214</td><td data-label="Closed">12</td></tr>
+<tr><td data-label="Borough">Staten Island</td><td data-label="A">663</td><td data-label="B">156</td><td data-label="C">37</td><td data-label="Pending">125</td><td data-label="Uninspected">114</td><td data-label="Closed">5</td></tr>
+</tbody>
+</table>
+
+<div class="grade-summary" aria-hidden="true">
+  <div class="grade-summary-legend">
+    <span><i style="background: #2E7BE4;"></i>A</span>
+    <span><i style="background: #3CB44B;"></i>B</span>
+    <span><i style="background: #F58231;"></i>C</span>
+    <span><i style="background: #E6007E;"></i>Pending</span>
+    <span><i style="background: #959595;"></i>Uninspected</span>
+    <span><i style="background: #B81D13;"></i>Closed</span>
+  </div>
+  <div class="grade-summary-row">
+    <div class="grade-summary-header"><span class="grade-summary-borough">Manhattan</span><span class="grade-summary-total">12,191</span></div>
+    <div class="grade-summary-bar">
+      <span style="flex-grow: 7793; background: #2E7BE4;" title="A: 7,793"></span>
+      <span style="flex-grow: 1094; background: #3CB44B;" title="B: 1,094"></span>
+      <span style="flex-grow: 523; background: #F58231;" title="C: 523"></span>
+      <span style="flex-grow: 1160; background: #E6007E;" title="Pending: 1,160"></span>
+      <span style="flex-grow: 1585; background: #959595;" title="Uninspected: 1,585"></span>
+      <span style="flex-grow: 36; background: #B81D13;" title="Closed: 36"></span>
+    </div>
+  </div>
+  <div class="grade-summary-row">
+    <div class="grade-summary-header"><span class="grade-summary-borough">Brooklyn</span><span class="grade-summary-total">7,929</span></div>
+    <div class="grade-summary-bar">
+      <span style="flex-grow: 5086; background: #2E7BE4;" title="A: 5,086"></span>
+      <span style="flex-grow: 759; background: #3CB44B;" title="B: 759"></span>
+      <span style="flex-grow: 360; background: #F58231;" title="C: 360"></span>
+      <span style="flex-grow: 786; background: #E6007E;" title="Pending: 786"></span>
+      <span style="flex-grow: 890; background: #959595;" title="Uninspected: 890"></span>
+      <span style="flex-grow: 48; background: #B81D13;" title="Closed: 48"></span>
+    </div>
+  </div>
+  <div class="grade-summary-row">
+    <div class="grade-summary-header"><span class="grade-summary-borough">Queens</span><span class="grade-summary-total">6,732</span></div>
+    <div class="grade-summary-bar">
+      <span style="flex-grow: 4118; background: #2E7BE4;" title="A: 4,118"></span>
+      <span style="flex-grow: 808; background: #3CB44B;" title="B: 808"></span>
+      <span style="flex-grow: 376; background: #F58231;" title="C: 376"></span>
+      <span style="flex-grow: 690; background: #E6007E;" title="Pending: 690"></span>
+      <span style="flex-grow: 699; background: #959595;" title="Uninspected: 699"></span>
+      <span style="flex-grow: 41; background: #B81D13;" title="Closed: 41"></span>
+    </div>
+  </div>
+  <div class="grade-summary-row">
+    <div class="grade-summary-header"><span class="grade-summary-borough">Bronx</span><span class="grade-summary-total">2,595</span></div>
+    <div class="grade-summary-bar">
+      <span style="flex-grow: 1753; background: #2E7BE4;" title="A: 1,753"></span>
+      <span style="flex-grow: 276; background: #3CB44B;" title="B: 276"></span>
+      <span style="flex-grow: 108; background: #F58231;" title="C: 108"></span>
+      <span style="flex-grow: 232; background: #E6007E;" title="Pending: 232"></span>
+      <span style="flex-grow: 214; background: #959595;" title="Uninspected: 214"></span>
+      <span style="flex-grow: 12; background: #B81D13;" title="Closed: 12"></span>
+    </div>
+  </div>
+  <div class="grade-summary-row">
+    <div class="grade-summary-header"><span class="grade-summary-borough">Staten Island</span><span class="grade-summary-total">1,100</span></div>
+    <div class="grade-summary-bar">
+      <span style="flex-grow: 663; background: #2E7BE4;" title="A: 663"></span>
+      <span style="flex-grow: 156; background: #3CB44B;" title="B: 156"></span>
+      <span style="flex-grow: 37; background: #F58231;" title="C: 37"></span>
+      <span style="flex-grow: 125; background: #E6007E;" title="Pending: 125"></span>
+      <span style="flex-grow: 114; background: #959595;" title="Uninspected: 114"></span>
+      <span style="flex-grow: 5; background: #B81D13;" title="Closed: 5"></span>
+    </div>
+  </div>
+</div>
 
 <figcaption>Grade Breakdown by Borough</figcaption>
 </figure>

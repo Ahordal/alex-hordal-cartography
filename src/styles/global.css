@@ -217,9 +217,15 @@ img {
 }
 
 /* Data tables styled like a dashboard panel: card border, header band,
-   centered cells. */
+   centered cells. display:block + overflow-x scrolls the table itself on
+   narrow viewports instead of the table's min-content width blowing out
+   the whole page. */
 .page-subsection table {
+  display: block;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
   width: 100%;
+  max-width: 100%;
   margin: 1.5rem 0;
   border-collapse: collapse;
   border: 1px solid var(--border-card);
@@ -232,6 +238,9 @@ img {
   text-align: center;
   font-size: 1rem;
   border-bottom: 1px solid var(--border-card);
+  /* Without this, an unbreakable word like "Uninspected" floors its
+     column's width past what narrow viewports have to give. */
+  overflow-wrap: break-word;
 }
 
 .page-subsection th {
@@ -248,6 +257,209 @@ img {
 
 .page-subsection tbody tr:hover {
   background-color: rgba(var(--bg-card), 0.015);
+}
+
+/* Below 600px a 7-column table has nowhere near enough room per column
+   to stay legible, wrapped or not — so each row becomes its own card,
+   stacking cells vertically with their column header restated as a label.
+   Requires a `data-label` attribute per <td> (markdown tables can't carry
+   one), which is why the borough tables are hand-written HTML. */
+@media (max-width: 600px) {
+  .page-subsection table {
+    border: none;
+    box-shadow: none;
+  }
+
+  .page-subsection thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
+  .page-subsection tbody {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .page-subsection tr {
+    display: block;
+    border: 1px solid var(--border-card);
+    box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.05);
+  }
+
+  .page-subsection td {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    padding: 0.5rem 0.75rem;
+    text-align: right;
+  }
+
+  .page-subsection tbody tr:last-child td {
+    border-bottom: 1px solid var(--border-card);
+  }
+
+  /* Same selector weight as the rule above (tbody > tr > td), declared
+     after it, so the last cell in every card — including the last card —
+     correctly loses its divider instead of double-bordering against the
+     card's own outline. */
+  .page-subsection tbody tr td:last-child {
+    border-bottom: none;
+  }
+
+  .page-subsection td::before {
+    content: attr(data-label);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--text-h4);
+    text-align: left;
+  }
+
+}
+
+/* The 7-column grade-breakdown table condenses to a stacked bar per
+   borough at every width, not just mobile — proportional bars read
+   faster than the raw table regardless of screen size. The table itself
+   stays in the DOM, visually hidden but still readable by screen
+   readers, since the bars carry no exact figures. */
+.page-subsection table.grade-breakdown-table {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.grade-summary {
+  display: block;
+  width: 100%;
+  margin: 1.5rem 0;
+}
+
+.grade-summary-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 0.85rem;
+  margin-bottom: 1.25rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-h4);
+}
+
+.grade-summary-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.grade-summary-legend i {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  flex: none;
+}
+
+.grade-summary-row + .grade-summary-row {
+  margin-top: 1rem;
+}
+
+.grade-summary-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.35rem;
+}
+
+.grade-summary-borough {
+  font-weight: 700;
+  color: var(--text-h3);
+}
+
+.grade-summary-total {
+  font-size: 0.85rem;
+  color: var(--text-supporting);
+}
+
+.grade-summary-bar {
+  display: flex;
+  height: 0.85rem;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid var(--border-card);
+}
+
+.grade-summary-bar span {
+  display: block;
+  flex-basis: 0;
+  min-width: 2px;
+}
+
+/* Same sr-only-table + bar-chart pattern as the grade breakdown above,
+   but a single value per borough doesn't need stacked segments — just a
+   plain bar scaled against the largest borough (Manhattan = 100%). */
+.page-subsection table.borough-count-table {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.borough-summary {
+  display: block;
+  width: 100%;
+  margin: 1.5rem 0;
+}
+
+.borough-summary-row + .borough-summary-row {
+  margin-top: 0.85rem;
+}
+
+.borough-summary-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.3rem;
+}
+
+.borough-summary-name {
+  font-weight: 700;
+  color: var(--text-h3);
+}
+
+.borough-summary-value {
+  font-size: 0.85rem;
+  color: var(--text-supporting);
+}
+
+.borough-summary-share {
+  color: var(--text-h4);
+}
+
+.borough-summary-track {
+  height: 0.85rem;
+  border-radius: 4px;
+  background: var(--bg-alt);
+  border: 1px solid var(--border-card);
+  overflow: hidden;
+}
+
+.borough-summary-fill {
+  display: block;
+  height: 100%;
+  background: var(--text-h1);
+  border-radius: 3px 0 0 3px;
 }
 
 /*///////////////////////////////////////////// PARAGRAPH FORMATTING //////////////////////////////////////////////*/
