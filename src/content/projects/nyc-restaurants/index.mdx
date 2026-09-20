@@ -97,7 +97,7 @@ import PageSubsection from "../../../components/PageSubsection.astro";
 />
 New York City (NYC) is a global hub for diverse cuisine, offering an extensive range of dining experiences that reflect cultures from around the world. With more than 30,000 restaurants currently operating across the five boroughs, a robust food establishment inspection program is essential to maintaining consistent food safety standards and protecting public health.
 
-This project explores restaurant inspection outcomes across New York City through an interactive dashboard that highlights recent inspection results, spatial patterns, and long-term trends, using historical inspection data spanning 2007 through March 2026.
+This project explores restaurant inspection outcomes across New York City through an interactive dashboard that highlights recent inspection results, spatial patterns, and long-term trends, using historical inspection data spanning 2007 to the present.
 
 This project has existed in two versions. The original was built with ArcGIS Dashboards during the [GIS: Cartography and Geovisualization program at NSCC](https://www.nscc.ca/programs-and-courses/programs/plandescr.aspx/geographic-information-systems-gis-cartography-and-geovisualization), hosted on a school-issued ArcGIS Online account. That account no longer exists, and with it the original dashboard, so after graduating I rebuilt the entire project from scratch as a custom-coded web application, giving me full control over the dashboard's data pipeline, design, and long-term hosting.
 
@@ -310,6 +310,17 @@ panel instead of one generic instructions sheet.
   class="figure-under-heading"
   alt="NYC Restaurant Inspection Dashboard, full Dashboard Information reference guide with overview, how-to-use, grade definitions, and data notes"
   caption="Dashboard Information reference guide"
+/>
+
+The Map View's own info popup is one example of that per-panel pattern:
+the same overview, how-to-use, and data-notes structure, scoped to just
+that panel's controls and legend.
+
+<ProjectFigure
+  src={mapviewInformation}
+  class="figure-under-heading"
+  alt="NYC Restaurant Inspection Dashboard, Map View's own info popup as a secondary example of the per-panel documentation pattern"
+  caption="A secondary information panel example: the Map View info popup"
 />
 
 </PageSubsection>
