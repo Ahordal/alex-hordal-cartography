@@ -2,14 +2,19 @@
 title: 'NYC<br><span class="project-subtitle">Dining Under the<br> Microscope </span>'
 plainTitle: "NYC: Dining Under the Microscope"
 
-description: "An interactive ArcGIS Online dashboard project exploring restaurant inspection patterns and food safety trends across New York City through dynamic filtering, linked inspection reports, and restaurant performance tracking over time."
+description: "An interactive dashboard exploring restaurant inspection patterns and food safety trends across New York City through dynamic filtering, linked inspection reports, and restaurant performance tracking over time. Originally built with ArcGIS Dashboards, since rebuilt as a custom-coded web application."
 
-category: "Data Visualization"
+category: "Interactive GIS"
 
 technologies:
-  - ArcGIS Online
-  - ArcGIS Dashboards
-  - ArcGIS StoryMaps
+  - Vite
+  - React
+  - TypeScript
+  - ArcGIS Maps SDK for JavaScript
+  - Recharts
+  - Node.js
+  - GitHub Actions
+  - Vercel
 
 tags:
   - Web GIS
@@ -29,35 +34,53 @@ cardSize: "wide"
 # downloadLabel: "Download the project files"
 
 appliedSkills:
-  - Cleaned and prepared a multi-year inspection dataset for spatial visualization and analysis.
-  - Developed an interactive dashboard integrating map, chart, filtering, and table elements to enable dynamic exploration of spatial and temporal patterns.
-  - Conducted spatial and temporal analysis of restaurant inspection patterns to identify trends and areas of concern across New York City.
-  - Designed and symbolized a web map in ArcGIS Online to clearly represent restaurant inspection results and support accurate interpretation.
-  - Interpreted and communicated key spatial trends through a structured ArcGIS StoryMap narrative, translating complex data into clear insights.
+  - Rebuilt an ArcGIS Dashboards-based project from scratch as a fully custom-coded React and TypeScript web application, independently architecting the data pipeline, frontend, and deployment.
+  - Designed and built a Node.js data pipeline that fetches, cleans, and geocodes a live 30,000+ record municipal dataset, automated end-to-end through scheduled GitHub Actions workflows.
+  - Implemented spatial querying and bivariate map symbology with the ArcGIS Maps SDK for JavaScript, rendering tens of thousands of geocoded points without relying on ArcGIS Online hosting.
+  - Conducted spatial and temporal analysis of restaurant inspection patterns to identify borough-level trends and areas of concern across New York City.
+  - Designed a responsive, accessible dashboard interface, including keyboard navigation, screen-reader support, and distinct desktop, tablet, and phone layouts.
   
 heroType: "image"
 heroCaption: "Restaurant inspection dashboard exploring food safety trends and spatial patterns across NYC."
 featuredImage: ./featured.webp
+
+resources:
+  - label: "Launch Application"
+    url: "https://nyc.alexhordal.ca"
+    icon: "fa-solid fa-up-right-from-square"
+    description: "Open the live interactive restaurant inspection dashboard"
+
+  - label: "View GitHub Repository"
+    url: "https://github.com/Ahordal/nyc-dashboard"
+    icon: "fa-brands fa-github"
+    description: "Browse source code and version history"
 ---
 
 import nyc from "./nyc-times-square.webp";
 import nycLogo from "./nyc-logo.webp";
+import oldDashboard from "./old-dashboard.webp";
 import mapView from "./map-view.webp";
 import letterGrades from "./letter-grades.webp";
-import bookmarks from "./bookmarks.webp";
-import tools from "./spatial-tools.webp";
 import numericalGradeBreakdown from "./restaurant-grade-breakdown.webp";
-import instructions from "./instructions.webp";
 import gradeBreakdown from "./grade-breakdown.webp";
-import pieChartFilter from "./pie-chart-filter.webp";
-import restaurantListing from "./restaurant-listing.webp";
-import inspectionDetails from "./inspection-details.webp";
 import filterSelection from "./filter-selection.webp";
-import restaurantScore from "./restaurant-score.webp";
-import table1 from "./table-1.webp";
 import increasingScore from "./increasing-score.webp";
-import decreasingScore from "./decreasing-score.webp";
-
+import variableScore from "./variable-score.webp";
+import dashboardPanel from "./dashboard-panel.webp";
+import dashboardInformation from "./dashboard-information.webp";
+import mapviewInformation from "./mapview-information.webp";
+import scaleBar from "./scale-bar.webp";
+import lowerLeftControls from "./lower-left-controls.webp";
+import searchRadius from "./search-radius.webp";
+import rightControls from "./right-controls.webp";
+import leftControls from "./left-controls.webp";
+import restaurantList from "./restaurant-list.webp";
+import restaurantDetails from "./restaurant-details.webp";
+import inspectionReports from "./inspection-reports.webp";
+import restaurantPerformance from "./restaurant-performance.webp";
+import desktopLayout from "./desktop-layout.webp";
+import tabletLayout from "./tablet-layout.webp";
+import mobileLayout from "./mobile-layout.webp";
 
 import ProjectFigure from "../../../components/ProjectFigure.astro";
 import PageSection from "../../../components/PageSection.astro";
@@ -72,19 +95,28 @@ import PageSubsection from "../../../components/PageSubsection.astro";
   alt="A picture of Times Square in NYC, taken by Andreas Niendorf "
   caption="Times Square, NYC - Andreas Niendorf, Unsplash"
 />
-New York City (NYC) is a global hub for diverse cuisine, offering an extensive range of dining experiences that reflect cultures from around the world. With more than 13,000 restaurants currently operating across the five boroughs, a robust food establishment inspection program is essential to maintaining consistent food safety standards and protecting public health.
+New York City (NYC) is a global hub for diverse cuisine, offering an extensive range of dining experiences that reflect cultures from around the world. With more than 30,000 restaurants currently operating across the five boroughs, a robust food establishment inspection program is essential to maintaining consistent food safety standards and protecting public health.
 
 This project explores restaurant inspection outcomes across New York City through an interactive dashboard that highlights recent inspection results, spatial patterns, and long-term trends, using historical inspection data spanning 2007 through March 2026.
 
-The project focused on building an interactive ArcGIS Dashboard and StoryMap while applying key geospatial concepts and developing skills in data analysis, visual design, and communicating spatial information.
+This project has existed in two versions. The original was built with ArcGIS Dashboards during the [GIS: Cartography and Geovisualization program at NSCC](https://www.nscc.ca/programs-and-courses/programs/plandescr.aspx/geographic-information-systems-gis-cartography-and-geovisualization), hosted on a school-issued ArcGIS Online account. That account no longer exists, and with it the original dashboard, so after graduating I rebuilt the entire project from scratch as a custom-coded web application, giving me full control over the dashboard's data pipeline, design, and long-term hosting.
+
+<ProjectFigure
+  src={oldDashboard}
+  class="figure-under-heading"
+  alt="ArcGIS Dashboard developed during the GIS: Cartography and Geovisualization program at NSCC"
+  caption="ArcGIS Dashboard developed during the GIS: Cartography and Geovisualization Program at NSCC"
+/>
+
+Rebuilding the dashboard meant replacing every part of the original ArcGIS Dashboards workflow with a codebase I maintain myself. A Node.js pipeline fetches the full [DOHMH New York City Restaurant Inspection Results](https://data.cityofnewyork.us/Health/DOHMH-New-York-City-Restaurant-Inspection-Results/43nn-pn8j/about_data) dataset directly from the NYC Open Data Socrata API in paginated batches, geocodes new or changed restaurant locations through [LocationIQ](https://locationiq.com/), and outputs a static GeoJSON layer with current inspection results for every restaurant in NYC, plus per-restaurant historical inspection files. That pipeline runs automatically every day: a scheduled GitHub Actions workflow handles the daily geocoding backfill and triggers a fresh data fetch and rebuild, and every push to the main branch does the same in between, so the dashboard stays current without any manual data handling.
+
+The frontend is a React and TypeScript application built with Vite, using the ArcGIS Maps SDK for JavaScript to render restaurant locations as a GeoJSON layer rather than relying on ArcGIS Dashboards' built-in widgets. Filtering, search, grade-breakdown charts, and the restaurant detail panel are all custom components wired directly to the map's query and selection state, reproducing the same exploratory interactions as the original dashboard while running as a fully self-hosted, independently deployed web app.
 
 The interactive map allows users to explore restaurant locations and inspection grades, while dynamic dashboard elements update as the map extent changes, supporting analysis at multiple spatial scales. Additional visualizations, including grade distributions, tabular data, and time series charts, provide both aggregate and restaurant-level insights. Users can filter the dataset by grade and borough or select individual restaurants to examine inspection score trends over time.
 
 The workflow involved filtering and organizing the dataset to isolate the most recent inspection results for display on the web map while preserving historical records for temporal analysis. Restaurant locations were displayed as individual points rather than aggregated, preserving important spatial patterns in density and distribution across New York City.
 
 Integrating the web map into the dashboard enabled dynamic, view- and selection-based interactions via linked charts, tables, and filters, allowing users to explore relationships within the dataset in a more exploratory, interactive manner.
-
-The dashboard was subsequently embedded within an ArcGIS StoryMap, providing additional context for the dataset and communicating key findings through written interpretation of the spatial and temporal patterns identified throughout the analysis.
 
 <PageSection title="Data Sources and Dataset Details">
 <ProjectFigure
@@ -98,11 +130,9 @@ The dataset used in this project is derived from restaurant inspection records p
 This dataset was chosen for its strong relevance to public health and daily life, as well as its suitability for spatial analysis. It provides up-to-date restaurant inspection outcomes across New York City, offering insight into the conditions of dining establishments visited by the public. Importantly, it enables analysis of inspection performance over time, highlighting trends in compliance with established health standards.
 
 
-The DOHMH New York City Restaurant Inspection Results dataset is updated daily and, at the time of download in late March, contained over 290,000 inspection records spanning multiple years of restaurant inspection activity across New York City, from 2007 through March 2026.
+The DOHMH New York City Restaurant Inspection Results dataset updates daily and covers every sustained or not-yet-adjudicated violation from full and special program inspections conducted within the three years prior to each restaurant's most recent inspection, for restaurants and college cafeterias currently in active status. Each row represents a single violation citation rather than a single restaurant, so an inspection with multiple violations produces multiple rows repeating the same inspection details; restaurants are uniquely identified by their CAMIS record ID. Restaurants with no violations, or that have applied for a permit but haven't yet been inspected (marked with a placeholder inspection date of 1/1/1900), still appear as a single row. As an operational dataset assembled from several administrative systems, it can also contain occasional illogical or missing values.
 
-The original CSV included several records with missing coordinate pairs or placeholder data (1/1/1900), representing establishments that have not yet received an inspection(DOHMH, 2026). These records were removed during data preparation to ensure data consistency and ease of subsequent analysis. Additional data cleaning tasks included standardizing text fields to proper case, thereby improving consistency and readability in the dashboard UI elements.
-
-Two cleaned datasets were created for this project. The first dataset (NYC_Restaurant_Latest), used in the dashboard’s map view, includes only the most recent inspection result for each uniquely identified restaurant (CAMIS). The second (NYC_Restaurant_Full), more comprehensive dataset retains all available inspection records for each CAMIS and is used to visualize score performance over time.
+The pipeline built for this rebuild fetches the dataset directly from the Socrata API and groups its rows by CAMIS to produce two outputs: a single current-state point per restaurant, holding its most recent scored inspection, for the map layer; and a full per-restaurant inspection history for the score-over-time and violation-detail views. Restaurants with no scored inspection yet are excluded from the map, coordinates that fall outside a rough NYC bounding box are treated as invalid and reverted to DOHMH's own coordinates, and restaurant and address text is normalized to build the dashboard's search index.
 
 
 </PageSection>
@@ -119,19 +149,33 @@ Two cleaned datasets were created for this project. The first dataset (NYC_Resta
   alt="NYC Restaurant Inspection Dashboard Map View"
   caption="Dashboard Map View"
 />
-The map view serves as the spatial foundation of the dashboard, displaying
-plotted points for each restaurant in the most recent inspection dataset
-(NYC_Restaurant_Latest), symbolized by the most recent inspection grade. A
-custom basemap, derived from Esri’s Dark Gray Canvas, was used to provide a more
-refined visual backdrop, with borough polygons added to clarify the dataset's
-spatial extent. As the user zooms in, the individual points become labelled with
-the restaurant name. The primary colours—blue (Grade A), green (Grade B), and
-orange (Grade C)—were derived from sampled NYC letter-grade signage. Distinct
-colours were applied to grades Z (Pending) and N (Not Graded), using a brighter
-tone and a more subdued tone, respectively, to clearly differentiate them from
-standard grading symbology. This map allows users to explore geographic patterns
-in restaurant performance and serves as the primary interface for interacting
-with and filtering the dataset.
+The map view serves as the spatial foundation of the dashboard, plotting a
+point for every restaurant using bivariate symbology: colour encodes the
+restaurant's most recent inspection grade, and circle size scales with its
+inspection score (a higher score means more, or more severe, violations, so
+worse-scoring restaurants read as larger circles at a glance). The default
+dashboard basemap is Esri's Dark Gray Canvas, with an Esri World Imagery
+satellite toggle available in the top-right corner for real-world context.
+Hovering a restaurant point at zoom level 16 (map scale 1:18,056) or closer
+previews the restaurant's name, grade, and score directly on the map; clicking
+a restaurant point loads its identifying and geographical details, full
+inspection history, and violations in the side panel, with its
+score-over-time chart shown below the map, and the
+restaurant listing panel gives an alternate way to browse
+locations where multiple restaurants share a point. The primary colours for
+<span style="color: #2E7BE4; font-weight: 600;">Grade A</span>,
+<span style="color: #3CB44B; font-weight: 600;">Grade B</span>, and
+<span style="color: #F58231; font-weight: 600;">Grade C</span> were derived
+from sampled NYC letter-grade signage. Grades N, P, and Z, each representing
+a restaurant still awaiting a finalized grade, are consolidated into a single
+<span style="color: #E6007E; font-weight: 600;">Pending</span> category;
+restaurants with no scored inspection on record appear as
+<span style="color: #959595; font-weight: 600;">Uninspected</span>, and
+restaurants closed by DOHMH appear as
+<span style="color: #B81D13; font-weight: 600;">Closed</span>. This map
+allows users to explore geographic patterns in restaurant performance and
+serves as the primary interface for interacting with and filtering the
+dataset.
 
 <ProjectFigure
   src={letterGrades}
@@ -140,110 +184,280 @@ with and filtering the dataset.
   caption="NYC Restaurant Letter Grade Cards (source: Tumblr post)"
 />
 
-The map view also includes various toggleable functions, including search (geocoding), a map legend, bookmarks for the five boroughs and the default view, a basemap selector, GPS pinpointing, and zoom controls.
-<ProjectFigure
-  src={bookmarks}
-  class="figure-under-heading"
-  alt="NYC Restaurant Inspection Dashboard, Map View Bookmarks"
-  caption="Bookmarks in the map view toggleable controls"
-/>
-
-Spatial selection tools are available within the map view, including rectangle and lasso selection methods. The lasso tool is particularly effective for isolating irregular geographic areas, such as borough boundaries, enabling more precise and flexible spatial filtering than standard selection methods.
+A dedicated info button on the map panel opens a matching reference for its
+own legend, interactions, and data notes, part of the contextual
+documentation system covered below.
 
 <ProjectFigure
-  src={tools}
+  src={mapviewInformation}
   class="figure-under-heading"
-  alt="NYC Restaurant Inspection, Map View Spatial Tools"
-  caption="Map Vew Spatial Selection Tools"
+  alt="NYC Restaurant Inspection Dashboard, Map View info popup showing the grade legend, interactions, and data notes"
+  caption="Map View info popup"
 />
 
 </PageSubsection>
 
 <PageSubsection
-  title="Restaurant Grade Breakdown (Current Map View)"
+  title="Map Controls"
+  class="subsection-wide"
+>
+Custom controls, built to replace ArcGIS's own map widgets, are arranged in
+the map's four corners. The top-left cluster holds zoom in/out buttons and a
+compass that passively tracks the view's rotation, resetting to north on
+click.
+
+<ProjectFigure
+  src={leftControls}
+  class="figure-under-heading"
+  alt="NYC Restaurant Inspection Dashboard, top-left zoom buttons and compass controls"
+  caption="Zoom and compass controls"
+/>
+
+Below them, the Map Scale and Zoom Lvl readouts double as inputs: clicking
+either one turns it into a text field, letting you jump straight to an
+exact scale denominator or zoom level instead of scrolling to it.
+
+<ProjectFigure
+  src={lowerLeftControls}
+  class="figure-under-heading"
+  alt="NYC Restaurant Inspection Dashboard, bottom-left Map Scale and Zoom Lvl click-to-edit readouts"
+  caption="Map Scale and Zoom Lvl readouts"
+/>
+
+A graphical scale bar in the bottom-right corner shows the current map
+scale as a ruler, converting the view's resolution to true ground distance
+with a latitude correction and snapping to a round foot or mile value.
+
+<ProjectFigure
+  src={scaleBar}
+  class="figure-under-heading"
+  alt="NYC Restaurant Inspection Dashboard, bottom-right graphical scale bar"
+  caption="Scale bar"
+/>
+
+The top-right corner pairs a satellite/map basemap toggle with the Search
+Radius tool's target icon. On phone and tablet layouts, a third "locate me"
+button stacks below them, using the device's own location to centre the map
+and sort the restaurant list by distance; it's hidden on desktop.
+
+<ProjectFigure
+  src={rightControls}
+  class="figure-under-heading"
+  alt="NYC Restaurant Inspection Dashboard, top-right basemap toggle, Search Radius tool icon, and mobile locate-me button"
+  caption="Basemap toggle, Search Radius tool, and locate-me button (mobile/tablet)"
+/>
+
+Activating Search Radius switches the cursor to point-placement mode;
+dropping a point re-scopes the restaurant list, stats panel, and grade
+breakdown chart to a 0.25, 0.5, or 1 mile circle around it instead of the
+full map view, with a distance field added to each list card.
+
+<ProjectFigure
+  src={searchRadius}
+  class="figure-under-heading"
+  alt="NYC Restaurant Inspection Dashboard, Search Radius tool showing a placed point, radius circle, and distance picker"
+  caption="Search Radius tool in use"
+/>
+
+</PageSubsection>
+
+<PageSubsection
+  title="Stats Panel (Current Map View)"
   class="subsection-wide"
 >
 <ProjectFigure
   src={numericalGradeBreakdown}
   class="figure-under-heading"
-  alt="NYC Restaurant Inspection Dashboard, Restaurant Grade Breakdown (Current Map View)"
-  caption="Restaurant Grade Breakdown (Current Map View)"
+  alt="NYC Restaurant Inspection Dashboard, Stats Panel (Current Map View)"
+  caption="Stats Panel (Current Map View)"
 />
-The Restaurant Grade Breakdown (Current Map View) provides a summary of total restaurant counts, identified by CAMIS, within the current map extent. This element dynamically updates based on the visible map area, displaying both the total number of restaurants and the distribution of grades (A, B, and C). It also includes restaurants with Not Graded or Pending status, as well as those with No Grade Data.
+The Stats Panel pairs a compact count bar with a donut chart: the bar
+gives the total restaurant count and its split across every grade category
+(<span style="color: #2E7BE4; font-weight: 600;">A</span>,
+<span style="color: #3CB44B; font-weight: 600;">B</span>,
+<span style="color: #F58231; font-weight: 600;">C</span>,
+<span style="color: #E6007E; font-weight: 600;">Pending</span>,
+<span style="color: #959595; font-weight: 600;">Uninspected</span>, and
+<span style="color: #B81D13; font-weight: 600;">Closed</span>), while the
+donut shows that same split as percentage shares. Both update dynamically with the
+current map extent, re-scope to the Search Radius circle when one is placed,
+and narrow to match any active grade filter, so the chart, list, and map
+always agree on what's on screen.
 </PageSubsection>
 
 <PageSubsection
-  title="Instructions Panel"
+  title="Dashboard Documentation"
   class="subsection-wide"
 >
 <ProjectFigure
-  src={instructions}
+  src={dashboardPanel}
   class="figure-under-heading"
-  alt="NYC Restaurant Inspection Dashboard, Instructions Panel"
-  caption="Instructions Panel"
+  alt="NYC Restaurant Inspection Dashboard, Dashboard Information panel showing last-updated date, restaurant and inspection counts, and attribution"
+  caption="Dashboard Information panel"
 />
-The instructions panel serves as a reminder of how to interact with the dashboard, helping users navigate key UI behaviours such as filtering restaurants by grade, selecting restaurants by point or multi-select (rectangle), and selecting entries within the Restaurants In View & Selected panel to access detailed inspection information. It also provides guidance on interpreting and using the pie chart to filter results in the current map view, reviewing the Restaurant Score Over Time serial chart, and deselecting restaurants and resetting the dashboard to its default state.
+Rather than one static instructions panel, the rebuilt dashboard documents
+itself contextually. A persistent Dashboard Information panel shows dataset
+freshness at a glance (last updated date, total restaurant and inspection
+counts, and attribution); its info button opens a full reference guide
+covering an overview of every feature, step-by-step how-to-use instructions,
+grade and status definitions, data-quality notes, and links to NYC's own
+health-department resources. Every other panel, including the map, restaurant details, and stats panel,
+carries its own matching info button, opening guidance specific to that
+panel instead of one generic instructions sheet.
+
+<ProjectFigure
+  src={dashboardInformation}
+  class="figure-under-heading"
+  alt="NYC Restaurant Inspection Dashboard, full Dashboard Information reference guide with overview, how-to-use, grade definitions, and data notes"
+  caption="Dashboard Information reference guide"
+/>
 
 </PageSubsection>
 
 <PageSubsection
-  title="Grade Breakdown (Current View & Selected)"
+  title="Responsive Layout"
+  class="subsection-wide"
+>
+Rather than one layout compressed to fit every screen, the dashboard
+switches between three distinct arrangements depending on viewport size,
+each rebuilt around what actually fits at that size.
+
+Above 1750px, a three-pane layout puts the map, restaurant list, and
+stats panel and charts side by side, all visible at once.
+
+<ProjectFigure
+  src={desktopLayout}
+  class="figure-under-heading"
+  alt="NYC Restaurant Inspection Dashboard, desktop three-pane layout above 1750px"
+  caption="Desktop Layout (above 1750px)"
+/>
+
+Between 750px and 1750px, those panes stack into a scrolling two-column
+layout topped by a slim app bar, a compact wordmark plus Search, Filters,
+and Info buttons that each open as a drawer instead of taking up permanent
+space; the Grade Breakdown donut folds into a chevron drawer on the stats
+bar, and the Restaurant Performance chart runs full-width along the
+bottom.
+
+<ProjectFigure
+  src={tabletLayout}
+  class="figure-under-heading"
+  alt="NYC Restaurant Inspection Dashboard, tablet two-column layout between 750px and 1750px"
+  caption="Tablet Layout (750px–1750px)"
+/>
+
+Below 750px, or on any phone held in landscape, a dedicated phone layout
+takes over: a slim top bar, a full-screen map, and a bottom sheet that
+steps between three heights, a peek, half, and full view, so the map stays
+the primary surface and the Restaurant Explorer only takes up as much
+space as it needs. Search, filters, and info each open as a drawer over
+the map here too. A short landscape viewport (480px tall or less) keeps
+this phone layout rather than switching to the two-column one, since
+there isn't enough vertical room to stack panes either way.
+
+<ProjectFigure
+  src={mobileLayout}
+  class="figure-under-heading"
+  alt="NYC Restaurant Inspection Dashboard, phone layout below 750px with a bottom sheet over a full-screen map"
+  caption="Phone Layout (below 750px)"
+/>
+
+</PageSubsection>
+
+<PageSubsection
+  title="Grade Breakdown — Map View"
   class="subsection-wide"
 >
 <ProjectFigure
   src={gradeBreakdown}
   class="figure-under-heading"
-  alt="NYC Restaurant Inspection Dashboard, Grade Breakdown Pie Chart"
-  caption="Grade Breakdown (Current View & Selected)"
+  alt="NYC Restaurant Inspection Dashboard, Grade Breakdown donut chart"
+  caption="Grade Breakdown — Map View"
 />
-The Grade Breakdown panel includes a pie chart that dynamically updates to
-display the proportion of restaurants by grade within the current map view. In a
-dataset of over 13,000 points, many locations can overlap, so selecting a single
-point when zoomed out may inadvertently select multiple restaurants. Although
-these are listed in the Restaurants (Current View & Selected) table, the pie
-chart provides a clear visual summary of the selected or overlapping records.
+The Grade Breakdown is a donut chart titled "Grade Breakdown — Map View" by
+default, retitling itself "Grade Breakdown — Within [radius]" when the
+Search Radius tool is active. Each slice's share of the total appears as a
+percentage beneath the chart, alongside the raw counts in the Stats Panel
+above it, so the same data reads as both an absolute count and a proportion.
 
-The pie chart reflects the current map extent and selection, updating
-dynamically as the view or selection changes. It also includes a tertiary
-function that allows users to filter results by clicking one or multiple slices,
-which in turn updates the map view and the Restaurants (Current View & Selected)
-table accordingly. However, because the chart depends on the visible map extent
-or direct selection, filtered results will only appear within the current view;
-if no matching restaurants are visible, the chart will display zero values even
-if relevant records exist elsewhere in the dataset.
+Unlike the original ArcGIS Dashboards version, this chart is read-only: it
+no longer supports clicking a slice to filter the map, since grade and
+borough filtering now live in their own dedicated controls. Instead, it
+reflects whatever is already filtered or searched for, narrowing to just the
+selected categories when a grade filter is active, and to the matching
+restaurants when a borough filter or search term is applied. A "Filters
+applied" note beneath the chart names any active borough or search filter,
+since those narrow the tally without changing which slices are drawn.
+
+</PageSubsection>
+
+<PageSubsection
+  title="Restaurant Explorer"
+  class="subsection-wide"
+>
+Selecting a restaurant, on the map or in the list, opens three linked
+panels for digging into that single restaurant: a sorted list to find it,
+a details view summarizing it, and a full report for any one of its past
+inspections.
+
+The Restaurant List shows every restaurant currently in scope (the map
+view, or the Search Radius circle when one's placed), narrowed by any
+active Grade and Borough filters or search text. Each card carries the
+restaurant's name, address, cuisine, most recent inspection date, and
+grade/score badges; selecting one opens its details and pans the map to its
+location. Results sort by up to two combinable keys (name, date, grade,
+score, cuisine, or distance) with a direction toggle, and paginate at 10
+per page; once a Search Radius or "locate me" point is set, Distance
+becomes available as both a per-card readout and a sort key.
 
 <ProjectFigure
-  src={pieChartFilter}
+  src={restaurantList}
   class="figure-under-heading"
-  alt="NYC Restaurant Inspection Dashboard, Pie Chart Map View and Selection Filtering"
-  caption="Pie Chart Map View and Selection Filtering"
+  alt="NYC Restaurant Inspection Dashboard, Restaurant List with sort controls and pagination"
+  caption="Restaurant List"
 />
-
 
 </PageSubsection>
 
 <PageSubsection
-  title="Restaurants (Current View & Selected)"
+  title="Restaurant Details"
   class="subsection-wide"
 >
+The Restaurant Details panel summarizes the selected restaurant itself: a
+Restaurant Information table (CAMIS, cuisine, current status), a
+Geographical Information table (borough, street, zipcode, phone, a
+location-verification badge, and a Google Maps link), and a full
+Inspection History list, one row per past inspection, each showing its
+date, grade, score, and critical/not-critical violation counts. Selecting
+a history row opens that inspection's full report.
+
 <ProjectFigure
-  src={restaurantListing}
-  alt="NYC Restaurant Inspection Dashboard, Restaurants (Current View & Selected)"
-  caption="Restaurants (Current View & Selected)"
+  src={restaurantDetails}
+  class="figure-under-heading"
+  alt="NYC Restaurant Inspection Dashboard, Restaurant Details panel with identifying, geographical, and inspection history information"
+  caption="Restaurant Details"
 />
-The Restaurants (Current View & Selected) panel is an alphabetical, dynamically generated, and clickable list that appears under two conditions. First, it displays restaurants currently visible within the map view. Second, it reflects restaurants selected either individually or using the rectangular selection tool. The panel includes key attributes such as restaurant name, grade, score, and most recent inspection date. Selecting a restaurant entry displays the Restaurant & Inspection Details panel and the Restaurant Score Over Time serial chart.
 </PageSubsection>
 
 <PageSubsection
-  title="Restaurant & Inspection Details"
+  title="Inspection Reports"
   class="subsection-wide"
 >
+Inspection Reports show the complete record for one selected inspection,
+defaulting to the restaurant's most recent. Each report lists the
+inspection type, the action taken, a "Closed by DOHMH" badge when that
+inspection resulted in a closure, and the full violation list with each
+code's category and critical/not-critical status. Newer and older
+navigation buttons step between a restaurant's inspections without
+returning to the Details tab.
+
 <ProjectFigure
-  src={inspectionDetails}  
-  alt="NYC Restaurant Inspection Dashboard, Restaurant & Inspection Details"
-  caption="Restaurant & Inspection Details"
+  src={inspectionReports}
+  class="figure-under-heading"
+  alt="NYC Restaurant Inspection Dashboard, Inspection Report showing violation details and navigation between reports"
+  caption="Inspection Reports"
 />
-The Restaurant & Inspection Details panel is a dynamically generated, comprehensive overview of each restaurant’s key attributes that appears when a specific restaurant is selected in the Restaurants (Current View & Selected) panel. These attributes are organized into three main components: Restaurant Information, Inspection Report, and Geographical Information. The full list of fields can be seen in the screenshot above or referenced in the  Data  section.
+
 </PageSubsection>
 
 <PageSubsection
@@ -255,42 +469,60 @@ The Restaurant & Inspection Details panel is a dynamically generated, comprehens
   alt="NYC Restaurant Inspection Dashboard, Filter Restaurants by Grade or Borough"
   caption="Filter Restaurants by Grade or Borough"
 />
-Two toggleable filtering options are available in the top-right corner of the
-dashboard and can be used independently, in combination, or alongside the Grade
-Breakdown (Current View & Selected) pie chart. For example, when the map view
-spans multiple boroughs, restaurants can be filtered by borough and then further
-refined by grade using selectors. The Grade Breakdown pie chart dynamically
-summarizes restaurant totals and grade distribution based on the current map
-view and active filters. Together, these components enable efficient analysis of
-restaurant totals by both grade and borough.
+Two filters, Grade and Borough, live together in the dashboard's Filters
+control (an inline bar on wide desktop, a popover or drawer on compact and
+mobile layouts) and combine freely with each other and with the search
+field. Both are multi-select toggle buttons: turning on more than one
+option within a filter shows restaurants matching any of them, and each
+filter clears independently with its own Clear button.
 
-Filter Restaurants by Grade Selection: Allows users to filter restaurants within
-the current map extent by inspection grade (A, B, C, Z, N), either individually
-or in combination. Restaurants (Current View & Selected) table updates to
-display only locations that meet the selected grade criteria within the visible
-map area. To reset the view, users can simply deselect the active filter(s).
+The Grade filter toggles between six colour-coded categories:
+<span style="color: #2E7BE4; font-weight: 600;">A</span>,
+<span style="color: #3CB44B; font-weight: 600;">B</span>,
+<span style="color: #F58231; font-weight: 600;">C</span>,
+<span style="color: #E6007E; font-weight: 600;">Pending</span> (grades N,
+P, and Z), <span style="color: #959595; font-weight: 600;">Uninspected</span>
+(no scored inspection on record), and
+<span style="color: #B81D13; font-weight: 600;">Closed</span> (closed by
+DOHMH). Selecting one or more narrows the map, restaurant list, stats
+panel, and grade breakdown chart to just those categories.
 
-Filter Restaurants by Borough: Allows users to filter restaurants in the map view based on borough. 
+The Borough filter narrows results to one or more of the five boroughs:
+Bronx, Brooklyn, Manhattan, Queens, and Staten Island. Unlike a Grade
+filter, an active Borough filter doesn't reshape the Grade Breakdown
+chart's own slices, since the chart always tallies every grade; instead it
+shows up in the "Filters applied" note beneath the chart, alongside any
+active search term.
 </PageSubsection>
 
 <PageSubsection
-  title="Restaurant Score Over Time"
+  title="Restaurant Performance Over Time"
   class="subsection-wide"
 >
 <ProjectFigure
-  src={restaurantScore}  
-  alt="NYC Restaurant Inspection Dashboard, Restaurant Score Over Time"
-  caption="Restaurant Score Over Time"
+  src={restaurantPerformance}
+  class="figure-under-heading"
+  alt="NYC Restaurant Inspection Dashboard, Restaurant Performance Over Time line chart"
+  caption="Restaurant Performance Over Time"
 />
-The Restaurant Score Over Time is a serial chart (displayed as a line chart)
-that visualizes a restaurant’s score performance over time, referencing the
-NYC_Restaurant_Full dataset, which includes multiple years of inspections per
-CAMIS. The chart plots score on the Y-axis and inspection date on the X-axis.
-Three value guides, aligned with the primary grade colours on the Y-axis,
-provide an intuitive and immediate understanding of each inspection score and
-its corresponding grade, with each inspection represented by a black dot. To
-further enhance this understanding, each inspection instance is labelled with
-its corresponding score.
+Restaurant Performance Over Time is a line chart plotting each of a restaurant's scored inspections by
+date, drawn straight from its own inspection history rather than a
+separate scores dataset. Three shaded background bands mark the same grade
+thresholds used everywhere else in the dashboard,
+<span style="color: #2E7BE4; font-weight: 600;">A</span> (0–13),
+<span style="color: #3CB44B; font-weight: 600;">B</span> (14–27), and
+<span style="color: #F58231; font-weight: 600;">C</span> (28+), so a
+point's position alone shows its grade at a glance. Each point is
+colour-coded to its own grade category rather than a flat colour, and
+inspections without a numerical score are excluded from the timeline.
+
+The chart is interactive, not just illustrative: hovering a point, or
+tabbing to the chart and using the arrow keys, opens a tooltip with that
+inspection's date, score, and grade; clicking a point, or pressing Enter or
+Space while it's focused, switches to that inspection's full report on the
+Inspection Reports tab. It's linked to the Restaurant Details panel's
+Inspection History list in both directions, hovering a history row
+previews its point here, and hovering a point highlights the matching row.
 
 This chart is one of the strongest analytical components of the dashboard, providing a clear temporal perspective on restaurant performance that cannot be captured through static or aggregate views alone.
 
@@ -301,51 +533,77 @@ This chart is one of the strongest analytical components of the dashboard, provi
   title="Patterns & Distribution"
   class="subsection-wide"
 >
-When visualizing the data, several key spatial trends emerge. The highest concentration of restaurants is observed in Manhattan, with 5,288 of 13,008 total records, reinforcing its role as the city’s primary dining hub. Other boroughs exhibit lower relative counts, resulting in more dispersed restaurant distributions and more localized patterns.
+When visualizing the current dataset (30,566 restaurants), the same spatial
+trend holds up: Manhattan has the highest concentration, with 12,191
+restaurants, about 40% of the citywide total, reinforcing its role as the
+city's primary dining hub. Other boroughs exhibit lower relative counts,
+resulting in more dispersed restaurant distributions and more localized
+patterns.
+
+<figure class="project-figure">
+
+| Borough | Restaurants | Share |
+|---|---|---|
+| Manhattan | 12,191 | 39.9% |
+| Brooklyn | 7,929 | 25.9% |
+| Queens | 6,732 | 22.0% |
+| Bronx | 2,595 | 8.5% |
+| Staten Island | 1,100 | 3.6% |
+
+<figcaption>Restaurant Count and Share by Borough</figcaption>
+</figure>
 
 While the restaurant counts vary significantly by borough, the trend does not appear to be correlated to population alone. For example, the estimated population of Manhattan in 2020 was 1,694,251—the second-lowest among the 5 boroughs (New York City Department of City Planning, 2024)—yet it accounted for 57.6% of NYC's total tourism jobs (Office of the New York State Comptroller, 2021). This suggests that restaurant density is likely influenced by tourism and commercial activity, which increases demand for dining establishments beyond what the resident population alone would indicate.
 
-Further, Table 1 demonstrates that boroughs with higher restaurant density,
-particularly Manhattan, also exhibit higher counts across all inspection grades.
-This pattern reflects overall restaurant volume rather than performance
-differences, showing that higher density increases total inspection counts
-without indicating a decline in sanitary conditions.
+The same pattern carries through the grade breakdown: boroughs with higher
+restaurant density, particularly Manhattan, also show higher counts across
+every inspection grade. This reflects overall restaurant volume rather
+than a performance difference, since higher density increases total
+inspection counts without indicating a decline in sanitary conditions.
 
-<ProjectFigure
-  src={table1}  
-  alt="Distribution of Restaurant Inspection Grades across the Five Boroughs of New York City"
-  caption="Distribution of Restaurant Inspection Grades across the Five Boroughs of New York City"
-/>
+<figure class="project-figure">
+
+| Borough | <span style="color: #2E7BE4; font-weight: 600;">A</span> | <span style="color: #3CB44B; font-weight: 600;">B</span> | <span style="color: #F58231; font-weight: 600;">C</span> | <span style="color: #E6007E; font-weight: 600;">Pending</span> | <span style="color: #959595; font-weight: 600;">Uninspected</span> | <span style="color: #B81D13; font-weight: 600;">Closed</span> |
+|---|---|---|---|---|---|---|
+| Manhattan | 7,793 | 1,094 | 523 | 1,160 | 1,585 | 36 |
+| Brooklyn | 5,086 | 759 | 360 | 786 | 890 | 48 |
+| Queens | 4,118 | 808 | 376 | 690 | 699 | 41 |
+| Bronx | 1,753 | 276 | 108 | 232 | 214 | 12 |
+| Staten Island | 663 | 156 | 37 | 125 | 114 | 5 |
+
+<figcaption>Grade Breakdown by Borough</figcaption>
+</figure>
 </PageSubsection>
 <PageSubsection
   title="Temporal Trends"
   class="subsection-wide"
 >
-A review of restaurant inspection scores over time using the Restaurant Score
-serial chart reveals that performance is dynamic. While some establishments
-maintain relatively consistent scores across multiple inspections, others
-exhibit noticeable fluctuations, with scores improving or declining between
-inspection periods. As shown in Figure 11, some restaurants demonstrate gradual
-increases in inspection scores over time, indicating declining performance.
+A review of restaurant inspection histories using the Restaurant
+Performance chart reveals that performance is dynamic. While some
+establishments maintain relatively consistent scores across multiple
+inspections, others show noticeable fluctuations, with scores improving or
+worsening between inspections. Some restaurants trend gradually upward over
+time, meaning declining performance, since a higher score means more or
+more severe violations, as in the example below.
 
-These variations suggest that compliance with food safety standards can change
-over time rather than remaining constant. The temporal visualization highlights
-how individual restaurant performance evolves, providing important context
-beyond a single inspection result and reinforcing the value of temporal analysis
-when evaluating food safety outcomes. In contrast, Figure 12 illustrates high
-variability in inspection outcomes, with significant fluctuations between
-inspection periods.
+These variations suggest that compliance with food safety standards can
+change over time rather than remaining constant. Reviewing a restaurant's
+full inspection history, rather than just its most recent result, provides
+context a single inspection can't, and reinforces the value of tracking
+performance over time. Other restaurants show high variability instead of
+a steady trend, with scores swinging between inspections rather than
+moving consistently in one direction, as in the image below.
 
 <ProjectFigure
   src={increasingScore}  
-  alt="NYC Restaurant Inspection Dashboard, Restaurant Score Increase Over Time"
-  caption="Restaurant Score Increase Over Time"
+  alt="NYC Restaurant Inspection Dashboard, restaurant performance worsening over time"
+  caption="Restaurant Performance Worsening Over Time"
 />
 
 <ProjectFigure
-  src={decreasingScore}  
-  alt="NYC Restaurant Inspection Dashboard, High Variability in Restaurant Score Over Time"
-  caption="High Variability in Restaurant Score Over Time"
+  src={variableScore}  
+  alt="NYC Restaurant Inspection Dashboard, high variability in restaurant performance over time"
+  caption="High Variability in Restaurant Performance"
 />
 </PageSubsection>
 
@@ -353,17 +611,18 @@ inspection periods.
   title="Interaction Insights"
   class="subsection-wide"
 >
-The dashboard’s interactive map view directly influences how the dataset is
-interpreted, as summary statistics, grade distributions, and tabular information
-update dynamically based on the current map extent. As users pan and zoom across
-the city, the subset of data being visualized changes, revealing patterns that
-may not be apparent at a city-wide level.
+The dashboard's interactive map directly shapes how the dataset reads: the
+stats panel, grade breakdown chart, and restaurant list all update
+dynamically to match the current map extent. As users pan and zoom across
+the city, the subset of data being visualized changes, revealing patterns
+that aren't apparent at a city-wide view.
 
-This relationship between map extent and data output demonstrates that
-interpretation varies with scale: broader views highlight overall trends, while
-more focused views reveal finer spatial variation. Filtering and selection
-tools, including grade and borough filters as well as rectangle and lasso
-selection, further enhance analysis by isolating specific subsets of the data.
+This relationship between map extent and the rest of the dashboard means
+interpretation varies with scale: broader views highlight citywide trends,
+while more focused views reveal finer spatial variation. The Grade and
+Borough filters, search field, and Search Radius tool narrow that same
+view further, letting users isolate specific subsets of the data without
+leaving the map.
 </PageSubsection>
 <PageSubsection
   title="Data & Dashboard Limitations"
@@ -373,58 +632,14 @@ The following limitations were identified during the development and use of the
 dashboard:
 
           <ul class="list-justified">
-            <li>Multiple restaurants located at the same or adjacent addresses are often plotted at the same geographic point, which can lead to potential interpretation challenges when interacting with the map. However, this limitation is effectively addressed through the Restaurants (Current View & Selected) and Grade Breakdown (Current Map View) panels, which summarize both selected and visible records. As a result, regardless of point overlap within the map view, the true number of restaurants is accurately represented through the dashboard’s UI elements.</li>
-            <li>ArcGIS Dashboards does not currently provide a dedicated dataset search function, which limits the ability to efficiently locate specific restaurant inspections within large datasets. As the dataset size increases, alternative methods such as categorical filtering return large result sets, which can degrade performance and responsiveness, ultimately affecting usability.</li>
-            <li>There is a clear distinction between filtered results and selected results. Filters, such as by grade or borough do not directly select results, and therefore will not update the pie chart summary unless those restaurants fall within the current map view.</li>
-            
-          </ul>
-</PageSubsection>
-
-<PageSubsection
-  title="Future Improvements"
-  class="subsection-wide"
->
-The following enhancements could improve the functionality and usability of the dashboard:
-
-          <ul class="list-justified">
-            <li><span class="bold">Public Deployment:</span> If deployed publicly, this dashboard could leverage the NYC Open Data API to provide near-real-time updates of restaurant inspection results, enabling a continuously updated view of inspection activity across New York City.</li>
-            <li><span class="bold">Enhanced Restaurant Score Over Time functionality:</span> could link each point on the Restaurant Score Over Time serial chart to its corresponding inspection report, allowing users to access detailed information for individual inspections directly.</li>
-            <li><span class="bold">Enhanced Search:</span> Enhanced dataset querying. See details in Data & Dashboard Limitations.</li>
-            <li><span class="bold">Filter by borough:</span> Implementing a borough-level filter, similar to existing grade-based selectors, would allow users to isolate and compare inspection outcomes across boroughs.</li>
-            
+            <li>Multiple restaurants at the same or adjacent address often plot at the same map point, so a single click can only resolve to one restaurant even when several share it. The Stats Panel and Grade Breakdown chart aren't affected by this, since both tally every restaurant currently in view from the underlying data rather than from what's visually rendered as separate dots; the Restaurant List panel is the reliable way to browse and select between restaurants sharing a point.</li>
+            <li>The dashboard has no backend or live database: restaurant data ships as one static GeoJSON file (all ~30,600 restaurants, about 32MB, loaded up front) plus over 27,000 small per-restaurant history files fetched on demand and capped at 50 entries in an in-memory cache. Static files keep hosting free and the app simple to reason about, since every filter, search, and sort runs entirely in the browser against data already downloaded, but a live database would scale further past this dataset's size, at the cost of hosting fees and operational complexity a personal project doesn't need.</li>
+            <li>Data is only as fresh as the last build. DOHMH inspections are refetched dataset-wide at most once a day, driven by the scheduled geocoding backfill and any push to the main branch, not a live feed, so a newly published inspection can take up to a day to appear.</li>
+            <li>LocationIQ's free tier caps geocoding at about 4,900 lookups a day. A cold cache would take roughly a week to fully resolve; day to day this only matters for new or changed restaurants, since the daily backfill skips everything already cached.</li>
           </ul>
 </PageSubsection>
 
 </PageSection>
-<PageSection
-  title={`<i class="fa-solid fa-lightbulb"></i> Findings`}
-  id="findings"
->
-From a cartographic perspective, the dashboard demonstrates how visual
-hierarchy, symbology, and dynamic components can help users interpret and
-identify meaningful patterns in a complex dataset such as the DOHMH New York
-City Restaurant Inspection Results.
-
-Restaurant inspection results have a considerable impact on daily
-decision-making, influencing where people choose to dine based on perceived
-health and safety standards.
-
-The dashboard combines an interactive map with dynamically generated content,
-including table summaries, grade and score breakdowns, detailed information
-panels, and performance-over-time serial charts. As a result, it shifts from a
-broad spatial overview of thousands of restaurant points to more focused,
-location-specific insights, highlighting core restaurant and inspection
-information while supporting performance trends over time.
-
-The use of dynamic filtering and selection tools further improves usability,
-allowing users to explore the data intuitively and responsively based on the
-current map view or selection.
-
-Ultimately, the dashboard demonstrates how effective cartographic design and
-interactive visualization can transform complex datasets into accessible tools
-that support informed, real-world decision-making.
-
 <h3 class="nyc-mark">I <span>♥</span> NY</h3>
-</PageSection>
 
 

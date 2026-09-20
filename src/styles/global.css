@@ -216,6 +216,40 @@ img {
   text-align: center;
 }
 
+/* Data tables styled like a dashboard panel: card border, header band,
+   centered cells. */
+.page-subsection table {
+  width: 100%;
+  margin: 1.5rem 0;
+  border-collapse: collapse;
+  border: 1px solid var(--border-card);
+  box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.05);
+}
+
+.page-subsection th,
+.page-subsection td {
+  padding: 0.6rem 1rem;
+  text-align: center;
+  font-size: 1rem;
+  border-bottom: 1px solid var(--border-card);
+}
+
+.page-subsection th {
+  background-color: var(--bg-alt);
+  color: var(--text-h4);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.page-subsection tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.page-subsection tbody tr:hover {
+  background-color: rgba(var(--bg-card), 0.015);
+}
+
 /*///////////////////////////////////////////// PARAGRAPH FORMATTING //////////////////////////////////////////////*/
 
 p {
