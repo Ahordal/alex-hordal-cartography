@@ -23,6 +23,7 @@ const projects = defineCollection({
 
     technologies: z.array(z.string()).optional(),
     appliedSkills: z.array(z.string()).optional(),
+    aiAssisted: z.boolean().optional(),
     downloadFile: z.string().optional(),
     downloadLabel: z.string().optional(),
     listClass: z.string().optional(),

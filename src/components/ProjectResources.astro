@@ -8,9 +8,10 @@ interface Resource {
 
 interface Props {
   resources?: Resource[];
+  aiAssisted?: boolean;
 }
 
-const { resources } = Astro.props;
+const { resources, aiAssisted } = Astro.props;
 ---
 
 <div class="project-resources">
@@ -39,5 +40,23 @@ const { resources } = Astro.props;
         </div>
       </a>
     ))
+  }
+
+  {
+    aiAssisted && (
+      <div class="resource-note">
+        <div class="resource-icon">
+          <i class="fa-solid fa-brain"></i>
+        </div>
+
+        <div class="resource-content">
+          <h4>AI-Assisted Development</h4>
+          <p>
+            This project was developed through a combination of traditional
+            development and iterative AI-assisted workflows.
+          </p>
+        </div>
+      </div>
+    )
   }
 </div>

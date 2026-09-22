@@ -87,14 +87,15 @@ const { Content } = await render(project);
     <section class="page-content-column">
 
       {
-        project.data.resources?.length && (
+        (project.data.resources?.length || project.data.aiAssisted) && (
           <PageSection
-            title={`<i class="fa-solid fa-folder-tree section-icon"></i> Project Files & Links`}
+            title={`<i class="fa-solid fa-folder-tree section-icon"></i> Project Resources`}
             id="resources"
           >
 
             <ProjectResources
               resources={project.data.resources}
+              aiAssisted={project.data.aiAssisted}
             />
 
           </PageSection>

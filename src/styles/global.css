@@ -859,6 +859,25 @@ a:focus-visible {
   box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.05);
 }
 
+.plate-image {
+  position: relative;
+}
+.ai-badge {
+  position: absolute;
+  bottom: 0.6rem;
+  right: 0.6rem;
+  width: 2.1rem;
+  height: 2.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.85);
+  color: var(--text-body);
+  font-size: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
 .plate-description {
   letter-spacing: normal;
 }
@@ -875,6 +894,7 @@ a:focus-visible {
   display: flex;
   flex-direction: column;
   margin-bottom: 2rem;
+  padding-right: 0.5rem;
 }
 .resource-icon {
   width: 2.5rem;
@@ -906,6 +926,7 @@ a:focus-visible {
 .resource-arrow {
   opacity: 0.5;
   padding-top: 0.15rem;
+  padding-right: 0.25rem;
   flex-shrink: 0;
 }
 .resource-link {
@@ -921,6 +942,13 @@ a:focus-visible {
 .resource-link:hover {
   background-color: rgba(0, 0, 0, 0.02);
   text-decoration: none;
+}
+.resource-note {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.25rem 0;
+  border-bottom: 0.5px solid var(--border-light);
 }
 /*///// BREADCRUMBS /////*/
 

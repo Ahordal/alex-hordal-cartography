@@ -11,7 +11,7 @@ interface Props {
   href: string;
   tags?: string[];
   objectPosition?: string;
-  
+  aiAssisted?: boolean;
 }
 
 const {
@@ -21,6 +21,7 @@ const {
   href,
   tags = [],
   objectPosition = "center",
+  aiAssisted = false,
 } = Astro.props;
 ---
 
@@ -30,6 +31,12 @@ const {
   style={`--object-position: ${objectPosition};`}>
   <div class="plate-image">
     <Image src={image} alt={plainTitle} loading="lazy" />
+
+    {aiAssisted && (
+      <div class="ai-badge" role="img" aria-label="Built with AI assistance">
+        <i class="fa-solid fa-brain" aria-hidden="true"></i>
+      </div>
+    )}
   </div>
 
   <div class="plate-content">
