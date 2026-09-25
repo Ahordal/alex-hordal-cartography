@@ -827,7 +827,7 @@ a:focus-visible {
 
 .portfolio-page {
   width: 100%;
-  max-width: 1400px;
+  max-width: var(--max-width);
   margin: 0 auto;
 }
 .portfolio-header {
