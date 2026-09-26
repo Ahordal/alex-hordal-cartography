@@ -65,6 +65,12 @@
 }
 /*///////////////////////////////////////////// DOCUMENT FOUNDATION //////////////////////////////////////////////*/
 
+html {
+  /* Reserves scrollbar space on every page so short pages don't
+     narrow the viewport and shift the centered nav links. */
+  scrollbar-gutter: stable;
+}
+
 body {
   background-color: var(--bg);
   color: var(--text-body);
