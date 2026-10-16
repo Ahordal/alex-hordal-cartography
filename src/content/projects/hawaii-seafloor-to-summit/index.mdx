@@ -23,10 +23,10 @@ cardSize: "wide"
 
 appliedSkills:
   - Applied raster processing techniques to resample and merge multiple DEM datasets into a continuous topobathymetric surface.
-  - Designed and implemented a custom diverging colour ramp to effectively communicate elevation change across terrestrial and bathymetric environments.
-  - Applied cartographic design principles to develop a clear and visually balanced map layout supporting the seafloor-to-summit narrative.
-  - Produced a topobathymetric map that communicates complex elevation relationships through effective visualization and supporting contextual elements.
-  - Extracted elevation data from DEMs and designed a vertically exaggerated elevation profile of Mauna Kea to effectively communicate its full seafloor-to-summit extent.
+  - Designed a custom diverging colour ramp that carries elevation seamlessly across terrestrial and bathymetric environments.
+  - Applied cartographic design principles to build a clear, visually balanced layout supporting the seafloor-to-summit narrative.
+  - Used typographic hierarchy and contextual snippets to guide readers through complex elevation relationships.
+  - Extracted elevation data from DEMs and designed a vertically exaggerated elevation profile of Mauna Kea showing its full seafloor-to-summit extent.
 
 resources:
   - label: "High Resolution PDF"
@@ -53,14 +53,11 @@ import sketch from "./sketch.webp";
 import ProjectFigure from "../../../components/ProjectFigure.astro";
 
 
-The primary objective of Hawaiʻi: Seafloor to Summit was to design a 48” × 36” large-format topo-bathymetric map that accurately conveys the true vertical scale of the eight main Hawaiian Islands, from the abyssal seafloor to the summit of Mauna Kea, emphasizing that when measured from its submarine base, Mauna Kea is considered the tallest mountain in the world.
+Measured from its base on the abyssal seafloor, Mauna Kea rises roughly 9,743 metres (31,965 feet), making it the tallest mountain on Earth. Most of that height is underwater. Hawaiʻi: Seafloor to Summit is a 48 × 36 inch topobathymetric map showing the full vertical extent of the eight main Hawaiian Islands, from the abyssal plain to the summit of Mauna Kea.
 
-Typically, map elevations are measured as the vertical distance above or below a
-reference datum, most commonly mean sea level. However, conventional topographic
-maps often visually understate submarine topography and, much like an iceberg,
-fail to communicate the full relief of geologic formations that extend below the
-ocean surface. As a result, they do not adequately convey the full vertical
-scale of the Hawaiian Islands.
+Conventional topographic maps measure elevation from sea level, which hides most of each Hawaiian volcano beneath the ocean. This map shows land and seafloor as one continuous surface.
+
+The map was exhibited in the NACIS 2026 Map Gallery.
 
 <ProjectFigure
   src={sketch}
@@ -68,21 +65,24 @@ scale of the Hawaiian Islands.
   caption="Hawaiʻi: Seafloor to Summit Concept Sketch"
 />
 
-The topobathymetric surface used in this map was derived from a mosaic of multiple DEM sources, including the NOAA NCEI Coastal Relief Model (CRM) (~30 m) and ETOPO2022 (~450 m), as well as multibeam bathymetry from SOEST’s Hawaiʻi Mapping Research Group (~50 m). The CRM provides nearshore coverage, ETOPO2022 provides global bathymetry, and the multibeam data contribute higher-resolution detail where available. Due to differences in spatial resolution and coverage, all datasets were resampled to a common 90 m grid to balance detail, continuity, and visual consistency across the surface. Source datasets reference differing vertical datums, resulting in minor elevation offsets; however, these differences are negligible at the 90 m resolution used in this map and do not affect overall terrain representation.
+The topobathymetric surface is a mosaic of three DEM sources, layered in order of detail. The NOAA NCEI Coastal Relief Model (CRM, ~30 m) covers the islands and nearshore seafloor. Multibeam bathymetry from SOEST’s Hawaiʻi Mapping Research Group (~50 m) adds higher-resolution detail farther offshore where surveys exist. ETOPO2022 (~450 m) fills the remaining gaps. All three were resampled to a common 90 m grid to balance detail, continuity, and visual consistency across the surface. The sources reference different vertical datums, but the resulting offsets of a few metres are negligible across an elevation range of nearly 10,000 metres.
+
 <ProjectFigure
   src={bathymetry}
-  alt="Example of closeup Bathymetry"
-  caption="Bathymetry Closeup"
+  alt="Detail of Hawaiʻi Island and its submarine flanks, showing the Hilina, North Kona, and South Kona slumps, Kamaʻehuakanaloa volcano, and the Hawaiian Volcanism text panel"
+  caption="Hawaiʻi Island and its submarine flanks"
 />
+
 A key design consideration was the symbolization of the merged DEM using a custom, continuous, diverging colour ramp that seamlessly blended topography and bathymetry at mean sea level. This involved extensive experimentation with colour stops, positioning, transparencies, and manual classification intervals. Hillshading and slope highlights were applied to accentuate geomorphology and improve terrain interpretation, particularly below the ocean surface.
 
-Bathymetric and terrestrial features were identified and labelled, including points of interest, population centres, summits, volcanoes, seamounts, and underwater landslides. Subtle typographic hierarchy and placement were also used as visual depth cues to accentuate the pseudo-3D terrain effect.
+Bathymetric and terrestrial features were identified and labelled, including points of interest, population centres, summits, volcanoes, seamounts, and underwater landslides. Typography doubles as a depth cue: land labels are crisp and bright, while undersea features are set in softer, wide-spaced blue type that recedes into the water, accentuating the pseudo-3D terrain effect. Hawaiian place names use the ʻokina and kahakō throughout.
 
-The map also includes several small contextual snippets highlighting major features and important historical events, an 8.5× vertically exaggerated elevation profile of Mauna Kea to reinforce the seafloor-to-summit narrative, and an inset map of the Hawaiian Archipelago for location context.
+The map also includes several small contextual snippets highlighting major features and important historical events, an inset map of the Hawaiian Archipelago for location context, and an elevation profile of Mauna Kea from abyssal plain to summit. A vertical exaggeration of 8.5× was used to accentuate Mauna Kea’s broad, low-angle slopes.
+
 <ProjectFigure
   src={elevationProfile}
   alt="Mauna Kea Elevation Profile"
-  caption="Mauna Kea Elevation Profile"
+  caption="Mauna Kea Elevation Profile (8.5× vertical exaggeration)"
 />
 
 
