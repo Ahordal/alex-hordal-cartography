@@ -39,6 +39,21 @@ const projects = defineCollection({
         description: z.string().optional(),
       })
     ).optional(),
+    dataSources: z.array(
+      z.object({
+        group: z.string(),
+        sources: z.array(
+          z.object({
+            author: z.string(),
+            date: z.string(),
+            title: z.string(),
+            note: z.string().optional(),
+            publisher: z.string().optional(),
+            url: z.string(),
+          })
+        ),
+      })
+    ).optional(),
   }),
 });
 

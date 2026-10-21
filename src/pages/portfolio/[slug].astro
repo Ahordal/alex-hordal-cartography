@@ -24,6 +24,9 @@ const { project } = Astro.props as Props;
 
 // Render MDX content
 const { Content } = await render(project);
+
+// Titles like "...in the world?" already carry their own terminal punctuation
+const endSentence = (text: string) => (/[.?!]$/.test(text) ? text : `${text}.`);
 ---
 
 <MainLayout
@@ -114,6 +117,42 @@ const { Content } = await render(project);
         </div>
 
       </PageSection>
+
+      {
+        project.data.dataSources?.length && (
+          <PageSection
+            title={`<i class="fa-solid fa-database section-icon"></i> Data Sources`}
+            id="data-sources"
+          >
+
+            {project.data.dataSources.map((group) => (
+              <div class="data-source-group">
+
+                <h4>{group.group}</h4>
+
+                <ul class="citation-list">
+                  {group.sources.map((source) => (
+                    <li>
+                      {source.author}. ({source.date}).{" "}
+                      {source.note ? (
+                        <>
+                          <em>{source.title}</em> {endSentence(source.note)}
+                        </>
+                      ) : (
+                        <em>{endSentence(source.title)}</em>
+                      )}{" "}
+                      {source.publisher && `${endSentence(source.publisher)} `}
+                      <a href={source.url}>{source.url}</a>
+                    </li>
+                  ))}
+                </ul>
+
+              </div>
+            ))}
+
+          </PageSection>
+        )
+      }
 
       {
         project.data.technologies?.length && (

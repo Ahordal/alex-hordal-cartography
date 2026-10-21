@@ -689,6 +689,24 @@ a:focus-visible {
   text-align: justify;
 }
 
+/*///// DATA SOURCES /////*/
+
+.data-source-group h4 {
+  margin-bottom: var(--space-xs);
+}
+
+/* APA-style hanging indent */
+.citation-list {
+  list-style: none;
+  padding-left: 1.2rem;
+  margin-bottom: var(--space-s);
+}
+.citation-list li {
+  text-indent: -1.2rem;
+  margin-bottom: var(--space-xs);
+  overflow-wrap: anywhere;
+}
+
 /*///// FOOTER /////*/
 
 .footer-container {
