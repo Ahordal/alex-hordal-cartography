@@ -23,7 +23,7 @@ cardSize: "wide"
 
 appliedSkills:
   - Applied raster processing techniques to resample and merge multiple DEM datasets into a continuous topobathymetric surface.
-  - Designed a custom diverging colour ramp that carries elevation seamlessly across terrestrial and bathymetric environments.
+  - Designed a custom diverging colour ramp that carries elevation across terrestrial and bathymetric environments.
   - Applied cartographic design principles to build a clear, visually balanced layout supporting the seafloor-to-summit narrative.
   - Used typographic hierarchy and contextual snippets to guide readers through complex elevation relationships.
   - Extracted elevation data from DEMs and designed a vertically exaggerated elevation profile of Mauna Kea showing its full seafloor-to-summit extent.
@@ -33,6 +33,65 @@ resources:
     url: "https://assets.alexhordal.ca/hawaii_seafloor_to_summit.webp"
     icon: "fa-solid fa-image"
     description: "Download the full resolution map (RGB, 103 MB)"
+
+dataSources:
+  - group: "Bathymetry"
+    sources:
+      - author: "Hawaiʻi Mapping Research Group (HMRG)"
+        date: "n.d."
+        title: "Multibeam bathymetry data for Hawaiʻi"
+        publisher: "School of Ocean and Earth Science and Technology (SOEST), University of Hawaiʻi at Mānoa"
+        url: "https://www.soest.hawaii.edu/HMRG/multibeam/"
+      - author: "National Centers for Environmental Information (NCEI)"
+        date: "2022"
+        title: "Bathymetric datasets including Coastal Relief Model (CRM) and ETOPO 2022 global relief model"
+        publisher: "National Oceanic and Atmospheric Administration"
+        url: "https://www.ncei.noaa.gov/maps/bathymetry/"
+  - group: "Vector & Thematic Layers"
+    sources:
+      - author: "Bureau of Transportation Statistics (BTS)"
+        date: "n.d."
+        title: "North American roads dataset"
+        url: "https://geodata.bts.gov/"
+      - author: "NOAA Office for Coastal Management"
+        date: "n.d."
+        title: "Marine place names"
+        publisher: "data.gov. Archived March 21, 2021"
+        url: "https://web.archive.org/web/20210321204837/https://catalog.data.gov/dataset/marine-place-names"
+      - author: "Natural Earth"
+        date: "n.d."
+        title: "World geographic lines"
+        url: "https://www.naturalearthdata.com/downloads/"
+      - author: "State of Hawaiʻi"
+        date: "n.d."
+        title: "Hawaiʻi geospatial data layers (Island Coastlines, Ocean Mask, Streams, Marine Place Names, Reserves, Urban Areas, Geographic Names, and Geological Units)"
+        publisher: "Hawaiʻi Statewide GIS Program"
+        url: "https://geoportal.hawaii.gov/"
+      - author: "U.S. Department of Agriculture (USDA)"
+        date: "n.d."
+        title: "Tree canopy cover data"
+        publisher: "Forest Service Geospatial Data Gateway"
+        url: "https://data.fs.usda.gov/geodata/rastergateway/"
+  - group: "Background Information"
+    sources:
+      - author: "Royal Collection Trust"
+        date: "n.d."
+        title: "A voyage to the Pacific Ocean…; v. 3"
+        note: "/ by James King (1785)"
+        url: "https://www.rct.uk/collection/1125188/a-voyage-to-the-pacific-ocean-v-3-by-james-king"
+      - author: "United States Geological Survey"
+        date: "2003, October 24"
+        title: "Hawaii’s volcanoes revealed"
+        note: "(Map I-2809)"
+        url: "https://pubs.usgs.gov/imap/2809/"
+      - author: "United States Geological Survey"
+        date: "2016, January 14"
+        title: "Volcano Watch—A geologic tour of the Hawaiian Islands: Oʻahu"
+        url: "https://www.usgs.gov/news/volcano-watch-geologic-tour-hawaiian-islands-oahu"
+      - author: "United States Geological Survey"
+        date: "n.d."
+        title: "Where is the largest active volcano in the world?"
+        url: "https://www.usgs.gov/faqs/where-largest-active-volcano-world"
 
 
 
@@ -45,10 +104,13 @@ featuredImage: ./featured.webp
 import elevationProfile from "./hawaii-detail-elevation-profile.webp";
 import bathymetry from "./hawaii-detail-bathymetry.webp";
 import sketch from "./sketch.webp";
+import crmBeforeCleanup from "./crm-before-cleanup.webp";
+import crmJoinArtifact from "./crm-join-artifact.webp";
+import labelDepthDetail from "./label-depth-detail.webp";
 import ProjectFigure from "../../../components/ProjectFigure.astro";
 
 
-Measured from its base on the abyssal seafloor, Mauna Kea rises roughly 9,743 metres (31,965 feet), making it the tallest mountain on Earth. Most of that height is underwater. Hawaiʻi: Seafloor to Summit is a 48 × 36 inch topobathymetric map showing the full vertical extent of the eight main Hawaiian Islands, from the abyssal plain to the summit of Mauna Kea.
+Measured from its base on the abyssal seafloor, Mauna Kea rises roughly 9,743 metres (31,965 feet), making it the tallest mountain on Earth. Hawaiʻi: Seafloor to Summit is a 48 × 36 inch topobathymetric map showing the full vertical extent of the eight main Hawaiian Islands, from the abyssal plain to the summit of Mauna Kea.
 
 Conventional topographic maps measure elevation from sea level, which hides most of each Hawaiian volcano beneath the ocean. This map shows land and seafloor as one continuous surface.
 
@@ -60,7 +122,23 @@ Featured in the NACIS 2026 Map Gallery.
   caption="Hawaiʻi: Seafloor to Summit Concept Sketch"
 />
 
-The topobathymetric surface is a mosaic of three DEM sources, layered in order of detail. The NOAA NCEI Coastal Relief Model (CRM, ~30 m) covers the islands and nearshore seafloor. Multibeam bathymetry from SOEST’s Hawaiʻi Mapping Research Group (~50 m) adds higher-resolution detail farther offshore where surveys exist. ETOPO2022 (~450 m) fills the remaining gaps. All three were resampled to a common 90 m grid to balance detail, continuity, and visual consistency across the surface. The sources reference different vertical datums, but the resulting offsets of a few metres are negligible across an elevation range of nearly 10,000 metres.
+The topobathymetric surface is a mosaic of three DEM sources, layered in order of detail. The NOAA NCEI Coastal Relief Model (CRM, ~30 m) covers the islands and nearshore seafloor. Multibeam bathymetry from SOEST’s Hawaiʻi Mapping Research Group (~50 m) adds higher-resolution detail farther offshore where surveys exist. ETOPO2022 (~450 m) fills the remaining gaps.
+
+Empty edge cells in the CRM, the grey areas in the following image, were not transparent but stored as 0 m, so they were set to NoData. All three sources were then projected to a common grid in Hawaii Albers Equal Area Conic (ESRI:102007), which preserves area and keeps distortion low across the main Hawaiian Islands, and merged with a blended mosaic, so each fades into the next rather than meeting at a hard seam. A 30 m grid was tested first, but 90 m kept the file manageable and hid faint alignment artifacts along the joins, with no loss of detail visible at the scale of the full island chain.
+
+<ProjectFigure
+  src={crmBeforeCleanup}
+  alt="Greyscale Coastal Relief Model of the main Hawaiian Islands before cleanup, with stepped tile edges and flat grey fill where no survey data exists"
+  caption="The Coastal Relief Model before cleanup. Areas without survey data were stored as 0 m rather than NoData, so any blending with the other two DEMs would produce linear artifacts along the tile edges unless removed with the Set Null tool."
+/>
+
+<ProjectFigure
+  src={crmJoinArtifact}
+  alt="Greyscale hillshade of the seafloor near Dutton Seamount, with a straight dark line along the edge of the Coastal Relief Model tile cutting through the seamount"
+  caption="Initial join issues at the CRM border. The tile edge left a hard line through the seafloor, cutting across Dutton Seamount, until near-zero cells were nulled with a value range rather than an exact 0. The change in texture across the line shows the jump from the CRM’s ~30 m detail to ETOPO’s ~450 m."
+/>
+
+The merged DEM is symbolized with a custom diverging colour ramp that blends topography and bathymetry at sea level. Colour stops, positions, and transparencies were adjusted over many iterations. The DEM was classified using a defined interval of 100 m, producing 104 classes across the full elevation range. Terrain shading comes from a single hillshade (315° azimuth, 45° altitude) run on the merged DEM, so no shading lines form along the dataset boundaries. It sits over the colour ramp with a Multiply blend mode and uses a z-factor of 1.5 to bring out the broad, low-relief landforms on the seafloor.
 
 <ProjectFigure
   src={bathymetry}
@@ -68,17 +146,33 @@ The topobathymetric surface is a mosaic of three DEM sources, layered in order o
   caption="Hawaiʻi Island and its submarine flanks"
 />
 
-A key design consideration was the symbolization of the merged DEM using a custom, continuous, diverging colour ramp that seamlessly blended topography and bathymetry at mean sea level. This involved extensive experimentation with colour stops, positioning, transparencies, and manual classification intervals. Hillshading and slope highlights were applied to accentuate geomorphology and improve terrain interpretation, particularly below the ocean surface.
+Bathymetric and terrestrial features were identified and labelled, including points of interest, population centres, summits, volcanoes, seamounts, and underwater landslides. All type is set in Source Sans Pro, and within that single family, typography doubles as a depth cue: land, channel, and bay labels are crisp and bright, while seafloor features are set in deliberately faint, letterspaced blue type that recedes into the water. The bright Pacific Ocean label is placed over the darker Hawaiian Arch label beneath it, so the two read as sitting at different depths. Together, these contrasts make the terrain feel more three-dimensional. Hawaiian place names use the ʻokina and kahakō.
 
-Bathymetric and terrestrial features were identified and labelled, including points of interest, population centres, summits, volcanoes, seamounts, and underwater landslides. Typography doubles as a depth cue: land labels are crisp and bright, while undersea features are set in softer, wide-spaced blue type that recedes into the water, accentuating the pseudo-3D terrain effect. Hawaiian place names use the ʻokina and kahakō throughout.
+<ProjectFigure
+  src={labelDepthDetail}
+  alt="Detail of the map’s deep seafloor, with a bright, curved Pacific Ocean label crossing over a faint Hawaiian Arch label, surrounded by seamounts labelled in small italic type"
+  caption="Label hierarchy as a depth cue. The bright Pacific Ocean label sits above the faint, letterspaced Hawaiian Arch and seafloor labels beneath it."
+/>
 
-The map also includes several small contextual snippets highlighting major features and important historical events, an inset map of the Hawaiian Archipelago for location context, and an elevation profile of Mauna Kea from abyssal plain to summit. A vertical exaggeration of 8.5× was used to accentuate Mauna Kea’s broad, low-angle slopes.
+The map also includes several small contextual snippets, from the islands’
+earlier name, the Sandwich Islands, to a personal note marking my engagement on
+the Nā Pali Coast, along with an inset map of the Hawaiian
+Archipelago for location context and a seafloor-to-summit elevation profile
+of Mauna Kea. A vertical exaggeration of 8.5× was used to accentuate
+Mauna Kea’s broad, low-angle slopes. It was also partly a practical choice:
+8.5× let the profile fit the page composition, matching the width of the inset
+archipelago map.
 
 <ProjectFigure
   src={elevationProfile}
-  alt="Mauna Kea Elevation Profile"
+  alt="Cross-section of Mauna Kea from the abyssal seafloor to its summit, shown at 8.5× vertical exaggeration"
   caption="Mauna Kea Elevation Profile (8.5× vertical exaggeration)"
 />
+
+The final composition was completed in Adobe Illustrator, including finalizing
+text choices, cartographic fixes and refinements, and the addition of contextual
+information. The border is deliberately raised, with bevelled edges, to
+reinforce the map’s sense of elevation and depth.
 
 
 
