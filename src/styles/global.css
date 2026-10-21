@@ -66,11 +66,7 @@
 }
 /*///////////////////////////////////////////// DOCUMENT FOUNDATION //////////////////////////////////////////////*/
 
-html {
-  /* Reserves scrollbar space on every page so short pages don't
-     narrow the viewport and shift the centered nav links. */
-  scrollbar-gutter: stable;
-}
+
 
 body {
   background-color: var(--bg);
@@ -193,10 +189,6 @@ h4 {
 /*///////////////////////////////////////////// TEXT FORMATTING //////////////////////////////////////////////*/
 .bold {
   font-weight: var(--w-600); /* PROBABLY DELETE THIS */
-}
-/* Same grey as the subsection headers. */
-.education-school {
-  color: var(--text-h4);
 }
 
 /*///////////////////////////////////////////// IMAGES //////////////////////////////////////////////*/
@@ -671,8 +663,7 @@ a:focus-visible {
   margin-bottom: 0;
 }
 /* Aligned to the h2 line box and the arrows' right column (card + row inset + arrow inset). */
-.home-notice-dismiss,
-.panel-dismiss {
+.home-notice-dismiss {
   position: absolute;
   top: calc(var(--notice-inset) + var(--space-xs));
   right: calc(2 * var(--notice-inset) + 0.25rem);
@@ -689,16 +680,12 @@ a:focus-visible {
   cursor: pointer;
 }
 .home-notice-dismiss:hover,
-.home-notice-dismiss:focus-visible,
-.panel-dismiss:hover,
-.panel-dismiss:focus-visible {
+.home-notice-dismiss:focus-visible {
   opacity: 1;
 }
 /* Set on the icon itself: its inline-block box blocks an underline from the button. */
 .home-notice-dismiss:hover i,
-.home-notice-dismiss:focus-visible i,
-.panel-dismiss:hover i,
-.panel-dismiss:focus-visible i {
+.home-notice-dismiss:focus-visible i {
   color: var(--link-dark-grey);
   text-decoration: underline;
   text-underline-offset: 0.15em;
@@ -816,17 +803,81 @@ a:focus-visible {
 
 /*///// FOOTER /////*/
 
-.footer-container {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  width: 100%;
-  height: 60px;
-  display: flex;
-  justify-content: space-between;
+/* One footer at every width: centred location, colophon and Socials toggle. */
+.footer-bar {
+  position: relative;
+  display: grid;
+  grid-template-columns: 2.5rem 1fr 2.5rem;
   align-items: center;
+  max-width: var(--max-width);
+  min-height: 60px;
+  margin: 0 auto;
   padding: 0 var(--space-m);
+}
+
+.footer-text {
+  grid-column: 2;
+  margin: 0;
+  justify-content: center;
+  flex-wrap: wrap;
   font-size: 0.85rem;
-  letter-spacing: 0.05em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/* Sits inline after Colophon; icons never outsize their text. */
+.footer-bar .menu-toggle {
+  display: inline-flex;
+  padding: 0.3rem;
+  font-size: 0.85rem;
+}
+
+/* Opens upward from the footer, built like the mobile menu. On desktop a script
+   aligns its left edge to the Socials icon. */
+.footer-rows {
+  --notice-inset: 0.5rem;
+  display: none;
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  width: min(26rem, 100%);
+  padding: var(--notice-inset);
+  border-bottom: 0.5px solid var(--border-light);
+  background-color: var(--bg);
+  box-shadow: var(--hero-shadow-top);
+  font-family: var(--font-roboto);
+  font-weight: var(--w-425);
+  letter-spacing: normal;
+}
+
+.footer-rows.is-active,
+.footer-rows .nav-menu-title,
+.footer-rows .nav-desc {
+  display: block;
+}
+
+.footer-rows .nav-desc {
+  color: var(--text-supporting);
+}
+
+.footer-entries {
+  padding-left: var(--notice-inset);
+  border-left: 0.5px solid var(--border-light);
+}
+
+.footer-entries > .resource-link {
+  gap: 0.75rem;
+  padding: var(--notice-inset);
+}
+
+.footer-panel-copy {
+  padding-top: var(--notice-inset);
+  color: var(--text-h4);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.1rem;
+  text-align: center;
+  text-transform: uppercase;
 }
 
 /* Sticky like the header; one layer below it so an open menu overlaps the footer. */
@@ -1149,12 +1200,29 @@ a:focus-visible {
   align-items: center;
 }
 
+/* Row titles in the mobile menu and footer panel; same as the Latest entry titles. */
+.nav-label {
+  display: block;
+  margin-bottom: 0.2rem;
+  color: var(--text-h4);
+  font-size: 0.85rem;
+  font-weight: 600;
+  font-variation-settings: "wght" 600;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+}
+
+/* Desktop nav is a single line of labels, so no gap under them. */
+@media (min-width: 769px) {
+  .nav-links .nav-label {
+    margin-bottom: 0;
+  }
+}
+
 /* Desktop keeps plain text links; the row parts only show in the mobile menu. */
 .nav-entries {
   display: contents;
 }
-.footer-bar,
-.footer-rows,
 .nav-brand,
 .nav-menu-title,
 .nav-location,
@@ -1280,18 +1348,6 @@ a:focus-visible {
     display: block;
   }
 
-  .nav-label {
-    display: block;
-    margin-bottom: 0.2rem;
-    /* Same as the homepage Latest entry titles. */
-    color: var(--text-h4);
-    font-size: 0.85rem;
-    font-weight: 600;
-    font-variation-settings: "wght" 600;
-    letter-spacing: 0.1rem;
-    text-transform: uppercase;
-  }
-
   .nav-desc {
     display: block;
     color: var(--text-supporting);
@@ -1303,58 +1359,34 @@ a:focus-visible {
     text-underline-offset: 0.15em;
   }
 
-  /* Phones mirror the header: a 60px bar whose panel opens upward, built like the menu. */
-  .footer-container {
-    display: none;
-  }
-
+  /* Phone footer: tighter sides, and the location and colophon stack as two centred lines. */
   .footer-bar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 60px;
     padding: 0 var(--space-xs);
   }
 
-  /* Menu-item weight and colour, so the copyright sits below the header name. */
-  .footer-bar .nav-brand {
-    color: var(--text-h4);
-    font-weight: 600;
+  .footer-text {
+    flex-direction: column;
+    gap: 0;
   }
 
-  .footer-rows {
-    --notice-inset: 0.5rem;
+  .footer-text .footer-sep {
     display: none;
+  }
+
+  /* Once the line stacks, the toggle returns to the right edge, mirroring the header's. */
+  .footer-bar .menu-toggle {
     position: absolute;
-    bottom: 100%;
-    left: 0;
+    top: 50%;
+    right: var(--space-xs);
+    padding: 10px;
+    transform: translateY(-50%);
+  }
+
+  /* !important beats the desktop script's inline left if the window narrows while open. */
+  .footer-rows {
+    left: 0 !important;
     width: 100%;
-    padding: var(--notice-inset);
-    border-bottom: 0.5px solid var(--border-light);
-    background-color: var(--bg);
-    box-shadow: var(--hero-shadow-top);
-    font-family: var(--font-roboto);
-    font-weight: var(--w-425);
-    letter-spacing: normal;
   }
-
-  .footer-rows.is-active {
-    display: block;
-  }
-
-  .footer-entries {
-    padding-left: var(--space-xs);
-    border-left: 0.5px solid var(--border-light);
-  }
-
-  .footer-entries > .resource-link,
-  .footer-entries > .resource-note {
-    gap: 0.75rem;
-    padding: var(--space-xs);
-  }
-
-
-
 
   .home-content h1, .hero-subtitle {
     transform: translateY(10rem);

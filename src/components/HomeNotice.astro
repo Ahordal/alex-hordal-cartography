@@ -19,7 +19,7 @@ const project = await getEntry("projects", projectId);
 const notice = project?.data.recognition?.[0];
 const featuredImage = project && getFeaturedImage(project.id);
 
-// Keyed on the copy, so a dismissed notice reappears once its text changes.
+// Keyed on the copy, so a notice dismissed this visit still reappears if its text changes.
 const dismissKey = notice && `home-notice-dismissed:${projectId}:${notice.label}:${notice.description ?? ""}`;
 ---
 
@@ -84,15 +84,16 @@ const dismissKey = notice && `home-notice-dismissed:${projectId}:${notice.label}
 
     const key = notice.dataset.dismissKey;
 
+    // Session storage: a dismissal lasts for this visit, so returning visitors see the news again.
     // Storage can throw in private windows or with site data blocked.
     try {
-      if (localStorage.getItem(key)) notice.hidden = true;
+      if (sessionStorage.getItem(key)) notice.hidden = true;
     } catch {}
 
     notice.querySelector(".home-notice-dismiss")?.addEventListener("click", () => {
       notice.hidden = true;
       try {
-        localStorage.setItem(key, "1");
+        sessionStorage.setItem(key, "1");
       } catch {}
     });
   })();

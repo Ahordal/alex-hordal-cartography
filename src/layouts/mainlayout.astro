@@ -25,12 +25,11 @@ const crumbs = pathSegments.length
     }))
   : [{ label: "home", href: "/" }];
 
-// Mobile footer rows, styled like resource links; desktop keeps the one-line footer.
+// Footer Socials panel, styled like resource links.
 const footerRows = [
-  { label: "ULLR Maps", description: "ullrmaps.com", icon: "fa-solid fa-mountain", href: "https://www.ullrmaps.com", external: true },
-  { label: "Colophon", description: "How this site is built", icon: "fa-solid fa-book-open", href: "/colophon", external: false },
-  { label: "LinkedIn", description: "alex-hordal", icon: "fa-brands fa-linkedin", href: "https://www.linkedin.com/in/alex-hordal/", external: true },
-  { label: "GitHub", description: "Ahordal", icon: "fa-brands fa-github", href: "https://github.com/Ahordal", external: true },
+  { label: "LinkedIn", description: "alex-hordal", icon: "fa-brands fa-linkedin", href: "https://www.linkedin.com/in/alex-hordal/" },
+  { label: "GitHub", description: "Ahordal", icon: "fa-brands fa-github", href: "https://github.com/Ahordal" },
+  { label: "ULLR Maps", description: "ullrmaps.com", icon: "fa-solid fa-mountain", href: "https://www.ullrmaps.com" },
 ];
 
 // Icons and descriptions only show in the mobile menu, where links render as resource-style rows.
@@ -138,102 +137,47 @@ const navItems = [
     </main>
 
     <footer class="main-footer">
-      <div class="footer-container">
-        <div class="footer-group">
-          LOC: DARTMOUTH, NS
-          <i class="fa-brands fa-canadian-maple-leaf"></i>
-          // 44.66° N, 63.56° W
-        </div>
-
-        <nav class="footer-group">
-          <a
-            href="https://www.ullrmaps.com"
-            target="_blank"
-            rel="noopener noreferrer">
-            ULLR Maps
-          </a>
-
-          <span class="footer-sep" aria-hidden="true">|</span>
-
-          <a href="/colophon" class={isActive("/colophon") ? "active" : ""}>
-            Colophon
-          </a>
-
-          <span class="footer-sep" aria-hidden="true">|</span>
-
-          <div class="social-links">
-  <a
-    href="https://www.linkedin.com/in/alex-hordal/"
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label="Visit Alex Hordal's LinkedIn profile">
-    <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
-  </a>
-
-  <a
-    href="https://github.com/Ahordal"
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label="Visit Alex Hordal's GitHub profile">
-    <i class="fa-brands fa-github" aria-hidden="true"></i>
-  </a>
-</div>
-
-          <span class="footer-sep" aria-hidden="true">|</span>
-        </nav>
-
-        <span class="footer-copy">© ALEX HORDAL 2026</span>
-      </div>
-
-      <!-- Phone footer: mirrors the header bar, with a panel that opens upward. -->
+      <!-- One footer at every width: location and colophon in the bar, socials in an upward panel. -->
       <div class="footer-bar">
-        <span class="nav-brand">© Alex Hordal 2026</span>
+        <p class="footer-group footer-text">
+          <span>
+            LOC: DARTMOUTH, NS
+            <i class="fa-brands fa-canadian-maple-leaf" aria-hidden="true"></i>
+            // 44.66° N, 63.56° W
+          </span>
 
-        <button
-          type="button"
-          class="menu-toggle"
-          aria-label="Open Site Information"
-          aria-expanded="false"
-          aria-controls="footer-rows"
-          data-label="Site Information"
-          data-icon="fa-wrench"
-        >
-          <i class="fa-solid fa-wrench menu-toggle-icon" aria-hidden="true"></i>
-        </button>
+          <span class="footer-sep" aria-hidden="true">|</span>
+
+          <a href="/colophon" class={isActive("/colophon") ? "active" : ""}>Colophon</a>
+
+          <span class="footer-sep" aria-hidden="true">|</span>
+
+          <button
+            type="button"
+            class="menu-toggle"
+            aria-label="Open Socials"
+            aria-expanded="false"
+            aria-controls="footer-rows"
+            data-label="Socials"
+            data-icon="fa-share-nodes"
+          >
+            <i class="fa-solid fa-share-nodes menu-toggle-icon" aria-hidden="true"></i>
+          </button>
+        </p>
       </div>
 
       <div class="footer-rows" id="footer-rows">
-        <button
-          type="button"
-          class="panel-dismiss"
-          aria-label="Close Site Information"
-          data-closes="footer-rows"
-        >
-          <i class="fa-solid fa-xmark" aria-hidden="true"></i>
-        </button>
-
         <h2 class="nav-menu-title">
-          <i class="fa-solid fa-wrench section-icon" aria-hidden="true"></i> Site Information
+          <i class="fa-solid fa-share-nodes section-icon" aria-hidden="true"></i> Socials
         </h2>
 
         <div class="footer-entries">
-          <div class="resource-note">
-            <span class="resource-icon" aria-hidden="true">
-              <i class="fa-solid fa-location-dot"></i>
-            </span>
-
-            <span class="resource-content">
-              <span class="nav-label">Dartmouth, NS</span>
-              <span class="nav-desc">44.66° N, 63.56° W</span>
-            </span>
-          </div>
-
           {footerRows.map((row) => (
             <a
               href={row.href}
               class="resource-link"
-              target={row.external ? "_blank" : undefined}
-              rel={row.external ? "noopener noreferrer" : undefined}
+              target="_blank"
+              rel="noopener noreferrer"
             >
               <span class="resource-icon" aria-hidden="true">
                 <i class={row.icon}></i>
@@ -249,8 +193,9 @@ const navItems = [
               </span>
             </a>
           ))}
-
         </div>
+
+        <p class="footer-panel-copy">© Alex Hordal 2026</p>
       </div>
     </footer>
   </body>
@@ -271,19 +216,24 @@ const navItems = [
         // Swaps to the same close mark the Latest card uses.
         icon?.classList.toggle(openIcon, !isOpen);
         icon?.classList.toggle("fa-xmark", isOpen);
+
+        if (isOpen && panel?.id === "footer-rows") alignFooterPanel(button, panel);
       });
     });
 
-    // In-panel close buttons route through the panel's toggle so its state stays in sync.
-    document.querySelectorAll<HTMLButtonElement>("[data-closes]").forEach((button) => {
-      button.addEventListener("click", () => {
-        const toggle = document.querySelector<HTMLButtonElement>(
-          `.menu-toggle[aria-controls="${button.dataset.closes}"]`
-        );
+    // Desktop: the Socials panel opens above its icon, left edges aligned, kept on screen.
+    // Phones use the full-width CSS layout, so any inline position is cleared there.
+    function alignFooterPanel(button: HTMLElement, panel: HTMLElement) {
+      if (!window.matchMedia("(min-width: 769px)").matches) {
+        panel.style.left = "";
+        return;
+      }
 
-        toggle?.click();
-        toggle?.focus();
-      });
-    });
+      const footerLeft = panel.offsetParent?.getBoundingClientRect().left ?? 0;
+      const maxLeft = document.documentElement.clientWidth - panel.offsetWidth;
+      const left = Math.min(button.getBoundingClientRect().left, maxLeft) - footerLeft;
+
+      panel.style.left = `${Math.max(left, 0)}px`;
+    }
   </script>
 </html>
