@@ -5,7 +5,7 @@ import vercel from "@astrojs/vercel";
 import sitemap from "@astrojs/sitemap";
 
 export default defineConfig({
-  site: "https://alexhordal.ca",
+  site: "https://www.alexhordal.ca",
 
   integrations: [mdx(), sitemap()],
 
