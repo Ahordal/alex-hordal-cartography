@@ -18,16 +18,17 @@
   --text-h2: #494949;
   --text-h3: #5b5b5b;
   --text-h4: #6e6e6e;
-  --text-captions: #757679;
-  --text-description: #757679;
-  --text-supporting: #757679;
+  /* #6d6e71 is the lightest grey that passes WCAG AA (4.5:1) on --bg. */
+  --text-captions: #6d6e71;
+  --text-description: #6d6e71;
+  --text-supporting: #6d6e71;
 
   /*///// LINK COLOURS /////*/
 
   --link-red: #f05253;
   --link-black: #000000;
   --link-dark-grey: #333333;
-  --link-light-grey: #757679;
+  --link-light-grey: #6d6e71;
 
   /*///// SPACING & LAYOUT /////*/
 
@@ -148,10 +149,11 @@ h1 {
   display: inline-block;
   margin-left: -0.08em;
 }
+/* Section titles: the homepage Latest header style, site-wide. */
 h2 {
   color: var(--text-h2);
+  font-size: 0.85rem;
   margin-bottom: var(--space-s);
-  border-bottom: var(--line-thin);
   padding-bottom: var(--space-xs);
   padding-top: var(--space-xs);
   text-transform: uppercase;
@@ -160,15 +162,15 @@ h2 {
   letter-spacing: 0.2em;
   font-family: var(--font-open-sans);
 }
+/* Entry and subsection titles: the Latest entry-title style, site-wide. */
 h3 {
-  font-size: 1.15rem;
+  font-size: 0.85rem;
+  font-weight: 600;
   font-variation-settings: "wght" 600;
   margin-bottom: var(--space-xs);
   text-transform: uppercase;
-  color: var(--text-h3);
-  letter-spacing: 0.2em;
-  border-bottom: 0.5px solid var(--border-light);
-  font-family: var(--font-open-sans);
+  color: var(--text-h4);
+  letter-spacing: 0.1rem;
 }
 
 h4 {
@@ -191,6 +193,10 @@ h4 {
 /*///////////////////////////////////////////// TEXT FORMATTING //////////////////////////////////////////////*/
 .bold {
   font-weight: var(--w-600); /* PROBABLY DELETE THIS */
+}
+/* Same grey as the subsection headers. */
+.education-school {
+  color: var(--text-h4);
 }
 
 /*///////////////////////////////////////////// IMAGES //////////////////////////////////////////////*/
@@ -479,12 +485,17 @@ p {
   /* All project text */
   text-align: center;
 }
+/* Nav-item style (HOME, ABOUT…), one step larger to lead the page. */
 .page-description {
-  color: var(--text-description);
   margin-top: var(--space-s);
   text-align: left;
   border-top: 0.5px solid var(--border-light);
-  font-size: clamp(1.3rem, 2vw, 1.3rem);
+  color: var(--text-h4);
+  font-size: 1rem;
+  font-weight: 600;
+  font-variation-settings: "wght" 600;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
 }
 
 /*///////////////////////////////////////////// LINKS //////////////////////////////////////////////*/
@@ -542,11 +553,21 @@ a:focus-visible {
 }
 .nav-links a.active {
   color: var(--link-dark-grey);
-  font-family: var(--font-open-sans);
 }
 .footer-group a:hover {
   text-decoration: underline;
   text-underline-offset: 0.15em;
+}
+/* Footer text links match the footer copy; social icons keep the shared link size. */
+.footer-group > a {
+  font-size: 0.85rem;
+}
+/* Desktop nav text matches the Latest entry titles and the mobile menu labels. */
+.nav-links a {
+  color: var(--text-h4);
+  font-family: inherit;
+  font-size: 0.85rem;
+  letter-spacing: 0.1rem;
 }
 .back-to-top {
   display: block;
@@ -607,9 +628,95 @@ a:focus-visible {
 }
 
 .home-bg {
+  position: relative;
   background-image: url("/hero_background2.jpg");
   background-size: cover;
   background-position: center;
+}
+
+/*///// HOME NOTICE /////*/
+
+/* Solid card so the portfolio-plate hover frame reads over the photo.
+   One inset drives every inner gutter so heading, icons, arrows and dismiss stay aligned. */
+.home-notice {
+  --notice-inset: 0.5rem;
+  position: absolute;
+  right: var(--space-m);
+  bottom: var(--space-m);
+  width: min(26rem, calc(100% - 2 * var(--space-m)));
+  padding: var(--notice-inset);
+  background-color: var(--bg);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+}
+/* Arrow gets its own column, as in resource rows, so it reads as linking the whole card. */
+.home-notice .portfolio-plate {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: var(--notice-inset);
+  color: inherit;
+}
+
+.home-notice-card {
+  flex: 1;
+  min-width: 0;
+}
+/* 1.5x the plate hover darkness; the busy photo behind washes out the default. */
+.home-notice .portfolio-plate:hover {
+  border-color: #d1d1d1;
+  background-color: rgba(var(--bg-card), 0.0225);
+  box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.075);
+}
+.home-notice .page-section {
+  margin-bottom: 0;
+}
+/* Aligned to the h2 line box and the arrows' right column (card + row inset + arrow inset). */
+.home-notice-dismiss,
+.panel-dismiss {
+  position: absolute;
+  top: calc(var(--notice-inset) + var(--space-xs));
+  right: calc(2 * var(--notice-inset) + 0.25rem);
+  height: calc(0.85rem * 1.6);
+  display: flex;
+  align-items: center;
+  padding: 0;
+  border: none;
+  background: none;
+  color: inherit;
+  font-size: 0.85rem;
+  /* Lowest opacity that keeps the 3:1 non-text contrast a control needs. */
+  opacity: 0.54;
+  cursor: pointer;
+}
+.home-notice-dismiss:hover,
+.home-notice-dismiss:focus-visible,
+.panel-dismiss:hover,
+.panel-dismiss:focus-visible {
+  opacity: 1;
+}
+/* Set on the icon itself: its inline-block box blocks an underline from the button. */
+.home-notice-dismiss:hover i,
+.home-notice-dismiss:focus-visible i,
+.panel-dismiss:hover i,
+.panel-dismiss:focus-visible i {
+  color: var(--link-dark-grey);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+/* Same rule as the About page's column divider. */
+.home-notice-entries {
+  padding-left: var(--notice-inset);
+  border-left: 0.5px solid var(--border-light);
+}
+/* The mobile menu title shares the Latest header styling. */
+.home-notice h2,
+.nav-menu-title {
+  padding-inline: var(--notice-inset);
+}
+.home-notice .resource-link {
+  gap: 0.75rem;
+  padding: var(--notice-inset);
+  margin-bottom: var(--notice-inset);
 }
 
 .content-bg {
@@ -691,7 +798,7 @@ a:focus-visible {
 
 /*///// DATA SOURCES /////*/
 
-.data-source-group h4 {
+.data-source-group h3 {
   margin-bottom: var(--space-xs);
 }
 
@@ -921,12 +1028,13 @@ a:focus-visible {
   padding-right: 0.5rem;
 }
 .resource-icon {
-  width: 2.5rem;
+  width: 2rem;
   display: flex;
   justify-content: center;
   align-items: center;
   padding-top: 0.1rem;
-  font-size: 1.5rem;
+  /* Icons never outsize their text. */
+  font-size: 1rem;
   color: var(--text-body);
   flex-shrink: 0;
 }
@@ -936,9 +1044,13 @@ a:focus-visible {
   min-width: 0;
 }
 
-.resource-content h4 {
+.resource-content h3,
+.home-notice .page-subsection h3 {
   margin-bottom: 0.2rem;
-  border: none;
+}
+/* Narrow column; justified text opens rivers here. */
+.home-notice .plate-description {
+  text-align: left;
 }
 
 .resource-content p {
@@ -1019,19 +1131,16 @@ a:focus-visible {
 
 .menu-toggle {
   display: none;
-  flex-direction: column;
-  gap: 5px;
-  background: none;
-  border: none;
-  cursor: pointer;
+  align-items: center;
   padding: 10px;
+  border: none;
+  background: none;
+  color: var(--link-dark-grey);
+  /* Same size as the name beside it. */
+  font-size: 0.95rem;
+  cursor: pointer;
 }
 
-.bar {
-  height: 1.5px;
-  background-color: var(--link-dark-grey); 
-  width: 22px;
-}
 
 .nav-links {
   display: flex;
@@ -1039,47 +1148,216 @@ a:focus-visible {
   align-items: center;
 }
 
+/* Desktop keeps plain text links; the row parts only show in the mobile menu. */
+.nav-entries {
+  display: contents;
+}
+.footer-bar,
+.footer-rows,
+.nav-brand,
+.nav-menu-title,
+.nav-location,
+.nav-links .resource-icon,
+.nav-links .resource-arrow,
+.nav-desc {
+  display: none;
+}
+
 @media (max-width: 768px) {
   .menu-toggle {
     display: flex;
   }
 
+  .nav-container {
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+    padding: 0 var(--space-xs);
+  }
+
+  .nav-brand {
+    display: block;
+    color: var(--link-dark-grey);
+    font-family: var(--font-open-sans);
+    /* "Latest" h2 weight and tracking; nav-link size so the name leads. */
+    font-size: 0.95rem;
+    font-weight: bold;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+
+  /* Dropdown version of the homepage Latest card: same inset, header, divider and rows. */
   .nav-links {
+    --notice-inset: 0.5rem;
     display: none;
     position: absolute;
     top: 60px;
     left: 0;
     width: 100%;
-    flex-direction: column;
     background-color: var(--bg);
-    padding: var(--space-m) 0;
+    padding: var(--notice-inset);
+    /* The bar's own shadow paints under the panel, so divide them here. */
+    border-top: 0.5px solid var(--border-light);
     box-shadow: var(--hero-shadow-bottom);
-    gap: 0;
   }
 
   .nav-links.is-active {
+    display: block;
+  }
+
+  /* Pages share the menu layout: one divider from the breadcrumb down, same 0.5rem insets. */
+  .content-bg {
+    padding: var(--space-s) var(--space-xs) var(--space-xs);
+  }
+
+  .page-grid,
+  .portfolio-page {
+    padding: 0 0 var(--space-m) var(--space-xs);
+    border-left: 0.5px solid var(--border-light);
+  }
+
+  .page-title-column {
+    padding-right: 0;
+  }
+
+  .page-content-column {
+    padding-left: 0;
+    border-left: none;
+  }
+
+  .nav-menu-title {
+    display: block;
+  }
+
+  /* Breadcrumb rules from .project-path; sits inside the divider, inset like the rows. */
+  .nav-location {
+    display: block;
+    margin-bottom: 0;
+    padding: 0 var(--notice-inset) var(--notice-inset);
+  }
+
+  /* Undo the desktop nav-link sizing so breadcrumb links match page breadcrumbs. */
+  .nav-location a {
+    font-size: inherit;
+    font-weight: inherit;
+  }
+
+  .nav-entries {
+    display: block;
+    padding-left: var(--notice-inset);
+    border-left: 0.5px solid var(--border-light);
+  }
+
+  /* Rows only: the breadcrumb link inside .nav-entries keeps its own rules. */
+  .nav-entries > a,
+  .nav-entries > a:hover,
+  .nav-entries > a.active {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: var(--notice-inset);
+    border-bottom: 0.5px solid var(--border-light);
+    color: inherit;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: inherit;
+    letter-spacing: normal;
+    text-transform: none;
+    text-decoration: none;
+  }
+
+  .nav-entries > a:hover {
+    background-color: rgba(0, 0, 0, 0.02);
+  }
+
+  .nav-links .resource-icon {
     display: flex;
   }
 
-  .nav-links a {
-    padding: var(--space-s);
-    width: 100%;
-    text-align: center;
-    border-bottom: 0.5px solid var(--border-light);
+  .nav-links .resource-arrow {
+    display: block;
+  }
+
+  .nav-label {
+    display: block;
+    margin-bottom: 0.2rem;
+    /* Same as the homepage Latest entry titles. */
+    color: var(--text-h4);
+    font-size: 0.85rem;
+    font-weight: 600;
+    font-variation-settings: "wght" 600;
+    letter-spacing: 0.1rem;
+    text-transform: uppercase;
+  }
+
+  .nav-desc {
+    display: block;
+    color: var(--text-supporting);
+  }
+
+  .nav-entries > a.active .nav-label {
+    color: var(--link-dark-grey);
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+  }
+
+  /* Phones mirror the header: a 60px bar whose panel opens upward, built like the menu. */
+  .main-footer {
+    position: relative;
   }
 
   .footer-container {
-    flex-direction: column;
-    height: auto;
-    padding: var(--space-xs) var(--space-m);
-    text-align: center;
-    gap: var(--space-s);
+    display: none;
   }
 
-  .footer-group {
-    justify-content: center;
-    flex-wrap: wrap;
+  .footer-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+    padding: 0 var(--space-xs);
   }
+
+  /* Menu-item weight and colour, so the copyright sits below the header name. */
+  .footer-bar .nav-brand {
+    color: var(--text-h4);
+    font-weight: 600;
+  }
+
+  .footer-rows {
+    --notice-inset: 0.5rem;
+    display: none;
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    width: 100%;
+    padding: var(--notice-inset);
+    border-bottom: 0.5px solid var(--border-light);
+    background-color: var(--bg);
+    box-shadow: var(--hero-shadow-top);
+    font-family: var(--font-roboto);
+    font-weight: var(--w-425);
+    letter-spacing: normal;
+  }
+
+  .footer-rows.is-active {
+    display: block;
+  }
+
+  .footer-entries {
+    padding-left: var(--space-xs);
+    border-left: 0.5px solid var(--border-light);
+  }
+
+  .footer-entries > .resource-link,
+  .footer-entries > .resource-note {
+    gap: 0.75rem;
+    padding: var(--space-xs);
+  }
+
+
+
 
   .home-content h1, .hero-subtitle {
     transform: translateY(10rem);

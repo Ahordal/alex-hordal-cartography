@@ -1,0 +1,52 @@
+---
+interface Props {
+  label: string;
+  icon: string;
+  description?: string;
+  url?: string;
+}
+
+const {
+  label,
+  icon,
+  description,
+  url,
+} = Astro.props;
+---
+
+{
+  url ? (
+    <a
+      href={url}
+      class="resource-link"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <div class="resource-icon">
+        <i class={icon}></i>
+      </div>
+
+      <div class="resource-content">
+        <h3>{label}</h3>
+
+        {description && <p>{description}</p>}
+      </div>
+
+      <div class="resource-arrow">
+        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+      </div>
+    </a>
+  ) : (
+    <div class="resource-note">
+      <div class="resource-icon">
+        <i class={icon}></i>
+      </div>
+
+      <div class="resource-content">
+        <h3>{label}</h3>
+
+        {description && <p>{description}</p>}
+      </div>
+    </div>
+  )
+}

@@ -1,4 +1,6 @@
 ---
+import ResourceRow from "./ResourceRow.astro";
+
 interface Resource {
   label: string;
   url: string;
@@ -6,57 +8,34 @@ interface Resource {
   description?: string;
 }
 
+interface Recognition {
+  label: string;
+  icon: string;
+  description?: string;
+  url?: string;
+}
+
 interface Props {
   resources?: Resource[];
+  recognition?: Recognition[];
   aiAssisted?: boolean;
 }
 
-const { resources, aiAssisted } = Astro.props;
+const { resources, recognition, aiAssisted } = Astro.props;
 ---
 
 <div class="project-resources">
-  {
-    resources?.map((resource) => (
-      <a
-        href={resource.url}
-        class="resource-link"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <div class="resource-icon">
-          <i class={resource.icon}></i>
-        </div>
+  {recognition?.map((item) => <ResourceRow {...item} />)}
 
-        <div class="resource-content">
-          <h4>{resource.label}</h4>
-
-          {resource.description && (
-            <p>{resource.description}</p>
-          )}
-        </div>
-
-        <div class="resource-arrow">
-          <i class="fa-solid fa-arrow-up-right-from-square"></i>
-        </div>
-      </a>
-    ))
-  }
+  {resources?.map((resource) => <ResourceRow {...resource} />)}
 
   {
     aiAssisted && (
-      <div class="resource-note">
-        <div class="resource-icon">
-          <i class="fa-solid fa-brain"></i>
-        </div>
-
-        <div class="resource-content">
-          <h4>AI-Assisted Development</h4>
-          <p>
-            This project was developed through a combination of traditional
-            development and iterative AI-assisted workflows.
-          </p>
-        </div>
-      </div>
+      <ResourceRow
+        label="AI-Assisted Development"
+        icon="fa-solid fa-brain"
+        description="This project was developed through a combination of traditional development and iterative AI-assisted workflows."
+      />
     )
   }
 </div>

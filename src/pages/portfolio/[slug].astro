@@ -45,15 +45,11 @@ const endSentence = (text: string) => (/[.?!]$/.test(text) ? text : `${text}.`);
 
         <span>/ </span>
 
-        <a href="/portfolio">
-          portfolio
-        </a>
+        <a href="/portfolio">portfolio</a>
 
         <span>/</span>
 
-        <span class="project-slug">
-          {project.id}
-        </span>
+        <span class="project-slug">{project.id}</span>
 
       </nav>
 
@@ -90,7 +86,7 @@ const endSentence = (text: string) => (/[.?!]$/.test(text) ? text : `${text}.`);
     <section class="page-content-column">
 
       {
-        (project.data.resources?.length || project.data.aiAssisted) && (
+        (project.data.resources?.length || project.data.recognition?.length || project.data.aiAssisted) && (
           <PageSection
             title={`<i class="fa-solid fa-folder-tree section-icon"></i> Project Resources`}
             id="resources"
@@ -98,6 +94,7 @@ const endSentence = (text: string) => (/[.?!]$/.test(text) ? text : `${text}.`);
 
             <ProjectResources
               resources={project.data.resources}
+              recognition={project.data.recognition}
               aiAssisted={project.data.aiAssisted}
             />
 
@@ -128,7 +125,7 @@ const endSentence = (text: string) => (/[.?!]$/.test(text) ? text : `${text}.`);
             {project.data.dataSources.map((group) => (
               <div class="data-source-group">
 
-                <h4>{group.group}</h4>
+                <h3>{group.group}</h3>
 
                 <ul class="citation-list">
                   {group.sources.map((source) => (

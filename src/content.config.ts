@@ -39,6 +39,14 @@ const projects = defineCollection({
         description: z.string().optional(),
       })
     ).optional(),
+    recognition: z.array(
+      z.object({
+        label: z.string(),
+        icon: z.string(),
+        description: z.string().optional(),
+        url: z.string().optional(),
+      })
+    ).optional(),
     dataSources: z.array(
       z.object({
         group: z.string(),

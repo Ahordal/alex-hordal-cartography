@@ -1,5 +1,6 @@
 ---
 import MainLayout from "../layouts/mainlayout.astro";
+import HomeNotice from "../components/HomeNotice.astro";
 ---
 
 <MainLayout isHome={true}>
@@ -7,4 +8,6 @@ import MainLayout from "../layouts/mainlayout.astro";
     <h1>Alex<br><span class="nudge">Hordal</span></h1>
     <p class="hero-subtitle">Cartographer &<br class="subtitle-break"> GIS Specialist</p>
   </div>
+
+  <HomeNotice projectId="hawaii-seafloor-to-summit" />
 </MainLayout>

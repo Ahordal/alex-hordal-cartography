@@ -15,6 +15,31 @@ const {
 const { pathname } = Astro.url;
 
 const isActive = (path: string) => pathname === path || pathname === path + "/";
+
+// Mobile menu breadcrumb, built like the page breadcrumbs; the homepage has no segments.
+const pathSegments = pathname.split("/").filter(Boolean).map(decodeURIComponent);
+const crumbs = pathSegments.length
+  ? pathSegments.map((segment, i) => ({
+      label: segment,
+      href: "/" + pathSegments.slice(0, i + 1).join("/"),
+    }))
+  : [{ label: "home", href: "/" }];
+
+// Mobile footer rows, styled like resource links; desktop keeps the one-line footer.
+const footerRows = [
+  { label: "ULLR Maps", description: "ullrmaps.com", icon: "fa-solid fa-mountain", href: "https://www.ullrmaps.com", external: true },
+  { label: "Colophon", description: "How this site is built", icon: "fa-solid fa-book-open", href: "/colophon", external: false },
+  { label: "LinkedIn", description: "alex-hordal", icon: "fa-brands fa-linkedin", href: "https://www.linkedin.com/in/alex-hordal/", external: true },
+  { label: "GitHub", description: "Ahordal", icon: "fa-brands fa-github", href: "https://github.com/Ahordal", external: true },
+];
+
+// Icons and descriptions only show in the mobile menu, where links render as resource-style rows.
+const navItems = [
+  { href: "/", label: "Home", icon: "fa-solid fa-house", description: "Back to the start" },
+  { href: "/about", label: "About", icon: "fa-solid fa-user", description: "Background, education and skills" },
+  { href: "/portfolio", label: "Portfolio", icon: "fa-solid fa-folder-open", description: "Maps, dashboards and analysis" },
+  { href: "/contact", label: "Contact", icon: "fa-solid fa-envelope", description: "Get in touch" },
+];
 ---
 
 <!doctype html>
@@ -53,28 +78,57 @@ const isActive = (path: string) => pathname === path || pathname === path + "/";
   <body class="site-root">
     <header class="main-nav">
       <nav class="nav-container">
-        <button class="menu-toggle" aria-label="Open Menu">
-          <span class="bar"></span>
-          <span class="bar"></span>
-          <span class="bar"></span>
+        <a href="/" class="nav-brand">Alex Hordal</a>
+
+        <button
+          type="button"
+          class="menu-toggle"
+          aria-label="Open Menu"
+          aria-expanded="false"
+          aria-controls="nav-links"
+          data-label="Menu"
+          data-icon="fa-burger"
+        >
+          <i class="fa-solid fa-burger menu-toggle-icon" aria-hidden="true"></i>
         </button>
 
-        <div class="nav-links">
-          <!-- Apply the conditional class 'active' -->
+        <div class="nav-links" id="nav-links">
+          <h2 class="nav-menu-title">
+            <i class="fa-solid fa-burger section-icon" aria-hidden="true"></i> Menu
+          </h2>
 
-          <a href="/" class={isActive("/") ? "active" : ""}> Home </a>
+          <div class="nav-entries">
+            <p class="project-path nav-location">
+              <span>/ </span>
+              {crumbs.map((crumb, i) =>
+                i === crumbs.length - 1 ? (
+                  <span class="project-slug" aria-current="page">{crumb.label}</span>
+                ) : (
+                  <>
+                    <a href={crumb.href}>{crumb.label}</a>
+                    <span> / </span>
+                  </>
+                )
+              )}
+            </p>
 
-          <a href="/about" class={isActive("/about") ? "active" : ""}>
-            About
-          </a>
+            {navItems.map((item) => (
+              <a href={item.href} class={isActive(item.href) ? "active" : ""}>
+                <span class="resource-icon" aria-hidden="true">
+                  <i class={item.icon}></i>
+                </span>
 
-          <a href="/portfolio" class={isActive("/portfolio") ? "active" : ""}>
-            Portfolio
-          </a>
+                <span class="resource-content">
+                  <span class="nav-label">{item.label}</span>
+                  <span class="nav-desc">{item.description}</span>
+                </span>
 
-          <a href="/contact" class={isActive("/contact") ? "active" : ""}>
-            Contact
-          </a>
+                <span class="resource-arrow" aria-hidden="true">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </span>
+              </a>
+            ))}
+          </div>
         </div>
       </nav>
     </header>
@@ -99,13 +153,13 @@ const isActive = (path: string) => pathname === path || pathname === path + "/";
             ULLR Maps
           </a>
 
-          |
+          <span class="footer-sep" aria-hidden="true">|</span>
 
           <a href="/colophon" class={isActive("/colophon") ? "active" : ""}>
             Colophon
           </a>
 
-          |
+          <span class="footer-sep" aria-hidden="true">|</span>
 
           <div class="social-links">
   <a
@@ -125,23 +179,111 @@ const isActive = (path: string) => pathname === path || pathname === path + "/";
   </a>
 </div>
 
-          |
+          <span class="footer-sep" aria-hidden="true">|</span>
         </nav>
 
-        © ALEX HORDAL 2026
+        <span class="footer-copy">© ALEX HORDAL 2026</span>
+      </div>
+
+      <!-- Phone footer: mirrors the header bar, with a panel that opens upward. -->
+      <div class="footer-bar">
+        <span class="nav-brand">© Alex Hordal 2026</span>
+
+        <button
+          type="button"
+          class="menu-toggle"
+          aria-label="Open Site Information"
+          aria-expanded="false"
+          aria-controls="footer-rows"
+          data-label="Site Information"
+          data-icon="fa-wrench"
+        >
+          <i class="fa-solid fa-wrench menu-toggle-icon" aria-hidden="true"></i>
+        </button>
+      </div>
+
+      <div class="footer-rows" id="footer-rows">
+        <button
+          type="button"
+          class="panel-dismiss"
+          aria-label="Close Site Information"
+          data-closes="footer-rows"
+        >
+          <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+        </button>
+
+        <h2 class="nav-menu-title">
+          <i class="fa-solid fa-wrench section-icon" aria-hidden="true"></i> Site Information
+        </h2>
+
+        <div class="footer-entries">
+          <div class="resource-note">
+            <span class="resource-icon" aria-hidden="true">
+              <i class="fa-solid fa-location-dot"></i>
+            </span>
+
+            <span class="resource-content">
+              <span class="nav-label">Dartmouth, NS</span>
+              <span class="nav-desc">44.66° N, 63.56° W</span>
+            </span>
+          </div>
+
+          {footerRows.map((row) => (
+            <a
+              href={row.href}
+              class="resource-link"
+              target={row.external ? "_blank" : undefined}
+              rel={row.external ? "noopener noreferrer" : undefined}
+            >
+              <span class="resource-icon" aria-hidden="true">
+                <i class={row.icon}></i>
+              </span>
+
+              <span class="resource-content">
+                <span class="nav-label">{row.label}</span>
+                <span class="nav-desc">{row.description}</span>
+              </span>
+
+              <span class="resource-arrow" aria-hidden="true">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </span>
+            </a>
+          ))}
+
+        </div>
       </div>
     </footer>
   </body>
 
   <script>
-    // Simple toggle logic
+    // Header menu and footer panel share one toggle; each button names its panel.
+    document.querySelectorAll<HTMLButtonElement>(".menu-toggle").forEach((button) => {
+      const panel = document.getElementById(button.getAttribute("aria-controls") ?? "");
+      const icon = button.querySelector(".menu-toggle-icon");
+      const { label = "", icon: openIcon = "" } = button.dataset;
 
-    const menuBtn = document.querySelector(".menu-toggle");
+      button.addEventListener("click", () => {
+        const isOpen = panel?.classList.toggle("is-active") ?? false;
 
-    const navLinks = document.querySelector(".nav-links");
+        button.setAttribute("aria-expanded", String(isOpen));
+        button.setAttribute("aria-label", `${isOpen ? "Close" : "Open"} ${label}`);
 
-    menuBtn?.addEventListener("click", () => {
-      navLinks?.classList.toggle("is-active");
+        // Swaps to the same close mark the Latest card uses.
+        icon?.classList.toggle(openIcon, !isOpen);
+        icon?.classList.toggle("fa-xmark", isOpen);
+      });
+    });
+
+    // In-panel close buttons route through the panel's toggle so its state stays in sync.
+    document.querySelectorAll<HTMLButtonElement>("[data-closes]").forEach((button) => {
+      button.addEventListener("click", () => {
+        const toggle = document.querySelector<HTMLButtonElement>(
+          `.menu-toggle[aria-controls="${button.dataset.closes}"]`
+        );
+
+        toggle?.click();
+        toggle?.focus();
+      });
     });
   </script>
 </html>

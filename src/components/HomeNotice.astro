@@ -1,0 +1,99 @@
+---
+import { Image } from "astro:assets";
+import { getEntry } from "astro:content";
+
+import PageSection from "./PageSection.astro";
+import PageSubsection from "./PageSubsection.astro";
+import ResourceRow from "./ResourceRow.astro";
+import { getFeaturedImage } from "../utils/getFeaturedImage";
+
+interface Props {
+  projectId: string;
+}
+
+const { projectId } = Astro.props;
+
+const project = await getEntry("projects", projectId);
+
+// Copy comes from the project's own recognition entry, so results only need updating there.
+const notice = project?.data.recognition?.[0];
+const featuredImage = project && getFeaturedImage(project.id);
+
+// Keyed on the copy, so a dismissed notice reappears once its text changes.
+const dismissKey = notice && `home-notice-dismissed:${projectId}:${notice.label}:${notice.description ?? ""}`;
+---
+
+{
+  project && notice && (
+    <aside class="home-notice" aria-labelledby="latest" data-dismiss-key={dismissKey}>
+      <button type="button" class="home-notice-dismiss" aria-label="Dismiss latest">
+        <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+      </button>
+
+      <PageSection
+        title={`<i class="fa-solid fa-clock-rotate-left section-icon"></i> Latest`}
+        id="latest"
+      >
+        <div class="home-notice-entries">
+          <ResourceRow {...notice} />
+
+          <a href={`/portfolio/${project.id}`} class="portfolio-plate">
+
+            <div class="resource-icon">
+              <i class="fa-solid fa-map"></i>
+            </div>
+
+            <div class="home-notice-card">
+              {featuredImage && (
+                <div class="plate-image">
+                  <Image
+                    src={featuredImage}
+                    alt=""
+                    loading="eager"
+                    widths={[400, 800]}
+                    sizes="26rem"
+                  />
+                </div>
+              )}
+
+              <div class="plate-content">
+                <PageSubsection title={project.data.plainTitle}>
+                  <p class="plate-description">
+                    {project.data.description}
+                  </p>
+                </PageSubsection>
+              </div>
+            </div>
+
+            <div class="resource-arrow">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </div>
+
+          </a>
+        </div>
+      </PageSection>
+    </aside>
+  )
+}
+
+<!-- Inline so a dismissed notice is hidden before first paint, not flashed. -->
+<script is:inline>
+  (() => {
+    const notice = document.querySelector(".home-notice");
+    if (!notice) return;
+
+    const key = notice.dataset.dismissKey;
+
+    // Storage can throw in private windows or with site data blocked.
+    try {
+      if (localStorage.getItem(key)) notice.hidden = true;
+    } catch {}
+
+    notice.querySelector(".home-notice-dismiss")?.addEventListener("click", () => {
+      notice.hidden = true;
+      try {
+        localStorage.setItem(key, "1");
+      } catch {}
+    });
+  })();
+</script>
