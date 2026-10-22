@@ -1,11 +1,11 @@
-// Map & App Development posts, written in The Daily Spunkmeyer's editor and published
+// Field Notes, written in The Daily Spunkmeyer's editor and published
 // here as /field_notes pages (this copy is canonical). The blog rebuilds this site through a
 // deploy hook whenever its feed changes.
-// Shape must match the blog's src/pages/feeds/map-and-app-development.json.ts.
+// Shape must match the blog's src/pages/feeds/field-notes.json.ts.
 
 const FEED_URL =
   import.meta.env.BLOG_FEED_URL ??
-  "https://the-daily-spunkmeyer.vercel.app/feeds/map-and-app-development.json";
+  "https://the-daily-spunkmeyer.vercel.app/feeds/field-notes.json";
 
 export interface BlogPost {
   slug: string;
@@ -15,7 +15,9 @@ export interface BlogPost {
   blogUrl: string;
   publishedDate: string;
   updatedDate: string | null;
-  tags: string[];
+  link: string | null;
+  /** Older feeds lack this; read it through postCategories(). */
+  categories?: { id: string; label: string; color: string }[];
   cover: { src: string; width: number; height: number; alt: string } | null;
   html: string;
 }
@@ -54,4 +56,8 @@ export function adaptPostHtml(html: string): string {
 // Dates come as UTC midnight, so format in UTC to avoid an off-by-one day.
 export function formatPostDate(iso: string): string {
   return new Date(iso).toLocaleDateString("en-CA", { dateStyle: "long", timeZone: "UTC" });
+}
+
+export function postCategories(post: BlogPost): string[] {
+  return (post.categories ?? []).map((c) => c.label);
 }

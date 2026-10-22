@@ -1,7 +1,7 @@
 ---
 import MainLayout from "../../layouts/mainlayout.astro";
 import PageSection from "../../components/PageSection.astro";
-import { getBlogFeed, adaptPostHtml, formatPostDate, type BlogPost } from "../../utils/blog";
+import { getBlogFeed, adaptPostHtml, formatPostDate, postCategories, type BlogPost } from "../../utils/blog";
 
 export async function getStaticPaths() {
   const feed = await getBlogFeed();
@@ -70,7 +70,7 @@ const socialImage = post.cover?.src ?? new URL("og-default.png", blogHome).href;
               </>
             )
           }
-          {post.tags.length > 0 && <> // {post.tags.join(" · ")}</>}
+          {postCategories(post).length > 0 && <> // {postCategories(post).join(" · ")}</>}
         </p>
 
         <p class="plate-tags">

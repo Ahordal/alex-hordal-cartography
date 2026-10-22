@@ -1,6 +1,6 @@
 ---
 import PageSubsection from "./PageSubsection.astro";
-import { formatPostDate, type BlogPost } from "../utils/blog";
+import { formatPostDate, postCategories, type BlogPost } from "../utils/blog";
 
 interface Props {
   post: BlogPost;
@@ -30,7 +30,7 @@ const image = post.cover ?? { src: fallbackImage, width: 1200, height: 630, alt:
 
       <p class="plate-tags">
         <time datetime={post.publishedDate}>{formatPostDate(post.publishedDate)}</time>
-        {post.tags.length > 0 && <> // {post.tags.join(" · ")}</>}
+        {postCategories(post).length > 0 && <> // {postCategories(post).join(" · ")}</>}
       </p>
     </PageSubsection>
   </div>
