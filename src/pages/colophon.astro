@@ -1,19 +1,34 @@
 ---
 import MainLayout from "../layouts/mainlayout.astro";
 import PageSection from "../components/PageSection.astro";
+import ProjectFigure from "../components/ProjectFigure.astro";
+import deskPhoto from "../assets/colophon-desk.webp";
 ---
 
 <MainLayout title="Colophon | Alex Hordal" isHome={false}>
   <div class="page-grid page-grid-1300">
     <!-- Left Column -->
     <aside class="page-title-column">
+      <nav class="project-path">
+        <span>/ </span>
+
+        <span class="project-slug">colophon</span>
+      </nav>
+
       <h1>Colophon</h1>
 
       <p class="page-description">
         Learn about how this site was made.
       </p>
 
-      
+      <div class="page-section">
+        <ProjectFigure
+          src={deskPhoto}
+          alt="Desk setup at night with a curved monitor, RGB keyboard, microphone and an open PC case"
+          caption="The Battle Station, where this site was built."
+          width={1000}
+        />
+      </div>
     </aside>
 
     <!-- Right Column -->
