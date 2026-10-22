@@ -1,0 +1,55 @@
+---
+import MainLayout from "../../layouts/mainlayout.astro";
+import PageSection from "../../components/PageSection.astro";
+import BlogPlate from "../../components/BlogPlate.astro";
+import { getBlogFeed } from "../../utils/blog";
+
+const feed = await getBlogFeed();
+const posts = feed?.items ?? [];
+const blogHome = feed?.home ?? "https://the-daily-spunkmeyer.vercel.app/";
+const fallbackImage = new URL("og-default.png", blogHome).href;
+---
+
+<MainLayout
+  title="Blog | Alex Hordal"
+  description="Notes on building maps and apps, from The Daily Spunkmeyer."
+  isHome={false}
+>
+  <section class="portfolio-page">
+    <header class="portfolio-header">
+      <nav class="project-path">
+        <span>/ </span>
+
+        <span class="project-slug">blog</span>
+      </nav>
+
+      <h1>Blog</h1>
+
+      <p class="page-description">
+        Notes on building maps and apps, from my blog,
+        <a href={blogHome}>The Daily Spunkmeyer</a>.
+      </p>
+    </header>
+
+    <PageSection title={`<i class="fa-solid fa-code section-icon"></i> Map & App Development`}>
+      {
+        posts.length > 0 ? (
+          <div class="portfolio-grid blog-grid">
+            {posts.map((post) => (
+              <BlogPlate post={post} fallbackImage={fallbackImage} />
+            ))}
+          </div>
+        ) : (
+          <p class="page-description">No posts yet. Check back soon.</p>
+        )
+      }
+    </PageSection>
+  </section>
+</MainLayout>
+
+<style>
+  /* auto-fill keeps empty tracks, so one or two posts don't stretch full width. */
+  .blog-grid {
+    grid-template-columns: repeat(auto-fill, minmax(min(420px, 100%), 1fr));
+  }
+</style>

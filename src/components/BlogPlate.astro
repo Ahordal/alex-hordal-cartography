@@ -1,0 +1,46 @@
+---
+import PageSubsection from "./PageSubsection.astro";
+import { formatPostDate, type BlogPost } from "../utils/blog";
+
+interface Props {
+  post: BlogPost;
+  fallbackImage: string;
+}
+
+const { post, fallbackImage } = Astro.props;
+const image = post.cover ?? { src: fallbackImage, width: 1200, height: 630, alt: "" };
+---
+
+<!-- Same shell as PortfolioPlate, so blog posts read as part of the portfolio grid. -->
+<a href={post.url} class="portfolio-plate blog-plate">
+  <div class="plate-image">
+    <img
+      src={image.src}
+      width={image.width}
+      height={image.height}
+      alt={image.alt}
+      loading="lazy"
+      decoding="async"
+    />
+  </div>
+
+  <div class="plate-content">
+    <PageSubsection title={post.title}>
+      <p class="plate-description">{post.summary}</p>
+
+      <p class="plate-tags">
+        <time datetime={post.publishedDate}>{formatPostDate(post.publishedDate)}</time>
+        {post.tags.length > 0 && <> // {post.tags.join(" · ")}</>}
+      </p>
+    </PageSubsection>
+  </div>
+</a>
+
+<style>
+  /* Remote covers vary in shape; crop to the ~2:1 of the project featured images. */
+  .blog-plate img {
+    width: 100%;
+    aspect-ratio: 2 / 1;
+    object-fit: cover;
+  }
+</style>
