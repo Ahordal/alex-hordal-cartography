@@ -113,6 +113,7 @@ import sketch from "./sketch.webp";
 import crmBeforeCleanup from "./crm-before-cleanup.webp";
 import crmJoinArtifact from "./crm-join-artifact.webp";
 import labelDepthDetail from "./label-depth-detail.webp";
+import oahuColourRamp from "./oahu-colour-ramp.webp";
 import ProjectFigure from "../../../components/ProjectFigure.astro";
 
 
@@ -143,6 +144,12 @@ Empty edge cells in the CRM, the grey areas in the following image, were not tra
 />
 
 The merged DEM is symbolized with a custom diverging colour ramp that blends topography and bathymetry at sea level. Colour stops, positions, and transparencies were adjusted over many iterations. The DEM was classified using a defined interval of 100 m, producing 104 classes across the full elevation range. Terrain shading comes from a single hillshade (315° azimuth, 45° altitude) run on the merged DEM, so no shading lines form along the dataset boundaries. It sits over the colour ramp with a Multiply blend mode and uses a z-factor of 1.5 to bring out the broad, low-relief landforms on the seafloor.
+
+<ProjectFigure
+  src={oahuColourRamp}
+  alt="Detail of Oʻahu and the surrounding seafloor, with deep blue water lightening through stepped pale bands on the shallow shelf to green, hillshaded terrain on land"
+  caption="Oʻahu and its surrounding seafloor. The 100 m classes show as stepped bands across the shallow shelf, where the ramp lightens toward sea level before switching to greens on land."
+/>
 
 <ProjectFigure
   src={bathymetry}
