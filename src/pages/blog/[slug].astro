@@ -1,0 +1,129 @@
+---
+import MainLayout from "../../layouts/mainlayout.astro";
+import PageSection from "../../components/PageSection.astro";
+import { getBlogFeed, adaptPostHtml, formatPostDate, type BlogPost } from "../../utils/blog";
+
+export async function getStaticPaths() {
+  const feed = await getBlogFeed();
+  const home = feed?.home ?? "https://the-daily-spunkmeyer.vercel.app/";
+
+  return (feed?.items ?? []).map((post) => ({
+    params: { slug: post.slug },
+    props: { post, blogHome: home },
+  }));
+}
+
+interface Props {
+  post: BlogPost;
+  blogHome: string;
+}
+
+const { post, blogHome } = Astro.props;
+const socialImage = post.cover?.src ?? new URL("og-default.png", blogHome).href;
+---
+
+<MainLayout
+  title={`${post.title} | Alex Hordal`}
+  description={post.summary}
+  socialImage={socialImage}
+  isHome={false}
+>
+  <div class="page-grid" id="top">
+    <!-- Left Column: same shape as a portfolio project page. -->
+    <aside class="page-title-column">
+      <nav class="project-path">
+        <span>/ </span>
+
+        <a href="/blog">blog</a>
+
+        <span>/</span>
+
+        <span class="project-slug">{post.slug}</span>
+      </nav>
+
+      <h1>{post.title}</h1>
+
+      <p class="page-description">{post.summary}</p>
+
+      <div class="page-section">
+        {
+          post.cover && (
+            <figure class="project-figure">
+              <img
+                src={post.cover.src}
+                width={post.cover.width}
+                height={post.cover.height}
+                alt={post.cover.alt}
+                fetchpriority="high"
+              />
+            </figure>
+          )
+        }
+
+        <p class="plate-tags">
+          <time datetime={post.publishedDate}>{formatPostDate(post.publishedDate)}</time>
+          {
+            post.updatedDate && (
+              <>
+                {" // Updated "}
+                <time datetime={post.updatedDate}>{formatPostDate(post.updatedDate)}</time>
+              </>
+            )
+          }
+          {post.tags.length > 0 && <> // {post.tags.join(" · ")}</>}
+        </p>
+
+        <p class="plate-tags">
+          Also on <a href={post.blogUrl}>The Daily Spunkmeyer</a>
+        </p>
+      </div>
+    </aside>
+
+    <!-- Right Column -->
+    <section class="page-content-column">
+      <PageSection title={`<i class="fa-solid fa-pen-nib section-icon"></i> Post`} id="post">
+        <div class="blog-post-body" set:html={adaptPostHtml(post.html)} />
+      </PageSection>
+
+      <a href="#top" class="back-to-top">↑ Back to top</a>
+    </section>
+  </div>
+</MainLayout>
+
+<style>
+  /* The body arrives as plain HTML from the blog, so style it by element. */
+  .blog-post-body :global(ul),
+  .blog-post-body :global(ol) {
+    list-style-position: outside;
+    padding-left: 1.2rem;
+    margin-bottom: var(--space-s);
+  }
+
+  .blog-post-body :global(ul) {
+    list-style-type: disc;
+  }
+
+  .blog-post-body :global(ol) {
+    list-style-type: decimal;
+  }
+
+  .blog-post-body :global(img) {
+    width: 100%;
+  }
+
+  .blog-post-body :global(.project-figure p) {
+    margin: 0;
+  }
+
+  .blog-post-body :global(code) {
+    font-family: ui-monospace, "Cascadia Mono", consolas, monospace;
+    font-size: 0.9em;
+  }
+
+  .blog-post-body :global(pre) {
+    overflow-x: auto;
+    padding: var(--space-s);
+    margin-bottom: var(--space-s);
+    border: 0.5px solid var(--border-light);
+  }
+</style>

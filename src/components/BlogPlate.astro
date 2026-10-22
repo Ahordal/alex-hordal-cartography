@@ -12,7 +12,7 @@ const image = post.cover ?? { src: fallbackImage, width: 1200, height: 630, alt:
 ---
 
 <!-- Same shell as PortfolioPlate, so blog posts read as part of the portfolio grid. -->
-<a href={post.url} class="portfolio-plate blog-plate">
+<a href={`/blog/${post.slug}/`} class="portfolio-plate blog-plate">
   <div class="plate-image">
     <img
       src={image.src}
