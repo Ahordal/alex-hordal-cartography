@@ -1,5 +1,5 @@
 // Map & App Development posts, written in The Daily Spunkmeyer's editor and published
-// here as /blog pages (this copy is canonical). The blog rebuilds this site through a
+// here as /field_notes pages (this copy is canonical). The blog rebuilds this site through a
 // deploy hook whenever its feed changes.
 // Shape must match the blog's src/pages/feeds/map-and-app-development.json.ts.
 

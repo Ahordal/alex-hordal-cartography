@@ -11,8 +11,8 @@ const { post, fallbackImage } = Astro.props;
 const image = post.cover ?? { src: fallbackImage, width: 1200, height: 630, alt: "" };
 ---
 
-<!-- Same shell as PortfolioPlate, so blog posts read as part of the portfolio grid. -->
-<a href={`/blog/${post.slug}/`} class="portfolio-plate blog-plate">
+<!-- Same shell as PortfolioPlate, so field notes read as part of the portfolio grid. -->
+<a href={`/field_notes/${post.slug}/`} class="portfolio-plate blog-plate">
   <div class="plate-image">
     <img
       src={image.src}
