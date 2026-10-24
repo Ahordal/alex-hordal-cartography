@@ -1223,10 +1223,11 @@ a:focus-visible {
   text-transform: uppercase;
 }
 
-/* Desktop nav is a single line of labels, so no gap under them. */
+/* Desktop nav is a single line of labels, so no gap under them. Colour matches the footer text. */
 @media (min-width: 769px) {
   .nav-links .nav-label {
     margin-bottom: 0;
+    color: var(--link-dark-grey);
   }
 }
 
