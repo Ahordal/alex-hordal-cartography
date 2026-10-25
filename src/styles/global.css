@@ -814,10 +814,25 @@ a:focus-visible {
 
 /*///// FOOTER /////*/
 
-/* One footer at every width: centred location, colophon and Socials toggle. */
+/* Desktop: location, links and copyright spread across one line, like the NYC dashboard. */
+.footer-desktop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-m);
+  max-width: var(--max-width);
+  min-height: 60px;
+  margin: 0 auto;
+  padding: 0 var(--space-m);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* Phones: centred location and colophon, with a Socials toggle. */
 .footer-bar {
   position: relative;
-  display: grid;
+  display: none;
   grid-template-columns: 2.5rem 1fr 2.5rem;
   align-items: center;
   max-width: var(--max-width);
@@ -836,26 +851,17 @@ a:focus-visible {
   text-transform: uppercase;
 }
 
-/* Sits inline after Colophon; icons never outsize their text. */
-.footer-bar .menu-toggle {
-  display: inline-flex;
-  padding: 0.3rem;
-  font-size: 0.85rem;
-}
-
-/* Opens upward from the footer, built like the mobile menu. On desktop a script
-   aligns its left edge to the Socials icon. */
+/* Opens upward from the footer, built like the mobile menu. */
 .footer-rows {
   --notice-inset: 0.5rem;
   display: none;
   position: absolute;
   bottom: 100%;
   left: 0;
-  width: min(26rem, 100%);
+  width: 100%;
   padding: var(--notice-inset);
-  border-bottom: 0.5px solid var(--border-light);
   background-color: var(--bg);
-  box-shadow: var(--hero-shadow-top), var(--hero-shadow-right);
+  box-shadow: var(--hero-shadow-top);
   font-family: var(--font-roboto);
   font-weight: var(--w-425);
   letter-spacing: normal;
@@ -1380,8 +1386,13 @@ a:focus-visible {
     text-underline-offset: 0.15em;
   }
 
+  .footer-desktop {
+    display: none;
+  }
+
   /* Phone footer: tighter sides, and the location and colophon stack as two centred lines. */
   .footer-bar {
+    display: grid;
     padding: 0 var(--space-xs);
   }
 
@@ -1400,13 +1411,8 @@ a:focus-visible {
     top: 50%;
     right: var(--space-xs);
     padding: 10px;
+    font-size: 0.85rem;
     transform: translateY(-50%);
-  }
-
-  /* !important beats the desktop script's inline left if the window narrows while open. */
-  .footer-rows {
-    left: 0 !important;
-    width: 100%;
   }
 
   .home-content h1, .hero-subtitle {

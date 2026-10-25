@@ -25,12 +25,16 @@ const crumbs = pathSegments.length
     }))
   : [{ label: "home", href: "/" }];
 
-// Footer Socials panel, styled like resource links.
+// Footer socials: icons in the desktop bar, resource-style rows in the phone panel.
 const footerRows = [
   { label: "LinkedIn", description: "alex-hordal", icon: "fa-brands fa-linkedin", href: "https://www.linkedin.com/in/alex-hordal/" },
   { label: "GitHub", description: "Ahordal", icon: "fa-brands fa-github", href: "https://github.com/Ahordal" },
-  { label: "ULLR Maps", description: "ullrmaps.com", icon: "fa-solid fa-mountain", href: "https://www.ullrmaps.com" },
+  { label: "ULLR Maps", description: "ullrmaps.com", icon: "fa-solid fa-mountain", href: "https://www.ullrmaps.com", textInBar: true },
 ];
+
+// Desktop bar: text links first, then the icons grouped together.
+const textRows = footerRows.filter((row) => row.textInBar);
+const iconRows = footerRows.filter((row) => !row.textInBar);
 
 // Icons and descriptions only show in the mobile menu, where links render as resource-style rows.
 const navItems = [
@@ -139,7 +143,37 @@ const navItems = [
     </main>
 
     <footer class="main-footer">
-      <!-- One footer at every width: location and colophon in the bar, socials in an upward panel. -->
+      <!-- Desktop: one line like the NYC dashboard's, socials inline. -->
+      <div class="footer-desktop">
+        <span class="footer-group">
+          LOC: DARTMOUTH, NS
+          <i class="fa-brands fa-canadian-maple-leaf" aria-hidden="true"></i>
+          // 44.66° N, 63.56° W
+        </span>
+
+        <nav class="footer-group" aria-label="Footer">
+          <a href="/colophon" class={isActive("/colophon") ? "active" : ""}>Colophon</a>
+
+          {textRows.map((row) => (
+            <>
+              <span class="footer-sep" aria-hidden="true">|</span>
+              <a href={row.href} target="_blank" rel="noopener noreferrer">{row.label}</a>
+            </>
+          ))}
+
+          <span class="footer-sep" aria-hidden="true">|</span>
+
+          {iconRows.map((row) => (
+            <a href={row.href} target="_blank" rel="noopener noreferrer" aria-label={row.label}>
+              <i class={row.icon} aria-hidden="true"></i>
+            </a>
+          ))}
+        </nav>
+
+        <span class="footer-group">© Alex Hordal 2026</span>
+      </div>
+
+      <!-- Phones: location and colophon in the bar, socials in an upward panel. -->
       <div class="footer-bar">
         <p class="footer-group footer-text">
           <span>
@@ -218,24 +252,7 @@ const navItems = [
         // Swaps to the same close mark the Latest card uses.
         icon?.classList.toggle(openIcon, !isOpen);
         icon?.classList.toggle("fa-xmark", isOpen);
-
-        if (isOpen && panel?.id === "footer-rows") alignFooterPanel(button, panel);
       });
     });
-
-    // Desktop: the Socials panel opens above its icon, left edges aligned, kept on screen.
-    // Phones use the full-width CSS layout, so any inline position is cleared there.
-    function alignFooterPanel(button: HTMLElement, panel: HTMLElement) {
-      if (!window.matchMedia("(min-width: 769px)").matches) {
-        panel.style.left = "";
-        return;
-      }
-
-      const footerLeft = panel.offsetParent?.getBoundingClientRect().left ?? 0;
-      const maxLeft = document.documentElement.clientWidth - panel.offsetWidth;
-      const left = Math.min(button.getBoundingClientRect().left, maxLeft) - footerLeft;
-
-      panel.style.left = `${Math.max(left, 0)}px`;
-    }
   </script>
 </html>
