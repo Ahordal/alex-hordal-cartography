@@ -3,6 +3,8 @@ import MainLayout from "../layouts/mainlayout.astro";
 import PageSection from "../components/PageSection.astro";
 import ProjectFigure from "../components/ProjectFigure.astro";
 import ProjectResources from "../components/ProjectResources.astro";
+import ProjectHoverCard from "../components/ProjectHoverCard.astro";
+import ProjectRef from "../components/ProjectRef.astro";
 
 import { Image } from "astro:assets";
 
@@ -67,16 +69,15 @@ const resources = [
 
         <p>
           During this time, I also began developing
-          <a
-            href="https://www.ullrmaps.com"
-            target="_blank"
-            rel="noopener noreferrer">ULLR Maps</a
-          >, a terrain-focused mapping project originally created as a personal
+          <ProjectRef project="ullr-maps">ULLR Maps</ProjectRef>, a
+          terrain-focused mapping project originally created as a personal
           reference tool to better understand the complexity of Whistler
           Blackcomb's terrain. The project eventually grew into a public mapping
           platform and played an important role in my decision to pursue
           cartography and geographic information systems professionally.
         </p>
+
+        <ProjectHoverCard project="ullr-maps" />
 
         <p>
           As I enter the geospatial field, I look forward to applying my
@@ -208,6 +209,23 @@ const resources = [
               <span class="bold"> Volunteer Recruit Training </span>
               — Halifax Regional Fire & Emergency
             </li>
+
+            <li>
+              <span class="bold">
+                ICS 100 — Introduction to the Incident Command System
+              </span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="page-subsection">
+          <h3>First Aid</h3>
+
+          <ul class="list">
+            <li>
+              <span class="bold"> Occupational First Aid Level 3 (80 hours) </span>
+              — St. John Ambulance (former, recertified)
+            </li>
           </ul>
         </div>
 
@@ -218,6 +236,13 @@ const resources = [
             <li>
               <span class="bold"> Avalanche Operations Level 1 </span>
               — Canadian Avalanche Association
+            </li>
+
+            <li>
+              <span class="bold">
+                Avalanche Blasting Certificate, Hand Charge Endorsement
+              </span>
+              — WorkSafeBC (expired)
             </li>
 
             <li>
@@ -258,6 +283,11 @@ const resources = [
               >
               — Transport Canada
             </li>
+
+            <li>
+              <span class="bold"> Transportation Security Clearance (RAIC) </span>
+              — Transport Canada (current)
+            </li>
           </ul>
         </div>
 
@@ -273,11 +303,6 @@ const resources = [
             <li>
               <span class="bold"> IRATA Level 1 </span>
               — Pacific Ropes (former)
-            </li>
-
-            <li>
-              <span class="bold"> OFA3 </span>
-              — St. John Ambulance (former)
             </li>
           </ul>
         </div>

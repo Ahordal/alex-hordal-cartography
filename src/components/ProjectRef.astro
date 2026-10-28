@@ -1,0 +1,15 @@
+---
+// Inline link to a project page. Pair it with a <ProjectHoverCard> after the
+// paragraph; hovering or focusing this link opens that card.
+interface Props {
+  project: string;
+}
+
+const { project } = Astro.props;
+---
+
+<a
+  href={`/portfolio/${project}`}
+  class="project-ref"
+  data-project-card={`project-card-${project}`}
+  aria-describedby={`project-card-${project}`}><slot /></a>

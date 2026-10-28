@@ -1,0 +1,97 @@
+---
+import { getEntry } from "astro:content";
+import { Image } from "astro:assets";
+import { getFeaturedImage } from "../utils/getFeaturedImage";
+
+// Reference card for a project, opened by a matching <ProjectRef>. Place it
+// after the paragraph holding the link: a card has block content (headings,
+// paragraphs), which can't sit inside a <p>.
+interface Props {
+  project: string;
+}
+
+const { project } = Astro.props;
+
+const entry = await getEntry("projects", project);
+if (!entry) throw new Error(`ProjectHoverCard: no project "${project}"`);
+
+const { plainTitle, description, objectPosition = "center" } = entry.data;
+const image = getFeaturedImage(project);
+const id = `project-card-${project}`;
+---
+
+<!-- Built like the mobile menu: project title as the section title, then one entry row under a vertical rule,
+     with the thumbnail in the icon slot. -->
+<article class="project-card" id={id} role="tooltip" aria-labelledby={`${id}-title`}>
+  <h3 class="project-card-title" id={`${id}-title`}>{plainTitle}</h3>
+
+  <div class="project-card-entries">
+    <div class="project-card-row">
+      <span class="project-card-thumb">
+        <Image
+          src={image}
+          alt=""
+          width={240}
+          loading="lazy"
+          style={`object-position: ${objectPosition};`}
+        />
+      </span>
+
+      <div class="resource-content">
+        <p class="nav-desc">{description}</p>
+      </div>
+    </div>
+  </div>
+</article>
+
+<script>
+  // Fixed-position cards, placed under their link on hover or focus. Touch
+  // screens skip this and just follow the link.
+  const canHover = window.matchMedia("(hover: hover)").matches;
+  const links = document.querySelectorAll<HTMLAnchorElement>("[data-project-card]");
+
+  // Square thumbnail as tall as the text beside it. Narrowing the text makes it
+  // taller, so repeat until the size settles.
+  const squareThumb = (card: HTMLElement) => {
+    const thumb = card.querySelector<HTMLElement>(".project-card-thumb");
+    const text = card.querySelector<HTMLElement>(".resource-content");
+    if (!thumb || !text) return;
+    for (let i = 0; i < 5; i++) {
+      const height = text.offsetHeight;
+      if (Math.abs(thumb.offsetWidth - height) < 1) break;
+      thumb.style.width = `${height}px`;
+    }
+  };
+
+  links.forEach((link) => {
+    const card = document.getElementById(link.dataset.projectCard!);
+    if (!card || !canHover) return;
+
+    let hideTimer: number | undefined;
+
+    const show = () => {
+      clearTimeout(hideTimer);
+      const rect = link.getBoundingClientRect();
+      card.classList.add("is-open");
+      squareThumb(card);
+      const width = card.offsetWidth;
+      const left = Math.min(rect.left, window.innerWidth - width - 16);
+      card.style.left = `${Math.max(16, left)}px`;
+      card.style.top = `${rect.bottom + 8}px`;
+    };
+    const hide = () => {
+      hideTimer = window.setTimeout(() => card.classList.remove("is-open"), 120);
+    };
+
+    link.addEventListener("mouseenter", show);
+    link.addEventListener("mouseleave", hide);
+    link.addEventListener("focus", show);
+    link.addEventListener("blur", hide);
+    card.addEventListener("mouseenter", () => clearTimeout(hideTimer));
+    card.addEventListener("mouseleave", hide);
+    window.addEventListener("scroll", () => card.classList.remove("is-open"), {
+      passive: true,
+      capture: true,
+    });
+  });
+</script>
