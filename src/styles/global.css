@@ -1108,7 +1108,9 @@ a:focus-visible {
   display: none;
   position: fixed;
   z-index: 20;
-  width: min(32rem, calc(100vw - 2rem));
+  width: min(33rem, calc(100vw - 2rem));
+  /* Room around the plate for its hover frame, as on the portfolio page. */
+  padding: 0.5rem;
   background-color: var(--bg-alt);
   border: 0.5px solid var(--border-card);
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.25);
@@ -1118,7 +1120,6 @@ a:focus-visible {
 .project-card.is-open {
   display: block;
 }
-/* The frame already does the plate's hover job. */
 /* Laid out sideways: thumbnail left, title and text right. */
 .project-card .portfolio-plate {
   display: flex;
@@ -1149,11 +1150,6 @@ a:focus-visible {
 .project-card .plate-description {
   margin-bottom: 0;
   text-align: left;
-}
-.project-card .portfolio-plate:hover {
-  border-color: transparent;
-  background-color: transparent;
-  box-shadow: none;
 }
 
 /*///// PROJECT RESOURCES /////*/
