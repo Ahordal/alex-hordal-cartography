@@ -39,15 +39,17 @@ const id = `project-card-${project}`;
 
   // Thumbnail as tall as the text beside it, at the image's own proportions.
   // Widening it narrows the text, which makes it taller, so repeat until the
-  // size settles.
+  // size settles. Capped at 40% of the card so long text can't squeeze itself
+  // into a sliver; past the cap the image crops.
   const sizeThumb = (card: HTMLElement) => {
     const thumb = card.querySelector<HTMLElement>(".plate-image");
     const img = thumb?.querySelector("img");
     const text = card.querySelector<HTMLElement>(".plate-content");
     if (!thumb || !img || !text) return;
     const ratio = Number(img.getAttribute("width")) / Number(img.getAttribute("height")) || 1;
+    const maxWidth = card.clientWidth * 0.4;
     for (let i = 0; i < 5; i++) {
-      const width = text.offsetHeight * ratio;
+      const width = Math.min(text.offsetHeight * ratio, maxWidth);
       if (Math.abs(thumb.offsetWidth - width) < 1) break;
       thumb.style.width = `${width}px`;
     }
