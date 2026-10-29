@@ -147,8 +147,7 @@ h1 {
   margin-left: -0.08em;
 }
 /* Section titles: the homepage Latest header style, site-wide. */
-h2,
-.project-card-title {
+h2 {
   color: var(--text-h2);
   font-size: 0.85rem;
   margin-bottom: var(--space-s);
@@ -214,6 +213,11 @@ img {
   text-align: center;
 }
 
+/* About photo: capped so the write-up starts in the first screen. */
+.bio-figure img {
+  max-height: 45vh;
+  width: auto;
+}
 .project-figure figcaption {
   /*Image captions */
   margin-top: 0.75rem;
@@ -1091,64 +1095,58 @@ a:focus-visible {
 
 /*///// PROJECT HOVER CARD /////*/
 
-/* Reference card that opens under a ProjectRef link, built like the mobile menu:
-   h2-style section title, then one entry row under a vertical rule. Shadow falls
-   the same way as the nav's, at a fraction of its weight. */
+/* Reference card that opens under a ProjectRef link: a portfolio plate in a
+   solid frame. Shadow falls the same way as the nav's, at a fraction of its weight. */
 .project-card {
-  /* Same inset as the mobile menu and home notice. */
-  --card-inset: 0.5rem;
   display: none;
   position: fixed;
   z-index: 20;
-  width: min(30rem, calc(100vw - 2rem));
-  padding: var(--card-inset);
+  width: min(32rem, calc(100vw - 2rem));
   background-color: var(--bg-alt);
   border: 0.5px solid var(--border-card);
-  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.25);
   color: var(--text-body);
   text-align: left;
 }
 .project-card.is-open {
   display: block;
 }
-/* An h3 for the outline, so undo the h3 weight to match a real h2. */
-.project-card .project-card-title {
-  padding-inline: var(--card-inset);
-  font-weight: bold;
-  font-variation-settings: normal;
-}
-.project-card-entries {
-  padding-left: var(--card-inset);
-  border-left: 0.5px solid var(--border-light);
-}
-/* As .nav-entries rows, without the arrow: this card is reference only. */
-.project-card-row {
+/* The frame already does the plate's hover job. */
+/* Laid out sideways: thumbnail left, title and text right. */
+.project-card .portfolio-plate {
   display: flex;
   align-items: stretch;
-  gap: 0.75rem;
-  padding: var(--card-inset);
-  border-bottom: 0.5px solid var(--border-light);
+  gap: 1rem;
+  color: inherit;
 }
-/* Square thumbnail in the icon slot, as tall as the text. The card script sets
-   the width, since the text's height depends on it; 6rem until then. */
-.project-card-thumb {
-  position: relative;
+/* The card script sets the width from the text's height; 8rem until then. */
+.project-card .plate-image {
   flex: 0 0 auto;
-  width: 6rem;
+  width: 8rem;
 }
-.project-card-thumb img {
+.project-card .plate-image img {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: var(--object-position);
 }
-/* .nav-desc is phone-only in the menu; always shown here, in body colour as on the portfolio cards. */
-.project-card .nav-desc {
-  display: block;
+.project-card .plate-content {
+  flex: 1;
+  min-width: 0;
+}
+.project-card .portfolio-plate .page-subsection {
+  margin-top: 0;
+}
+.project-card .plate-description {
   margin-bottom: 0;
-  color: var(--text-body);
   text-align: left;
+}
+.project-card .portfolio-plate:hover {
+  border-color: transparent;
+  background-color: transparent;
+  box-shadow: none;
 }
 
 /*///// PROJECT RESOURCES /////*/
